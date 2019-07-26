@@ -4,7 +4,7 @@ import java.util.Date;
 public class Utente {
 public static class Builder{ /* implementazione del pattern builder */
 	private String email, password, nome, cognome, luogo_di_nascita, tipo, livello ;
-	private int id;
+	private static int id; // considerazione futura di toglierlo dato che db lo auto implemanta
 	private Date data_nascita;
 	public Builder () {};
 	public Builder withmail(String email) {
@@ -111,5 +111,73 @@ private String livello;
 				+ tipo + ", livello=" + livello + "]";
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cognome == null) ? 0 : cognome.hashCode());
+		result = prime * result + ((data_nascita == null) ? 0 : data_nascita.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((livello == null) ? 0 : livello.hashCode());
+		result = prime * result + ((luogo_di_nascita == null) ? 0 : luogo_di_nascita.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Utente other = (Utente) obj;
+		if (cognome == null) {
+			if (other.cognome != null)
+				return false;
+		} else if (!cognome.equals(other.cognome))
+			return false;
+		if (data_nascita == null) {
+			if (other.data_nascita != null)
+				return false;
+		} else if (!data_nascita.equals(other.data_nascita))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (id != other.id)
+			return false;
+		if (livello == null) {
+			if (other.livello != null)
+				return false;
+		} else if (!livello.equals(other.livello))
+			return false;
+		if (luogo_di_nascita == null) {
+			if (other.luogo_di_nascita != null)
+				return false;
+		} else if (!luogo_di_nascita.equals(other.luogo_di_nascita))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (tipo == null) {
+			if (other.tipo != null)
+				return false;
+		} else if (!tipo.equals(other.tipo))
+			return false;
+		return true;
+	}
 	private Utente() {} ;
 }

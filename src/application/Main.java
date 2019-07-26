@@ -2,6 +2,7 @@ package application;
 	
 import javafx.application.Application;
 import javafx.stage.Stage;
+import model.Utente;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
@@ -22,7 +23,7 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		//launch(args);
-	//	Utente utente = new utente().Builder;
-		
+	/*	Utente utente = new Utente.Builder().withid(1).withmail("ciao@cia.ex").build(); // example of utente
+		System.out.println(utente.toString()); */
 	}
 }
