@@ -8,6 +8,8 @@ public class Publicazione {
 	private Metadati metadati; // composizione
 	private ArrayList <Sorgente> sorgenti;
 	private ArrayList <Recensione> recensioni;
+	private ArrayList <Capitolo> capitoli;
+	private ArrayList <Autore> autori;
 /*  private ArrayList <Like> likes;  // forse da aggiungere */
 	public String getTitolo() {
 		return titolo;
@@ -27,11 +29,11 @@ public class Publicazione {
 	public void setEditore(String editore) {
 		this.editore = editore;
 	}
-	public int getId() {
+	public static int getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public static void setId(int id) {
+		Publicazione.id = id;
 	}
 	public Metadati getMetadati() {
 		return metadati;
@@ -51,77 +53,36 @@ public class Publicazione {
 	public void setRecensioni(ArrayList<Recensione> recensioni) {
 		this.recensioni = recensioni;
 	}
-	public Publicazione(String titolo, String descrizione, String editore, int id, Metadati metadati,
-			ArrayList<Sorgente> sorgenti, ArrayList<Recensione> recensioni) {
+	public ArrayList<Capitolo> getCapitoli() {
+		return capitoli;
+	}
+	public void setCapitoli(ArrayList<Capitolo> capitoli) {
+		this.capitoli = capitoli;
+	}
+	public ArrayList<Autore> getAutori() {
+		return autori;
+	}
+	public void setAutori(ArrayList<Autore> autori) {
+		this.autori = autori;
+	}
+	public Publicazione(String titolo, String descrizione, String editore, Metadati metadati,
+			ArrayList<Sorgente> sorgenti, ArrayList<Recensione> recensioni, ArrayList<Capitolo> capitoli,
+			ArrayList<Autore> autori) {
 		super();
 		this.titolo = titolo;
 		this.descrizione = descrizione;
 		this.editore = editore;
-		this.id = id;
 		this.metadati = metadati;
 		this.sorgenti = sorgenti;
 		this.recensioni = recensioni;
+		this.capitoli = capitoli;
+		this.autori = autori;
 	}
 	@Override
 	public String toString() {
-		return "Publicazione [titolo=" + titolo + ", descrizione=" + descrizione + ", editore=" + editore + ", id=" + id
+		return "Publicazione [titolo=" + titolo + ", descrizione=" + descrizione + ", editore=" + editore
 				+ ", metadati=" + metadati + ", sorgenti=" + sorgenti + ", recensioni=" + recensioni + "]";
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((descrizione == null) ? 0 : descrizione.hashCode());
-		result = prime * result + ((editore == null) ? 0 : editore.hashCode());
-		result = prime * result + id;
-		result = prime * result + ((metadati == null) ? 0 : metadati.hashCode());
-		result = prime * result + ((recensioni == null) ? 0 : recensioni.hashCode());
-		result = prime * result + ((sorgenti == null) ? 0 : sorgenti.hashCode());
-		result = prime * result + ((titolo == null) ? 0 : titolo.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Publicazione other = (Publicazione) obj;
-		if (descrizione == null) {
-			if (other.descrizione != null)
-				return false;
-		} else if (!descrizione.equals(other.descrizione))
-			return false;
-		if (editore == null) {
-			if (other.editore != null)
-				return false;
-		} else if (!editore.equals(other.editore))
-			return false;
-		if (id != other.id)
-			return false;
-		if (metadati == null) {
-			if (other.metadati != null)
-				return false;
-		} else if (!metadati.equals(other.metadati))
-			return false;
-		if (recensioni == null) {
-			if (other.recensioni != null)
-				return false;
-		} else if (!recensioni.equals(other.recensioni))
-			return false;
-		if (sorgenti == null) {
-			if (other.sorgenti != null)
-				return false;
-		} else if (!sorgenti.equals(other.sorgenti))
-			return false;
-		if (titolo == null) {
-			if (other.titolo != null)
-				return false;
-		} else if (!titolo.equals(other.titolo))
-			return false;
-		return true;
-	}
+
 	
 }
