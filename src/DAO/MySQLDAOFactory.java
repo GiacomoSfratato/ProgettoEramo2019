@@ -12,7 +12,7 @@ import DAO.interfaces.UtenteDAO;
 		/** la classe driver */
 	    public static final String DRIVER = "com.mysql.jdbc.Driver";
 	    /** L'url al database */
-	    public static final String DBURL = "jdbc:mysql://dbunivaq2019.cgrpp6xc53dw.eu-west-3.rds.amazonaws.com/dbunivaq2019?autoReconnect=true&useSSL=false";
+	    public static final String DBURL = "jdbc:mysql://localhost/dbunivaq2019";
 	    /** Lo username per le operazioni sul DB  */
 	    public static final String USER = "dbunivaq2019";
 	    /** La password per le operazioni sul DB */
