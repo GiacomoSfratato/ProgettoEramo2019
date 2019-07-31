@@ -26,7 +26,8 @@ public class Main extends Application {
 		//launch(args);
 	/*	Utente utente = new Utente.Builder().withid(1).withmail("ciao@cia.ex").build(); // example of utente
 		System.out.println(utente.toString()); */
-	/*	MySQLUtenteDAOImpl x = new MySQLUtenteDAOImpl();
-		System.out.println(x.get_utenti_attivi()); */
+		MySQLUtenteDAOImpl x = new MySQLUtenteDAOImpl();
+		System.out.println(x.get_utenti_attivi()); 
+		System.out.println(x.get_mostra_nome_utente(6)); 
 	}
 }

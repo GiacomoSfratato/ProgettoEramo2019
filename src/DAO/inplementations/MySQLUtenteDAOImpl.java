@@ -19,7 +19,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	/*basic query declaration */
     private static final String modifica_tipo_utente = "CALL modifica_tipo_utente(?,?)";
     private static final String utenti_attivi = "CALL utenti_attivi()";
-    private static final String	mostra_nome_utente = "SELECT nome, cognome from utente where id=?";
+    private static final String	mostra_email_utente = "SELECT email from utente where id= ?";
     private static final String inserimerto_utente = "call_inserimento_utente(?,?,?,?,?,?,?,?)";
     private static final String rimuovere_utente = "call rimuovere_utente(?,?)";
 	@Override
@@ -39,7 +39,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
         	preparedStatement.execute();
             result = preparedStatement.getResultSet();
         	while (result.next()) {            
-            	utenti.put(result.getString(1),result.getInt(2));
+        		utenti.put(get_mostra_nome_utente(result.getInt(1)),result.getInt(2));
 	}
         }
             catch (SQLException e) {
@@ -64,15 +64,55 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	return utenti;
 	
 	}
+	
 	@Override
-	public String get_mostra_nome_utente() {
-		// TODO Auto-generated method stub
-		return null;
+	public String get_mostra_nome_utente(int id) {
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet result = null;
+        String utente="";
+        try {
+        	conn = MySQLDAOFactory.createConnection();            
+    		preparedStatement = conn.prepareStatement(mostra_email_utente);
+    		 preparedStatement.setInt(1,id);
+    		preparedStatement.execute();
+    		result = preparedStatement.getResultSet();
+    		  while (result.next()) {            	
+    			  utente = result.getString(1);
+              }  
+           
 	}
+        
+            catch (SQLException e) {
+            	System.out.println("qualcosa"); 
+            } finally {
+                try {
+                    result.close();
+                } catch (Exception rse) {
+                 	System.out.println("result non chiude"); 
+                }
+                try {
+                    preparedStatement.close();
+                } catch (Exception sse) {
+                 	System.out.println("preparedStatement.close();"); 
+                }
+                try {
+                    conn.close();
+                } catch (Exception cse) {
+                	System.out.println("conn.close();");
+                }
+            }
+	return utente;
+	
+	}
+
 	@Override
 	public boolean set_inserimento_utente(Utente utente) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean fine = false;
+		Connection con = null;
+		
+		
+				return fine;
 	}
 	@Override
 	public boolean set_rimovere_utente(Utente utente) {
