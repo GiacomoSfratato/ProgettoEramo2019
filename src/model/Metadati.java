@@ -5,8 +5,7 @@ import java.util.*;
 public class Metadati {
 private static int id_pubblicazione;
 private int nrpagine;
-private String isbn, lingua;
-private Date data;
+private String isbn, lingua, data;
 private ArrayList<Parola_chiave> parole_chiave;
 public static int getId_pubblicazione() {
 	return id_pubblicazione;
@@ -32,10 +31,10 @@ public String getLingua() {
 public void setLingua(String lingua) {
 	this.lingua = lingua;
 }
-public Date getData() {
+public String getData() {
 	return data;
 }
-public void setData(Date data) {
+public void setData(String data) {
 	this.data = data;
 }
 public ArrayList<Parola_chiave> getParole_chiave() {
@@ -44,7 +43,7 @@ public ArrayList<Parola_chiave> getParole_chiave() {
 public void setParole_chiave(ArrayList<Parola_chiave> parole_chiave) {
 	this.parole_chiave = parole_chiave;
 }
-public Metadati(int nrpagine, String isbn, String lingua, Date data, ArrayList<Parola_chiave> parole_chiave) {
+public Metadati(int nrpagine, String isbn, String lingua, String data, ArrayList<Parola_chiave> parole_chiave) {
 	super();
 	this.nrpagine = nrpagine;
 	this.isbn = isbn;
