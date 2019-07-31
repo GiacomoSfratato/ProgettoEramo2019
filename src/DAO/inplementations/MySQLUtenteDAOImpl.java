@@ -1,7 +1,3 @@
-//todo cambaire customer con user !!!! 
-
-
-
 package DAO.inplementations;
 
 import java.sql.Connection;
@@ -10,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import model.Utente;
 import DAO.MySQLDAOFactory;
@@ -25,8 +22,69 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     private static final String	mostra_nome_utente = "SELECT nome, cognome from utente where id=?";
     private static final String inserimerto_utente = "call_inserimento_utente(?,?,?,?,?,?,?,?)";
     private static final String rimuovere_utente = "call rimuovere_utente(?,?)";
+	@Override
+	public boolean set_modifica_tipo_utente(String email, String tipo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	public  HashMap<String,Integer> get_utenti_attivi() {
+		HashMap <String,Integer> utenti = new HashMap<String,Integer>();
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet result = null;
+        try {
+        	conn = MySQLDAOFactory.createConnection();            
+    		preparedStatement = conn.prepareStatement(utenti_attivi);
+        	preparedStatement.execute();
+            result = preparedStatement.getResultSet();
+        	while (result.next()) {            
+            	utenti.put(result.getString(1),result.getInt(2));
+	}
+        }
+            catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    result.close();
+                } catch (Exception rse) {
+                    rse.printStackTrace();
+                }
+                try {
+                    preparedStatement.close();
+                } catch (Exception sse) {
+                    sse.printStackTrace();
+                }
+                try {
+                    conn.close();
+                } catch (Exception cse) {
+                    cse.printStackTrace();
+                }
+            }
+	return utenti;
+	
+	}
+	@Override
+	public String get_mostra_nome_utente() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public boolean set_inserimento_utente(Utente utente) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean set_rimovere_utente(Utente utente) {
+		// TODO Auto-generated method stub
+		return false;
+	}
  
-	public List getAllCustomers() {
+
+    
+    
+    /*
+    public List getAllCustomers() {
  
 		List Utenti = new ArrayList();
 		Utente customer = null;
@@ -200,6 +258,6 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
             }
         }
         return false;
-	}
+	}  */
  
 }

@@ -12,11 +12,11 @@ import DAO.interfaces.UtenteDAO;
 		/** la classe driver */
 	    public static final String DRIVER = "com.mysql.jdbc.Driver";
 	    /** L'url al database */
-	    public static final String DBURL = "jdbc:mysql://localhost:3306/prime";
+	    public static final String DBURL = "jdbc:mysql://localhost:3306/dbunivaq2019";
 	    /** Lo username per le operazioni sul DB  */
-	    public static final String USER = "prime";
+	    public static final String USER = "dbunivaq2019";
 	    /** La password per le operazioni sul DB */
-	    public static final String PASS = "prime";
+	    public static final String PASS = "dbunivaq2019";
 	    
 	    /**
 	     * Metodo per creare una connessione sul DB MySQL

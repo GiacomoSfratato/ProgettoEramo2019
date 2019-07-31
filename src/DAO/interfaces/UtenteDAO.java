@@ -8,7 +8,7 @@ public interface UtenteDAO {
 	 */
 	 
 		public boolean set_modifica_tipo_utente(String email, String tipo);
-		public ArrayList<?> get_utenti_attivi();
+		public HashMap<String,Integer> get_utenti_attivi();
 		public String get_mostra_nome_utente();
 		public boolean set_inserimento_utente(Utente utente);
 		public boolean set_rimovere_utente(Utente utente);
