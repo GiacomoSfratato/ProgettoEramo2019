@@ -143,7 +143,30 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	
 	@Override
 	public boolean set_rimovere_utente(Utente utente) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean fine = false;
+		PreparedStatement ps = null;
+		Connection conn = null;
+		try {
+			conn = MySQLDAOFactory.createConnection();
+			ps = conn.prepareStatement(rimuovere_utente);
+			ps.setString(1,utente.getEmail());
+			ps.setString(2, utente.getPassword());
+			ps.execute();
+			fine=true;
+		}
+		catch(Exception exc) {
+		System.out.print("somethink goes wrong!"); }
+		finally { 
+		try {
+             ps.close();
+         } catch (Exception sse) {
+          	System.out.println("preparedStatement.close();"); 
+         }
+         try {
+             conn.close();
+         } catch (Exception cse) {
+         	System.out.println("conn.close();");
+         }  }
+		return fine;
 	}
 }
