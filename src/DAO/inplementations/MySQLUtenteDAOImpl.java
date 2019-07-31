@@ -2,7 +2,7 @@
 
 
 
-package DAO;
+package DAO.inplementations;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,27 +11,25 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import model.Utente;
+import DAO.MySQLDAOFactory;
+import DAO.interfaces.UtenteDAO;
  
 /**
  * Implementazione dell'interfaccia CustomerDAO per il database MySQL.
  */
-public class MySQLCustomerDAOImpl implements CustomerDAO {
-	
-	/** La query per l'inserimento di un nuovo cliente */
-    private static final String CREATE_QUERY = "INSERT INTO customers (first_name, last_name) VALUES (?,?)";
-    /** La query per la lettura di un singolo cliente. */
-    private static final String READ_QUERY = "SELECT id, first_name, last_name FROM customers WHERE id = ?";
-    /** La query per la lettura di tutti i clienti. */
-    private static final String READ_ALL_QUERY = "SELECT id, first_name, last_name FROM customers";
-    /** La query per l'aggiornamento di un singolo cliente. */
-    private static final String UPDATE_QUERY = "UPDATE customers SET first_name=? , last_name=? WHERE id = ?";
-    /** La query per la cancellazione di un singolo cliente. */
-    private static final String DELETE_QUERY = "DELETE FROM customers WHERE id = ?";
+public class MySQLUtenteDAOImpl implements UtenteDAO {
+	/*basic query declaration */
+    private static final String modifica_tipo_utente = "CALL modifica_tipo_utente(?,?)";
+    private static final String utenti_attivi = "CALL utenti_attivi()";
+    private static final String	mostra_nome_utente = "SELECT nome, cognome from utente where id=?";
+    private static final String inserimerto_utente = "call_inserimento_utente(?,?,?,?,?,?,?,?)";
+    private static final String rimuovere_utente = "call rimuovere_utente(?,?)";
  
 	public List getAllCustomers() {
  
-		List customers = new ArrayList();
-		Customer customer = null;
+		List Utenti = new ArrayList();
+		Utente customer = null;
 		Connection conn = null;
         PreparedStatement preparedStatement = null;
         ResultSet result = null;

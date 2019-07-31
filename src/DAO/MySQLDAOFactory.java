@@ -4,6 +4,9 @@ package DAO;
 	import java.sql.DriverManager;
 	import java.sql.SQLException;
 
+import DAO.inplementations.MySQLUtenteDAOImpl;
+import DAO.interfaces.UtenteDAO;
+
 	public class MySQLDAOFactory extends DAOFactory {
 
 		/** la classe driver */
@@ -34,8 +37,8 @@ package DAO;
 	    }
 	    
 		@Override
-		public CustomerDAO getCustomerDAO() {
-			return new MySQLCustomerDAOImpl();
+		public UtenteDAO getCustomerDAO() {
+			return new MySQLUtenteDAOImpl();
 		}
 	
 

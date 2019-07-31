@@ -1,5 +1,7 @@
 package DAO;
 
+import DAO.interfaces.UtenteDAO;
+
 public abstract class DAOFactory {
 	 
 	 	 /** Membro statico per la factory MySQL */
@@ -8,7 +10,7 @@ public abstract class DAOFactory {
 	    public static final int ORACLE = 1;
 	 
 	    /** Metodo statico per CustomerDAO */
-	    public abstract CustomerDAO getCustomerDAO();
+	    public abstract UtenteDAO getCustomerDAO();
 	 
 	 
 	    /**

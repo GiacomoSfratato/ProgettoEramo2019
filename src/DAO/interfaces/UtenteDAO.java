@@ -1,8 +1,8 @@
-package DAO;
+package DAO.interfaces;
 import java.util.List;
 
 import model.Utente;
-public interface CustomerDAO {
+public interface UtenteDAO {
 
 	 
 	/**
