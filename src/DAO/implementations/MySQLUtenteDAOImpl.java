@@ -36,7 +36,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 			fine=true;
 		}
 		catch(Exception exc) {
-		System.out.print("somethink goes wrong!"); }
+		System.out.print("something goes wrong!"); }
 		finally { 
 		try {
              ps.close();
