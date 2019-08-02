@@ -10,7 +10,14 @@ public class Publicazione {
 	private ArrayList <Recensione> recensioni;
 	private ArrayList <Capitolo> capitoli;
 	private ArrayList <Autore> autori;
-/*  private ArrayList <Like> likes;  // forse da aggiungere */
+	private ArrayList <likes> likes;  // forse da levare 
+	private ArrayList <Storico> storico;
+	public ArrayList<likes> getLikes() {
+		return likes;
+	}
+	public void setLikes(ArrayList<likes> likes) {
+		this.likes = likes;
+	}
 	public String getTitolo() {
 		return titolo;
 	}
@@ -81,7 +88,8 @@ public class Publicazione {
 	@Override
 	public String toString() {
 		return "Publicazione [titolo=" + titolo + ", descrizione=" + descrizione + ", editore=" + editore
-				+ ", metadati=" + metadati + ", sorgenti=" + sorgenti + ", recensioni=" + recensioni + "]";
+				+ ", metadati=" + metadati + ", sorgenti=" + sorgenti + ", recensioni=" + recensioni + ", capitoli="
+				+ capitoli + ", autori=" + autori + ", likes=" + likes + ", storico=" + storico + "]";
 	}
 
 	

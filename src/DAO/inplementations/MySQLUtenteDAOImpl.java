@@ -22,13 +22,37 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     private static final String	mostra_email_utente = "SELECT email from utente where id= ?";
     private static final String inserimento_utente = "call inserimento_utente(?,?,?,?,?,?,?,?)";
     private static final String rimuovere_utente = "call rimuovere_utente(?,?)";
-	@Override
-	public boolean set_modifica_tipo_utente(String email, String tipo) {
-		// TODO Auto-generated method stub
-		return false;
+	
+    public static boolean set_modifica_tipo_utente(Utente utente, String tipo) {
+    	boolean fine = false;
+		PreparedStatement ps = null;
+		Connection conn = null;
+		try {
+			conn = MySQLDAOFactory.createConnection();
+			ps = conn.prepareStatement(modifica_tipo_utente);
+			ps.setString(1,utente.getEmail());
+			ps.setString(2,tipo);
+			ps.execute();
+			fine=true;
+		}
+		catch(Exception exc) {
+		System.out.print("somethink goes wrong!"); }
+		finally { 
+		try {
+             ps.close();
+         } catch (Exception sse) {
+          	System.out.println("preparedStatement.close();"); 
+         }
+         try {
+             conn.close();
+         } catch (Exception cse) {
+         	System.out.println("conn.close();");
+         }  }
+		return fine;
 	}
 	
-	public  HashMap<String,Integer> get_utenti_attivi() {
+	
+	public static HashMap<String,Integer> get_utenti_attivi() {
 		HashMap <String,Integer> utenti = new HashMap<String,Integer>();
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
@@ -65,8 +89,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	
 	}
 	
-	@Override
-	public String get_mostra_nome_utente(int id) {
+	public static String get_mostra_nome_utente(int id) {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet result = null;
@@ -106,8 +129,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	
 	}
 
-	@Override
-	public boolean set_inserimento_utente(Utente utente) {
+	public static boolean set_inserimento_utente(Utente utente) {
 		boolean fine = false;
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
@@ -141,8 +163,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
              } 
              }return fine;}
 	
-	@Override
-	public boolean set_rimovere_utente(Utente utente) {
+	public static boolean set_rimovere_utente(Utente utente) {
 		boolean fine = false;
 		PreparedStatement ps = null;
 		Connection conn = null;

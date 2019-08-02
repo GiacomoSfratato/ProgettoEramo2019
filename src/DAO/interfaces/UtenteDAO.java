@@ -3,11 +3,11 @@ import java.util.*;
 import model.Utente;
 public interface UtenteDAO {
 	 
-		public boolean set_modifica_tipo_utente(String email, String tipo);
-		public HashMap<String,Integer> get_utenti_attivi();
-		public String get_mostra_nome_utente(int id);
-		public boolean set_inserimento_utente(Utente utente);
-		public boolean set_rimovere_utente(Utente utente);
+		public static boolean set_modifica_tipo_utente(Utente utente, String tipo){return false;}
+		public static HashMap<String,Integer> get_utenti_attivi(){return null;}
+		public static String get_mostra_nome_utente(int id){return null;}
+		public static boolean set_inserimento_utente(Utente utente){return false;}
+		public static boolean set_rimovere_utente(Utente utente){return false;}
 		
 	/*
 	 * L'interfaccia DAO per le diverse implementazioni di CustomerDAO. Definisce le operazioni CRUD.
