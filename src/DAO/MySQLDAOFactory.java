@@ -4,7 +4,7 @@ package DAO;
 	import java.sql.DriverManager;
 	import java.sql.SQLException;
 
-import DAO.inplementations.MySQLUtenteDAOImpl;
+import DAO.implementations.MySQLUtenteDAOImpl;
 import DAO.interfaces.UtenteDAO;
 
 	public class MySQLDAOFactory extends DAOFactory {

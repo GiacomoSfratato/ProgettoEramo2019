@@ -1,4 +1,4 @@
-package DAO.inplementations;
+package DAO.implementations;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

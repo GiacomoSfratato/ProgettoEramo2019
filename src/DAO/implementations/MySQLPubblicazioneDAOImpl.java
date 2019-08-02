@@ -1,14 +1,14 @@
-package DAO.inplementations;
+package DAO.implementations;
 
 import java.util.ArrayList;
 import java.sql.*;
 
 import DAO.MySQLDAOFactory;
-import DAO.interfaces.PublicazioneDAO;
+import DAO.interfaces.PubblicazioneDAO;
 import model.Pubblicazione;
 import model.Utente;
 import model.Metadati;
-public class MySQLPublicazioneDAOImpl implements PublicazioneDAO {
+public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String ultime_pubblicazioni = "CALL ultime_pubblicazioni";
 	private static String update_recente = "CALL update_recente";
 	private static String pubblicazione_utente = "CALL pubblicazione_utente";

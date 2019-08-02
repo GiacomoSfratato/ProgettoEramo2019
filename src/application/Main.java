@@ -1,7 +1,7 @@
 package application;
 	
-import DAO.inplementations.MySQLPublicazioneDAOImpl;
-import DAO.inplementations.MySQLUtenteDAOImpl;
+import DAO.implementations.MySQLPubblicazioneDAOImpl;
+import DAO.implementations.MySQLUtenteDAOImpl;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import model.Utente;
@@ -33,7 +33,7 @@ public class Main extends Application {
 	//	System.out.println(x.set_rimovere_utente(utente));
 		System.out.println(x.get_mostra_nome_utente(6));  */
 		
-		MySQLPublicazioneDAOImpl y = new MySQLPublicazioneDAOImpl();
+		MySQLPubblicazioneDAOImpl y = new MySQLPubblicazioneDAOImpl();
 		/*System.out.print(y.get_ultime_publicazioni());
 		System.out.print(y.get_update_recente()); */
 		
