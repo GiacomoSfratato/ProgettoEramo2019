@@ -13,7 +13,7 @@ public class Pubblicazione {
 		private ArrayList <Recensione> recensioni;
 		private ArrayList <Capitolo> capitoli;
 		private ArrayList <Autore> autori;
-		private ArrayList <likes> likes;  // forse da levare 
+		private ArrayList <Likes> likes;  // forse da levare 
 		private ArrayList <Storico> storico;
 		public Builder () {
 		};
@@ -53,7 +53,7 @@ public class Pubblicazione {
 			this.autori = autori;
 			return this;
 		}
-		public Builder withlikes(ArrayList <likes> likes) {
+		public Builder withlikes(ArrayList <Likes> likes) {
 			this.likes = likes;
 			return this;
 		}
@@ -86,12 +86,12 @@ public class Pubblicazione {
 	private ArrayList <Recensione> recensioni;
 	private ArrayList <Capitolo> capitoli;
 	private ArrayList <Autore> autori;
-	private ArrayList <likes> likes;  // forse da levare 
+	private ArrayList <Likes> likes;  // forse da levare 
 	private ArrayList <Storico> storico;
-	public ArrayList<likes> getLikes() {
+	public ArrayList<Likes> getLikes() {
 		return likes;
 	}
-	public void setLikes(ArrayList<likes> likes) {
+	public void setLikes(ArrayList<Likes> likes) {
 		this.likes = likes;
 	}
 	public String getTitolo() {
