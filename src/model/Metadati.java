@@ -51,6 +51,10 @@ public Metadati(int nrpagine, String isbn, String lingua, String data, ArrayList
 	this.data = data;
 	this.parole_chiave = parole_chiave;
 }
+public Metadati(String isbn,String data) {
+	this.data = data;
+	this.isbn = isbn; }
+
 @Override
 public String toString() {
 	return "Metadati [nrpagine=" + nrpagine + ", isbn=" + isbn + ", lingua=" + lingua + ", data=" + data
