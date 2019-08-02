@@ -37,6 +37,6 @@ public class Main extends Application {
 		/*System.out.print(y.get_ultime_publicazioni());
 		System.out.print(y.get_update_recente()); */
 		
-		System.out.println(y.get_pubblicazione_utente(new Utente.Builder().withmail("fulviolapenna@gmail.com")).build());
+		System.out.println(y.get_pubblicazione_utente(new Utente.Builder().withmail("fulviolapenna@gmail.com").build()));
 	}
 }
