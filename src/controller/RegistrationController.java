@@ -23,6 +23,7 @@ public class RegistrationController{
 	
 	ObservableList<String> sessi = FXCollections.observableArrayList("Maschio","Femmina","Altro");
 	
+	private final int LUNGHEZZA_MIN_PASSWORD = 8;
 	@FXML
 	private Button confermaReg;
 	@FXML
@@ -48,8 +49,25 @@ public class RegistrationController{
 	
 	@FXML
 	public void conferma() {
+		boolean all_ok = true;
+		
+		if (password.getText() == null || password.getText().trim().isEmpty()) {
+			password.setPromptText("Campo obbligatorio");
+			all_ok = false;
+		}
+		
+		if (password.getText().length() > 1 && password.getText().length() < LUNGHEZZA_MIN_PASSWORD) {
+			password.setPromptText("La password deve avere minimo " + LUNGHEZZA_MIN_PASSWORD + " caratteri");
+			all_ok = false;
+		}
+		
+		if (email.getText() == null || email.getText().trim().isEmpty()) {
+			email.setPromptText("Campo obbligatorio");
+			all_ok = false;
+		} 
+		if (all_ok == true) {
 		Stage stage = (Stage) confermaReg.getScene().getWindow();
 		 stage.close();
 	}
-
+	}
 }
