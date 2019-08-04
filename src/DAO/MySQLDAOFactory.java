@@ -17,8 +17,6 @@ import DAO.interfaces.UtenteDAO;
 		private static String DATABASE_USER_PASSWORD = "dbunivaq2019";
 		
 		public static Connection createConnection() {
-
-		    System.out.println("----MySQL JDBC Connection Testing -------");
 		    
 		    try {
 		        Class.forName("com.mysql.cj.jdbc.Driver");
@@ -28,7 +26,6 @@ import DAO.interfaces.UtenteDAO;
 		        return null;
 		    }
 
-		    System.out.println("MySQL JDBC Driver Registered!");
 		    Connection connection = null;
 
 		    try {
@@ -39,10 +36,8 @@ import DAO.interfaces.UtenteDAO;
 		    }
 
 		    if (connection != null) {
-		        System.out.println("SUCCESS!!!! You made it, take control     your database now!");
 		        return connection;
 		    } else {
-		        System.out.println("FAILURE! Failed to make connection!");
 		        return connection;
 		    }
 

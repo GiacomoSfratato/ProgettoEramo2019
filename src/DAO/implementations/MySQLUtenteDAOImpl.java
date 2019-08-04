@@ -52,8 +52,8 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	}
 	
 	
-	public static HashMap<String,Integer> get_utenti_attivi() {
-		HashMap <String,Integer> utenti = new HashMap<String,Integer>();
+	public static HashMap get_utenti_attivi() {
+		HashMap <Integer,String> utenti = new HashMap<>();
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet result = null;
@@ -63,7 +63,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
         	preparedStatement.execute();
             result = preparedStatement.getResultSet();
         	while (result.next()) {            
-        		utenti.put(get_mostra_nome_utente(result.getInt(1)),result.getInt(2));
+        		utenti.put(result.getInt("libri inseriti"),result.getString("email"));
 	}
         }
             catch (SQLException e) {
@@ -88,7 +88,9 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	return utenti;
 	
 	}
-	
+
+/////////////////////////////////////////////////////////////////////////////////////
+	//metodo che non serve nella query get_utenti_attivi
 	public static String get_mostra_nome_utente(int id) {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
@@ -128,7 +130,8 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	return utente;
 	
 	}
-
+//////////////////////////////////////////////////////////////////////////////////////
+	
 	public static boolean set_inserimento_utente(Utente utente) {
 		boolean fine = false;
 		Connection conn = null;
