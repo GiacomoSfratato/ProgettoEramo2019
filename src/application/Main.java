@@ -31,7 +31,7 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		//launch(args);
-		Utente utente = new Utente.Builder().withmail("ciao@cia.ex").withpassword("marks124").build(); // example of utente
+	/*	Utente utente = new Utente.Builder().withmail("ciao@cia.ex").withpassword("marks124").build(); // example of utente
 		System.out.println(utente.toString()); 
 		MySQLUtenteDAOImpl x = new MySQLUtenteDAOImpl();
 		System.out.println(x.get_utenti_attivi()); 
@@ -40,6 +40,7 @@ public class Main extends Application {
 		System.out.println(x.get_mostra_nome_utente(6));  
 		
 		MySQLPubblicazioneDAOImpl y = new MySQLPubblicazioneDAOImpl();
+		
 		/*System.out.print(y.get_ultime_publicazioni());
 		System.out.print(y.get_update_recente()); 
 		
