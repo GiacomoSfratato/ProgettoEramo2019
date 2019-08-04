@@ -55,7 +55,7 @@
                   <TextField fx:id="citta" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <PasswordField fx:id="password" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <DatePicker fx:id="dataDiNascita" prefHeight="25.0" prefWidth="232.0" style="-fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <ComboBox fx:id="sesso" prefHeight="25.0" prefWidth="236.0" promptText="Maschio" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="sesso" prefHeight="25.0" prefWidth="236.0" promptText="-- seleziona un'opzione --" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />

@@ -21,6 +21,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     private static final String modifica_tipo_utente = "CALL modifica_tipo_utente(?,?)";
     private static final String utenti_attivi = "CALL utenti_attivi()";
     private static final String	mostra_email_utente = "SELECT email from utente where id= ?";
+    private static final String	check_utente = "SELECT email from utente where email = ? and passwd = ?";
     private static final String inserimento_utente = "call inserimento_utente(?,?,?,?,?,?,?,?)";
     private static final String rimuovere_utente = "call rimuovere_utente(?,?)";
 	
@@ -152,7 +153,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 			fine = true;
 		}
 		 catch (SQLException e) {
-         	System.out.println("qualcosa"); 
+         	System.out.println(e.getMessage()); 
          } finally {
              
              try {
@@ -195,4 +196,45 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 		return fine;
 	}
 	
+	public boolean check_utente(Utente utente) {
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet result = null;
+        String utente_email = "";
+        try {
+        	conn = MySQLDAOFactory.createConnection();            
+    		preparedStatement = conn.prepareStatement(check_utente);
+    		preparedStatement.setString(1,utente.getEmail());
+    		preparedStatement.setString(2,utente.getPassword());
+    		preparedStatement.execute();
+    		result = preparedStatement.getResultSet();
+    		  while (result.next()) {            	
+    			  utente_email = result.getString(1);
+              }  
+    
+		
+        }
+
+        
+        catch (SQLException e) {
+        	System.out.println("qualcosa"); 
+        } finally {
+            try {
+                result.close();
+            } catch (Exception rse) {
+             	System.out.println("result non chiude"); 
+            }
+            try {
+                preparedStatement.close();
+            } catch (Exception sse) {
+             	System.out.println("preparedStatement.close();"); 
+            }
+            try {
+                conn.close();
+            } catch (Exception cse) {
+            	System.out.println("conn.close();");
+            }
+        }
+        return (utente_email.isBlank());
+		}
 }

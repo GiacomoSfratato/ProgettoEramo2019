@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
+import DAO.implementations.MySQLUtenteDAOImpl;
 import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,10 +19,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Utente;
 
 public class RegistrationController{
 	
-	ObservableList<String> sessi = FXCollections.observableArrayList("Maschio","Femmina","Altro");
+	ObservableList<String> sessi = FXCollections.observableArrayList("M","F","indefinito");
 	
 	private final int LUNGHEZZA_MIN_PASSWORD = 8;
 	@FXML
@@ -65,9 +67,24 @@ public class RegistrationController{
 			email.setPromptText("Campo obbligatorio");
 			all_ok = false;
 		} 
-		if (all_ok == true) {
-		Stage stage = (Stage) confermaReg.getScene().getWindow();
-		 stage.close();
+		if (all_ok) {
+			
+		Utente utente = new Utente.Builder().
+				withmail(email.getText()).
+				withnome(nome.getText()).
+				withcognome(cognome.getText()).
+				withluogo_di_nascita(citta.getText()).
+				withdata_nascita(dataDiNascita.getValue().toString()).
+				withsesso(sesso.getValue()).
+				withpassword(password.getText()).build();	
+			MySQLUtenteDAOImpl utentedao = new MySQLUtenteDAOImpl();
+			if(utentedao.set_inserimento_utente(utente)) {
+		
+			
+			Stage stage = (Stage) confermaReg.getScene().getWindow();
+			stage.close();
+			}
 	}
 	}
 }
+

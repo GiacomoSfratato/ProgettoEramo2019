@@ -1,5 +1,7 @@
 package controller;
 
+import DAO.implementations.*;
+import model.*;
 import java.io.IOException;
 import java.util.Calendar;
 
@@ -10,10 +12,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -21,6 +25,8 @@ import javafx.stage.StageStyle;
 
 public class HomePageController {
 	
+	@FXML
+	private Label errore;
 	@FXML
 	private TextField email;
 	@FXML
@@ -37,13 +43,14 @@ public class HomePageController {
 	}
 	
 	@FXML
-	private void handleButtonAction() throws IOException {
+	private void handleRegistrationButtonAction() throws IOException {
 		
 		Parent root = FXMLLoader.load(getClass().getResource("/view/Registration.fxml"));
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root, 385, 395));
 		stage.showAndWait();
-		
+		errore.setTextFill(Color.web("#18d100"));
+		errore.setText("Registrazione completata con successo!");
 		
 		/*Stage appStage;
 	    Parent root;
@@ -54,5 +61,20 @@ public class HomePageController {
         appStage.setScene(scene);
         appStage.show();*/
 	   }
+	
+	@FXML
+	private void handleLoginButtonAction() throws IOException {
+		MySQLUtenteDAOImpl dao = new MySQLUtenteDAOImpl();
+		Utente loginUser = new Utente.Builder().withmail(email.getText()).withpassword(password.getText()).build();
+		
+		if(dao.check_utente(loginUser)) { 
+			errore.setText("Nome utente o password errata");
+		} else {
+			Parent root = FXMLLoader.load(getClass().getResource("/view/MainProgram.fxml"));
+			Scene scene = new Scene(root);
+			Main.stage.setScene(scene);
+			Main.stage.show();
+		}
+	}
 }
 	
