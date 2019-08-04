@@ -8,33 +8,46 @@ import DAO.implementations.MySQLUtenteDAOImpl;
 import DAO.interfaces.UtenteDAO;
 
 	public class MySQLDAOFactory extends DAOFactory {
+		
+		
+		private static String PUBLIC_DNS = "dbunivaq2019.cgrpp6xc53dw.eu-west-3.rds.amazonaws.com";
+		private static String PORT = "3306";
+		private static String DATABASE = "dbunivaq2019";
+		private static String REMOTE_DATABASE_USERNAME = "dbunivaq2019";
+		private static String DATABASE_USER_PASSWORD = "dbunivaq2019";
+		
+		public static Connection createConnection() {
 
-		/** la classe driver */
-	    public static final String DRIVER = "com.mysql.jdbc.Driver";
-	    /** L'url al database */
-	    public static final String DBURL = "jdbc:mysql://localhost/dbunivaq2019";
-	    /** Lo username per le operazioni sul DB  */
-	    public static final String USER = "dbunivaq2019";
-	    /** La password per le operazioni sul DB */
-	    public static final String PASS = "dbunivaq2019";
-	    
-	    /**
-	     * Metodo per creare una connessione sul DB MySQL
-	     * 
-	     * @return l'oggetto Connection.
-	     */
-	    public static Connection createConnection() {
-	        Connection conn = null;
-	        try {
-	            Class.forName("com.mysql.jdbc.Driver");
-	            conn = DriverManager.getConnection(DBURL, USER, PASS);
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        } catch (ClassNotFoundException e) {
-	        	e.printStackTrace();
-	        }
-	        return conn;
-	    }
+		    System.out.println("----MySQL JDBC Connection Testing -------");
+		    
+		    try {
+		        Class.forName("com.mysql.cj.jdbc.Driver");
+		    } catch (ClassNotFoundException e) {
+		        System.out.println("Where is your MySQL JDBC Driver?");
+		        e.printStackTrace();
+		        return null;
+		    }
+
+		    System.out.println("MySQL JDBC Driver Registered!");
+		    Connection connection = null;
+
+		    try {
+		        connection = DriverManager.
+		                getConnection("jdbc:mysql://" + PUBLIC_DNS + ":" + PORT + "/" + DATABASE, REMOTE_DATABASE_USERNAME, DATABASE_USER_PASSWORD);
+		    } catch (SQLException e) {
+		        System.out.println("Connection Failed!:\n" + e.getMessage());
+		    }
+
+		    if (connection != null) {
+		        System.out.println("SUCCESS!!!! You made it, take control     your database now!");
+		        return connection;
+		    } else {
+		        System.out.println("FAILURE! Failed to make connection!");
+		        return connection;
+		    }
+
+		}
+	
 	    
 		@Override
 		public UtenteDAO getCustomerDAO() {
