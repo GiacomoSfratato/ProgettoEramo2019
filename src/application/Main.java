@@ -27,7 +27,7 @@ public class Main extends Application{
 	}
 	
 	public static void main(String[] args) {
-	launch(args);
+	//launch(args);
 	
 	/*Utente utente = new Utente.Builder().withmail("ciao@cia.ex").withpassword("marks124").build(); // example of utente
 	System.out.println(utente.toString()); 
