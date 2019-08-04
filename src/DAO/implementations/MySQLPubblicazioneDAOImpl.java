@@ -1,20 +1,20 @@
 package DAO.implementations;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.sql.*;
 
 import DAO.MySQLDAOFactory;
 import DAO.interfaces.PubblicazioneDAO;
-import model.Pubblicazione;
-import model.Utente;
-import model.Metadati;
 import model.*;
 public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String ultime_pubblicazioni = "CALL ultime_pubblicazioni";
 	private static String update_recente = "CALL update_recente";
 	private static String pubblicazione_utente = "CALL pubblicazioni_utente(?)";
 	private static String catalogo = "CALL catalogo";
-	public static ArrayList<Pubblicazione> get_ultime_publicazioni(){
+	
+	
+	@Override
+	public ArrayList<Pubblicazione> get_ultime_pubblicazioni(){
 		ArrayList <Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -51,8 +51,8 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
             }
 	return pubblicazioni;}
 	
-	
-	public static ArrayList<Pubblicazione> get_update_recente(){	
+	@Override
+	public ArrayList<Pubblicazione> get_update_recente(){	
 	ArrayList <Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
 	Connection conn = null;
 	PreparedStatement ps = null;
@@ -89,7 +89,8 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
         }
 return pubblicazioni;}
 	
-	public static ArrayList<Pubblicazione> get_pubblicazione_utente(Utente utente){ 
+	@Override
+	public ArrayList<Pubblicazione> get_pubblicazione_utente(Utente utente){ 
 	ArrayList<Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
 	PreparedStatement ps = null;
 	ResultSet result = null;
@@ -119,9 +120,9 @@ return pubblicazioni;}
      }  }
 	return pubblicazioni;
 }
-
 	
-	public static ArrayList<Pubblicazione> get_catalogo(){
+	@Override
+	public ArrayList<Pubblicazione> get_catalogo(){
 		ArrayList<Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
 		PreparedStatement ps = null;
 		ResultSet result = null;
@@ -151,15 +152,65 @@ return pubblicazioni;}
 		return pubblicazioni;
 	}
 
-	/*
-	public static Publicazione get_estrazione_dati(Publicazione publicazione){return null;} //
-	public static Publicazione get_cerca_publicazione(Publicazione publicazione){return null;}
-	public static ArrayList<Publicazione> get_catalogo_ristampa(){return null;} //
-	public static ArrayList<Publicazione> get_catalogo_stessi_autori(Publicazione publicazione){return null;} //
-	public static boolean set_inserimento_like(String email, String password,int id_publicazione){return false;} //
-	public static Publicazione get_likes_totiali(){return null;} //
-	public static Publicazione get_estrazione_modifiche_pubblicazione(Publicazione publicazione){return null;} //
-	*/
+	
+
+
+
+	@Override
+	public Pubblicazione get_estrazione_dati(Pubblicazione pubblicazione) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	@Override
+	public ArrayList<Pubblicazione> get_cerca_pubblicazione(Pubblicazione pubblicazione) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	@Override
+	public ArrayList<Pubblicazione> get_catalogo_ristampa() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	@Override
+	public ArrayList<Pubblicazione> get_catalogo_stessi_autori(Pubblicazione pubblicazione) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	@Override
+	public boolean set_inserimento_like(String email, String password, int id_pubblicazione) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+	@Override
+	public Pubblicazione get_likes_totali(Pubblicazione pubblicazione) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	@Override
+	public ArrayList<Storico> get_estrazione_modifiche_pubblicazione(Pubblicazione pubblicazione) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	@Override
+	public ArrayList<Pubblicazione> get_elenco_download() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
 
 

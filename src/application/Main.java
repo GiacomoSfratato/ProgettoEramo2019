@@ -26,19 +26,25 @@ public class Main extends Application{
 	    stage.show();
 	}
 	
-	public static void main(String[] argv) {
+	public static void main(String[] args) {
+	launch(args);
 	Utente utente = new Utente.Builder().withmail("ciao@cia.ex").withpassword("marks124").build(); // example of utente
 	System.out.println(utente.toString()); 
 	MySQLUtenteDAOImpl x = new MySQLUtenteDAOImpl();
 	System.out.println(x.get_utenti_attivi()); 
 	System.out.println(x.set_inserimento_utente(utente)); 
-	System.out.println(x.set_rimovere_utente(utente));
+	System.out.println(x.set_rimuovere_utente(utente));
 	System.out.println(x.get_mostra_nome_utente(6));  
 	
 	MySQLPubblicazioneDAOImpl y = new MySQLPubblicazioneDAOImpl();
-	System.out.println(y.get_ultime_publicazioni());
+	System.out.println(y.get_ultime_pubblicazioni());
 	System.out.println(y.get_update_recente()); 
 	
+	
 	System.out.println(y.get_pubblicazione_utente(new Utente.Builder().withmail("fulviolapenna@gmail.com").build()));
+	
+	Pubblicazione pubbl = new Pubblicazione.Builder().withid(4).build();
+	MySQLRecensioneDAOImpl rece = new MySQLRecensioneDAOImpl();
+	System.out.println(rece.get_elenco_recensioni(pubbl));
 }
 }

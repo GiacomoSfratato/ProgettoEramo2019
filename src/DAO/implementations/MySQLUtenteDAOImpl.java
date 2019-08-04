@@ -16,6 +16,7 @@ import DAO.interfaces.UtenteDAO;
  * Implementazione dell'interfaccia CustomerDAO per il database MySQL.
  */
 public class MySQLUtenteDAOImpl implements UtenteDAO {
+	
 	/*basic query declaration */
     private static final String modifica_tipo_utente = "CALL modifica_tipo_utente(?,?)";
     private static final String utenti_attivi = "CALL utenti_attivi()";
@@ -23,7 +24,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     private static final String inserimento_utente = "call inserimento_utente(?,?,?,?,?,?,?,?)";
     private static final String rimuovere_utente = "call rimuovere_utente(?,?)";
 	
-    public static boolean set_modifica_tipo_utente(Utente utente, String tipo) {
+    public boolean set_modifica_tipo_utente(Utente utente, String tipo) {
     	boolean fine = false;
 		PreparedStatement ps = null;
 		Connection conn = null;
@@ -52,8 +53,8 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	}
 	
 	
-	public static HashMap get_utenti_attivi() {
-		HashMap <Integer,String> utenti = new HashMap<>();
+	public HashMap<String,Integer> get_utenti_attivi() {
+		HashMap <String,Integer> utenti = new HashMap<>();
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet result = null;
@@ -63,7 +64,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
         	preparedStatement.execute();
             result = preparedStatement.getResultSet();
         	while (result.next()) {            
-        		utenti.put(result.getInt("libri inseriti"),result.getString("email"));
+        		utenti.put(result.getString("email"), result.getInt("libri inseriti"));
 	}
         }
             catch (SQLException e) {
@@ -91,7 +92,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 
 /////////////////////////////////////////////////////////////////////////////////////
 	//metodo che non serve nella query get_utenti_attivi
-	public static String get_mostra_nome_utente(int id) {
+	public String get_mostra_nome_utente(int id) {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet result = null;
@@ -132,7 +133,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	}
 //////////////////////////////////////////////////////////////////////////////////////
 	
-	public static boolean set_inserimento_utente(Utente utente) {
+	public boolean set_inserimento_utente(Utente utente) {
 		boolean fine = false;
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
@@ -166,7 +167,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
              } 
              }return fine;}
 	
-	public static boolean set_rimovere_utente(Utente utente) {
+	public boolean set_rimuovere_utente(Utente utente) {
 		boolean fine = false;
 		PreparedStatement ps = null;
 		Connection conn = null;
@@ -193,4 +194,5 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
          }  }
 		return fine;
 	}
+	
 }

@@ -1,14 +1,24 @@
 package DAO.interfaces;
 
 import java.util.*;
-import model.Recensione;
-import model.Utente;
+import model.*;
 
 public interface RecensioneDAO {
-	public static ArrayList<Recensione> get_elenco_recensioni(){return null;}
-	public static ArrayList<Recensione> get_elenco_recensioni_attesa(){return null;}
-	public static boolean set_inserimento_recensione(Recensione recensione){return false;}
-	public static boolean set_rimuovere_recensione(Recensione recensione){return false;}
-	public static boolean set_verifica_recensione(Utente utente, int ID_pubblicazione, String giudizio){return false;}
+	
+	//Estrazione elenco delle recensioni approvate per una pubblicazione.
+	public ArrayList<Recensione> get_elenco_recensioni(Pubblicazione pubblicazione);
+	
+	//Estrazione elenco delle recensioni in attesa di approvazione.
+	public ArrayList<Recensione> get_elenco_recensioni_attesa();
+	
+	//Inserimento di una recensione relativa a una pubblicazione.
+	public boolean set_inserimento_recensione(Recensione recensione);
+	
+	//Approvazione o di una recensione (da parte del moderatore).
+	public boolean set_verifica_recensione(Utente utente, int ID_pubblicazione, String giudizio);
+	
+	
+	public boolean set_rimuovere_recensione(Recensione recensione);
+	
 
 }
