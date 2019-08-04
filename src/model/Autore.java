@@ -30,4 +30,5 @@ public String getCognome() {
 public void setCognome(String cognome) {
 	this.cognome = cognome;
 }
+
 }

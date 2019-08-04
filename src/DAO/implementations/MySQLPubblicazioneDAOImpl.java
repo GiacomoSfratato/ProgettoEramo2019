@@ -8,11 +8,12 @@ import DAO.interfaces.PubblicazioneDAO;
 import model.Pubblicazione;
 import model.Utente;
 import model.Metadati;
+import model.*;
 public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String ultime_pubblicazioni = "CALL ultime_pubblicazioni";
 	private static String update_recente = "CALL update_recente";
 	private static String pubblicazione_utente = "CALL pubblicazioni_utente(?)";
-	
+	private static String catalogo = "CALL catalogo";
 	public static ArrayList<Pubblicazione> get_ultime_publicazioni(){
 		ArrayList <Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
 		Connection conn = null;
@@ -120,7 +121,37 @@ return pubblicazioni;}
 }
 
 	
-	/*public static ArrayList<Publicazione> get_catalogo(){return null;}
+	public static ArrayList<Publicazione> get_catalogo(){
+		ArrayList<Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
+		PreparedStatement ps = null;
+		ResultSet result = null;
+		Connection conn = null;
+		try {
+			conn = MySQLDAOFactory.createConnection();
+			ps = conn.prepareStatement(catalogo);
+			ps.execute();
+			result = ps.getResultSet();
+			  while (result.next()) {            	
+		//		  pubblicazioni.add(new Pubblicazione.Builder().withid(result.getInt(1)).withtitolo(result.getString(2)).withautori(new Autore(result.getString(3),result.getString(4))).witheditore(result.getString(5)).withdata(result.getString(6)).build());
+	        }  
+		}
+		catch(Exception exc) {
+		System.out.print("somethink goes wrong!"); }
+		finally { 
+		try {
+	         ps.close();
+	     } catch (Exception sse) {
+	      	System.out.println("preparedStatement.close();"); 
+	     }
+	     try {
+	         conn.close();
+	     } catch (Exception cse) {
+	     	System.out.println("conn.close();");
+	     }  }
+		return pubblicazioni;
+	}
+
+	/*
 	public static Publicazione get_estrazione_dati(Publicazione publicazione){return null;} //
 	public static Publicazione get_cerca_publicazione(Publicazione publicazione){return null;}
 	public static ArrayList<Publicazione> get_catalogo_ristampa(){return null;} //
