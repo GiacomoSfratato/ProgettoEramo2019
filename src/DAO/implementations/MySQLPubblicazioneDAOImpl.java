@@ -121,7 +121,7 @@ return pubblicazioni;}
 }
 
 	
-	public static ArrayList<Publicazione> get_catalogo(){
+	public static ArrayList<Pubblicazione> get_catalogo(){
 		ArrayList<Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
 		PreparedStatement ps = null;
 		ResultSet result = null;
