@@ -11,7 +11,7 @@ import model.Metadati;
 public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String ultime_pubblicazioni = "CALL ultime_pubblicazioni";
 	private static String update_recente = "CALL update_recente";
-	private static String pubblicazione_utente = "CALL pubblicazione_utente";
+	private static String pubblicazione_utente = "CALL pubblicazioni_utente(?)";
 	
 	public static ArrayList<Pubblicazione> get_ultime_publicazioni(){
 		ArrayList <Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
