@@ -81,6 +81,7 @@ public class Pubblicazione {
 			pubblicazione.likes=this.likes;
 			pubblicazione.storico=this.storico;
 			pubblicazione.metadati=this.metadati;
+			pubblicazione.data = this.data;
 			return pubblicazione;
 		}
 	}
@@ -89,6 +90,7 @@ public class Pubblicazione {
 	private String titolo, descrizione, editore;
 	private static int id;
 	private Metadati metadati; // composizione
+	private String data;
 	private ArrayList <Sorgente> sorgenti;
 	private ArrayList <Recensione> recensioni;
 	private ArrayList <Capitolo> capitoli;
@@ -159,9 +161,9 @@ public class Pubblicazione {
 	
 	@Override
 	public String toString() {
-		return "\nPublicazione [titolo=" + titolo + ", descrizione=" + descrizione + ", editore=" + editore
-				+ ", metadati=" + metadati + ", sorgenti=" + sorgenti + ", recensioni=" + recensioni + ", capitoli="
-				+ capitoli + ", autori=" + autori + ", likes=" + likes + ", storico=" + storico + "]\n";
+		return "\nPubblicazione\nTitolo: " + titolo + "\nDescrizione: " + descrizione + "\nEditore: " + editore
+				+ "\nMetadati: " + metadati + "\nSorgenti: " + sorgenti + "\nRecensioni: " + recensioni + "\nCapitoli: "
+				+ capitoli + "\nAutori: " + autori + "\nLikes: " + likes + "\nStorico: " + storico + "\nAnno di pubblicazione: " + data + "\n";
 	}
 
 	

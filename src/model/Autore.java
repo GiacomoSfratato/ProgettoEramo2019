@@ -22,7 +22,7 @@ public void setNome(String nome) {
 }
 @Override
 public String toString() {
-	return "Autore [nome=" + nome + ", cognome=" + cognome + "]";
+	return nome + " "+ cognome;
 }
 public String getCognome() {
 	return cognome;
