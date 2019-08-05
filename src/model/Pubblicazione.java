@@ -16,7 +16,7 @@ public class Pubblicazione {
 		private ArrayList <Autore> autori;
 		private ArrayList <Likes> likes;  // forse da levare 
 		private ArrayList <Storico> storico;
-		private String data;
+		private String data, pubblicatore;
 		public Builder () {
 		};
 		public Builder withtitolo(String titolo) {
@@ -68,6 +68,11 @@ public class Pubblicazione {
 			return this;
 		}
 		
+		public Builder withpubblicatore(String pubblicatore) {
+			this.pubblicatore = pubblicatore;
+			return this;
+		}
+		
 		public Pubblicazione build() {
 			Pubblicazione pubblicazione = new Pubblicazione();
 			pubblicazione.titolo=this.titolo;
@@ -82,6 +87,7 @@ public class Pubblicazione {
 			pubblicazione.storico=this.storico;
 			pubblicazione.metadati=this.metadati;
 			pubblicazione.data = this.data;
+			pubblicazione.pubblicatore = this.pubblicatore;
 			return pubblicazione;
 		}
 	}
@@ -90,13 +96,27 @@ public class Pubblicazione {
 	private String titolo, descrizione, editore;
 	private static int id;
 	private Metadati metadati; // composizione
-	private String data;
+	private String data, pubblicatore;
 	private ArrayList <Sorgente> sorgenti;
 	private ArrayList <Recensione> recensioni;
 	private ArrayList <Capitolo> capitoli;
 	private ArrayList <Autore> autori;
 	private ArrayList <Likes> likes;  // forse da levare 
 	private ArrayList <Storico> storico;
+	
+	public String getData() {
+		return data;
+	}
+	public void setData(String data) {
+		this.data = data;
+	}
+	
+	public String getPubblicatore() {
+		return pubblicatore;
+	}
+	public void setPubblicatore(String pubblicatore) {
+		this.pubblicatore=pubblicatore;
+	}
 	public ArrayList<Likes> getLikes() {
 		return likes;
 	}
@@ -162,7 +182,7 @@ public class Pubblicazione {
 	@Override
 	public String toString() {
 		return "\nPubblicazione\nTitolo: " + titolo + "\nDescrizione: " + descrizione + "\nEditore: " + editore
-				+ "\nMetadati: " + metadati + "\nSorgenti: " + sorgenti + "\nRecensioni: " + recensioni + "\nCapitoli: "
+				+ metadati + "\nSorgenti: " + sorgenti + "\nRecensioni: " + recensioni + "\nCapitoli: "
 				+ capitoli + "\nAutori: " + autori + "\nLikes: " + likes + "\nStorico: " + storico + "\nAnno di pubblicazione: " + data + "\n";
 	}
 

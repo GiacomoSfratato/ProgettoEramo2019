@@ -38,15 +38,11 @@ public class Main extends Application{
 	System.out.println(x.get_mostra_nome_utente(6));  
 	
 	MySQLPubblicazioneDAOImpl y = new MySQLPubblicazioneDAOImpl();
-	System.out.println(y.get_catalogo());
+	System.out.println(y.get_estrazione_dati(new Pubblicazione.Builder().withid(2).build()));
 	
 	
 	System.out.println(y.get_pubblicazione_utente(new Utente.Builder().withmail("fulviolapenna@gmail.com").build()));
 	
-	Pubblicazione pubbl = new Pubblicazione.Builder().withid(4).build();
-	MySQLRecensioneDAOImpl rece = new MySQLRecensioneDAOImpl();
-	System.out.println(rece.get_elenco_recensioni(pubbl));
-	System.out.println(rece.get_elenco_recensioni_attesa());
 	
 }
 }

@@ -11,6 +11,7 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String update_recente = "CALL update_recente";
 	private static String pubblicazione_utente = "CALL pubblicazioni_utente(?)";
 	private static String catalogo = "CALL catalogo";
+	private static String estrazione_dati = "CALL estrazione_dati(?)";
 	
 	
 	@Override
@@ -161,8 +162,42 @@ return pubblicazioni;}
 
 	@Override
 	public Pubblicazione get_estrazione_dati(Pubblicazione pubblicazione) {
-		// TODO Auto-generated method stub
-		return null;
+		Pubblicazione pubbl = null;
+		PreparedStatement ps = null;
+		ResultSet result = null;
+		Connection conn = null;
+		try {
+			conn = MySQLDAOFactory.createConnection();
+			ps = conn.prepareStatement(estrazione_dati);
+			ps.setInt(1,pubblicazione.getId());
+			ps.execute();
+			result = ps.getResultSet();
+			  while (result.next()) {            	
+				  Metadati meta = new Metadati(result.getInt(6),result.getString(5), result.getString(7), result.getString(8));
+			   		pubbl = new Pubblicazione.Builder()
+			   				.withid(result.getInt(1))
+			   				.withtitolo(result.getString(2))
+			   				.withdescrizione(result.getString(3))
+			   				.witheditore(result.getString(4))
+			   				.withmetadati(meta)
+			   				.withpubblicatore(result.getString(9))
+			   				.build();
+	        }  
+		}
+		catch(Exception exc) {
+		System.out.print("Qualcosa è andato storto!"); }
+		finally { 
+		try {
+	         ps.close();
+	     } catch (Exception sse) {
+	      	System.out.println("preparedStatement.close();"); 
+	     }
+	     try {
+	         conn.close();
+	     } catch (Exception cse) {
+	     	System.out.println("conn.close();");
+	     }  }
+		return pubbl;
 	}
 
 	
