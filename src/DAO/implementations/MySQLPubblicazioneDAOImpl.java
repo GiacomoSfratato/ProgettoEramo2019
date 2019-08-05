@@ -138,7 +138,7 @@ return pubblicazioni;}
 			  while (result.next()) { 
 				  ArrayList<Autore> autori = new ArrayList<Autore>();
 				  autori.add(new Autore(result.getString(3),result.getString(4)));
-				  pubblicazioni.add(new Pubblicazione.Builder().withid(result.getInt(1)).withtitolo(result.getString(2)).withautori(autori).witheditore(result.getString(5)).withdata(result.getDate(6)).build());
+				  pubblicazioni.add(new Pubblicazione.Builder().withid(result.getInt(1)).withtitolo(result.getString(2)).withautori(autori).witheditore(result.getString(5)).withdata(result.getString(6)).build());
 	        }  
 		}
 		catch(Exception exc) {
