@@ -16,7 +16,8 @@ public class Pubblicazione {
 		private ArrayList <Autore> autori;
 		private ArrayList <Likes> likes;  // forse da levare 
 		private ArrayList <Storico> storico;
-		private String data, pubblicatore;
+		private String pubblicatore;
+		private Date data;
 		public Builder () {
 		};
 		public Builder withtitolo(String titolo) {
@@ -63,7 +64,7 @@ public class Pubblicazione {
 			this.storico = storico;
 			return this;
 		}
-		public Builder withdata(String data) {
+		public Builder withdata(Date data) {
 			this.data = data;
 			return this;
 		}
@@ -96,7 +97,8 @@ public class Pubblicazione {
 	private String titolo, descrizione, editore;
 	private static int id;
 	private Metadati metadati; // composizione
-	private String data, pubblicatore;
+	Date data;
+	private String pubblicatore;
 	private ArrayList <Sorgente> sorgenti;
 	private ArrayList <Recensione> recensioni;
 	private ArrayList <Capitolo> capitoli;
@@ -104,10 +106,10 @@ public class Pubblicazione {
 	private ArrayList <Likes> likes;  // forse da levare 
 	private ArrayList <Storico> storico;
 	
-	public String getData() {
+	public Date getData() {
 		return data;
 	}
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 	
