@@ -12,6 +12,7 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String pubblicazione_utente = "CALL pubblicazioni_utente(?)";
 	private static String catalogo = "CALL catalogo";
 	private static String estrazione_dati = "CALL estrazione_dati(?)";
+	private static String cerca = "CALL cerca_pubblicazione(?,?,?,?,?)";
 	
 	
 	@Override
@@ -156,10 +157,6 @@ return pubblicazioni;}
 		return pubblicazioni;
 	}
 
-	
-
-
-
 	@Override
 	public Pubblicazione get_estrazione_dati(Pubblicazione pubblicazione) {
 		Pubblicazione pubbl = null;
@@ -202,10 +199,48 @@ return pubblicazioni;}
 
 	
 	@Override
-	public ArrayList<Pubblicazione> get_cerca_pubblicazione(Pubblicazione pubblicazione) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Pubblicazione> get_cerca_pubblicazione(Pubblicazione pubblicazione, Parola_chiave parola) {
+		ArrayList<Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
+		PreparedStatement ps = null;
+		ResultSet result = null;
+		Connection conn = null;
+		try {
+			conn = MySQLDAOFactory.createConnection();
+			ps = conn.prepareStatement(cerca);
+			ps.setString(1,pubblicazione.getTitolo());
+			ps.setString(2,(pubblicazione.getAutori()).get(0).getNome());
+			ps.setString(3,(pubblicazione.getAutori()).get(0).getCognome());
+			ps.setString(4,(pubblicazione.getMetadati().getIsbn()));
+			ps.setString(5,(parola.getParola()));
+			ps.execute();
+			result = ps.getResultSet();
+			  while (result.next()) {     
+				  	ArrayList<Autore> autori = new ArrayList<Autore>();
+				  	autori.add(new Autore(result.getString(3),result.getString(4)));
+			   		pubblicazioni.add(new Pubblicazione.Builder()
+			   				.withid(result.getInt(1))
+			   				.withtitolo(result.getString(2))
+			   				.withautori(autori)
+			   				.withmetadati(new Metadati(result.getString(5), ""))
+			   				.build());
+	        }  
+		}
+		catch(SQLException exc) {
+		System.out.print(exc.getMessage()); }
+		finally { 
+		try {
+	         ps.close();
+	     } catch (Exception sse) {
+	      	System.out.println("preparedStatement.close();"); 
+	     }
+	     try {
+	         conn.close();
+	     } catch (Exception cse) {
+	     	System.out.println("conn.close();");
+	     }  }
+		return pubblicazioni;
 	}
+	
 
 	
 	@Override

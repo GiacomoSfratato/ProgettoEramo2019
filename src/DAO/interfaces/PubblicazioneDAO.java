@@ -20,7 +20,7 @@ public interface PubblicazioneDAO {
 	public Pubblicazione get_estrazione_dati(Pubblicazione pubblicazione);
 	
 	//Ricerca di pubblicazioni per ISBN, titolo, autore, e parole chiave
-	public ArrayList<Pubblicazione> get_cerca_pubblicazione(Pubblicazione pubblicazione);
+	public ArrayList<Pubblicazione> get_cerca_pubblicazione(Pubblicazione pubblicazione, Parola_chiave parola);
 	
 	//Estrazione della lista delle pubblicazioni in catalogo, ognuna con la data dell’ultima ristampa
 	public ArrayList<Pubblicazione> get_catalogo_ristampa();

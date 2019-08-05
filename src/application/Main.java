@@ -6,6 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
+
 import DAO.MySQLDAOFactory;
 import DAO.implementations.*;
 import model.*;
@@ -38,7 +41,10 @@ public class Main extends Application{
 	System.out.println(x.get_mostra_nome_utente(6));  
 	
 	MySQLPubblicazioneDAOImpl y = new MySQLPubblicazioneDAOImpl();
-	System.out.println(y.get_estrazione_dati(new Pubblicazione.Builder().withid(2).build()));
+	ArrayList<Autore> autore = new ArrayList<>();
+	autore.add(new Autore("",""));
+	Metadati meta = new Metadati("","");
+	System.out.println(y.get_cerca_pubblicazione(new Pubblicazione.Builder().withtitolo("").withautori(autore).withmetadati(meta).build(), new Parola_chiave("bambini") ));
 	
 	
 	System.out.println(y.get_pubblicazione_utente(new Utente.Builder().withmail("fulviolapenna@gmail.com").build()));
