@@ -124,6 +124,7 @@ return pubblicazioni;}
 	@Override
 	public ArrayList<Pubblicazione> get_catalogo(){
 		ArrayList<Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
+		ArrayList<Autore> autori = new ArrayList<Autore>();
 		PreparedStatement ps = null;
 		ResultSet result = null;
 		Connection conn = null;
@@ -132,8 +133,9 @@ return pubblicazioni;}
 			ps = conn.prepareStatement(catalogo);
 			ps.execute();
 			result = ps.getResultSet();
-			  while (result.next()) {            	
-		//		  pubblicazioni.add(new Pubblicazione.Builder().withid(result.getInt(1)).withtitolo(result.getString(2)).withautori(new Autore(result.getString(3),result.getString(4))).witheditore(result.getString(5)).withdata(result.getString(6)).build());
+			  while (result.next()) { 
+				  autori.add(new Autore(result.getString(3),result.getString(4)));
+				  pubblicazioni.add(new Pubblicazione.Builder().withid(result.getInt(1)).withtitolo(result.getString(2)).withautori(autori).witheditore(result.getString(5)).withdata(result.getString(6)).build());
 	        }  
 		}
 		catch(Exception exc) {

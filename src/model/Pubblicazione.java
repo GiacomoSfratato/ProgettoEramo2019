@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import model.Utente.Builder;
 
@@ -15,6 +16,7 @@ public class Pubblicazione {
 		private ArrayList <Autore> autori;
 		private ArrayList <Likes> likes;  // forse da levare 
 		private ArrayList <Storico> storico;
+		private String data;
 		public Builder () {
 		};
 		public Builder withtitolo(String titolo) {
@@ -33,11 +35,11 @@ public class Pubblicazione {
 			this.editore = editore;
 			return this;
 		}
-		public Builder withsorgetni(ArrayList <Sorgente> sorgenti) {
+		public Builder withsorgenti(ArrayList <Sorgente> sorgenti) {
 			this.sorgenti = sorgenti;
 			return this;
 		}
-		public Builder withcecensioni(ArrayList <Recensione> recensioni) {
+		public Builder withrecensioni(ArrayList <Recensione> recensioni) {
 			this.recensioni = recensioni;
 			return this;
 		}
@@ -61,6 +63,11 @@ public class Pubblicazione {
 			this.storico = storico;
 			return this;
 		}
+		public Builder withdata(String data) {
+			this.data = data;
+			return this;
+		}
+		
 		public Pubblicazione build() {
 			Pubblicazione pubblicazione = new Pubblicazione();
 			pubblicazione.titolo=this.titolo;
@@ -152,9 +159,9 @@ public class Pubblicazione {
 	
 	@Override
 	public String toString() {
-		return "Publicazione [titolo=" + titolo + ", descrizione=" + descrizione + ", editore=" + editore
+		return "\nPublicazione [titolo=" + titolo + ", descrizione=" + descrizione + ", editore=" + editore
 				+ ", metadati=" + metadati + ", sorgenti=" + sorgenti + ", recensioni=" + recensioni + ", capitoli="
-				+ capitoli + ", autori=" + autori + ", likes=" + likes + ", storico=" + storico + "]";
+				+ capitoli + ", autori=" + autori + ", likes=" + likes + ", storico=" + storico + "]\n";
 	}
 
 	

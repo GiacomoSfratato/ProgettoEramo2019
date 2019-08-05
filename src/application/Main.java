@@ -38,8 +38,7 @@ public class Main extends Application{
 	System.out.println(x.get_mostra_nome_utente(6));  
 	
 	MySQLPubblicazioneDAOImpl y = new MySQLPubblicazioneDAOImpl();
-	System.out.println(y.get_ultime_pubblicazioni());
-	System.out.println(y.get_update_recente()); 
+	System.out.println(y.get_catalogo());
 	
 	
 	System.out.println(y.get_pubblicazione_utente(new Utente.Builder().withmail("fulviolapenna@gmail.com").build()));
@@ -47,6 +46,7 @@ public class Main extends Application{
 	Pubblicazione pubbl = new Pubblicazione.Builder().withid(4).build();
 	MySQLRecensioneDAOImpl rece = new MySQLRecensioneDAOImpl();
 	System.out.println(rece.get_elenco_recensioni(pubbl));
+	System.out.println(rece.get_elenco_recensioni_attesa());
 	
 }
 }
