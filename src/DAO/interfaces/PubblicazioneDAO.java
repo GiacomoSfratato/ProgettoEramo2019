@@ -29,7 +29,7 @@ public interface PubblicazioneDAO {
 	public ArrayList<Pubblicazione> get_catalogo_stessi_autori(Pubblicazione pubblicazione);
 	
 	//Inserimento di un like relativo a una pubblicazione
-	public boolean set_inserimento_like(String email, String password,int id_pubblicazione);
+	public boolean set_inserimento_like(Pubblicazione pubblicazione);
 	
 	//Calcolo numero dei like per una pubblicazione
 	public Pubblicazione get_likes_totali(Pubblicazione pubblicazione);

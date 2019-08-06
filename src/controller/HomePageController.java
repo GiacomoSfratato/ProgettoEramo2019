@@ -66,10 +66,12 @@ public class HomePageController {
 	private void handleLoginButtonAction() throws IOException {
 		MySQLUtenteDAOImpl dao = new MySQLUtenteDAOImpl();
 		Utente loginUser = new Utente.Builder().withmail(email.getText()).withpassword(password.getText()).build();
-		
-		if(dao.check_utente(loginUser)) { 
+		Utente checkedUser = dao.check_utente(loginUser);
+		if(checkedUser.getEmail().isBlank()) { 
 			errore.setText("Nome utente o password errata");
 		} else {
+			LibraryUser libraryuser = new LibraryUser(checkedUser.getEmail(), checkedUser.getPassword(), checkedUser.getLivello());
+			System.out.println(libraryuser);
 			Parent root = FXMLLoader.load(getClass().getResource("/view/MainProgram.fxml"));
 			Scene scene = new Scene(root);
 			Main.stage.setScene(scene);

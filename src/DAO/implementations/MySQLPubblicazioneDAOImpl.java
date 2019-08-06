@@ -18,6 +18,7 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String estrazione_modifiche_pubblicazione = "CALL estrazione_modifiche_pubblicazione(?)";
 	private static String likes_totali="CALL likes_totali";
 	private static String elenco_download="CALL elenco_download";
+	
 	@Override
 	public ArrayList<Pubblicazione> get_ultime_pubblicazioni(){
 		ArrayList <Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
@@ -200,7 +201,6 @@ return pubblicazioni;}
 		return pubbl;
 	}
 
-	
 	@Override
 	public ArrayList<Pubblicazione> get_cerca_pubblicazione(Pubblicazione pubblicazione, Parola_chiave parola) {
 		ArrayList<Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
@@ -243,9 +243,7 @@ return pubblicazioni;}
 	     }  }
 		return pubblicazioni;
 	}
-	
 
-	
 	@Override
 	public ArrayList<Pubblicazione> get_catalogo_ristampa() {
 	ArrayList<Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
@@ -277,7 +275,6 @@ return pubblicazioni;}
 	     }  }
 		return pubblicazioni;
 	}
-	
 	
 	@Override
 	public ArrayList<Pubblicazione> get_catalogo_stessi_autori(Pubblicazione pubblicazione) {
@@ -316,19 +313,17 @@ return pubblicazioni;}
 		return pubblicazioni;
 	}
 	
-
-	
 	@Override
-	public boolean set_inserimento_like(String email, String password, int id_pubblicazione) {
+	public boolean set_inserimento_like(Pubblicazione pubblicazione) {
 		boolean fatto = false;
 		PreparedStatement ps = null;
 		Connection conn = null;
 		try {
 			conn = MySQLDAOFactory.createConnection();
 			ps = conn.prepareStatement(inserimento_like);
-			ps.setString(1,email);
-			ps.setString(2,password);
-			ps.setInt(3,id_pubblicazione);
+			ps.setString(1,LibraryUser.getEmail());
+			ps.setString(2,LibraryUser.getPassword());
+			ps.setInt(3,pubblicazione.getId());
 			ps.execute();
 			fatto = true;
 		}
@@ -347,7 +342,6 @@ return pubblicazioni;}
 	     }  }
 		return fatto;
 	}
-	
 	
 	@Override
 	public Pubblicazione get_likes_totali(Pubblicazione pubblicazione) {
@@ -384,7 +378,6 @@ return pubblicazioni;}
 		
 	}
 	
-	
 	@Override
 	public ArrayList<Storico> get_estrazione_modifiche_pubblicazione(Pubblicazione pubblicazione) {
 		ArrayList<Storico> storico = new ArrayList<Storico>();
@@ -417,7 +410,6 @@ return pubblicazioni;}
 		return storico;
 	}
 
-	
 	@Override
 	public ArrayList<Pubblicazione> get_elenco_download() {
 		ArrayList<Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();

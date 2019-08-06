@@ -8,7 +8,7 @@ import model.Utente.Builder;
 public class Pubblicazione {
 	public static class Builder{ /* implementazione del pattern builder */
 		private String titolo, descrizione, editore;
-		private static int id;
+		private int id;
 		private Metadati metadati; // composizione
 		private ArrayList <Sorgente> sorgenti;
 		private ArrayList <Recensione> recensioni;
@@ -160,10 +160,10 @@ public class Pubblicazione {
 	public void setEditore(String editore) {
 		this.editore = editore;
 	}
-	public static int getId() {
+	public int getId() {
 		return id;
 	}
-	public static void setId(int id) {
+	public void setId(int id) {
 		Pubblicazione.id = id;
 	}
 	public Metadati getMetadati() {

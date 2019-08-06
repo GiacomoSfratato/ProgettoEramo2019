@@ -12,10 +12,10 @@ public interface RecensioneDAO {
 	public ArrayList<Recensione> get_elenco_recensioni_attesa();
 	
 	//Inserimento di una recensione relativa a una pubblicazione.
-	public boolean set_inserimento_recensione(Recensione recensione);
+	public boolean set_inserimento_recensione(Pubblicazione pubblicazione, Recensione recensione);
 	
 	//Approvazione o di una recensione (da parte del moderatore).
-	public boolean set_verifica_recensione(Utente utente, int ID_pubblicazione, String giudizio);
+	public boolean set_verifica_recensione(Recensione recensione, String giudizio);
 	
 	
 	public boolean set_rimuovere_recensione(Recensione recensione);

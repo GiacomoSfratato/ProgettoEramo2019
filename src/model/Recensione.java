@@ -3,7 +3,7 @@ package model;
 import java.util.Date;
 
 public class Recensione {
-private static int id_utente, id_pubblicazione;
+private int id_utente, id_pubblicazione;
 private String titolo_pubblicazione;
 private String autore;
 private String contenuto, approvazione;
@@ -24,17 +24,17 @@ public Recensione(String titolo, String autore, String contenuto, String approva
 	this.approvazione = approvazione;
 	this.timestamp = timestamp;
 }
-public static int getId_utente() {
+public int getId_utente() {
 	return id_utente;
 }
-public static void setId_utente(int id_utente) {
-	Recensione.id_utente = id_utente;
+public void setId_utente(int id_utente) {
+	this.id_utente = id_utente;
 }
-public static int getId_pubblicazione() {
+public int getId_pubblicazione() {
 	return id_pubblicazione;
 }
-public static void setId_pubblicazione(int id_pubblicazione) {
-	Recensione.id_pubblicazione = id_pubblicazione;
+public void setId_pubblicazione(int id_pubblicazione) {
+	this.id_pubblicazione = id_pubblicazione;
 }
 public String getTitoloPubblicazione() {
 	return titolo_pubblicazione;

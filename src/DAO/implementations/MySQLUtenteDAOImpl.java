@@ -21,7 +21,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     private static final String modifica_tipo_utente = "CALL modifica_tipo_utente(?,?)";
     private static final String utenti_attivi = "CALL utenti_attivi()";
     private static final String	mostra_email_utente = "SELECT email from utente where id= ?";
-    private static final String	check_utente = "SELECT email from utente where email = ? and passwd = ?";
+    private static final String	check_utente = "SELECT email, passwd, livello from utente where email = ? and passwd = ?";
     private static final String inserimento_utente = "call inserimento_utente(?,?,?,?,?,?,?,?)";
     private static final String rimuovere_utente = "call rimuovere_utente(?,?)";
 	
@@ -196,11 +196,11 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 		return fine;
 	}
 	
-	public boolean check_utente(Utente utente) {
+	public Utente check_utente(Utente utente) {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet result = null;
-        String utente_email = "";
+        Utente utentelogin = null;
         try {
         	conn = MySQLDAOFactory.createConnection();            
     		preparedStatement = conn.prepareStatement(check_utente);
@@ -209,7 +209,11 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     		preparedStatement.execute();
     		result = preparedStatement.getResultSet();
     		  while (result.next()) {            	
-    			  utente_email = result.getString(1);
+    			  utentelogin = new Utente.Builder()
+    					  .withmail(result.getString(1))
+    					  .withpassword(result.getString(2))
+    					  .withlivello(result.getString(3))
+    					  .build();
               }  
     
 		
@@ -235,6 +239,6 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
             	System.out.println("conn.close();");
             }
         }
-        return (utente_email.isBlank());
+        return utentelogin;
 		}
 }
