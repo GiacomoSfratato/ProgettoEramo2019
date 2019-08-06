@@ -1,10 +1,7 @@
 package model;
-
-import java.util.Date;
-
 public class Storico {
 private String descrizione; // anche qui si fa un check sul tipo con try-catch
-private Date timestamp;
+private String timestamp;
 private int id_utente, id_pubblicazione;
 public String getDescrizione() {
 	return descrizione;
@@ -12,10 +9,10 @@ public String getDescrizione() {
 public void setDescrizione(String descrizione) {
 	this.descrizione = descrizione;
 }
-public Date getTimestamp() {
+public String getTimestamp() {
 	return timestamp;
 }
-public void setTimestamp(Date timestamp) {
+public void setTimestamp(String timestamp) {
 	this.timestamp = timestamp;
 }
 public int getId_utente() {
@@ -30,7 +27,7 @@ public int getId_pubblicazione() {
 public void setId_pubblicazione(int id_pubblicazione) {
 	this.id_pubblicazione = id_pubblicazione;
 }
-public Storico(String descrizione, Date timestamp, int id_utente, int id_pubblicazione) {
+public Storico(String descrizione, String timestamp, int id_utente, int id_pubblicazione) {
 	super();
 	this.descrizione = descrizione;
 	this.timestamp = timestamp;
