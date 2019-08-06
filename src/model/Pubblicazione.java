@@ -18,6 +18,7 @@ public class Pubblicazione {
 		private ArrayList <Storico> storico;
 		private String pubblicatore;
 		private String data;
+		private int likes_totali;
 		public Builder () {
 		};
 		public Builder withtitolo(String titolo) {
@@ -60,6 +61,10 @@ public class Pubblicazione {
 			this.likes = likes;
 			return this;
 		}
+		public Builder withlikes_totali(int likes) {
+			this.likes_totali = likes;
+			return this;
+		}
 		public Builder withstorico(ArrayList <Storico> storico) {
 			this.storico = storico;
 			return this;
@@ -89,6 +94,7 @@ public class Pubblicazione {
 			pubblicazione.metadati=this.metadati;
 			pubblicazione.data = this.data;
 			pubblicazione.pubblicatore = this.pubblicatore;
+			pubblicazione.likes_totali = this.likes_totali;
 			return pubblicazione;
 		}
 	}
@@ -105,14 +111,25 @@ public class Pubblicazione {
 	private ArrayList <Autore> autori;
 	private ArrayList <Likes> likes;  // forse da levare 
 	private ArrayList <Storico> storico;
-	
+	private int likes_totali;
+	public ArrayList<Storico> getStorico() {
+		return storico;
+	}
+	public void setStorico(ArrayList<Storico> storico) {
+		this.storico = storico;
+	}
+	public int getLikes_totali() {
+		return likes_totali;
+	}
+	public void setLikes_totali(int likes_totali) {
+		this.likes_totali = likes_totali;
+	}
 	public String getData() {
 		return data;
 	}
 	public void setData(String data) {
 		this.data = data;
 	}
-	
 	public String getPubblicatore() {
 		return pubblicatore;
 	}
@@ -183,9 +200,10 @@ public class Pubblicazione {
 	
 	@Override
 	public String toString() {
-		return "\nPubblicazione\nTitolo: " + titolo + "\nDescrizione: " + descrizione + "\nEditore: " + editore
-				+ metadati + "\nSorgenti: " + sorgenti + "\nRecensioni: " + recensioni + "\nCapitoli: "
-				+ capitoli + "\nAutori: " + autori + "\nLikes: " + likes + "\nStorico: " + storico + "\nAnno di pubblicazione: " + data + "\n";
+		return "Pubblicazione [titolo=" + titolo + ", descrizione=" + descrizione + ", editore=" + editore
+				+ ", metadati=" + metadati + ", data=" + data + ", pubblicatore=" + pubblicatore + ", sorgenti="
+				+ sorgenti + ", recensioni=" + recensioni + ", capitoli=" + capitoli + ", autori=" + autori + ", likes="
+				+ likes + ", storico=" + storico + ", likes_totali=" + likes_totali + "]";
 	}
 
 	
