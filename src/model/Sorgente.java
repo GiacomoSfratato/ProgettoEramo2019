@@ -48,6 +48,9 @@ public Sorgente(int id_pubblicazione, String uRI, String tipo, String formato, S
 	this.formato = formato;
 	this.descrizione = descrizione;
 }
+public Sorgente(String uRI) {
+URI = uRI;	
+}
 @Override
 public String toString() {
 	return "Sorgente [id_pubblicazione=" + id_pubblicazione + ", URI=" + URI + ", tipo=" + tipo + ", formato=" + formato
