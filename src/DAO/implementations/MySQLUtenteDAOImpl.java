@@ -91,48 +91,6 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	
 	}
 
-/////////////////////////////////////////////////////////////////////////////////////
-	//metodo che non serve nella query get_utenti_attivi
-	public String get_mostra_nome_utente(int id) {
-		Connection conn = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet result = null;
-        String utente="";
-        try {
-        	conn = MySQLDAOFactory.createConnection();            
-    		preparedStatement = conn.prepareStatement(mostra_email_utente);
-    		 preparedStatement.setInt(1,id);
-    		preparedStatement.execute();
-    		result = preparedStatement.getResultSet();
-    		  while (result.next()) {            	
-    			  utente = result.getString(1);
-              }  
-           
-	}
-        
-            catch (SQLException e) {
-            	System.out.println("qualcosa"); 
-            } finally {
-                try {
-                    result.close();
-                } catch (Exception rse) {
-                 	System.out.println("result non chiude"); 
-                }
-                try {
-                    preparedStatement.close();
-                } catch (Exception sse) {
-                 	System.out.println("preparedStatement.close();"); 
-                }
-                try {
-                    conn.close();
-                } catch (Exception cse) {
-                	System.out.println("conn.close();");
-                }
-            }
-	return utente;
-	
-	}
-//////////////////////////////////////////////////////////////////////////////////////
 	
 	public boolean set_inserimento_utente(Utente utente) {
 		boolean fine = false;
@@ -241,4 +199,48 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
         }
         return utentelogin;
 		}
+	
+/////////////////////////////////////////////////////////////////////////////////////
+//metodo che non serve nella query get_utenti_attivi
+/*public String get_mostra_nome_utente(int id) {
+Connection conn = null;
+PreparedStatement preparedStatement = null;
+ResultSet result = null;
+String utente="";
+try {
+conn = MySQLDAOFactory.createConnection();            
+preparedStatement = conn.prepareStatement(mostra_email_utente);
+preparedStatement.setInt(1,id);
+preparedStatement.execute();
+result = preparedStatement.getResultSet();
+while (result.next()) {            	
+utente = result.getString(1);
+}  
+
+}
+
+catch (SQLException e) {
+System.out.println("qualcosa"); 
+} finally {
+try {
+result.close();
+} catch (Exception rse) {
+System.out.println("result non chiude"); 
+}
+try {
+preparedStatement.close();
+} catch (Exception sse) {
+System.out.println("preparedStatement.close();"); 
+}
+try {
+conn.close();
+} catch (Exception cse) {
+System.out.println("conn.close();");
+}
+}
+return utente;
+
+}
+*/
+//////////////////////////////////////////////////////////////////////////////////////
 }

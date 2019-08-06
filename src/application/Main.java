@@ -46,8 +46,8 @@ public class Main extends Application{
 	System.out.println(y.get_cerca_pubblicazione(new Pubblicazione.Builder().withtitolo("").withautori(autore).withmetadati(meta).build(), new Parola_chiave("bambini") ));
 	
 	
-	//System.out.println(y.get_pubblicazione_utente(new Utente.Builder().withmail("fulviolapenna@gmail.com").build()));
-	//System.out.println(y.get_catalogo());
+	System.out.println(y.get_pubblicazione_utente(new Utente.Builder().withmail("fulviolapenna@gmail.com").build()));
+	System.out.println(y.get_catalogo());
 	*/
 	
 	
