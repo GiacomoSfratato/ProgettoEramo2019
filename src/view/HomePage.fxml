@@ -35,9 +35,19 @@
                   <Font size="20.0" />
                </font>
             </Button>
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" text="Catalogo con ristampe">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
             <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" text="Inserisci pubblicazione">
                <font>
                   <Font size="20.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" text="Disponibili per download">
+               <font>
+                  <Font size="17.0" />
                </font>
             </Button>
             <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" text="Top Utenti">
@@ -106,8 +116,8 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Region prefHeight="25.0" prefWidth="506.0" />
-                  <Label text="Benveuto nella Biblioteca!" textFill="WHITE">
+                  <Region prefHeight="25.0" prefWidth="497.0" />
+                  <Label text="Benvenuto nella Biblioteca!" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
