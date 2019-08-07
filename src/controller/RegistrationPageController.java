@@ -21,7 +21,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Utente;
 
-public class RegistrationController{
+public class RegistrationPageController{
 	
 	ObservableList<String> sessi = FXCollections.observableArrayList("M","F","indefinito");
 	
