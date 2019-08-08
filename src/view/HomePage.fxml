@@ -20,7 +20,7 @@
    <left>
       <VBox prefHeight="584.0" prefWidth="237.0" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" text="Novità">
+            <Button fx:id="novita" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" text="Novità">
                <font>
                   <Font size="20.0" />
                </font>
@@ -30,7 +30,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" text="Catalogo">
+            <Button fx:id="catalogo" alignment="CENTER" mnemonicParsing="false" onAction="#handleCatalogoButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" text="Catalogo">
                <font>
                   <Font size="20.0" />
                </font>
@@ -79,7 +79,7 @@
       </VBox>
    </left>
    <center>
-      <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <TableView fx:id="tabella" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
    <top>
       <VBox prefHeight="63.0" prefWidth="1280.0" BorderPane.alignment="CENTER">

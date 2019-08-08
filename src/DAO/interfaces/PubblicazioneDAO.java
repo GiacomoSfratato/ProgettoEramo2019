@@ -2,6 +2,8 @@
 /*c'Ã¨ altra roba da aggiungere*/
 package DAO.interfaces;
 import java.util.*;
+
+import javafx.collections.ObservableList;
 import model.*;
 public interface PubblicazioneDAO {
 	//Estrazione elenco delle ultime dieci pubblicazioni inserite
@@ -14,7 +16,7 @@ public interface PubblicazioneDAO {
 	public ArrayList<Pubblicazione> get_pubblicazione_utente(Utente utente);
 	
 	//Estrazione catalogo, cioè elenco di tutte le pubblicazioni con titolo, autori, editore e anno di pubblicazione, ordinato per titolo
-	public ArrayList<Pubblicazione> get_catalogo();
+	public ObservableList<Pubblicazione> get_catalogo();
 	
 	//Estrazione dati complete di una pubblicazione specifica dato il suo ID
 	public Pubblicazione get_estrazione_dati(Pubblicazione pubblicazione);

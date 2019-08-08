@@ -5,6 +5,8 @@ import java.sql.*;
 
 import DAO.MySQLDAOFactory;
 import DAO.interfaces.PubblicazioneDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.*;
 public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String ultime_pubblicazioni = "CALL ultime_pubblicazioni";
@@ -128,8 +130,8 @@ return pubblicazioni;}
 }
 	
 	@Override
-	public ArrayList<Pubblicazione> get_catalogo(){
-		ArrayList<Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
+	public ObservableList<Pubblicazione> get_catalogo(){
+		ObservableList<Pubblicazione> pubblicazioni = FXCollections.observableArrayList();
 		
 		PreparedStatement ps = null;
 		ResultSet result = null;
