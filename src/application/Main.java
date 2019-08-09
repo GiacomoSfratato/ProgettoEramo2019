@@ -58,12 +58,13 @@ public class Main extends Application{
 	System.out.println(y.get_pubblicazione_utente(new Utente.Builder().withmail("fulviolapenna@gmail.com").build()));
 	System.out.println(y.get_catalogo());
 	*/
- /*   Regions clientRegion = Regions.EU_WEST_1;
+ /* credo che si dovrebbe fare una classe apparte o package per questo
+    Regions clientRegion = Regions.EU_WEST_1;
     String bucketName = "bibliotecaesame";
-    String stringObjKeyName = "txt";
-    String fileObjKeyName = "foto.jpg";
-    String fileName = "/home/dawpad/Desktop/objprova.jpg";
-
+    String stringObjKeyName = "txt";	// non so se è neccessario
+    String fileObjKeyName = "foto.jpg"; // sarebbe meglio creare un generatore di nomi di almeno 16 carratteri cosi da avvere nomi unici
+    String fileName = "/home/dawpad/Desktop/objprova.jpg"; // si sostituisce con una variabile che sara' data dal utente
+    // URL dove verra sara la foto è String URL = "https://bibliotecaesame.s3-eu-west-1.amazonaws.com/" + fileObjKeyName;
     try {
         //This code expects that you have AWS credentials set up per:
         // https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html
@@ -90,6 +91,6 @@ public class Main extends Application{
         // couldn't parse the response from Amazon S3.
         e.printStackTrace();
     }
-*/	
+*/
 }
 }
