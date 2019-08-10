@@ -100,6 +100,7 @@ public class PublicationPageController {
             }
             b.setText("  " + p.getTitolo() + "\n  " + autori);
             b.setId("" + p.getId());
+            System.out.println(p.getTitolo() + " " + p.getId());
             lista.getItems().add(b);
             b.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {
@@ -108,8 +109,8 @@ public class PublicationPageController {
                         idOpera = Integer.parseInt(b.getId());
                         ViewPublicationController.setId(idOpera);
                         FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("/view/fxml/ViewPublicationPage.fxml"));
-                        Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
+                        fxmlLoader.setLocation(getClass().getResource("/view/ViewPublicationPage.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load(), 525, 659);
                         Stage stage = new Stage();
                         stage.setTitle("Visualizza Opera");
                         stage.setScene(scene);

@@ -101,7 +101,7 @@ public class Pubblicazione {
 	
 	
 	private String titolo, descrizione, editore;
-	private static int id;
+	private  int id;
 	private Metadati metadati; // composizione
 	private String data;
 	private String pubblicatore;
@@ -164,7 +164,7 @@ public class Pubblicazione {
 		return id;
 	}
 	public void setId(int id) {
-		Pubblicazione.id = id;
+		this.id = id;
 	}
 	public Metadati getMetadati() {
 		return metadati;

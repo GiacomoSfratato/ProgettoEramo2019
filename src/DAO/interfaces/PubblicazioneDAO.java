@@ -19,7 +19,7 @@ public interface PubblicazioneDAO {
 	public ObservableList<Pubblicazione> get_catalogo();
 	
 	//Estrazione dati complete di una pubblicazione specifica dato il suo ID
-	public Pubblicazione get_estrazione_dati(Pubblicazione pubblicazione);
+	public Pubblicazione get_estrazione_dati(int id);
 	
 	//Ricerca di pubblicazioni per ISBN, titolo, autore, e parole chiave
 	public ArrayList<Pubblicazione> get_cerca_pubblicazione(Pubblicazione pubblicazione, Parola_chiave parola);

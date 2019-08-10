@@ -164,7 +164,7 @@ return pubblicazioni;}
 	}
 
 	@Override
-	public Pubblicazione get_estrazione_dati(Pubblicazione pubblicazione) {
+	public Pubblicazione get_estrazione_dati(int id) {
 		Pubblicazione pubbl = null;
 		PreparedStatement ps = null;
 		ResultSet result = null;
@@ -172,18 +172,21 @@ return pubblicazioni;}
 		try {
 			conn = MySQLDAOFactory.createConnection();
 			ps = conn.prepareStatement(estrazione_dati);
-			ps.setInt(1,pubblicazione.getId());
+			ps.setInt(1,id);
 			ps.execute();
 			result = ps.getResultSet();
 			  while (result.next()) {            	
-				  Metadati meta = new Metadati(result.getInt(6),result.getString(5), result.getString(7), result.getString(8));
+				  ArrayList<Autore> autori = new ArrayList<Autore>();
+				  autori.add(new Autore(result.getString(5),result.getString(6)));
+				  Metadati meta = new Metadati(result.getInt(8),result.getString(7), result.getString(9), result.getString(10));
 			   		pubbl = new Pubblicazione.Builder()
 			   				.withid(result.getInt(1))
 			   				.withtitolo(result.getString(2))
 			   				.withdescrizione(result.getString(3))
 			   				.witheditore(result.getString(4))
 			   				.withmetadati(meta)
-			   				.withpubblicatore(result.getString(9))
+			   				.withpubblicatore(result.getString(11))
+			   				.withautori(autori)
 			   				.build();
 	        }  
 		}
