@@ -17,10 +17,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.*;
 public class HomePageController {
+	@FXML
+	private BorderPane borderpane;
 	@FXML
 	private Button novita;
 	@FXML
@@ -63,14 +66,17 @@ public class HomePageController {
 	private TextField parolaChiave;
 	@FXML
 	private TableView<Pubblicazione> tabella;
-	
 	@FXML
 	public void initialize() {
+		
 	}
 	
 	@FXML
-	private void handleCatalogoButton() throws IOException{
-		MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
+	private void handleCatalogoButton() throws Exception{
+		Parent root = FXMLLoader.load(getClass().getResource("/view/PublicationSearchPage.fxml"));
+		borderpane.setCenter(root);
+		
+		/*MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
 		tabella = new TableView<Pubblicazione>();
 		tabella.setItems(dao.get_catalogo());
 		
@@ -94,6 +100,7 @@ public class HomePageController {
 		
 		tabella.getColumns().addAll(colonnaTitolo , colonnaAutori, colonnaEditore, colonnaData);
 		
+		
 		Parent root = FXMLLoader.load(getClass().getResource("/view/PublicationList.fxml"));
 		Stage stage = new Stage();
 		VBox vbox = new VBox();
@@ -103,7 +110,9 @@ public class HomePageController {
 		stage.showAndWait();
 		
 		System.out.println(dao.get_catalogo());
+*/	
 	}
+	
 	
 	@FXML
 	private void handleApprovaRecensioneButton() throws IOException {
@@ -128,4 +137,10 @@ public class HomePageController {
 			//eccezione
 		}
 	}
+	
+	private void load(String content) throws Exception {
+	    Parent root = FXMLLoader.load(getClass().getResource(content));
+	    borderpane.setCenter(root);
+	}
+	
 }
