@@ -5,11 +5,15 @@ public class LibraryUser {
 	private static String email;
 	private static String password;
 	private static String livello;
+	private static String nome;
+	private static String cognome;
 
-	public LibraryUser(String email, String password, String livello) {
+	public LibraryUser(String email, String password, String livello, String nome, String cognome) {
 		this.email = email;
 		this.password = password;
 		this.livello = livello;
+		this.nome = nome;
+		this.cognome = cognome;
 	}
 
 	public static String getEmail() {
@@ -37,6 +41,22 @@ public class LibraryUser {
 	}
 	
 	
+public static String getNome() {
+		return nome;
+	}
+
+	public static void setNome(String nome) {
+		LibraryUser.nome = nome;
+	}
+
+	public static String getCognome() {
+		return cognome;
+	}
+
+	public static void setCognome(String cognome) {
+		LibraryUser.cognome = cognome;
+	}
+
 public String toString() {
 	return "Email: " + email + "\nPassword: " + password + "\nLivello: "  + livello;
 }

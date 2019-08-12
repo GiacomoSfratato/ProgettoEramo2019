@@ -5,16 +5,22 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-border-radius: 10 10 0 0; -fx-background-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginPageController">
    <center>
-      <GridPane prefHeight="300.0" prefWidth="1260.0" BorderPane.alignment="CENTER">
+      <GridPane prefHeight="467.0" prefWidth="1260.0" BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -23,11 +29,11 @@
         <rowConstraints>
           <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="55.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="123.0" minHeight="8.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="167.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="133.0" minHeight="10.0" prefHeight="124.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="58.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="123.0" minHeight="8.0" prefHeight="45.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="167.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="133.0" minHeight="10.0" prefHeight="119.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="Effettua il login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
@@ -35,14 +41,17 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="email" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="236.0" promptText="Email" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="29.0" prefWidth="236.0" text="Log In" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <TextField fx:id="email" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="236.0" promptText="Email" stylesheets="@text.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="5.0" prefWidth="236.0" style="-fx-background-radius: 1; -fx-background-color: #52a2ff;" text="LOG IN" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="registrationButton" mnemonicParsing="false" onAction="#handleRegistrationButtonAction" prefHeight="25.0" prefWidth="189.0" text="Registrati" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-            <Label text="oppure" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+            <Button fx:id="registrationButton" mnemonicParsing="false" onAction="#handleRegistrationButtonAction" prefHeight="25.0" prefWidth="189.0" style="-fx-background-radius: 1; -fx-background-color: #65e848;" text="Registrati" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Button>
+            <Label text="Non sei ancora un membro?" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -50,7 +59,7 @@
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </GridPane.margin>
             </Label>
-            <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="236.0" promptText="Password" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="236.0" promptText="Password" style="-fx-border-color: transparent;" stylesheets="@text.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             <Label fx:id="errore" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets top="5.0" />
@@ -69,9 +78,62 @@
       </GridPane>
    </center>
    <top>
-      <Region prefHeight="217.0" prefWidth="1280.0" BorderPane.alignment="CENTER" />
+      <VBox prefHeight="209.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="22.0" prefWidth="1280.0" style="-fx-background-color: #52a2ff;">
+               <children>
+                  <Button fx:id="chiudi" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" style="-fx-background-radius: 10; -fx-background-color: transparent;" text="Button">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0">
+                           <image>
+                              <Image url="@immagini/chiudi.png" />
+                           </image>
+                           <effect>
+                              <InnerShadow choke="0.51" color="#0000001d" height="12.1" radius="8.5175" width="23.97" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="riduciaicona" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" style="-fx-background-radius: 10; -fx-background-color: transparent;" text="Button">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" preserveRatio="true">
+                           <image>
+                              <Image url="@immagini/ridaicona.png" />
+                           </image>
+                           <effect>
+                              <InnerShadow choke="0.51" color="#0000001d" height="12.1" radius="8.5175" width="23.97" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Region prefHeight="25.0" prefWidth="538.0" />
+                  <Label fx:id="titolopagina" text="Biblioteca Online" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="2.0" />
+                     </HBox.margin>
+                     <effect>
+                        <DropShadow color="#00000059" />
+                     </effect>
+                  </Label>
+               </children>
+               <effect>
+                  <InnerShadow blurType="TWO_PASS_BOX" color="#00000020" height="77.23" offsetY="-5.0" radius="18.8075" width="0.0" />
+               </effect>
+            </HBox>
+            <Region prefHeight="191.0" prefWidth="1280.0" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
    </top>
    <bottom>
-      <Region prefHeight="174.0" prefWidth="1280.0" BorderPane.alignment="CENTER" />
+      <Region prefHeight="163.0" prefWidth="1280.0" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>

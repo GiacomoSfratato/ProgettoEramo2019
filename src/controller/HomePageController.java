@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
+
 import DAO.implementations.MySQLPubblicazioneDAOImpl;
 import DAO.implementations.MySQLRecensioneDAOImpl;
 import DAO.implementations.MySQLUtenteDAOImpl;
@@ -17,6 +19,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -52,8 +55,12 @@ public class HomePageController {
 	private Button chiudi;
 	@FXML
 	private Button riduciaicona;
+	@FXML 
+	private VBox bottoni;
 	@FXML
 	private Label cerca;
+	@FXML
+	private Label benvenuto;
 	@FXML
 	private TextField titolo;
 	@FXML
@@ -69,6 +76,25 @@ public class HomePageController {
 	@FXML
 	public void initialize() {
 		
+		String nome = LibraryUser.getNome();
+		String cognome = LibraryUser.getCognome();
+		String titolo = nome.substring(0, 1).toUpperCase() + nome.substring(1) + " " +cognome.substring(0, 1).toUpperCase() + cognome.substring(1);
+		benvenuto.setText("Benvenuto " + titolo + "!");
+		
+		ColorAdjust colorAdjust = new ColorAdjust();
+        colorAdjust.setBrightness(-0.2);
+        ColorAdjust colorAdjust2 = new ColorAdjust();
+        colorAdjust2.setBrightness(-0.6);
+		
+		chiudi.setOnAction(e -> Main.stage.close());
+		chiudi.setOnMouseEntered(e -> chiudi.getGraphic().setEffect(colorAdjust));
+		chiudi.setOnMouseExited(e -> chiudi.getGraphic().setEffect(null));
+		chiudi.setOnMousePressed(e -> chiudi.getGraphic().setEffect(colorAdjust2));
+		
+		riduciaicona.setOnAction(e -> Main.stage.setIconified(true));
+		riduciaicona.setOnMouseEntered(e -> riduciaicona.getGraphic().setEffect(colorAdjust));
+		riduciaicona.setOnMouseExited(e -> riduciaicona.getGraphic().setEffect(null));
+		riduciaicona.setOnMousePressed(e -> riduciaicona.getGraphic().setEffect(colorAdjust2));
 	}
 	
 	@FXML

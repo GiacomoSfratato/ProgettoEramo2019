@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 import model.Autore;
 import model.Pubblicazione;
 
-public class PublicationPageController {
+public class PublicationSearchPageController {
 	@FXML
 	private AnchorPane anchorpane = new AnchorPane();
 	@FXML
@@ -100,10 +100,15 @@ public class PublicationPageController {
             }
             b.setText("  " + p.getTitolo() + "\n  " + autori);
             b.setId("" + p.getId());
+            b.setStyle("-fx-background-color: transparent;");
             System.out.println(p.getTitolo() + " " + p.getId());
             lista.getItems().add(b);
+            b.setOnMouseEntered(e -> b.setStyle("-fx-background-color: #e8e8e8;"));
+            b.setOnMouseExited(e -> b.setStyle("-fx-background-color: transparent;"));
+            
             b.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {
+                	b.setStyle("-fx-background-color: #bdbdbd;");
                     try {
                     	int idOpera;
                         idOpera = Integer.parseInt(b.getId());

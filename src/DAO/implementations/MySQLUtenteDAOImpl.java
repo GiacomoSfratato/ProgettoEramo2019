@@ -21,7 +21,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     private static final String modifica_tipo_utente = "CALL modifica_tipo_utente(?,?)";
     private static final String utenti_attivi = "CALL utenti_attivi()";
     private static final String	mostra_email_utente = "SELECT email from utente where id= ?";
-    private static final String	check_utente = "SELECT email, passwd, livello from utente where email = ? and passwd = ?";
+    private static final String	check_utente = "SELECT email, passwd, livello, nome, cognome from utente where email = ? and passwd = ?";
     private static final String inserimento_utente = "call inserimento_utente(?,?,?,?,?,?,?,?)";
     private static final String rimuovere_utente = "call rimuovere_utente(?,?)";
 	
@@ -171,6 +171,8 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     					  .withmail(result.getString(1))
     					  .withpassword(result.getString(2))
     					  .withlivello(result.getString(3))
+    					  .withnome(result.getString(4))
+    					  .withcognome(result.getString(5))
     					  .build();
               }  
     

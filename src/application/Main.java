@@ -5,7 +5,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -30,9 +32,13 @@ public class Main extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 	        this.stage = stage; // initialize value of stage.
-	    Parent root = FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
+	    Parent root = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
+	    
 	    Scene scene = new Scene(root);
-	    stage.setTitle("Benvenuto nella Biblioteca!");
+	    scene.setFill(Color.TRANSPARENT);
+	    stage.initStyle(StageStyle.UNDECORATED);
+	    stage.initStyle(StageStyle.TRANSPARENT);
+	    stage.setTitle("Biblioteca Online");
 	    
 	    stage.setScene(scene);
 	    stage.show();
