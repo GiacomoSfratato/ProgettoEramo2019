@@ -9,6 +9,7 @@ import DAO.implementations.MySQLPubblicazioneDAOImpl;
 import DAO.implementations.MySQLRecensioneDAOImpl;
 import DAO.implementations.MySQLUtenteDAOImpl;
 import application.Main;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,11 +21,17 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.ColorAdjust;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.*;
 public class HomePageController {
+	@FXML
+	private HBox topbar;
 	@FXML
 	private BorderPane borderpane;
 	@FXML
@@ -73,6 +80,10 @@ public class HomePageController {
 	private TextField parolaChiave;
 	@FXML
 	private TableView<Pubblicazione> tabella;
+	
+	private double xOffset = 0;
+    private double yOffset = 0;
+	
 	@FXML
 	public void initialize() {
 		
@@ -95,6 +106,21 @@ public class HomePageController {
 		riduciaicona.setOnMouseEntered(e -> riduciaicona.getGraphic().setEffect(colorAdjust));
 		riduciaicona.setOnMouseExited(e -> riduciaicona.getGraphic().setEffect(null));
 		riduciaicona.setOnMousePressed(e -> riduciaicona.getGraphic().setEffect(colorAdjust2));
+		
+		topbar.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        topbar.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Main.stage.setX(event.getScreenX() - xOffset);
+                Main.stage.setY(event.getScreenY() - yOffset);
+            }
+        });
 	}
 	
 	@FXML

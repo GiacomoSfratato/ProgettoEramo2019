@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Calendar;
 
 import application.Main;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,8 +17,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.ColorAdjust;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -25,7 +28,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class LoginPageController {
-	
+	@FXML
+	private HBox topbar;
 	@FXML
 	private Label errore;
 	@FXML
@@ -42,10 +46,15 @@ public class LoginPageController {
 	private Button loginButton;
 	@FXML
 	private Button registrationButton;
+	private double xOffset = 0;
+    private double yOffset = 0;
+	
 	public static Stage stage;
 	
 	@FXML
 	public void initialize() {
+		Main.stage.setResizable(false);
+	
 		ColorAdjust colorAdjust = new ColorAdjust();
         colorAdjust.setBrightness(-0.2);
         ColorAdjust colorAdjust2 = new ColorAdjust();
@@ -71,6 +80,22 @@ public class LoginPageController {
 		
 		titolopagina.setText("Biblioteca Online");
 		Main.stage.setResizable(false);
+		
+		topbar.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        topbar.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Main.stage.setX(event.getScreenX() - xOffset);
+                Main.stage.setY(event.getScreenY() - yOffset);
+            }
+        });
+		
 	}
 	
 	@FXML
@@ -105,6 +130,7 @@ public class LoginPageController {
 			System.out.println(libraryuser);
 			Parent root = FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
 			Scene scene = new Scene(root);
+			scene.setFill(Color.TRANSPARENT);
 			Main.stage.setScene(scene);
 			Main.stage.show();
 		}
