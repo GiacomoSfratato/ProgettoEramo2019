@@ -20,7 +20,7 @@
    <left>
       <VBox fx:id="bottoni" prefHeight="584.0" prefWidth="237.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="novita" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Novità" textFill="WHITE">
+            <Button fx:id="novita" alignment="CENTER" mnemonicParsing="false" onAction="#handleNovitaButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Novità" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -213,6 +213,6 @@
       </HBox>
    </bottom>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

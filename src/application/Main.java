@@ -32,7 +32,7 @@ public class Main extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 	        this.stage = stage; // initialize value of stage.
-	    Parent root = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
+	    Parent root = FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
 	    
 	    Scene scene = new Scene(root);
 	    scene.setFill(Color.TRANSPARENT);

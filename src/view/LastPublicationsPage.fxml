@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorpane" prefHeight="706.0" prefWidth="1043.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LastPublicationsPageController">
+   <children>
+      <ListView fx:id="lista" layoutY="47.0" prefHeight="659.0" prefWidth="1043.0" stylesheets="@list.css" />
+      <Label fx:id="titolopagina" layoutX="14.0" layoutY="5.0" prefHeight="35.0" prefWidth="471.0" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

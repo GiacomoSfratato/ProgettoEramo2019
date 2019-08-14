@@ -89,7 +89,7 @@ public class HomePageController {
 		
 		String nome = LibraryUser.getNome();
 		String cognome = LibraryUser.getCognome();
-		String titolo = nome.substring(0, 1).toUpperCase() + nome.substring(1) + " " +cognome.substring(0, 1).toUpperCase() + cognome.substring(1);
+		//String titolo = nome.substring(0, 1).toUpperCase() + nome.substring(1) + " " +cognome.substring(0, 1).toUpperCase() + cognome.substring(1);
 		benvenuto.setText("Benvenuto " + titolo + "!");
 		
 		ColorAdjust colorAdjust = new ColorAdjust();
@@ -127,44 +127,13 @@ public class HomePageController {
 	private void handleCatalogoButton() throws Exception{
 		Parent root = FXMLLoader.load(getClass().getResource("/view/PublicationSearchPage.fxml"));
 		borderpane.setCenter(root);
-		
-		/*MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
-		tabella = new TableView<Pubblicazione>();
-		tabella.setItems(dao.get_catalogo());
-		
-		TableColumn<Pubblicazione, String> colonnaTitolo = new TableColumn<>("Titolo");
-		colonnaTitolo.setMinWidth(300);
-		colonnaTitolo.setCellValueFactory(new PropertyValueFactory<>("titolo"));
-		
-		TableColumn<Pubblicazione, ArrayList<Autore>> colonnaAutori = new TableColumn<>("Autori");
-		colonnaAutori.setMinWidth(200);
-		colonnaAutori.setCellValueFactory(new PropertyValueFactory<>("autori"));
-		
-		TableColumn<Pubblicazione, String> colonnaEditore = new TableColumn<>("Editore");
-		colonnaEditore.setMinWidth(200);
-		colonnaEditore.setCellValueFactory(new PropertyValueFactory<>("editore"));
-		
-		TableColumn<Pubblicazione, String> colonnaData = new TableColumn<>("Data di pubblicazione");
-		colonnaData.setMinWidth(200);
-		colonnaData.setCellValueFactory(new PropertyValueFactory<>("data"));
-		
-		
-		
-		tabella.getColumns().addAll(colonnaTitolo , colonnaAutori, colonnaEditore, colonnaData);
-		
-		
-		Parent root = FXMLLoader.load(getClass().getResource("/view/PublicationList.fxml"));
-		Stage stage = new Stage();
-		VBox vbox = new VBox();
-		vbox.getChildren().addAll(tabella);
-		Scene finestraTabella = new Scene(vbox);
-		stage.setScene(finestraTabella);
-		stage.showAndWait();
-		
-		System.out.println(dao.get_catalogo());
-*/	
 	}
 	
+	@FXML
+	private void handleNovitaButton() throws Exception{
+		Parent root = FXMLLoader.load(getClass().getResource("/view/LastPublicationsPage.fxml"));
+		borderpane.setCenter(root);
+	}
 	
 	@FXML
 	private void handleApprovaRecensioneButton() throws IOException {
