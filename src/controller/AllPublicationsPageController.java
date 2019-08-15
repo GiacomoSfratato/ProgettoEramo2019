@@ -1,9 +1,6 @@
 package controller;
 
-import java.util.ArrayList;
-
 import DAO.implementations.MySQLPubblicazioneDAOImpl;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,25 +9,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SplitPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import model.Autore;
 import model.Pubblicazione;
 
-public class LastPublicationsPageController {
+public class AllPublicationsPageController {
 	@FXML
 	private AnchorPane anchorpane = new AnchorPane();
-	@FXML
-	private Label titolopagina;
 	@FXML
 	private ListView<Button> lista1 = new ListView<Button>();
 	@FXML
@@ -44,11 +34,10 @@ public class LastPublicationsPageController {
 		AnchorPane.setBottomAnchor(pane,0.0);
 		AnchorPane.setLeftAnchor(pane,0.0);
 		AnchorPane.setRightAnchor(pane,0.0);
-		titolopagina.setText("Ultime 10 pubblicazioni inserite:");
 		settalista();
 		
-		
 	}
+	
 	
 	@FXML
 	private void settalista() {
@@ -65,7 +54,6 @@ public class LastPublicationsPageController {
             b.setPrefHeight(58);
             b.setAlignment(Pos.CENTER_LEFT);
             b.setTextFill(Color.web("#375fc6"));
-            
             String autori = "Autori: ";
             int size = p.getAutori().size();
             for (int j = 0; j < size; j++) {
@@ -85,7 +73,7 @@ public class LastPublicationsPageController {
             
             b.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {
-                	b.setStyle("-fx-background-color: #bdbdbd;-fx-font-size: 15px;");
+                	b.setStyle("-fx-background-color: #bdbdbd;");
                     try {
                     	int idOpera;
                         idOpera = Integer.parseInt(b.getId());
@@ -106,10 +94,17 @@ public class LastPublicationsPageController {
 
                 }
             });
+            
             if (i % 2 == 0) lista1.getItems().add(b);
             else lista2.getItems().add(b);
             i++;
         }
-		}
+
+        /*ObservableList<Button> obList = FXCollections.observableList(lista1);
+        ObservableList<Button> obList1 = FXCollections.observableList(lista2);
+        opere1.setItems(obList);
+        opere2.setItems(obList1); */
+
 	}
 	
+}

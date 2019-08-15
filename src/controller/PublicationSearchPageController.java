@@ -29,56 +29,57 @@ public class PublicationSearchPageController {
 	@FXML
 	private AnchorPane anchorpane = new AnchorPane();
 	@FXML
-	private ListView<Button> lista = new ListView<Button>();
+	private ListView<Button> lista1 = new ListView<Button>();
+	@FXML
+	private ListView<Button> lista2 = new ListView<Button>();
 	@FXML
 	private SplitPane pane = new SplitPane();
 	
+	private String titolo, nome, cognome, isbn, parola_chiave;
+	
 	@FXML
 	private void initialize(){
-		AnchorPane.setTopAnchor(lista,0.0);
-		AnchorPane.setBottomAnchor(lista,0.0);
-		AnchorPane.setLeftAnchor(lista,0.0);
-		AnchorPane.setRightAnchor(lista,0.0);
+		AnchorPane.setTopAnchor(pane,0.0);
+		AnchorPane.setBottomAnchor(pane,0.0);
+		AnchorPane.setLeftAnchor(pane,0.0);
+		AnchorPane.setRightAnchor(pane,0.0);
 		settalista();
 		
 	}
 	
-	@FXML
-	private void settatabella() {
-		
-		
-		TableColumn<Pubblicazione, String> colonnaTitolo = new TableColumn<>("Titolo");
-		colonnaTitolo.setMinWidth(200);
-		colonnaTitolo.setCellValueFactory(new PropertyValueFactory<>("titolo"));
-		
-		TableColumn<Pubblicazione, ArrayList<Autore>> colonnaAutori = new TableColumn<>("Autori");
-		colonnaAutori.setMinWidth(200);
-		colonnaAutori.setCellValueFactory(new PropertyValueFactory<>("autori"));
-		
-		TableColumn<Pubblicazione, String> colonnaEditore = new TableColumn<>("Editore");
-		colonnaEditore.setMinWidth(200);
-		colonnaEditore.setCellValueFactory(new PropertyValueFactory<>("editore"));
-		
-		TableColumn<Pubblicazione, String> colonnaData = new TableColumn<>("Data di pubblicazione");
-		colonnaData.setMinWidth(200);
-		colonnaData.setCellValueFactory(new PropertyValueFactory<>("data"));
-		
-		
-		
-		//tabella.getColumns().addAll(colonnaTitolo , colonnaAutori, colonnaEditore, colonnaData);
-		
-		MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
-		
-		ObservableList<Pubblicazione> lista = dao.get_catalogo();
-		//tabella.setItems(lista);
-		
-		
-	}
 	
 	@FXML
 	private void settalista() {
+		titolo = HomePageController.titolo.getText();
+		nome = HomePageController.nomeAutore.getText();
+		cognome = HomePageController.cognomeAutore.getText();
+		isbn = HomePageController.isbn.getText();
+		parola_chiave = HomePageController.parolaChiave.getText();
+		
+		boolean all_empty = true;
+		if (!(titolo.isBlank())) {
+			all_empty = false;
+		}
+		if (!(nome.isBlank())) {
+			all_empty = false;
+		}
+		if (!(cognome.isBlank())) {
+			all_empty = false;
+		}
+		if (!(isbn.isBlank())) {
+			all_empty = false;
+		}
+		if (!(parola_chiave.isBlank())) {
+			all_empty = false;
+		}
+		
+		if(all_empty == false) {
+			
+		} else {
 		MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
-		ObservableList<Pubblicazione> list = dao.get_catalogo();
+		Pubblicazione pubbl = new Pubblicazione.Builder().withtitolo(titolo).withautori(new Autore)
+		ObservableList<Pubblicazione> list = dao.get_cerca_pubblicazione(pubblicazione, parola);
+		int i = 0;
 		for(Pubblicazione p : list) {
 			Image icon = new Image(getClass().getResourceAsStream("/view/immagini/libro.png"));
             ImageView immagine = new ImageView(icon);
@@ -101,8 +102,6 @@ public class PublicationSearchPageController {
             b.setText("  " + p.getTitolo() + "\n  " + autori);
             b.setId("" + p.getId());
             b.setStyle("-fx-background-color: transparent;");
-            System.out.println(p.getTitolo() + " " + p.getId());
-            lista.getItems().add(b);
             b.setOnMouseEntered(e -> b.setStyle("-fx-background-color: #e8e8e8;"));
             b.setOnMouseExited(e -> b.setStyle("-fx-background-color: transparent;"));
             
@@ -129,6 +128,11 @@ public class PublicationSearchPageController {
 
                 }
             });
+            
+            if (i % 2 == 0) lista1.getItems().add(b);
+            else lista2.getItems().add(b);
+            i++;
+        	}
 		}
-	}
-	}
+	}	
+}

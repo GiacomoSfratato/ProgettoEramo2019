@@ -69,20 +69,19 @@ public class HomePageController {
 	@FXML
 	private Label benvenuto;
 	@FXML
-	private TextField titolo;
+	public static TextField titolo;
 	@FXML
-	private TextField nomeAutore;
+	public static TextField nomeAutore;
 	@FXML
-	private TextField cognomeAutore;
+	public static TextField cognomeAutore;
 	@FXML
-	private TextField isbn;
+	public static TextField isbn;
 	@FXML
-	private TextField parolaChiave;
-	@FXML
-	private TableView<Pubblicazione> tabella;
+	public static TextField parolaChiave;
 	
 	private double xOffset = 0;
-    private double yOffset = 0;
+	private double yOffset = 0;
+	
 	
 	@FXML
 	public void initialize() {
@@ -123,9 +122,15 @@ public class HomePageController {
         });
 	}
 	
+	@FXML 
+	private void handleCercaButton() throws Exception{
+		Parent root = FXMLLoader.load(getClass().getResource("/view/PublicationSearchPage.fxml"));
+		borderpane.setCenter(root);
+	}
+	
 	@FXML
 	private void handleCatalogoButton() throws Exception{
-		Parent root = FXMLLoader.load(getClass().getResource("/view/PublicationSearchPage.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/view/AllPublicationsPage.fxml"));
 		borderpane.setCenter(root);
 	}
 	
@@ -165,3 +170,5 @@ public class HomePageController {
 	}
 	
 }
+
+	

@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-border-radius: 10 10 0 0; -fx-background-color: #262626; -fx-background-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1281.0" style="-fx-border-radius: 10 10 0 0; -fx-background-color: #262626; -fx-background-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginPageController">
    <center>
       <GridPane prefHeight="467.0" prefWidth="1260.0" BorderPane.alignment="CENTER">
         <columnConstraints>

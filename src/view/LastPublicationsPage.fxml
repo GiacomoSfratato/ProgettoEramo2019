@@ -2,16 +2,22 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="anchorpane" prefHeight="706.0" prefWidth="1043.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LastPublicationsPageController">
    <children>
-      <ListView fx:id="lista" layoutY="47.0" prefHeight="659.0" prefWidth="1043.0" stylesheets="@list.css" />
-      <Label fx:id="titolopagina" layoutX="14.0" layoutY="5.0" prefHeight="35.0" prefWidth="471.0" textFill="WHITE">
+      <Label fx:id="titolopagina" layoutX="14.0" layoutY="5.0" prefHeight="35.0" prefWidth="471.0" text="prova" textFill="WHITE">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
+      <SplitPane fx:id="pane" dividerPositions="0.5" layoutY="46.0" prefHeight="660.0" prefWidth="1043.0">
+         <items>
+            <ListView fx:id="lista1" prefHeight="659.0" prefWidth="1043.0" stylesheets="@list.css" />
+            <ListView fx:id="lista2" prefHeight="200.0" prefWidth="200.0" stylesheets="@list.css" />
+         </items>
+      </SplitPane>
    </children>
 </AnchorPane>

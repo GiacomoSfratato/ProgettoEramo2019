@@ -1,8 +1,10 @@
+.list-cell{
+   -fx-padding: 0;
+   
+}
+
 .list-cell:empty {
     visibility:hidden;
 }
 
-.list-cell {
-    -fx-padding: 0px;
-    -fx-background-color: white;
-}
+
