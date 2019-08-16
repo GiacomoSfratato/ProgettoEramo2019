@@ -56,13 +56,13 @@ public class LastPublicationsPageController {
 		ObservableList<Pubblicazione> list = dao.get_catalogo();
 		int i = 0;
 		for(Pubblicazione p : list) {
-			Image icon = new Image(getClass().getResourceAsStream("/view/immagini/libro.png"));
+			Image icon = new Image(getClass().getResourceAsStream("/view/immagini/librocolor.png"));
             ImageView immagine = new ImageView(icon);
             immagine.setFitHeight(55);
             immagine.setPreserveRatio(true);
             Button b = new Button("", immagine);
-            b.setPrefWidth(518);
-            b.setPrefHeight(58);
+            b.setPrefWidth(504);
+            //b.setPrefHeight(58);
             b.setAlignment(Pos.CENTER_LEFT);
             b.setTextFill(Color.web("#375fc6"));
             
@@ -77,15 +77,9 @@ public class LastPublicationsPageController {
             }
             b.setText("  " + p.getTitolo() + "\n  " + autori);
             b.setId("" + p.getId());
-            b.setStyle("-fx-background-color: transparent;-fx-font-size: 15px;");
-            b.setOnMouseEntered(e -> b.setStyle("-fx-background-color: #e8e8e8;-fx-font-size: 15px;"));
-            b.setOnMouseExited(e -> b.setStyle("-fx-background-color: transparent;-fx-font-size: 15px;"));
-            b.setOnMousePressed(e -> b.setStyle("-fx-background-color: #d1d1d1;-fx-font-size: 15px;"));
-            b.setOnMouseReleased(e -> b.setStyle("-fx-background-color: transparent;-fx-font-size: 15px;"));
-            
+            b.getStylesheets().add("/view/buttonlist.css");
             b.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {
-                	b.setStyle("-fx-background-color: #bdbdbd;-fx-font-size: 15px;");
                     try {
                     	int idOpera;
                         idOpera = Integer.parseInt(b.getId());
@@ -112,4 +106,3 @@ public class LastPublicationsPageController {
         }
 		}
 	}
-	

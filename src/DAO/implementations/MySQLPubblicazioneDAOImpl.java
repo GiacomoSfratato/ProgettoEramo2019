@@ -207,19 +207,19 @@ return pubblicazioni;}
 	}
 
 	@Override
-	public ArrayList<Pubblicazione> get_cerca_pubblicazione(Pubblicazione pubblicazione, Parola_chiave parola) {
-		ArrayList<Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
+	public ObservableList<Pubblicazione> get_cerca_pubblicazione(String titolo, String nomeAutore, String cognomeAutore, String isbn, String parolaChiave) {
+		ObservableList<Pubblicazione> pubblicazioni = FXCollections.observableArrayList();
 		PreparedStatement ps = null;
 		ResultSet result = null;
 		Connection conn = null;
 		try {
 			conn = MySQLDAOFactory.createConnection();
 			ps = conn.prepareStatement(cerca);
-			ps.setString(1,pubblicazione.getTitolo());
-			ps.setString(2,(pubblicazione.getAutori()).get(0).getNome());
-			ps.setString(3,(pubblicazione.getAutori()).get(0).getCognome());
-			ps.setString(4,(pubblicazione.getMetadati().getIsbn()));
-			ps.setString(5,(parola.getParola()));
+			ps.setString(1,titolo);
+			ps.setString(2,nomeAutore);
+			ps.setString(3,cognomeAutore);
+			ps.setString(4,isbn);
+			ps.setString(5,parolaChiave);
 			ps.execute();
 			result = ps.getResultSet();
 			  while (result.next()) {     

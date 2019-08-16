@@ -22,7 +22,7 @@ public interface PubblicazioneDAO {
 	public Pubblicazione get_estrazione_dati(int id);
 	
 	//Ricerca di pubblicazioni per ISBN, titolo, autore, e parole chiave
-	public ArrayList<Pubblicazione> get_cerca_pubblicazione(Pubblicazione pubblicazione, Parola_chiave parola);
+	public ObservableList<Pubblicazione> get_cerca_pubblicazione(String titolo, String nomeAutore, String cognomeAutore, String isbn, String parolaChiave);
 	
 	//Estrazione della lista delle pubblicazioni in catalogo, ognuna con la data dell’ultima ristampa
 	public ArrayList<Pubblicazione> get_catalogo_ristampa();

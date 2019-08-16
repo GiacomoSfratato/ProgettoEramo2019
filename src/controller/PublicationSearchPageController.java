@@ -35,7 +35,7 @@ public class PublicationSearchPageController {
 	@FXML
 	private SplitPane pane = new SplitPane();
 	
-	private String titolo, nome, cognome, isbn, parola_chiave;
+	private String titolo, nomeAutore, cognomeAutore, isbn, parolaChiave;
 	
 	@FXML
 	private void initialize(){
@@ -44,52 +44,31 @@ public class PublicationSearchPageController {
 		AnchorPane.setLeftAnchor(pane,0.0);
 		AnchorPane.setRightAnchor(pane,0.0);
 		settalista();
-		
 	}
 	
 	
 	@FXML
-	private void settalista() {
-		titolo = HomePageController.titolo.getText();
-		nome = HomePageController.nomeAutore.getText();
-		cognome = HomePageController.cognomeAutore.getText();
-		isbn = HomePageController.isbn.getText();
-		parola_chiave = HomePageController.parolaChiave.getText();
-		
-		boolean all_empty = true;
-		if (!(titolo.isBlank())) {
-			all_empty = false;
-		}
-		if (!(nome.isBlank())) {
-			all_empty = false;
-		}
-		if (!(cognome.isBlank())) {
-			all_empty = false;
-		}
-		if (!(isbn.isBlank())) {
-			all_empty = false;
-		}
-		if (!(parola_chiave.isBlank())) {
-			all_empty = false;
-		}
-		
-		if(all_empty == false) {
-			
-		} else {
+	 void settalista() {
+		titolo = HomePageController.titoloS;
+		nomeAutore = HomePageController.nomeAutoreS;
+		cognomeAutore = HomePageController.cognomeAutoreS;
+		isbn = HomePageController.isbnS;
+		parolaChiave = HomePageController.parolaChiaveS;
+	
 		MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
-		Pubblicazione pubbl = new Pubblicazione.Builder().withtitolo(titolo).withautori(new Autore)
-		ObservableList<Pubblicazione> list = dao.get_cerca_pubblicazione(pubblicazione, parola);
+		ObservableList<Pubblicazione> list = dao.get_cerca_pubblicazione(titolo, nomeAutore, cognomeAutore, isbn, parolaChiave);
 		int i = 0;
 		for(Pubblicazione p : list) {
-			Image icon = new Image(getClass().getResourceAsStream("/view/immagini/libro.png"));
+			Image icon = new Image(getClass().getResourceAsStream("/view/immagini/librocolor.png"));
             ImageView immagine = new ImageView(icon);
-            immagine.setFitHeight(30);
+            immagine.setFitHeight(55);
             immagine.setPreserveRatio(true);
             Button b = new Button("", immagine);
-            b.setPrefWidth(395);
-            b.setPrefHeight(46);
+            b.setPrefWidth(504);
+            //b.setPrefHeight(58);
             b.setAlignment(Pos.CENTER_LEFT);
             b.setTextFill(Color.web("#375fc6"));
+            
             String autori = "Autori: ";
             int size = p.getAutori().size();
             for (int j = 0; j < size; j++) {
@@ -101,13 +80,9 @@ public class PublicationSearchPageController {
             }
             b.setText("  " + p.getTitolo() + "\n  " + autori);
             b.setId("" + p.getId());
-            b.setStyle("-fx-background-color: transparent;");
-            b.setOnMouseEntered(e -> b.setStyle("-fx-background-color: #e8e8e8;"));
-            b.setOnMouseExited(e -> b.setStyle("-fx-background-color: transparent;"));
-            
+            b.getStylesheets().add("/view/buttonlist.css");
             b.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {
-                	b.setStyle("-fx-background-color: #bdbdbd;");
                     try {
                     	int idOpera;
                         idOpera = Integer.parseInt(b.getId());
@@ -128,11 +103,9 @@ public class PublicationSearchPageController {
 
                 }
             });
-            
             if (i % 2 == 0) lista1.getItems().add(b);
             else lista2.getItems().add(b);
             i++;
-        	}
+        }
 		}
-	}	
-}
+	}

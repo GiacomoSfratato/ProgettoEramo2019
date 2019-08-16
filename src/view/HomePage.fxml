@@ -25,7 +25,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Modificate di recente" textFill="WHITE">
+            <Button fx:id="modificateRecente" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Modificate di recente" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -35,42 +35,42 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Catalogo con ristampe" textFill="WHITE">
+            <Button fx:id="catalogoRistampe" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Catalogo con ristampe" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Inserisci pubblicazione" textFill="WHITE">
+            <Button fx:id="inserisciPubbl" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Inserisci pubblicazione" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Disponibili per download" textFill="WHITE">
+            <Button fx:id="dispDownload" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Disponibili per download" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Top Utenti" textFill="WHITE">
+            <Button fx:id="topUtenti" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Top Utenti" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Tutti gli utenti" textFill="WHITE">
+            <Button fx:id="utenti" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Tutti gli utenti" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Verifica recensioni" textFill="WHITE">
+            <Button fx:id="visualizzaProf" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Visualizza profilo" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Visualizza profilo" textFill="WHITE">
+            <Button fx:id="verificaRece" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Verifica recensioni" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Disconnetti" textFill="WHITE">
+            <Button fx:id="disconnetti" alignment="CENTER" mnemonicParsing="false" onAction="#handleDisconnettiButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Disconnetti" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -134,7 +134,7 @@
                <children>
                   <HBox prefHeight="19.0" prefWidth="1280.0">
                      <children>
-                        <Label text="Cerca pubblicazione indicando almeno uno dei parametri:" textFill="WHITE">
+                        <Label fx:id="cerca" text="Cerca pubblicazione indicando almeno uno dei parametri:" textFill="WHITE">
                            <HBox.margin>
                               <Insets bottom="5.0" left="10.0" right="5.0" top="9.0" />
                            </HBox.margin>
@@ -143,32 +143,32 @@
                            </font>
                         </Label>
                         <Region prefHeight="37.0" prefWidth="30.0" HBox.hgrow="ALWAYS" />
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Titolo" stylesheets="@text.css" HBox.hgrow="NEVER">
+                        <TextField fx:id="titolo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Titolo" stylesheets="@text.css" HBox.hgrow="NEVER">
                            <HBox.margin>
                               <Insets bottom="6.0" left="6.0" top="6.0" />
                            </HBox.margin>
                         </TextField>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Nome dell'autore" stylesheets="@text.css">
+                        <TextField fx:id="nomeAutore" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Nome dell'autore" stylesheets="@text.css">
                            <HBox.margin>
                               <Insets bottom="6.0" left="6.0" top="6.0" />
                            </HBox.margin>
                         </TextField>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Cognome dell'autore" stylesheets="@text.css">
+                        <TextField fx:id="cognomeAutore" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Cognome dell'autore" stylesheets="@text.css">
                            <HBox.margin>
                               <Insets bottom="6.0" left="6.0" top="6.0" />
                            </HBox.margin>
                         </TextField>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="ISBN" stylesheets="@text.css">
+                        <TextField fx:id="isbn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="ISBN" stylesheets="@text.css">
                            <HBox.margin>
                               <Insets bottom="6.0" left="6.0" top="6.0" />
                            </HBox.margin>
                         </TextField>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Parola chiave" stylesheets="@text.css">
+                        <TextField fx:id="parolaChiave" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Parola chiave" stylesheets="@text.css">
                            <HBox.margin>
                               <Insets bottom="6.0" left="6.0" top="6.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" stylesheets="@button.css" text="Cerca " textFill="WHITE" HBox.hgrow="NEVER">
+                        <Button fx:id="cercaPubbl" mnemonicParsing="false" onAction="#handleCercaButton" stylesheets="@button.css" text="Cerca " textFill="WHITE" HBox.hgrow="NEVER">
                            <HBox.margin>
                               <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                            </HBox.margin>

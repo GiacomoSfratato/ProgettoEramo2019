@@ -5,3 +5,7 @@
 .button:hover {
         -fx-background-color: #dedede;
 }
+
+.button:disabled {
+ -fx-opacity: 0;
+}
