@@ -1,9 +1,10 @@
 .button{
 -fx-background-color:  transparent;
+-fx-cursor:hand;
 }
 
 .button:hover {
-        -fx-background-color: #dedede;
+        -fx-background-color: #1f1f1f;
 }
 
 .button:disabled {

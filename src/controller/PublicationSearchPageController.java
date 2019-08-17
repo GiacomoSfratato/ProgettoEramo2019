@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
@@ -27,6 +28,8 @@ import model.Pubblicazione;
 
 public class PublicationSearchPageController {
 	@FXML
+	private Label risultati;
+	@FXML
 	private AnchorPane anchorpane = new AnchorPane();
 	@FXML
 	private ListView<Button> lista1 = new ListView<Button>();
@@ -39,10 +42,6 @@ public class PublicationSearchPageController {
 	
 	@FXML
 	private void initialize(){
-		AnchorPane.setTopAnchor(pane,0.0);
-		AnchorPane.setBottomAnchor(pane,0.0);
-		AnchorPane.setLeftAnchor(pane,0.0);
-		AnchorPane.setRightAnchor(pane,0.0);
 		settalista();
 	}
 	
@@ -57,6 +56,12 @@ public class PublicationSearchPageController {
 	
 		MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
 		ObservableList<Pubblicazione> list = dao.get_cerca_pubblicazione(titolo, nomeAutore, cognomeAutore, isbn, parolaChiave);
+		if(list.isEmpty()) {
+			risultati.setText("La ricerca non ha dato risultati");
+			pane.setOpacity(0.0);
+		}
+		else {
+			risultati.setText("Ecco i risultati della ricerca:");
 		int i = 0;
 		for(Pubblicazione p : list) {
 			Image icon = new Image(getClass().getResourceAsStream("/view/immagini/librocolor.png"));
@@ -108,4 +113,5 @@ public class PublicationSearchPageController {
             i++;
         }
 		}
+	}
 	}
