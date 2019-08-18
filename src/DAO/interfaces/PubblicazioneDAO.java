@@ -7,13 +7,13 @@ import javafx.collections.ObservableList;
 import model.*;
 public interface PubblicazioneDAO {
 	//Estrazione elenco delle ultime dieci pubblicazioni inserite
-	public ArrayList<Pubblicazione> get_ultime_pubblicazioni();
+	public ObservableList<Pubblicazione> get_ultime_pubblicazioni();
 	
 	//Estrazione elenco delle pubblicazioni aggiornate di recente (ultimi 30 giorni)
-	public ArrayList<Pubblicazione> get_update_recente();
+	public ObservableList<Pubblicazione> get_update_recente();
 	
 	//Estrazione elenco delle pubblicazioni inserite da un utente
-	public ArrayList<Pubblicazione> get_pubblicazione_utente(Utente utente);
+	public ObservableList<Pubblicazione> get_pubblicazione_utente(Utente utente);
 	
 	//Estrazione catalogo, cioè elenco di tutte le pubblicazioni con titolo, autori, editore e anno di pubblicazione, ordinato per titolo
 	public ObservableList<Pubblicazione> get_catalogo();
@@ -22,13 +22,13 @@ public interface PubblicazioneDAO {
 	public Pubblicazione get_estrazione_dati(int id);
 	
 	//Ricerca di pubblicazioni per ISBN, titolo, autore, e parole chiave
-	public ObservableList<Pubblicazione> get_cerca_pubblicazione(String titolo, String nomeAutore, String cognomeAutore, String isbn, String parolaChiave);
+	public ObservableList<Pubblicazione> get_cerca_pubblicazione(String ricerca);
 	
 	//Estrazione della lista delle pubblicazioni in catalogo, ognuna con la data dell’ultima ristampa
-	public ArrayList<Pubblicazione> get_catalogo_ristampa();
+	public ObservableList<Pubblicazione> get_catalogo_ristampa();
 	
 	//Data una pubblicazione, restituire tutte le pubblicazioni del catalogo aventi gli stessi autori
-	public ArrayList<Pubblicazione> get_catalogo_stessi_autori(Pubblicazione pubblicazione);
+	public ObservableList<Pubblicazione> get_catalogo_stessi_autori(Pubblicazione pubblicazione);
 	
 	//Inserimento di un like relativo a una pubblicazione
 	public boolean set_inserimento_like(Pubblicazione pubblicazione);
@@ -40,5 +40,5 @@ public interface PubblicazioneDAO {
 	public ArrayList<Storico> get_estrazione_modifiche_pubblicazione(Pubblicazione pubblicazione);
 	
 	//Estrazione elenco delle pubblicazioni per le quali è disponibile un download
-	public ArrayList<Pubblicazione> get_elenco_download();
+	public ObservableList<Pubblicazione> get_elenco_download();
 }

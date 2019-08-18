@@ -14,7 +14,7 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String pubblicazione_utente = "CALL pubblicazioni_utente(?)";
 	private static String catalogo = "CALL catalogo";
 	private static String estrazione_dati = "CALL estrazione_dati(?)";
-	private static String cerca = "CALL cerca_pubblicazione(?,?,?,?,?)";
+	private static String cerca = "CALL cerca_pubblicazione(?)";
 	private static String catalogo_ristampa="CALL catalogo_ristampa";
 	private static String inserimento_like="CALL inserimento_like"; // forse va nel utenteDAOImpl
 	private static String estrazione_modifiche_pubblicazione = "CALL estrazione_modifiche_pubblicazione(?)";
@@ -22,8 +22,8 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String elenco_download="CALL elenco_download";
 	
 	@Override
-	public ArrayList<Pubblicazione> get_ultime_pubblicazioni(){
-		ArrayList <Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
+	public ObservableList<Pubblicazione> get_ultime_pubblicazioni(){
+		ObservableList<Pubblicazione> pubblicazioni = FXCollections.observableArrayList();
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet result = null;
@@ -60,8 +60,8 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	return pubblicazioni;}
 	
 	@Override
-	public ArrayList<Pubblicazione> get_update_recente(){	
-	ArrayList <Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
+	public ObservableList<Pubblicazione> get_update_recente(){	
+		ObservableList<Pubblicazione> pubblicazioni = FXCollections.observableArrayList();
 	Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet result = null;
@@ -98,8 +98,8 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 return pubblicazioni;}
 	
 	@Override
-	public ArrayList<Pubblicazione> get_pubblicazione_utente(Utente utente){ 
-	ArrayList<Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
+	public ObservableList<Pubblicazione> get_pubblicazione_utente(Utente utente){ 
+		ObservableList<Pubblicazione> pubblicazioni = FXCollections.observableArrayList();
 	PreparedStatement ps = null;
 	ResultSet result = null;
 	Connection conn = null;
@@ -207,7 +207,7 @@ return pubblicazioni;}
 	}
 
 	@Override
-	public ObservableList<Pubblicazione> get_cerca_pubblicazione(String titolo, String nomeAutore, String cognomeAutore, String isbn, String parolaChiave) {
+	public ObservableList<Pubblicazione> get_cerca_pubblicazione(String ricerca) {
 		ObservableList<Pubblicazione> pubblicazioni = FXCollections.observableArrayList();
 		PreparedStatement ps = null;
 		ResultSet result = null;
@@ -215,11 +215,7 @@ return pubblicazioni;}
 		try {
 			conn = MySQLDAOFactory.createConnection();
 			ps = conn.prepareStatement(cerca);
-			ps.setString(1,titolo);
-			ps.setString(2,nomeAutore);
-			ps.setString(3,cognomeAutore);
-			ps.setString(4,isbn);
-			ps.setString(5,parolaChiave);
+			ps.setString(1,ricerca);
 			ps.execute();
 			result = ps.getResultSet();
 			  while (result.next()) {     
@@ -250,8 +246,8 @@ return pubblicazioni;}
 	}
 
 	@Override
-	public ArrayList<Pubblicazione> get_catalogo_ristampa() {
-	ArrayList<Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
+	public ObservableList<Pubblicazione> get_catalogo_ristampa() {
+		ObservableList<Pubblicazione> pubblicazioni = FXCollections.observableArrayList();
 		
 		PreparedStatement ps = null;
 		ResultSet result = null;
@@ -282,8 +278,8 @@ return pubblicazioni;}
 	}
 	
 	@Override
-	public ArrayList<Pubblicazione> get_catalogo_stessi_autori(Pubblicazione pubblicazione) {
-		ArrayList<Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
+	public ObservableList<Pubblicazione> get_catalogo_stessi_autori(Pubblicazione pubblicazione) {
+		ObservableList<Pubblicazione> pubblicazioni = FXCollections.observableArrayList();
 		PreparedStatement ps = null;
 		ResultSet result = null;
 		Connection conn = null;
@@ -416,8 +412,8 @@ return pubblicazioni;}
 	}
 
 	@Override
-	public ArrayList<Pubblicazione> get_elenco_download() {
-		ArrayList<Pubblicazione> pubblicazioni = new ArrayList<Pubblicazione>();
+	public ObservableList<Pubblicazione> get_elenco_download() {
+		ObservableList<Pubblicazione> pubblicazioni = FXCollections.observableArrayList();
 		PreparedStatement ps = null;
 		ResultSet result = null;
 		Connection conn = null;
@@ -438,7 +434,7 @@ return pubblicazioni;}
 	        }  
 		}
 		catch(Exception exc) {
-		System.out.print("Qualcosa ï¿½ andato storto!"); }
+		System.out.print("Qualcosa é andato storto!"); }
 		finally { 
 		try {
 	         ps.close();

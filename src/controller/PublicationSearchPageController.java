@@ -38,7 +38,7 @@ public class PublicationSearchPageController {
 	@FXML
 	private SplitPane pane = new SplitPane();
 	
-	private String titolo, nomeAutore, cognomeAutore, isbn, parolaChiave;
+	private String ricerca;
 	
 	@FXML
 	private void initialize(){
@@ -48,20 +48,21 @@ public class PublicationSearchPageController {
 	
 	@FXML
 	 void settalista() {
-		titolo = HomePageController.titoloS;
-		nomeAutore = HomePageController.nomeAutoreS;
-		cognomeAutore = HomePageController.cognomeAutoreS;
-		isbn = HomePageController.isbnS;
-		parolaChiave = HomePageController.parolaChiaveS;
+		ricerca = HomePageController.ricercaS;
 	
 		MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
-		ObservableList<Pubblicazione> list = dao.get_cerca_pubblicazione(titolo, nomeAutore, cognomeAutore, isbn, parolaChiave);
+		ObservableList<Pubblicazione> list = dao.get_cerca_pubblicazione(ricerca);
 		if(list.isEmpty()) {
-			risultati.setText("La ricerca non ha dato risultati");
+			risultati.setText("La ricerca '" + ricerca + "' non ha dato risultati");
 			pane.setOpacity(0.0);
 		}
 		else {
-			risultati.setText("Ecco i risultati della ricerca:");
+		if (list.size() == 1){
+					risultati.setText("La ricerca '" + ricerca + "' ha prodotto 1 risultato:");
+		}		
+		else {
+			risultati.setText("La ricerca '" + ricerca + "' ha prodotto " + list.size() +" risultati:");
+		}
 		int i = 0;
 		for(Pubblicazione p : list) {
 			Image icon = new Image(getClass().getResourceAsStream("/view/immagini/librocolor.png"));

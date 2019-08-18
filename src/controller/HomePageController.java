@@ -69,25 +69,11 @@ public class HomePageController {
 	@FXML 
 	private VBox bottoni;
 	@FXML
-	private Label cerca;
-	@FXML
 	private Label benvenuto;
 	@FXML
-	private TextField titolo;
-	@FXML
-	private TextField nomeAutore;
-	@FXML
-	private TextField cognomeAutore;
-	@FXML
-	private TextField isbn;
-	@FXML
-	private TextField parolaChiave;
+	private TextField ricerca;
 	
-	public static String titoloS = "";
-	public static String nomeAutoreS = "";
-	public static String cognomeAutoreS = "";
-	public static String isbnS = "";
-	public static String parolaChiaveS = "";
+	public static String ricercaS = "";
 	
 	private double xOffset = 0;
 	private double yOffset = 0;
@@ -99,7 +85,7 @@ public class HomePageController {
 		String nome = LibraryUser.getNome();
 		String cognome = LibraryUser.getCognome();
 		//String titolo = nome.substring(0, 1).toUpperCase() + nome.substring(1) + " " +cognome.substring(0, 1).toUpperCase() + cognome.substring(1);
-		//benvenuto.setText("Benvenuto " + titolo + "!");
+		benvenuto.setText("Benvenuto!");
 		
 		ColorAdjust colorAdjust = new ColorAdjust();
         colorAdjust.setBrightness(-0.2);
@@ -134,39 +120,14 @@ public class HomePageController {
 	
 	@FXML 
 	private void handleCercaButton() throws Exception{
-		titoloS = titolo.getText();
-		nomeAutoreS = nomeAutore.getText();
-		cognomeAutoreS = cognomeAutore.getText();
-		isbnS = isbn.getText();
-		parolaChiaveS = parolaChiave.getText();
+		ricercaS = ricerca.getText();
 		
-		boolean all_empty = true;
-		
-		if (!(titoloS.isBlank())) {
-			all_empty = false;
-		}
-		if (!(nomeAutoreS.isBlank())) {
-			all_empty = false;
-		}
-		if (!(cognomeAutoreS.isBlank())) {
-			all_empty = false;
-		}
-		if (!(isbnS.isBlank())) {
-			all_empty = false;
-		}
-		if (!(parolaChiaveS.isBlank())) {
-			all_empty = false;
-		}
-		
-		if(all_empty) {
-			cerca.setTextFill(Color.web("#ff0000"));
-			cerca.setText("Specifica almeno un parametro di ricerca");
+		if(ricercaS.isBlank()) {
+			ricerca.setStyle("-fx-prompt-text-fill: #ff3c2e;");
+			ricerca.setPromptText("Specifica cosa vuoi cercare");
+			ricerca.setOnMousePressed(e -> ricerca.setPromptText(""));
 		} else {
-		titolo.clear();
-		nomeAutore.clear();
-		cognomeAutore.clear();
-		isbn.clear();
-		parolaChiave.clear();
+		ricerca.clear();
 		Parent root = FXMLLoader.load(getClass().getResource("/view/PublicationSearchPage.fxml"));
 		borderpane.setCenter(root); 
 	}
@@ -213,6 +174,11 @@ public class HomePageController {
         }
     }
 	
+	@FXML
+	private void handleDispDownloadButton(ActionEvent event) throws Exception{
+		Parent root = FXMLLoader.load(getClass().getResource("/view/DispDownloadPublicationsPage.fxml"));
+		borderpane.setCenter(root);
+	}
 	/*@FXML
 	/*private void handleApprovaRecensioneButton() throws IOException {
 		if(LibraryUser.getLivello().equals("moderatore")) { 

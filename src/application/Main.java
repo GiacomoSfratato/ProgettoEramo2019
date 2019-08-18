@@ -11,6 +11,7 @@ import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.SdkClientException;
@@ -33,7 +34,6 @@ public class Main extends Application{
 	public void start(Stage stage) throws Exception {
 	        this.stage = stage; // initialize value of stage.
 	    Parent root = FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
-	    
 	    Scene scene = new Scene(root);
 	    scene.setFill(Color.TRANSPARENT);
 	    stage.initStyle(StageStyle.UNDECORATED);
@@ -42,6 +42,7 @@ public class Main extends Application{
 	    
 	    stage.setScene(scene);
 	    stage.show();
+	    
 	}
 	
 	public static void main(String[] args) {

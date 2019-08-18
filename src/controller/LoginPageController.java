@@ -120,6 +120,12 @@ public class LoginPageController {
 	
 	@FXML
 	private void handleLoginButtonAction() throws IOException {
+		if(email.getText().isBlank() || password.getText().isBlank()) {
+			email.setStyle("-fx-prompt-text-fill: #ff3c2e;");
+			email.setPromptText("Campo obbligatorio");
+			password.setStyle("-fx-prompt-text-fill: #ff3c2e;");
+			password.setPromptText("Campo obbligatorio");
+		} else {
 		MySQLUtenteDAOImpl dao = new MySQLUtenteDAOImpl();
 		Utente loginUser = new Utente.Builder().withmail(email.getText()).withpassword(password.getText()).build();
 		Utente checkedUser = dao.check_utente(loginUser);
@@ -136,5 +142,5 @@ public class LoginPageController {
 		}
 
 	}
-}
-	
+  }
+}	

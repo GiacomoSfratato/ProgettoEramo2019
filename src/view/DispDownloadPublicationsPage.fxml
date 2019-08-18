@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchorpane" prefHeight="707.0" prefWidth="1043.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DispDownloadPublicationsPageController">
+   <children>
+      <SplitPane fx:id="pane" dividerPositions="0.5" prefHeight="706.0" prefWidth="1043.0">
+        <items>
+            <ListView fx:id="lista1" prefHeight="200.0" prefWidth="200.0" stylesheets="@list.css" />
+            <ListView fx:id="lista2" prefHeight="200.0" prefWidth="200.0" stylesheets="@list.css" />
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
