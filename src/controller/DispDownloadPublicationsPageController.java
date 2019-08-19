@@ -64,7 +64,7 @@ public class DispDownloadPublicationsPageController {
             b.setTextFill(Color.web("#375fc6"));
             b.setText("  " + p.getTitolo() + "\n  " + url);
             b.setId("" + p.getId());
-            b.getStylesheets().add("/view/buttonlist.css");
+            b.getStylesheets().add("/view/css/buttonlist.css");
             b.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {
                     try {

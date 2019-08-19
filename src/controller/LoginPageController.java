@@ -127,9 +127,9 @@ public class LoginPageController {
 			password.setPromptText("Campo obbligatorio");
 		} else {
 		MySQLUtenteDAOImpl dao = new MySQLUtenteDAOImpl();
-		Utente loginUser = new Utente.Builder().withmail(email.getText()).withpassword(password.getText()).build();
-		Utente checkedUser = dao.check_utente(loginUser);
+		Utente checkedUser = dao.check_utente(email.getText(),password.getText());
 		if(checkedUser.getEmail().isBlank()) { 
+			errore.setStyle("-fx-prompt-text-fill: #ff3c2e;");
 			errore.setText("Nome utente o password errata");
 		} else {
 			LibraryUser libraryuser = new LibraryUser(checkedUser.getEmail(), checkedUser.getPassword(), checkedUser.getLivello(), checkedUser.getNome(), checkedUser.getCognome());

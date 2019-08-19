@@ -42,7 +42,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="email" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="236.0" promptText="Email" stylesheets="@text.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <TextField fx:id="email" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="236.0" promptText="Email" stylesheets="@css/text.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             <Button fx:id="loginButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="5.0" prefWidth="236.0" style="-fx-background-radius: 2; -fx-background-color: #52a2ff;" text="LOG IN" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <font>
                   <Font name="System Bold" size="15.0" />
@@ -63,7 +63,7 @@
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </GridPane.margin>
             </Label>
-            <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="236.0" promptText="Password" stylesheets="@text.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="236.0" promptText="Password" stylesheets="@css/text.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <Label fx:id="errore" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets top="5.0" />

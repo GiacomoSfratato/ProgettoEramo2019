@@ -77,7 +77,7 @@ public class LastPublicationsPageController {
             }
             b.setText("  " + p.getTitolo() + "\n  " + autori);
             b.setId("" + p.getId());
-            b.getStylesheets().add("/view/buttonlist.css");
+            b.getStylesheets().add("/view/css/buttonlist.css");
             b.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {
                     try {

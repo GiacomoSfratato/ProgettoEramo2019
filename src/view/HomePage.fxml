@@ -20,57 +20,57 @@
    <left>
       <VBox fx:id="bottoni" prefHeight="584.0" prefWidth="237.0" style="-fx-border-color: white; -fx-border-width: 1 0 0 0; -fx-border-insets: 0 4 0 4;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="novita" alignment="CENTER" mnemonicParsing="false" onAction="#handleNovitaButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Novità " textFill="WHITE">
+            <Button fx:id="novita" alignment="CENTER" mnemonicParsing="false" onAction="#handleNovitaButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Novità " textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="modificateRecente" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Modificate di recente" textFill="WHITE">
+            <Button fx:id="modificateRecente" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Modificate di recente" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="catalogo" alignment="CENTER" mnemonicParsing="false" onAction="#handleCatalogoButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Catalogo" textFill="WHITE">
+            <Button fx:id="catalogo" alignment="CENTER" mnemonicParsing="false" onAction="#handleCatalogoButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Catalogo" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="catalogoRistampe" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Catalogo con ristampe" textFill="WHITE">
+            <Button fx:id="catalogoRistampe" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Catalogo con ristampe" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="inserisciPubbl" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Inserisci pubblicazione" textFill="WHITE">
+            <Button fx:id="inserisciPubbl" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Inserisci pubblicazione" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="dispDownload" alignment="CENTER" mnemonicParsing="false" onAction="#handleDispDownloadButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Disponibili per download" textFill="WHITE">
+            <Button fx:id="dispDownload" alignment="CENTER" mnemonicParsing="false" onAction="#handleDispDownloadButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Disponibili per download" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button fx:id="topUtenti" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Top Utenti" textFill="WHITE">
+            <Button fx:id="topUtenti" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Top Utenti" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="utenti" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Tutti gli utenti" textFill="WHITE">
+            <Button fx:id="utenti" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Tutti gli utenti" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="visualizzaProf" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Visualizza profilo" textFill="WHITE">
+            <Button fx:id="visualizzaProf" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Visualizza profilo" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="verificaRece" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Verifica recensioni" textFill="WHITE">
+            <Button fx:id="verificaRece" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Verifica recensioni" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="disconnetti" alignment="CENTER" mnemonicParsing="false" onAction="#handleDisconnettiButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@button.css" text="Disconnetti" textFill="WHITE">
+            <Button fx:id="disconnetti" alignment="CENTER" mnemonicParsing="false" onAction="#handleDisconnettiButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Disconnetti" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -143,12 +143,12 @@
                            </font>
                         </Label>
                         <Region prefHeight="37.0" prefWidth="30.0" HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="ricerca" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="167.0" promptText="Cosa vuoi cercare?" stylesheets="@text.css">
+                        <TextField fx:id="ricerca" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="167.0" promptText="Cosa vuoi cercare?" stylesheets="@css/text.css">
                            <HBox.margin>
                               <Insets bottom="6.0" left="6.0" top="6.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button fx:id="cercaPubbl" mnemonicParsing="false" onAction="#handleCercaButton" stylesheets="@button.css" text="Cerca " textFill="WHITE" HBox.hgrow="NEVER">
+                        <Button fx:id="cercaPubbl" mnemonicParsing="false" onAction="#handleCercaButton" stylesheets="@css/button.css" text="Cerca " textFill="WHITE" HBox.hgrow="NEVER">
                            <HBox.margin>
                               <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                            </HBox.margin>

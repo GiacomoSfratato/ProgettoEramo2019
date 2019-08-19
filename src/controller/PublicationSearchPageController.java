@@ -48,33 +48,38 @@ public class PublicationSearchPageController {
 	
 	@FXML
 	 void settalista() {
+		
 		ricerca = HomePageController.ricercaS;
 	
 		MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
 		ObservableList<Pubblicazione> list = dao.get_cerca_pubblicazione(ricerca);
+		
 		if(list.isEmpty()) {
 			risultati.setText("La ricerca '" + ricerca + "' non ha dato risultati");
 			pane.setOpacity(0.0);
-		}
-		else {
+		} else {
+			
 		if (list.size() == 1){
 					risultati.setText("La ricerca '" + ricerca + "' ha prodotto 1 risultato:");
-		}		
-		else {
+		} else {
 			risultati.setText("La ricerca '" + ricerca + "' ha prodotto " + list.size() +" risultati:");
 		}
+		
 		int i = 0;
 		for(Pubblicazione p : list) {
+			//Creazione ImageView del pulsante
 			Image icon = new Image(getClass().getResourceAsStream("/view/immagini/librocolor.png"));
             ImageView immagine = new ImageView(icon);
             immagine.setFitHeight(55);
             immagine.setPreserveRatio(true);
+            
+            //Creazione pulsante
             Button b = new Button("", immagine);
             b.setPrefWidth(504);
-            //b.setPrefHeight(58);
             b.setAlignment(Pos.CENTER_LEFT);
             b.setTextFill(Color.web("#375fc6"));
             
+            //Riempimento pulsante con info pubblicazione
             String autori = "Autori: ";
             int size = p.getAutori().size();
             for (int j = 0; j < size; j++) {
@@ -86,7 +91,7 @@ public class PublicationSearchPageController {
             }
             b.setText("  " + p.getTitolo() + "\n  " + autori);
             b.setId("" + p.getId());
-            b.getStylesheets().add("/view/buttonlist.css");
+            b.getStylesheets().add("/view/css/buttonlist.css");
             b.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {
                     try {
@@ -101,14 +106,14 @@ public class PublicationSearchPageController {
                         stage.setScene(scene);
                         stage.show();
 
-                        
-
                     } catch (Exception ex) {
                         ex.getStackTrace();
                     }
 
                 }
             });
+            
+            //Aggiunta dei pulsanti alle due liste
             if (i % 2 == 0) lista1.getItems().add(b);
             else lista2.getItems().add(b);
             i++;

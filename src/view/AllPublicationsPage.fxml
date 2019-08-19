@@ -8,8 +8,8 @@
    <children>
       <SplitPane fx:id="pane" dividerPositions="0.5" prefHeight="706.0" prefWidth="1043.0">
         <items>
-            <ListView fx:id="lista1" prefHeight="200.0" prefWidth="200.0" stylesheets="@list.css" />
-            <ListView fx:id="lista2" prefHeight="200.0" prefWidth="200.0" stylesheets="@list.css" />
+            <ListView fx:id="lista1" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/list.css" />
+            <ListView fx:id="lista2" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/list.css" />
         </items>
       </SplitPane>
    </children>

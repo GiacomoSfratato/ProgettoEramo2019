@@ -154,16 +154,18 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 		return fine;
 	}
 	
-	public Utente check_utente(Utente utente) {
+	public Utente check_utente(String email, String password) {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet result = null;
-        Utente utentelogin = null;
+        Utente utentelogin = new Utente.Builder()
+				  .withmail("")
+				  .build();
         try {
         	conn = MySQLDAOFactory.createConnection();            
     		preparedStatement = conn.prepareStatement(check_utente);
-    		preparedStatement.setString(1,utente.getEmail());
-    		preparedStatement.setString(2,utente.getPassword());
+    		preparedStatement.setString(1,email);
+    		preparedStatement.setString(2,password);
     		preparedStatement.execute();
     		result = preparedStatement.getResultSet();
     		  while (result.next()) {            	
@@ -175,11 +177,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     					  .withcognome(result.getString(5))
     					  .build();
               }  
-    
-		
         }
-
-        
         catch (SQLException e) {
         	System.out.println("qualcosa"); 
         } finally {
