@@ -6,18 +6,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorpane" prefHeight="706.0" prefWidth="1043.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LastPublicationsPageController">
+<AnchorPane fx:id="anchorpane" prefHeight="706.0" prefWidth="1044.0" style="-fx-background-color: #ededed;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LastPublicationsPageController">
    <children>
-      <Label fx:id="titolopagina" layoutX="14.0" layoutY="5.0" prefHeight="35.0" prefWidth="471.0" text="prova" textFill="WHITE">
+      <SplitPane fx:id="pane" dividerPositions="0.5" layoutY="61.0" prefHeight="645.0" prefWidth="1044.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="61.0">
+        <items>
+            <ListView fx:id="lista1" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/list.css" />
+            <ListView fx:id="lista2" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/list.css" />
+        </items>
+      </SplitPane>
+      <Label fx:id="titolopagina" layoutX="20.0" layoutY="13.0" prefHeight="37.0" prefWidth="564.0">
          <font>
-            <Font size="19.0" />
+            <Font name="System Italic" size="17.0" />
          </font>
       </Label>
-      <SplitPane fx:id="pane" dividerPositions="0.5" layoutY="46.0" prefHeight="660.0" prefWidth="1043.0">
-         <items>
-            <ListView fx:id="lista1" prefHeight="659.0" prefWidth="1043.0" stylesheets="@css/list.css" />
-            <ListView fx:id="lista2" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/list.css" />
-         </items>
-      </SplitPane>
    </children>
 </AnchorPane>

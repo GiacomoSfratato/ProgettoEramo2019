@@ -55,7 +55,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="utenti" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Tutti gli utenti" textFill="WHITE">
+            <Button fx:id="utenti" alignment="CENTER" mnemonicParsing="false" onAction="#handleUtentiButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Tutti gli utenti" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

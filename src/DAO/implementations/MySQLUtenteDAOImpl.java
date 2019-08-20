@@ -8,9 +8,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import model.Pubblicazione;
 import model.Utente;
 import DAO.MySQLDAOFactory;
 import DAO.interfaces.UtenteDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
  
 /**
  * Implementazione dell'interfaccia CustomerDAO per il database MySQL.
@@ -24,6 +28,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     private static final String	check_utente = "SELECT email, passwd, livello, nome, cognome from utente where email = ? and passwd = ?";
     private static final String inserimento_utente = "call inserimento_utente(?,?,?,?,?,?,?,?)";
     private static final String rimuovere_utente = "call rimuovere_utente(?,?)";
+    private static final String utenti = "SELECT email,nome,cognome,data_nascita FROM utente ORDER BY nome";
 	
     public boolean set_modifica_tipo_utente(Utente utente, String tipo) {
     	boolean fine = false;
@@ -199,6 +204,49 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
         }
         return utentelogin;
 		}
+
+
+	public ObservableList<Utente> get_utenti() {
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet result = null;
+        ObservableList<Utente> listaUtenti = FXCollections.observableArrayList();
+        try {
+        	conn = MySQLDAOFactory.createConnection();            
+    		preparedStatement = conn.prepareStatement(utenti);
+    		preparedStatement.execute();
+    		result = preparedStatement.getResultSet();
+    		  while (result.next()) {            	
+    			  listaUtenti.add(new Utente.Builder()
+    					  .withmail(result.getString(1))
+    					  .withnome(result.getString(2))
+    					  .withcognome(result.getString(3))
+    					  .withdata_nascita(result.getString(4))
+    					  .build());
+              }  
+        }
+        catch (SQLException e) {
+        	System.out.println("qualcosa"); 
+        } finally {
+            try {
+                result.close();
+            } catch (Exception rse) {
+             	System.out.println("result non chiude"); 
+            }
+            try {
+                preparedStatement.close();
+            } catch (Exception sse) {
+             	System.out.println("preparedStatement.close();"); 
+            }
+            try {
+                conn.close();
+            } catch (Exception cse) {
+            	System.out.println("conn.close();");
+            }
+        }
+        return listaUtenti;
+		}
+	}
 	
 /////////////////////////////////////////////////////////////////////////////////////
 //metodo che non serve nella query get_utenti_attivi
@@ -243,4 +291,3 @@ return utente;
 }
 */
 //////////////////////////////////////////////////////////////////////////////////////
-}

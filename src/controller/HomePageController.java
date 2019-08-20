@@ -151,7 +151,7 @@ public class HomePageController {
 		
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		DialogPane dialogPane = alert.getDialogPane();
-		dialogPane.getStylesheets().add("/view/alert.css");
+		dialogPane.getStylesheets().add("/view/css/alert.css");
 		alert.initStyle(StageStyle.UNDECORATED);
         alert.setTitle("LOG OUT");
         alert.setContentText("Sei sicuro di voler effettuare il log-out?");
@@ -178,6 +178,12 @@ public class HomePageController {
 	@FXML
 	private void handleDispDownloadButton(ActionEvent event) throws Exception{
 		Parent root = FXMLLoader.load(getClass().getResource("/view/DispDownloadPublicationsPage.fxml"));
+		borderpane.setCenter(root);
+	}
+	
+	@FXML
+	private void handleUtentiButton(ActionEvent event) throws Exception{
+		Parent root = FXMLLoader.load(getClass().getResource("/view/AllUsers.fxml"));
 		borderpane.setCenter(root);
 	}
 	/*@FXML

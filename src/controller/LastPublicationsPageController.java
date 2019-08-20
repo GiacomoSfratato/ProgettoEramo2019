@@ -40,11 +40,7 @@ public class LastPublicationsPageController {
 	
 	@FXML
 	private void initialize(){
-		AnchorPane.setTopAnchor(pane,0.0);
-		AnchorPane.setBottomAnchor(pane,0.0);
-		AnchorPane.setLeftAnchor(pane,0.0);
-		AnchorPane.setRightAnchor(pane,0.0);
-		titolopagina.setText("Ultime 10 pubblicazioni inserite:");
+		titolopagina.setText("Dai un'occhiata alle ultime pubblicazioni inserite:");
 		settalista();
 		
 		
