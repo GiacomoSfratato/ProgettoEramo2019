@@ -11,6 +11,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,6 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.*;
@@ -37,6 +40,7 @@ public class TopUsersPageController {
 	private ListView<Button> lista2 = new ListView<Button>();
 	@FXML
 	private SplitPane pane = new SplitPane();
+	
 	
 	@FXML
 	private void initialize(){
@@ -71,13 +75,18 @@ public class TopUsersPageController {
                     	int idOpera;
                         idOpera = Integer.parseInt(b.getId());
                         ViewPublicationController.setId(idOpera);
-                        FXMLLoader fxmlLoader = new FXMLLoader();
+                        Parent root = FXMLLoader.load(getClass().getResource("/view/ViewPublicationPage.fxml"));
+                        Scene scene = anchorpane.getScene();
+                        BorderPane borderpane = (BorderPane) scene.lookup("#borderpane");
+                        borderpane.setRight(root);
+                		
+                        /*FXMLLoader fxmlLoader = new FXMLLoader();
                         fxmlLoader.setLocation(getClass().getResource("/view/UserPage.fxml"));
                         Scene scene = new Scene(fxmlLoader.load(), 525, 659);
                         Stage stage = new Stage();
                         stage.setTitle("Visualizza Opera");
                         stage.setScene(scene);
-                        stage.show();
+                        stage.show();*/
 
                         
 
@@ -92,4 +101,5 @@ public class TopUsersPageController {
             i++;
         }
 		}
+
 	}

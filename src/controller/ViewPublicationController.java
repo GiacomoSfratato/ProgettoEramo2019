@@ -4,12 +4,17 @@ import java.sql.SQLException;
 
 import DAO.implementations.MySQLPubblicazioneDAOImpl;
 import model.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.*;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
 public class ViewPublicationController {
+		@FXML private AnchorPane anchorpane;
 		@FXML private ImageView copertina;
 		@FXML private Text titolo;
 		@FXML private Text autori;
@@ -49,4 +54,11 @@ public class ViewPublicationController {
 			descrizione.setText("Descrizione:\n" +pubbl.getDescrizione());
 			
 		}
+		
+		@FXML
+	    private void handleChiudiButton(ActionEvent event) throws Exception{
+	    	Scene scene = anchorpane.getScene();
+	        BorderPane borderpane = (BorderPane) scene.lookup("#borderpane");
+	        borderpane.setRight(null);
+	    }
 }

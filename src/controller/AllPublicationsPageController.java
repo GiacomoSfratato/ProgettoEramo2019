@@ -1,12 +1,14 @@
 package controller;
 
 import DAO.implementations.MySQLPubblicazioneDAOImpl;
+import application.Main;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,6 +17,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Pubblicazione;
@@ -73,13 +76,10 @@ public class AllPublicationsPageController {
                     	int idOpera;
                         idOpera = Integer.parseInt(b.getId());
                         ViewPublicationController.setId(idOpera);
-                        FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("/view/ViewPublicationPage.fxml"));
-                        Scene scene = new Scene(fxmlLoader.load(), 525, 659);
-                        Stage stage = new Stage();
-                        stage.setTitle("Visualizza Opera");
-                        stage.setScene(scene);
-                        stage.show();
+                        Parent root = FXMLLoader.load(getClass().getResource("/view/ViewPublicationPage.fxml"));
+                        Scene scene = anchorpane.getScene();
+                        BorderPane borderpane = (BorderPane) scene.lookup("#borderpane");
+                        borderpane.setRight(root);
 
                         
 
@@ -94,4 +94,7 @@ public class AllPublicationsPageController {
             i++;
         }
 		}
-	}
+	
+
+    
+}
