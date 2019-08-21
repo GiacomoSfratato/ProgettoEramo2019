@@ -186,6 +186,12 @@ public class HomePageController {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/AllUsers.fxml"));
 		borderpane.setCenter(root);
 	}
+	
+	@FXML
+	private void handleTopUtentiButton(ActionEvent event) throws Exception{
+		Parent root = FXMLLoader.load(getClass().getResource("/view/TopUsers.fxml"));
+		borderpane.setCenter(root);
+	}
 	/*@FXML
 	/*private void handleApprovaRecensioneButton() throws IOException {
 		if(LibraryUser.getLivello().equals("moderatore")) { 

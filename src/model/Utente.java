@@ -2,14 +2,15 @@ package model;
 public class Utente {
 public static class Builder{ /* implementazione del pattern builder */
 	private String email, password, nome, cognome, luogo_di_nascita, tipo, livello, sesso, data_di_nascita;
-	private static int id; // considerazione futura di toglierlo dato che db lo auto implemanta
+	private int id, libri; // considerazione futura di toglierlo dato che db lo auto implemanta
 	public Builder () {
+		this.libri=0;
 		this.sesso="indefinito";
 		this.data_di_nascita="0000-00-00";
 		this.luogo_di_nascita="indefinito";
 		this.tipo="passivo";
 		this.livello="base";
-		this.nome="indefintio";
+		this.nome="indefinito";
 		this.cognome="indefinito";
 	};
 	public Builder withsesso(String sesso) {
@@ -52,8 +53,14 @@ public static class Builder{ /* implementazione del pattern builder */
 		this.data_di_nascita = data_di_nascita;
 		return this;
 	}
+	
+	public Builder withlibri(int libri) {
+		this.libri = libri;
+		return this;
+	}
 	public Utente build() {
 		Utente utente = new Utente();
+		utente.libri=this.libri;
 		utente.email=this.email;
 		utente.password=this.password;
 		utente.cognome=this.cognome;
@@ -66,9 +73,10 @@ public static class Builder{ /* implementazione del pattern builder */
 		utente.sesso=this.sesso;
 		return utente;
 	}
+	
 }
 private String email, password, nome, cognome,luogo_di_nascita, sesso,data_di_nascita;
-private int id;
+private int id, libri;
 private String tipo; //ho pensato di farlo con enum come nel db ma e' sufficente un try-catch
 private String livello;
 	public String getEmail() {
@@ -132,6 +140,13 @@ private String livello;
 		this.data_di_nascita = data_nascita;
 	}
 	
+	public int getLibri() {
+		return this.libri;
+	}
+	
+	public void setLibri(int libri) {
+		this.libri = libri;
+	}
 	@Override
 	public String toString() {
 		return "Utente [email=" + email + ", password=" + password + ", nome=" + nome + ", cognome=" + cognome

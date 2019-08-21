@@ -15,6 +15,7 @@ import DAO.MySQLDAOFactory;
 import DAO.interfaces.UtenteDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
  
 /**
  * Implementazione dell'interfaccia CustomerDAO per il database MySQL.
@@ -59,8 +60,8 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	}
 	
 	
-	public HashMap<String,Integer> get_utenti_attivi() {
-		HashMap <String,Integer> utenti = new HashMap<>();
+	public ObservableList<Utente> get_utenti_attivi() {
+		ObservableList<Utente> utenti = FXCollections.observableArrayList();
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet result = null;
@@ -69,10 +70,18 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     		preparedStatement = conn.prepareStatement(utenti_attivi);
         	preparedStatement.execute();
             result = preparedStatement.getResultSet();
-        	while (result.next()) {            
-        		utenti.put(result.getString("email"), result.getInt("libri inseriti"));
-	}
+        	while (result.next()) {
+        		Utente u = new Utente.Builder()
+        				.withid(result.getInt(1))
+        				.withnome(result.getString(2))
+        				.withcognome(result.getString(3))
+        				.withlibri(result.getInt(4))
+        				.build() 
+        				;
+        		
+        		utenti.add(u);
         }
+          }
             catch (SQLException e) {
                 e.printStackTrace();
             } finally {

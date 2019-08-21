@@ -1,5 +1,8 @@
 package DAO.interfaces;
 import java.util.*;
+
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import model.Utente;
 public interface UtenteDAO {
 	 
@@ -7,7 +10,7 @@ public interface UtenteDAO {
 		public boolean set_modifica_tipo_utente(Utente utente, String tipo);
 		
 		//Estrazione elenco degli utenti più “collaborativi” (cioè quelli che hanno inserito più pubblicazioni).
-		public HashMap<String,Integer> get_utenti_attivi();
+		public ObservableList<Utente> get_utenti_attivi();
 		
 		public boolean set_inserimento_utente(Utente utente);
 		

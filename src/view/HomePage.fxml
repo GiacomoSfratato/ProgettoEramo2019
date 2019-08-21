@@ -50,7 +50,7 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button fx:id="topUtenti" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Top Utenti" textFill="WHITE">
+            <Button fx:id="topUtenti" alignment="CENTER" mnemonicParsing="false" onAction="#handleTopUtentiButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Top Utenti" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
