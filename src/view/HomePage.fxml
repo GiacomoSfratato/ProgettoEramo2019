@@ -60,7 +60,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="visualizzaProf" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Visualizza profilo" textFill="WHITE">
+            <Button fx:id="visualizzaProf" alignment="CENTER" mnemonicParsing="false" onAction="#handleProfiloButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Visualizza profilo" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

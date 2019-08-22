@@ -72,10 +72,10 @@ public class TopUsersPageController {
             b.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {
                     try {
-                    	int idOpera;
-                        idOpera = Integer.parseInt(b.getId());
-                        ViewPublicationController.setId(idOpera);
-                        Parent root = FXMLLoader.load(getClass().getResource("/view/ViewPublicationPage.fxml"));
+                    	int idUtente;
+                    	idUtente = Integer.parseInt(b.getId());
+                        UserPageController.setId(idUtente);
+                        Parent root = FXMLLoader.load(getClass().getResource("/view/UserPage.fxml"));
                         Scene scene = anchorpane.getScene();
                         BorderPane borderpane = (BorderPane) scene.lookup("#borderpane");
                         borderpane.setRight(root);
@@ -91,7 +91,7 @@ public class TopUsersPageController {
                         
 
                     } catch (Exception ex) {
-                        ex.getStackTrace();
+                        ex.printStackTrace();
                     }
 
                 }

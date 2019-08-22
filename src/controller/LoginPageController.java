@@ -132,7 +132,7 @@ public class LoginPageController {
 			errore.setStyle("-fx-prompt-text-fill: #ff3c2e;");
 			errore.setText("Nome utente o password errata");
 		} else {
-			LibraryUser libraryuser = new LibraryUser(checkedUser.getEmail(), checkedUser.getPassword(), checkedUser.getLivello(), checkedUser.getNome(), checkedUser.getCognome());
+			LibraryUser libraryuser = new LibraryUser(checkedUser.getId(), checkedUser.getEmail(), checkedUser.getPassword(), checkedUser.getLivello(), checkedUser.getNome(), checkedUser.getCognome());
 			System.out.println(libraryuser);
 			Parent root = FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
 			Scene scene = new Scene(root);

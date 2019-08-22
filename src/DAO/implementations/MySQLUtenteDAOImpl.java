@@ -26,10 +26,11 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     private static final String modifica_tipo_utente = "CALL modifica_tipo_utente(?,?)";
     private static final String utenti_attivi = "CALL utenti_attivi()";
     private static final String	mostra_email_utente = "SELECT email from utente where id= ?";
-    private static final String	check_utente = "SELECT email, passwd, livello, nome, cognome from utente where email = ? and passwd = ?";
+    private static final String	check_utente = "SELECT id, email, passwd, livello, nome, cognome from utente where email = ? and passwd = ?";
     private static final String inserimento_utente = "call inserimento_utente(?,?,?,?,?,?,?,?)";
     private static final String rimuovere_utente = "call rimuovere_utente(?,?)";
-    private static final String utenti = "SELECT email,nome,cognome,data_nascita FROM utente ORDER BY nome";
+    private static final String utenti = "SELECT id,email,nome,cognome,data_nascita FROM utente ORDER BY nome";
+    private static final String utente = "SELECT * FROM utente WHERE ID = ?";
 	
     public boolean set_modifica_tipo_utente(Utente utente, String tipo) {
     	boolean fine = false;
@@ -184,11 +185,12 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     		result = preparedStatement.getResultSet();
     		  while (result.next()) {            	
     			  utentelogin = new Utente.Builder()
-    					  .withmail(result.getString(1))
-    					  .withpassword(result.getString(2))
-    					  .withlivello(result.getString(3))
-    					  .withnome(result.getString(4))
-    					  .withcognome(result.getString(5))
+    					  .withid(result.getInt(1))
+    					  .withmail(result.getString(2))
+    					  .withpassword(result.getString(3))
+    					  .withlivello(result.getString(4))
+    					  .withnome(result.getString(5))
+    					  .withcognome(result.getString(6))
     					  .build();
               }  
         }
@@ -227,10 +229,11 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     		result = preparedStatement.getResultSet();
     		  while (result.next()) {            	
     			  listaUtenti.add(new Utente.Builder()
-    					  .withmail(result.getString(1))
-    					  .withnome(result.getString(2))
-    					  .withcognome(result.getString(3))
-    					  .withdata_nascita(result.getString(4))
+    					  .withid(result.getInt(1))
+    					  .withmail(result.getString(2))
+    					  .withnome(result.getString(3))
+    					  .withcognome(result.getString(4))
+    					  .withdata_nascita(result.getString(5))
     					  .build());
               }  
         }
@@ -254,6 +257,54 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
             }
         }
         return listaUtenti;
+		}
+
+
+	public Utente get_dati_utente(int idUtente) {
+		Utente u = null;
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet result = null;
+        try {
+        	conn = MySQLDAOFactory.createConnection();            
+    		preparedStatement = conn.prepareStatement(utente);
+    		preparedStatement.setInt(1, idUtente);
+    		preparedStatement.execute();
+    		result = preparedStatement.getResultSet();
+    		  while (result.next()) { 
+    			  u = new Utente.Builder()
+    					  .withid(result.getInt(1))
+    					  .withmail(result.getString(2))
+    					  .withnome(result.getString(4))
+    					  .withcognome(result.getString(5))
+    					  .withsesso(result.getString(6))
+    					  .withdata_nascita(result.getString(7))
+    					  .withluogo_di_nascita(result.getString(8))
+    					  .withtipo(result.getString(9))
+    					  .withlivello(result.getString(10))
+    					  .build();
+    		  }  
+        }
+        catch (SQLException e) {
+        	e.printStackTrace();
+        } finally {
+            try {
+                result.close();
+            } catch (Exception rse) {
+             	System.out.println("result non chiude"); 
+            }
+            try {
+                preparedStatement.close();
+            } catch (Exception sse) {
+             	System.out.println("preparedStatement.close();"); 
+            }
+            try {
+                conn.close();
+            } catch (Exception cse) {
+            	System.out.println("conn.close();");
+            }
+        }
+        return u;
 		}
 	}
 	

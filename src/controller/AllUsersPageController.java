@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,6 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.*;
@@ -68,16 +70,13 @@ public class AllUsersPageController {
             b.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {
                     try {
-                    	int idOpera;
-                        idOpera = Integer.parseInt(b.getId());
-                        ViewPublicationController.setId(idOpera);
-                        FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("/view/UserPage.fxml"));
-                        Scene scene = new Scene(fxmlLoader.load(), 525, 659);
-                        Stage stage = new Stage();
-                        stage.setTitle("Visualizza Opera");
-                        stage.setScene(scene);
-                        stage.show();
+                    	int idUtente;
+                    	//idUtente = Integer.parseInt(b.getId());
+                        //UserPageController.setId(idUtente);
+                        Parent root = FXMLLoader.load(getClass().getResource("/view/UserPage.fxml"));
+                        Scene scene = anchorpane.getScene();
+                        BorderPane borderpane = (BorderPane) scene.lookup("#borderpane");
+                        borderpane.setRight(root);
 
                         
 

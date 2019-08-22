@@ -2,18 +2,28 @@ package model;
 
 public class LibraryUser {
 	
+	private static int id;
 	private static String email;
 	private static String password;
 	private static String livello;
 	private static String nome;
 	private static String cognome;
 
-	public LibraryUser(String email, String password, String livello, String nome, String cognome) {
+	public LibraryUser(int id, String email, String password, String livello, String nome, String cognome) {
+		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.livello = livello;
 		this.nome = nome;
 		this.cognome = cognome;
+	}
+
+	public static int getId() {
+		return id;
+	}
+
+	public static void setId(int id) {
+		LibraryUser.id = id;
 	}
 
 	public static String getEmail() {
