@@ -15,7 +15,7 @@
             <Image url="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Francesco_Hayez_053.jpg/208px-Francesco_Hayez_053.jpg" />
          </image>
       </ImageView>
-      <Text fx:id="titolo" fill="WHITE" layoutX="24.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Romeo e Giulietta" wrappingWidth="475.578125">
+      <Text fx:id="titolo" fill="WHITE" layoutX="24.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="475.578125">
          <font>
             <Font name="System Bold Italic" size="28.0" />
          </font>

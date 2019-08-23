@@ -82,10 +82,10 @@ public class HomePageController {
 	
 	@FXML
 	public void initialize() {
-		//if(LibraryUser.getLivello().contentEquals("base")) verificaRece.disableProperty().set(true);
+		if(LibraryUser.getLivello().contentEquals("base")) verificaRece.disableProperty().set(true);
 		String nome = LibraryUser.getNome();
 		String cognome = LibraryUser.getCognome();
-		//String titolo = nome.substring(0, 1).toUpperCase() + nome.substring(1) + " " +cognome.substring(0, 1).toUpperCase() + cognome.substring(1);
+		String titolo = nome.substring(0, 1).toUpperCase() + nome.substring(1) + " " +cognome.substring(0, 1).toUpperCase() + cognome.substring(1);
 		benvenuto.setText("Benvenuto!");
 		
 		ColorAdjust colorAdjust = new ColorAdjust();
