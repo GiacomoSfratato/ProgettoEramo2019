@@ -205,8 +205,8 @@ public class HomePageController {
 	}
 	
 	public void handleRistampeButton(ActionEvent event) throws Exception{
-		Parent root = FXMLLoader.load(getClass().getResource("/view/UpdatedPublicationsPage.fxml"));
-		borderpane.setRight(root);
+		Parent root = FXMLLoader.load(getClass().getResource("/view/ReprintedPublicationsPage.fxml"));
+		borderpane.setCenter(root);
 	}
 	/*@FXML
 	/*private void handleApprovaRecensioneButton() throws IOException {

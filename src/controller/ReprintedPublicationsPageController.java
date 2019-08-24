@@ -22,7 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Pubblicazione;
 
-public class UpdatedPublicationsPageController {
+public class ReprintedPublicationsPageController {
 	@FXML
 	private AnchorPane anchorpane = new AnchorPane();
 	@FXML
@@ -36,7 +36,7 @@ public class UpdatedPublicationsPageController {
 	
 	@FXML
 	private void initialize(){
-		titolopagina.setText("Volevi delle opere ristampate? Serviti pure:");
+		titolopagina.setText("Cercavi delle opere ristampate? Serviti pure:");
 		settalista();
 		
 	}
@@ -67,6 +67,7 @@ public class UpdatedPublicationsPageController {
             b.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {
                     try {
+                    	
                     	int idOpera;
                         idOpera = Integer.parseInt(b.getId());
                         ViewPublicationController.setId(idOpera);
@@ -74,11 +75,9 @@ public class UpdatedPublicationsPageController {
                         Scene scene = anchorpane.getScene();
                         BorderPane borderpane = (BorderPane) scene.lookup("#borderpane");
                         borderpane.setRight(root);
-
                         
-
                     } catch (Exception ex) {
-                        ex.getStackTrace();
+                        ex.printStackTrace();
                     }
 
                 }
