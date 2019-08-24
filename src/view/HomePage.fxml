@@ -35,7 +35,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="catalogoRistampe" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Catalogo con ristampe" textFill="WHITE">
+            <Button fx:id="catalogoRistampe" alignment="CENTER" mnemonicParsing="false" onAction="#handleRistampeButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Catalogo con ristampe" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

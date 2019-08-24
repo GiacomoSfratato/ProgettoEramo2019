@@ -258,11 +258,17 @@ return pubblicazioni;}
 			ps.execute();
 			result = ps.getResultSet();
 			  while (result.next()) { 
-				  pubblicazioni.add(new Pubblicazione.Builder().withid(result.getInt(1)).withtitolo(result.getString(2)).withdescrizione(result.getString(3)).witheditore(result.getString(4)).withdata(result.getString(5)).build());
+				  pubblicazioni.add(new Pubblicazione.Builder()
+						  .withid(result.getInt(1))
+						  .withtitolo(result.getString(2))
+						  .withdescrizione(result.getString(3))
+						  .witheditore(result.getString(4))
+						  .withdata(result.getString(5))
+						  .build());
 	        }  
 		}
 		catch(Exception exc) {
-		System.out.print("somethink goes wrong!"); }
+		System.out.print("something goes wrong!"); }
 		finally { 
 		try {
 	         ps.close();

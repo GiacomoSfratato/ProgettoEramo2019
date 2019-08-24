@@ -82,10 +82,10 @@ public class HomePageController {
 	
 	@FXML
 	public void initialize() {
-		if(LibraryUser.getLivello().contentEquals("base")) verificaRece.disableProperty().set(true);
+		// if(LibraryUser.getLivello().contentEquals("base")) verificaRece.disableProperty().set(true);
 		String nome = LibraryUser.getNome();
 		String cognome = LibraryUser.getCognome();
-		String titolo = nome.substring(0, 1).toUpperCase() + nome.substring(1) + " " +cognome.substring(0, 1).toUpperCase() + cognome.substring(1);
+		//String titolo = nome.substring(0, 1).toUpperCase() + nome.substring(1) + " " +cognome.substring(0, 1).toUpperCase() + cognome.substring(1);
 		benvenuto.setText("Benvenuto!");
 		
 		ColorAdjust colorAdjust = new ColorAdjust();
@@ -201,6 +201,11 @@ public class HomePageController {
 	public void handleProfiloButton(ActionEvent event) throws Exception{
 		UserPageController.setId(LibraryUser.getId());
 		Parent root = FXMLLoader.load(getClass().getResource("/view/UserPage.fxml"));
+		borderpane.setRight(root);
+	}
+	
+	public void handleRistampeButton(ActionEvent event) throws Exception{
+		Parent root = FXMLLoader.load(getClass().getResource("/view/UpdatedPublicationsPage.fxml"));
 		borderpane.setRight(root);
 	}
 	/*@FXML
