@@ -50,7 +50,7 @@ public class ViewPublicationController {
 			editori.setText("Editore: " + pubbl.getEditore());
 			anno.setText("Data di pubblicazione: " +pubbl.getMetadati().getData());
 			isbn.setText("ISBN: " +pubbl.getMetadati().getIsbn());
-			inseritada.setText("Inserita da: " +pubbl.getPubblicatore());
+			inseritada.setText("Inserita da: " +pubbl.getUtente());
 			descrizione.setText("Descrizione:\n" +pubbl.getDescrizione());
 			
 		}

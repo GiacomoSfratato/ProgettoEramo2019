@@ -208,6 +208,11 @@ public class HomePageController {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/ReprintedPublicationsPage.fxml"));
 		borderpane.setCenter(root);
 	}
+	
+	public void handleModificheButton(ActionEvent event) throws Exception{
+		Parent root = FXMLLoader.load(getClass().getResource("/view/UpdatedPublicationsPage.fxml"));
+		borderpane.setCenter(root);
+	}
 	/*@FXML
 	/*private void handleApprovaRecensioneButton() throws IOException {
 		if(LibraryUser.getLivello().equals("moderatore")) { 

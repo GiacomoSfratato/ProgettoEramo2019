@@ -25,7 +25,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="modificateRecente" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Modificate di recente" textFill="WHITE">
+            <Button fx:id="modificateRecente" alignment="CENTER" mnemonicParsing="false" onAction="#handleModificheButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Modificate di recente" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

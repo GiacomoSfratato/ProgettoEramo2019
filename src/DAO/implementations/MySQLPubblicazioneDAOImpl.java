@@ -71,7 +71,11 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 		ps.execute();
 		result = ps.getResultSet();
 		  while (result.next()) {            	
-		   		pubblicazioni.add(new Pubblicazione.Builder().withid(result.getInt(1)).withtitolo(result.getString(2)).build());
+		   		pubblicazioni.add(new Pubblicazione.Builder()
+		   				.withutente(result.getString(1))
+		   				.withid(result.getInt(2))
+		   				.withtitolo(result.getString(3))
+		   				.build());
           }  
        
 }
@@ -185,7 +189,7 @@ return pubblicazioni;}
 			   				.withdescrizione(result.getString(3))
 			   				.witheditore(result.getString(4))
 			   				.withmetadati(meta)
-			   				.withpubblicatore(result.getString(11))
+			   				.withutente(result.getString(11))
 			   				.withautori(autori)
 			   				.build();
 	        }  
