@@ -65,7 +65,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="verificaRece" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Verifica recensioni" textFill="WHITE">
+            <Button fx:id="verificaRece" alignment="CENTER" mnemonicParsing="false" onAction="#handleAmministrazioneButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Amministrazione" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

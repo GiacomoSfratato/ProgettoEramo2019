@@ -213,6 +213,12 @@ public class HomePageController {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/UpdatedPublicationsPage.fxml"));
 		borderpane.setCenter(root);
 	}
+	
+	public void handleAmministrazioneButton(ActionEvent event) throws Exception{
+		Parent root = FXMLLoader.load(getClass().getResource("/view/AdministrationPage.fxml"));
+		borderpane.setCenter(root);
+		
+	}
 	/*@FXML
 	/*private void handleApprovaRecensioneButton() throws IOException {
 		if(LibraryUser.getLivello().equals("moderatore")) { 
