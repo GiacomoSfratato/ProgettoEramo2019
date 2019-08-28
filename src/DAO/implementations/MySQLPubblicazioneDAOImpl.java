@@ -2,6 +2,8 @@ package DAO.implementations;
 
 import java.util.*;
 import java.sql.*;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import DAO.MySQLDAOFactory;
 import DAO.interfaces.PubblicazioneDAO;
@@ -261,7 +263,7 @@ return pubblicazioni;}
 			ps = conn.prepareStatement(catalogo_ristampa);
 			ps.execute();
 			result = ps.getResultSet();
-			  while (result.next()) { 
+			  while (result.next()) {
 				  pubblicazioni.add(new Pubblicazione.Builder()
 						  .withid(result.getInt(1))
 						  .withtitolo(result.getString(2))
@@ -272,7 +274,7 @@ return pubblicazioni;}
 	        }  
 		}
 		catch(Exception exc) {
-		System.out.print("something goes wrong!"); }
+		System.out.print("Qualcosa è andato storto!"); }
 		finally { 
 		try {
 	         ps.close();

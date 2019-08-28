@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" style="-fx-border-radius: 10 10 0 0; -fx-background-color: #262626; -fx-background-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="738.0" prefWidth="1366.0" style="-fx-background-color: #262626;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginPageController">
    <center>
       <GridPane prefHeight="589.0" prefWidth="1261.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -121,7 +121,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Region prefHeight="25.0" prefWidth="538.0" />
+                  <Region prefHeight="25.0" prefWidth="580.0" />
                   <Label fx:id="titolopagina" text="Biblioteca Online" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />

@@ -24,6 +24,15 @@ public Recensione(String titolo, String autore, String contenuto, String approva
 	this.approvazione = approvazione;
 	this.timestamp = timestamp;
 }
+
+public Recensione (int id_pubblicazione, int id_utente, String titolo, String contenuto, String approvazione, Date timestamp) {
+	this.id_pubblicazione = id_pubblicazione;
+	this.id_utente = id_utente;
+	this.titolo_pubblicazione = titolo;
+	this.contenuto = contenuto;
+	this.approvazione = approvazione;
+	this.timestamp = timestamp;
+}
 public int getId_utente() {
 	return id_utente;
 }

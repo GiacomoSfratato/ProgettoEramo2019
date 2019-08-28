@@ -1,6 +1,8 @@
 package DAO.interfaces;
 
 import java.util.*;
+
+import javafx.collections.ObservableList;
 import model.*;
 
 public interface RecensioneDAO {
@@ -9,7 +11,7 @@ public interface RecensioneDAO {
 	public ArrayList<Recensione> get_elenco_recensioni(Pubblicazione pubblicazione);
 	
 	//Estrazione elenco delle recensioni in attesa di approvazione.
-	public ArrayList<Recensione> get_elenco_recensioni_attesa();
+	public ObservableList get_elenco_recensioni_attesa();
 	
 	//Inserimento di una recensione relativa a una pubblicazione.
 	public boolean set_inserimento_recensione(Pubblicazione pubblicazione, Recensione recensione);

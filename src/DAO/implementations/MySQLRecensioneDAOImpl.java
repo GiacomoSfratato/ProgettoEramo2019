@@ -11,6 +11,8 @@ import java.util.List;
 import model.*;
 import DAO.MySQLDAOFactory;
 import DAO.interfaces.RecensioneDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 
@@ -25,7 +27,7 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 	    	ArrayList<Recensione> recensioni = new ArrayList<>();
 	    	Connection conn = null;
 			PreparedStatement preparedStatement = null;
-			ResultSet result = null;
+			ResultSet result = null; 
 	        try {
 	        	conn = MySQLDAOFactory.createConnection();            
 	    		preparedStatement = conn.prepareStatement(elenco_recensioni);
@@ -60,8 +62,8 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 		}
 		
 		@Override
-		public ArrayList<Recensione> get_elenco_recensioni_attesa() {
-			ArrayList<Recensione> recensioni_attesa = new ArrayList<>();
+		public ObservableList get_elenco_recensioni_attesa() {
+			ObservableList<Recensione> recensioni_attesa = FXCollections.observableArrayList();
 	    	Connection conn = null;
 			PreparedStatement preparedStatement = null;
 			ResultSet result = null;
@@ -71,7 +73,12 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 	        	preparedStatement.execute();
 	            result = preparedStatement.getResultSet();
 	        	while (result.next()) {            
-	        		recensioni_attesa.add(new Recensione(result.getString("titolo"), result.getString("email"), result.getString("contenuto"), result.getString("approvazione"), result.getDate("data")));
+	        		recensioni_attesa.add(new Recensione(result.getInt(1), 
+	        				result.getInt(2), 
+	        				result.getString(3), 
+	        				result.getString(4), 
+	        				result.getString(5), 
+	        				result.getDate(6)));
 		}
 	        }
 	            catch (SQLException e) {

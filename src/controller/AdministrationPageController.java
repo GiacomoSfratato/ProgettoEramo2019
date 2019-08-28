@@ -1,5 +1,6 @@
 package controller;
 
+import DAO.implementations.MySQLRecensioneDAOImpl;
 import DAO.implementations.MySQLUtenteDAOImpl;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TableColumn;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -21,6 +23,22 @@ import javafx.scene.paint.Color;
 import model.Utente;
 
 public class AdministrationPageController {
+	private void handleVerificaRecensione(ActionEvent event) throws Exception{
+		MySQLRecensioneDAOImpl recensioni = new MySQLRecensioneDAOImpl();
+		ObservableList listarecensioni = recensioni.get_elenco_recensioni_attesa();
+		TableColumn id_pubblicazione = new TableColumn<S, T>();
+	}
+	
+	private void handleStoricoModifiche(ActionEvent event) throws Exception{
+		
+	}
+
+	private void handleLivelloUtente(ActionEvent event) throws Exception{
 	
 	}
+	
+	private void handleTipoUtente(ActionEvent event) throws Exception{
+		
+	}
+}
 

@@ -35,10 +35,11 @@ public class Main extends Application{
 	        this.stage = stage; // initialize value of stage.
 	    Parent root = FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
 	    Scene scene = new Scene(root);
-	    scene.setFill(Color.TRANSPARENT);
+	    //scene.setFill(Color.TRANSPARENT);
 	    stage.initStyle(StageStyle.UNDECORATED);
-	    stage.initStyle(StageStyle.TRANSPARENT);
+	    //stage.initStyle(StageStyle.TRANSPARENT);
 	    stage.setTitle("Biblioteca Online");
+	    //stage.setMaximized(true);
 	    
 	    stage.setScene(scene);
 	    stage.show();
