@@ -22,6 +22,50 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String estrazione_modifiche_pubblicazione = "CALL estrazione_modifiche_pubblicazione(?)";
 	private static String likes_totali="CALL likes_totali";
 	private static String elenco_download="CALL elenco_download";
+	private static String storico_modifiche="SELECT * FROM storico WHERE descrizione = 'modifica' ";
+	
+	public ObservableList<Storico> get_storico_modifiche(){
+		ObservableList<Storico> storico = FXCollections.observableArrayList();
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet result = null;
+		try {
+        	conn = MySQLDAOFactory.createConnection();            
+    		ps = conn.prepareStatement(storico_modifiche);
+    		ps.execute();
+    		result = ps.getResultSet();
+    		  while (result.next()) {            	
+    		   		storico.add(new Storico(
+    		   				result.getInt(1),
+    		   				result.getInt(2),
+    		   				result.getString(3),
+    		   				result.getDate(4)));
+              }  
+           
+	}
+        
+            catch (SQLException e) {
+            	System.out.println("qualcosa"); 
+            } finally {
+                try {
+                    result.close();
+                } catch (Exception rse) {
+                 	System.out.println("result non chiude"); 
+                }
+                try {
+                    ps.close();
+                } catch (Exception sse) {
+                 	System.out.println("preparedStatement.close();"); 
+                }
+                try {
+                    conn.close();
+                } catch (Exception cse) {
+                	System.out.println("conn.close();");
+                }
+            }
+		return storico;
+	}
 	
 	@Override
 	public ObservableList<Pubblicazione> get_ultime_pubblicazioni(){
@@ -404,7 +448,11 @@ return pubblicazioni;}
 			ps.execute();
 			result = ps.getResultSet();
 			  while (result.next()) {            	
-				  storico.add(new Storico(result.getString(3),result.getString(4),result.getInt(1),result.getInt(2)));
+				  storico.add(new Storico(
+						  result.getInt(1),
+						  result.getInt(2), 
+						  result.getString(3),
+						  result.getDate(4)));
 	        }  
 		}
 		catch(Exception exc) {

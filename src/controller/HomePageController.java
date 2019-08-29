@@ -217,7 +217,6 @@ public class HomePageController {
 	public void handleAmministrazioneButton(ActionEvent event) throws Exception{
 		Parent root = FXMLLoader.load(getClass().getResource("/view/AdministrationPage.fxml"));
 		borderpane.setCenter(root);
-		
 	}
 	/*@FXML
 	/*private void handleApprovaRecensioneButton() throws IOException {

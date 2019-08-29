@@ -24,12 +24,13 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	
 	/*basic query declaration */
     private static final String modifica_tipo_utente = "CALL modifica_tipo_utente(?,?)";
+    private static final String modifica_livello_utente = "CALL modifica_livello_utente(?,?)";
     private static final String utenti_attivi = "CALL utenti_attivi()";
     private static final String	mostra_email_utente = "SELECT email from utente where id= ?";
     private static final String	check_utente = "SELECT id, email, passwd, livello, nome, cognome from utente where email = ? and passwd = ?";
     private static final String inserimento_utente = "call inserimento_utente(?,?,?,?,?,?,?,?)";
     private static final String rimuovere_utente = "call rimuovere_utente(?,?)";
-    private static final String utenti = "SELECT id,email,nome,cognome,data_nascita FROM utente ORDER BY nome";
+    private static final String utenti = "SELECT id,email,nome,cognome,data_nascita,tipo,livello FROM utente ORDER BY nome";
     private static final String utente = "SELECT * FROM utente WHERE ID = ?";
 	
     public boolean set_modifica_tipo_utente(Utente utente, String tipo) {
@@ -41,6 +42,34 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 			ps = conn.prepareStatement(modifica_tipo_utente);
 			ps.setString(1,utente.getEmail());
 			ps.setString(2,tipo);
+			ps.execute();
+			fine=true;
+		}
+		catch(Exception exc) {
+		System.out.print("something goes wrong!"); }
+		finally { 
+		try {
+             ps.close();
+         } catch (Exception sse) {
+          	System.out.println("preparedStatement.close();"); 
+         }
+         try {
+             conn.close();
+         } catch (Exception cse) {
+         	System.out.println("conn.close();");
+         }  }
+		return fine;
+	}
+    
+    public boolean set_modifica_livello_utente(Utente utente, String livello) {
+    	boolean fine = false;
+		PreparedStatement ps = null;
+		Connection conn = null;
+		try {
+			conn = MySQLDAOFactory.createConnection();
+			ps = conn.prepareStatement(modifica_livello_utente);
+			ps.setString(1,utente.getEmail());
+			ps.setString(2,livello);
 			ps.execute();
 			fine=true;
 		}
@@ -234,6 +263,8 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     					  .withnome(result.getString(3))
     					  .withcognome(result.getString(4))
     					  .withdata_nascita(result.getString(5))
+    					  .withtipo(result.getString(6))
+    					  .withlivello(result.getString(7))
     					  .build());
               }  
         }
