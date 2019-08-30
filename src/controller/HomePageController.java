@@ -34,7 +34,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.*;
+
 public class HomePageController {
+	
 	@FXML
 	private HBox topbar;
 	@FXML
@@ -153,14 +155,13 @@ public class HomePageController {
 		DialogPane dialogPane = alert.getDialogPane();
 		dialogPane.getStylesheets().add("/view/css/alert.css");
 		alert.initStyle(StageStyle.UNDECORATED);
-        alert.setTitle("LOG OUT");
+		alert.setGraphic(null);
         alert.setContentText("Sei sicuro di voler effettuare il log-out?");
         ButtonType buttonTypeOne = new ButtonType("SI");
         ButtonType buttonTypeCancel = new ButtonType("NO");
         alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeCancel);
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonTypeOne){
-            // ... user chose "One"
             try{
             	Parent root = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
     			Scene scene = new Scene(root);
@@ -171,7 +172,7 @@ public class HomePageController {
                 ex.getStackTrace();
             }
         } else {
-            // ... user chose CANCEL or closed the dialog
+            //l'utente ha scelto "NO"
         }
     }
 	
@@ -218,29 +219,6 @@ public class HomePageController {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/AdministrationPage.fxml"));
 		borderpane.setCenter(root);
 	}
-	/*@FXML
-	/*private void handleApprovaRecensioneButton() throws IOException {
-		if(LibraryUser.getLivello().equals("moderatore")) { 
-			/*MySQLRecensioneDAOImpl dao = new MySQLRecensioneDAOImpl();
-			Pubblicazione pubbl = new Pubblicazione.Builder().
-			dao.set_inserimento_recensione(pubblicazione, recensione)
-			
-		} else {
-			//eccezione
-		}
-	}*/
-	
-	/*@FXML
-	private void handleRifiutaRecensioneButton() throws IOException {
-		if(LibraryUser.getLivello().equals("moderatore")) { 
-			/*MySQLRecensioneDAOImpl dao = new MySQLRecensioneDAOImpl();
-			Pubblicazione pubbl = new Pubblicazione.Builder().
-			dao.set_inserimento_recensione(pubblicazione, recensione)
-			
-		} else {
-			//eccezione
-		}
-	} */
 	
 }
 
