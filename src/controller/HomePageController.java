@@ -220,6 +220,11 @@ public class HomePageController {
 		borderpane.setCenter(root);
 	}
 	
+	@FXML
+	public void handleInserisciPubblicazioneButton(ActionEvent event) throws Exception{
+		Parent root = FXMLLoader.load(getClass().getResource("/view/InsertPublication.fxml"));
+		borderpane.setCenter(root);
+	}
 }
 
 	

@@ -23,6 +23,7 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String likes_totali="CALL likes_totali";
 	private static String elenco_download="CALL elenco_download";
 	private static String storico_modifiche="SELECT * FROM storico WHERE descrizione = 'modifica' ";
+	private static String inserimento_pubblicazione = "CALL inserimento_pubblicazione(?,?,?,?,?,?,?,?,?,?)";
 	
 	public ObservableList<Storico> get_storico_modifiche(){
 		ObservableList<Storico> storico = FXCollections.observableArrayList();
@@ -508,7 +509,41 @@ return pubblicazioni;}
 	     }  }
 		return pubblicazioni;
 	}
-
+	
+	public void inserimento_pubblicazione (Pubblicazione pubblicazione) {
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			conn= MySQLDAOFactory.createConnection();          
+			preparedStatement = conn.prepareStatement(inserimento_pubblicazione);
+			preparedStatement.setString(1,LibraryUser.getEmail());
+			preparedStatement.setString(2,pubblicazione.getTitolo());
+			preparedStatement.setString(3,pubblicazione.getDescrizione());
+			preparedStatement.setString(4,pubblicazione.getEditore());
+			preparedStatement.setString(5,pubblicazione.getMetadati().getIsbn());
+			preparedStatement.setInt(6,pubblicazione.getMetadati().getNrpagine());
+			preparedStatement.setString(7,pubblicazione.getMetadati().getLingua());
+			preparedStatement.setString(8,pubblicazione.getData());
+			preparedStatement.setString(9,pubblicazione.getAutori().get(0).getNome());
+			preparedStatement.setString(10,pubblicazione.getAutori().get(0).getCognome());
+			preparedStatement.execute();
+		}
+		 catch (SQLException e) {
+         	System.out.println(e.getMessage()); 
+         } finally {
+             
+             try {
+                 preparedStatement.close();
+             } catch (Exception sse) {
+              	System.out.println("preparedStatement.close();"); 
+             }
+             try {
+                 conn.close();
+             } catch (Exception cse) {
+             	System.out.println("conn.close();");
+             } 
+             }
+	}
 }
 
 

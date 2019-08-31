@@ -40,7 +40,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="inserisciPubbl" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Inserisci pubblicazione" textFill="WHITE">
+            <Button fx:id="inserisciPubbl" alignment="CENTER" mnemonicParsing="false" onAction="#handleInserisciPubblicazioneButton" prefHeight="80.0" prefWidth="286.0" style="-fx-background-radius: 0;" stylesheets="@css/button.css" text="Inserisci pubblicazione" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

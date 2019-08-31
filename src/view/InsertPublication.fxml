@@ -2,67 +2,144 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorpane" prefHeight="706.0" prefWidth="1129.0" style="-fx-background-color: #ededed;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdministrationPageController">
+<AnchorPane fx:id="anchorpane" prefHeight="644.0" prefWidth="1129.0" style="-fx-background-color: #262626;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InsertPublicationController">
    <children>
-      <VBox prefHeight="706.0" prefWidth="1044.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <HBox alignment="CENTER" minHeight="-Infinity" prefHeight="62.0" prefWidth="1044.0" spacing="5.0" VBox.vgrow="NEVER">
+      <SplitPane dividerPositions="0.4161490683229814" prefHeight="706.0" prefWidth="1129.0" style="-fx-background-color: transparent;" stylesheets="@css/splitPane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" prefHeight="704.0" prefWidth="650.0" style="-fx-background-color: transparent;">
                <children>
-                  <Button fx:id="verificaRecensioni" mnemonicParsing="false" onAction="#handleVerificaRecensione" prefHeight="85.0" prefWidth="276.0" text="Visualizza recensioni &#10;da verificare" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+                  <Text fx:id="testoPagina" fill="WHITE" layoutX="98.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inserisci una nuova pubblicazione &#10;compilando i campi sulla destra.&#10;&#10;Quando hai finito, clicca qui sotto." textAlignment="CENTER" wrappingWidth="304.0" AnchorPane.bottomAnchor="279.2138671875" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="97.0" AnchorPane.topAnchor="130.0">
                      <font>
-                        <Font size="15.0" />
-                     </font></Button>
-                  <Button fx:id="storicoModifiche" mnemonicParsing="false" onAction="#handleStoricoModifiche" prefHeight="118.0" prefWidth="276.0" text="Visualizza lo storico &#10;delle modifiche" textAlignment="CENTER" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font size="15.0" />
-                     </font></Button>
-                  <Button fx:id="livelloUtente" mnemonicParsing="false" onAction="#handleLivelloUtente" prefHeight="131.0" prefWidth="276.0" text="Modifica il livello &#10;di un utente" textAlignment="CENTER" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font size="15.0" />
-                     </font></Button>
-                  <Button fx:id="tipoUtente" mnemonicParsing="false" onAction="#handleTipoUtente" prefHeight="131.0" prefWidth="276.0" text="Modifica il tipo &#10;di un utente" textAlignment="CENTER" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font size="15.0" />
-                     </font></Button>
-               </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </HBox>
-            <AnchorPane fx:id="pannellotabella" prefHeight="679.0" prefWidth="1063.0">
-               <children>
-                  <Label layoutX="484.0" layoutY="275.0" text="Cosa vuoi fare?">
-                     <font>
-                        <Font name="System Italic" size="24.0" />
+                        <Font size="25.0" />
                      </font>
-                  </Label>
-               </children></AnchorPane>
-            <HBox alignment="CENTER_RIGHT" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="1063.0" spacing="5.0">
-               <children>
-                  <Button fx:id="bottone1" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Button" textAlignment="CENTER">
+                  </Text>
+                  <Button fx:id="conferma" alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="416.0" mnemonicParsing="false" onAction="#handleConfermaButton" prefHeight="95.0" prefWidth="271.0" stylesheets="@css/buttonConferma.css" text="CONFERMA" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="128.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="97.0" AnchorPane.topAnchor="416.0">
                      <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="bottone2" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Button" textAlignment="CENTER">
-                     <font>
-                        <Font size="15.0" />
+                        <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
                </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding></HBox>
-         </children>
-      </VBox>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" prefHeight="160.0" style="-fx-background-color: transparent;">
+               <children>
+                  <GridPane hgap="10.0" layoutX="1.0" prefHeight="704.0" prefWidth="655.0" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="10.0" prefWidth="153.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="392.0" minWidth="10.0" prefWidth="392.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </padding>
+                     <children>
+                        <TextField fx:id="titolo" prefHeight="90.0" prefWidth="319.0" promptText="Inserisci un titolo per la pubblicazione" GridPane.columnIndex="1" />
+                        <TextField fx:id="editore" prefHeight="106.0" prefWidth="319.0" promptText="Da chi è stata edita l'opera?" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="isbn" prefHeight="112.0" prefWidth="319.0" promptText="Inserisci il codice ISBN (13 cifre)" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="nrpagine" prefHeight="125.0" prefWidth="319.0" promptText="Specifica il numero di pagine del libro" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="cognomeAutore" prefHeight="180.0" prefWidth="319.0" promptText="Inserisci il cognome dell'autore" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <TextField fx:id="nomeAutore" prefHeight="143.0" prefWidth="319.0" promptText="Inserisci il nome dell'autore" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextArea fx:id="descrizione" prefHeight="100.0" prefWidth="464.0" promptText="Descrivi brevemente il contenuto dell'opera            (max 500 caratteri)" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Titolo:" GridPane.halignment="RIGHT">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrizione:" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Editore:" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Codice ISBN:" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="N° di pagine:" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua:" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Data di pubblicazione:" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome dell'autore:" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Cognome dell'autore:" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <DatePicker fx:id="datapubblicazione" prefHeight="50.0" prefWidth="467.0" promptText="gg/mm/aaa" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <ComboBox fx:id="lingua" prefHeight="56.0" prefWidth="401.0" promptText="Seleziona una lingua" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
    </children>
 </AnchorPane>
