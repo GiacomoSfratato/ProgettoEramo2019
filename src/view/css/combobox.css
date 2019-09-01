@@ -1,0 +1,10 @@
+.combo-box {
+    -fx-background-color: #141414;
+    -fx-background-radius: 0;
+}
+
+.combo-box > .list-cell {
+    -fx-background: transparent;
+    -fx-background-color: transparent;
+    -fx-text-fill: #b8b8b8;
+}

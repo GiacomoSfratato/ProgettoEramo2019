@@ -50,6 +50,7 @@ public class LoginPageController {
     private double yOffset = 0;
 	
 	public static Stage stage;
+	public static String conferma;
 	
 	@FXML
 	public void initialize() {
@@ -103,10 +104,9 @@ public class LoginPageController {
 		
 		Parent root = FXMLLoader.load(getClass().getResource("/view/RegistrationPage.fxml"));
 		Stage stage = new Stage();
-		stage.setScene(new Scene(root, 385, 395));
+		stage.setScene(new Scene(root));
+		stage.initStyle(StageStyle.UNDECORATED);
 		stage.showAndWait();
-		errore.setTextFill(Color.web("#18d100"));
-		errore.setText("Registrazione completata con successo!");
 		
 		/*Stage appStage;
 	    Parent root;
