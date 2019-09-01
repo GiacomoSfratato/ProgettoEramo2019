@@ -60,7 +60,7 @@
                         <TextField fx:id="nrpagine" prefHeight="125.0" prefWidth="319.0" promptText="Specifica il numero di pagine del libro" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <TextField fx:id="cognomeAutore" prefHeight="180.0" prefWidth="319.0" promptText="Inserisci il cognome dell'autore" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <TextField fx:id="nomeAutore" prefHeight="143.0" prefWidth="319.0" promptText="Inserisci il nome dell'autore" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <TextArea fx:id="descrizione" prefHeight="100.0" prefWidth="464.0" promptText="Descrivi brevemente il contenuto dell'opera            (max 500 caratteri)" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextArea fx:id="descrizione" prefHeight="100.0" prefWidth="464.0" promptText="Descrivi brevemente il contenuto dell'opera (max 500 caratteri)" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Titolo:" GridPane.halignment="RIGHT">
                            <GridPane.margin>
                               <Insets />

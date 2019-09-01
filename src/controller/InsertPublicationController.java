@@ -32,11 +32,15 @@ public class InsertPublicationController {
 	@FXML private DatePicker datapubblicazione;
 	@FXML private ComboBox<String> lingua;
 	private List<String> myList;
+	final int MAX_CHARS = 500 ;
 	String fileName = "src/view/file_di_testo/lingue.txt";
 	MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
 	
 	@FXML
 	public void initialize() {
+		descrizione.setTextFormatter(new TextFormatter<String>(change -> 
+        	change.getControlNewText().length() <= MAX_CHARS ? change : null));
+		
 	//popolo la lista di lingue da un file txt
 		try {
 			myList = Files.lines(Paths.get(fileName)).collect(Collectors.toList());
@@ -48,6 +52,7 @@ public class InsertPublicationController {
 	
 	@FXML
 	private void handleConfermaButton() {
+		if(check_inserimento()) {
 		Autore autore = new Autore(
 				nomeAutore.getText(), 
 				cognomeAutore.getText()
@@ -72,6 +77,68 @@ public class InsertPublicationController {
 				.build();		
 				
 		dao.inserimento_pubblicazione(newPubbl);		
+		} else {
+		//c'è stato un errore nel metodo check
+		}
+	}
+	
+	private boolean check_inserimento() { //metodo che controlla tutti i dati inseriti nel form
+		boolean all_ok = true;
+		
+		if(titolo.getText().isBlank()) {
+			titolo.setPromptText("Campo obbligatorio");
+			all_ok = false;
+		}
+		
+		if(descrizione.getText().isBlank()) {
+			descrizione.setPromptText("Campo obbligatorio");
+			all_ok = false;
+		}
+		
+		if(descrizione.getText().length() > 500) {
+			descrizione.setText(descrizione.getText() + "\n Massimo 500 caratteri");
+			all_ok = false;
+		}
+		
+		if(editore.getText().isBlank()) {
+			editore.setPromptText("Campo obbligatorio");
+			all_ok = false;
+		}
+		
+		if (!(isbn.getText().matches("^[0-9]+$")) || isbn.getText().length() != 13 ) {
+			isbn.clear();
+			isbn.setPromptText("13 cifre - no lettere o caratteri speciali");
+			all_ok = false;
+			}
+		
+		
+		
+		if (nrpagine.getText().isBlank()) {
+			nrpagine.setPromptText("Campo obbligatorio");
+			all_ok = false;
+		}
+		
+		if (nomeAutore.getText().isBlank()) {
+			nomeAutore.setPromptText("Campo obbligatorio");
+			all_ok = false;
+		}
+		
+		if(cognomeAutore.getText().isBlank()) {
+			cognomeAutore.setPromptText("Campo obbligatorio");
+			all_ok = false;
+		}
+		
+		if(datapubblicazione.getValue() == null) {
+			datapubblicazione.setPromptText("Campo obbligatorio");
+			all_ok = false;
+		}
+		
+		if(lingua.getValue() == null) {
+			lingua.setPromptText("Campo obbligatorio");
+			all_ok = false;
+		}
+		
+		return all_ok;
 	}
 }
 
