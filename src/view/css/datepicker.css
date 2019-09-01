@@ -2,6 +2,7 @@
     -fx-background-color: #141414;
     -fx-background-radius: 0 0 0 0;
     -fx-show-week-numbers: false;
+    -fx-cursor: hand;
 }
 
 .date-picker > .text-field {

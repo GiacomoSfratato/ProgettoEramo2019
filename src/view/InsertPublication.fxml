@@ -25,7 +25,7 @@
                         <Font size="25.0" />
                      </font>
                   </Text>
-                  <Button fx:id="conferma" alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="416.0" mnemonicParsing="false" onAction="#handleConfermaButton" prefHeight="95.0" prefWidth="271.0" stylesheets="@css/buttonConferma.css" text="CONFERMA" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="128.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="97.0" AnchorPane.topAnchor="416.0">
+                  <Button fx:id="conferma" alignment="CENTER" contentDisplay="CENTER" layoutX="124.0" layoutY="429.0" mnemonicParsing="false" onAction="#handleConfermaButton" prefHeight="86.0" prefWidth="251.0" stylesheets="@css/buttonConferma.css" text="CONFERMA" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="127.0" AnchorPane.leftAnchor="124.0" AnchorPane.rightAnchor="124.0" AnchorPane.topAnchor="429.0">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
@@ -133,7 +133,7 @@
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <DatePicker fx:id="datapubblicazione" prefHeight="50.0" prefWidth="467.0" promptText="Clicca sull'icona a destra " stylesheets="@css/datepicker.css" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <DatePicker fx:id="datapubblicazione" prefHeight="50.0" prefWidth="467.0" promptText="Per scegliere una data, clicca sull'icona a destra" stylesheets="@css/datepicker.css" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <ComboBox fx:id="lingua" prefHeight="56.0" prefWidth="401.0" promptText="Seleziona una lingua" stylesheets="@css/combobox.css" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                      </children>
                   </GridPane>

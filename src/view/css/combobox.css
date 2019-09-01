@@ -1,6 +1,7 @@
 .combo-box {
     -fx-background-color: #141414;
     -fx-background-radius: 0;
+    -fx-cursor: hand;
 }
 
 .combo-box > .list-cell {
