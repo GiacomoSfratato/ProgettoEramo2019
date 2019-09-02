@@ -15,7 +15,7 @@ import javafx.scene.text.Text;
 
 public class ViewPublicationController {
 		@FXML private AnchorPane anchorpane;
-		@FXML private ImageView copertina;
+		@FXML private ImageView immagine;
 		@FXML private Text titolo;
 		@FXML private Text autori;
 		private String autoriConc = "";
@@ -24,9 +24,10 @@ public class ViewPublicationController {
 		@FXML private Text isbn;
 		@FXML private Text inseritada;
 		@FXML private Text descrizione;
+		@FXML private Text recensione;
 		@FXML private Text capitoli;
 		@FXML private Text likes;
-		@FXML ImageView  likeButton;
+		@FXML ImageView  like;
 		private static int idOpera;
 		
 		public static void setId (int id) {
@@ -36,8 +37,17 @@ public class ViewPublicationController {
 		MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
 		Pubblicazione pubbl = dao.get_estrazione_dati(idOpera);
 		
+		private final String titoloS = pubbl.getTitolo();
+		private final String autoriS = "Autori: ";
+		private final String editoriS = "Editore: " + pubbl.getEditore();
+		private final String annoS = "Data di pubblicazione: " +pubbl.getMetadati().getData();
+		private final String isbnS = "ISBN: " +pubbl.getMetadati().getIsbn();
+		private final String inserita_daS = "Inserita da: " +pubbl.getUtente();
+		private final String descrizioneS = "Descrizione:\n" +pubbl.getDescrizione();
+		
+		
 		public void initialize() throws SQLException{
-			titolo.setText(pubbl.getTitolo());
+			titolo.setText(titoloS);
 			int size = pubbl.getAutori().size();
 			for (int j = 0; j < size; j++) {
                 if (j == pubbl.getAutori().size() - 1)
@@ -46,8 +56,8 @@ public class ViewPublicationController {
                     autoriConc = autoriConc + pubbl.getAutori().get(j).getNome() + " " + pubbl.getAutori().get(j).getCognome() + ", ";
                 }
             }
-			autori.setText("Autori: " + autoriConc);
-			editori.setText("Editore: " + pubbl.getEditore());
+			autori.setText(autoriS + autoriConc);
+			editori.setText(editoriS);
 			anno.setText("Data di pubblicazione: " +pubbl.getMetadati().getData());
 			isbn.setText("ISBN: " +pubbl.getMetadati().getIsbn());
 			inseritada.setText("Inserita da: " +pubbl.getUtente());
