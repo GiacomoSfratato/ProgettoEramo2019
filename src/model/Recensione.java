@@ -33,6 +33,10 @@ public Recensione (int id_pubblicazione, int id_utente, String titolo, String co
 	this.approvazione = approvazione;
 	this.timestamp = timestamp;
 }
+public Recensione(String contenuto) {
+	this.contenuto = contenuto;
+}
+
 public int getId_utente() {
 	return id_utente;
 }

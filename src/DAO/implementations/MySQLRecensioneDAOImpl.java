@@ -21,7 +21,8 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 	    private static final String	inserimento_recensione = "CALL inserimento_recensione(?,?,?,?)";
 	    private static final String rimuovere_recensione = "call inserimento_utente(?,?,?,?,?,?,?,?)";
 	    private static final String verifica_recensione = "call verifica_recensione(?,?,?,?,?)";
-		
+	    private static String recensione_utente_pubblicazione = "SELECT * FROM recensione WHERE ID_utente = ? AND ID_pubblicazione = ?";
+	    
 	    @Override
 		public ArrayList<Recensione> get_elenco_recensioni(Pubblicazione pubblicazione) {
 	    	ArrayList<Recensione> recensioni = new ArrayList<>();
@@ -173,5 +174,37 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 			// TODO Auto-generated method stub
 			return false;
 		}
-	
+		
+		public boolean check_recensione(Pubblicazione pubblicazione) {
+			boolean esiste = false;
+			PreparedStatement ps = null;
+			ResultSet result = null;
+			Connection conn = null;
+			try {
+				conn = MySQLDAOFactory.createConnection();
+				ps = conn.prepareStatement(recensione_utente_pubblicazione);
+				ps.setInt(1,LibraryUser.getId());
+				ps.setInt(2, pubblicazione.getId());
+				ps.execute();
+				result = ps.getResultSet();
+				  while (result.next()) {            	
+					  esiste = true;
+		        }  
+			}
+			catch(Exception exc) {
+			System.out.print("Qualcosa � andato storto!"); }
+			finally { 
+			try {
+		         ps.close();
+		     } catch (Exception sse) {
+		      	System.out.println("preparedStatement.close();"); 
+		     }
+		     try {
+		         conn.close();
+		     } catch (Exception cse) {
+		     	System.out.println("conn.close();");
+		     }  }
+			return esiste;
+		
+		}
 }

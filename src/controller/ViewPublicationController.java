@@ -2,7 +2,7 @@ package controller;
 
 import java.sql.SQLException;
 
-import DAO.implementations.MySQLPubblicazioneDAOImpl;
+import DAO.implementations.*;
 import model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
@@ -27,14 +27,17 @@ public class ViewPublicationController {
 		@FXML private Text recensione;
 		@FXML private Text capitoli;
 		@FXML private Text likes;
-		@FXML ImageView  like;
+		@FXML private TextArea areaRecensione;
+		@FXML Button  like;
+		@FXML Button chiudi;
+		@FXML Button stessoAutore;
+		@FXML Button visualizzaRecensioni;
+		@FXML Button inserisciRecensione;
 		private static int idOpera;
-		
-		public static void setId (int id) {
-			idOpera = id;
-		}
+		final int MAX_CHARS = 400 ;		
 		
 		MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
+		MySQLRecensioneDAOImpl daoRecensione = new MySQLRecensioneDAOImpl();
 		Pubblicazione pubbl = dao.get_estrazione_dati(idOpera);
 		
 		private final String titoloS = pubbl.getTitolo();
@@ -44,10 +47,29 @@ public class ViewPublicationController {
 		private final String isbnS = "ISBN: " +pubbl.getMetadati().getIsbn();
 		private final String inserita_daS = "Inserita da: " +pubbl.getUtente();
 		private final String descrizioneS = "Descrizione:\n" +pubbl.getDescrizione();
-		
+		private final String recensioneS = "Inserisci una recensione: ";
+		private final String likesS = "Likes totali: " + dao.get_likes_totali(pubbl).getLikes_totali();
+		private final String IMMAGINE_PUBBLICAZIONE = "/view/immagini/libro-cerchio.png";
 		
 		public void initialize() throws SQLException{
-			titolo.setText(titoloS);
+			settaPagina();
+		}
+		
+		public static void setId (int id) {
+			idOpera = id;
+		}
+		
+		private void settaPagina() {
+			//setta un limite di caratteri per la recensione
+			areaRecensione.setTextFormatter(new TextFormatter<String>(change -> 
+        	change.getControlNewText().length() <= MAX_CHARS ? change : null));
+			
+			//disabilita tasto like se già presente
+			if(dao.check_like(pubbl)) {
+				like.setDisable(true);
+			}
+			
+			//setta i campi text
 			int size = pubbl.getAutori().size();
 			for (int j = 0; j < size; j++) {
                 if (j == pubbl.getAutori().size() - 1)
@@ -56,19 +78,38 @@ public class ViewPublicationController {
                     autoriConc = autoriConc + pubbl.getAutori().get(j).getNome() + " " + pubbl.getAutori().get(j).getCognome() + ", ";
                 }
             }
+			
+			titolo.setText(titoloS);
 			autori.setText(autoriS + autoriConc);
 			editori.setText(editoriS);
-			anno.setText("Data di pubblicazione: " +pubbl.getMetadati().getData());
-			isbn.setText("ISBN: " +pubbl.getMetadati().getIsbn());
-			inseritada.setText("Inserita da: " +pubbl.getUtente());
-			descrizione.setText("Descrizione:\n" +pubbl.getDescrizione());
+			anno.setText(annoS);
+			isbn.setText(isbnS);
+			inseritada.setText(inserita_daS);
+			descrizione.setText(descrizioneS);
+			recensione.setText(recensioneS);
+			likes.setText(likesS);
+			
+			Image icon = new Image(getClass().getResourceAsStream(IMMAGINE_PUBBLICAZIONE));
+			immagine.setImage(icon);
 			
 		}
-		
 		@FXML
 	    private void handleChiudiButton(ActionEvent event) throws Exception{
 	    	Scene scene = anchorpane.getScene();
 	        BorderPane borderpane = (BorderPane) scene.lookup("#borderpane");
 	        borderpane.setRight(null);
 	    }
+		
+		@FXML 
+		private void handleLikeButton() {
+			dao.set_inserimento_like(pubbl);
+			likes.setText("Likes totali: " + dao.get_likes_totali(pubbl).getLikes_totali());
+			like.setDisable(true);
+		}
+		
+		@FXML
+		private void handleInserisciRecensioneButton() {
+			Recensione recensione = new Recensione(areaRecensione.getText());
+			daoRecensione.set_inserimento_recensione(pubbl, recensione);
+		}
 }

@@ -24,6 +24,7 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import DAO.MySQLDAOFactory;
 import DAO.implementations.*;
 import model.*;
+import controller.*;
 
 public class Main extends Application{
 	
@@ -33,7 +34,8 @@ public class Main extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 	        this.stage = stage; // initialize value of stage.
-	    Parent root = FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
+	        ViewPublicationController.setId(6);
+	    Parent root = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
 	    Scene scene = new Scene(root);
 	    //scene.setFill(Color.TRANSPARENT);
 	    stage.initStyle(StageStyle.UNDECORATED);

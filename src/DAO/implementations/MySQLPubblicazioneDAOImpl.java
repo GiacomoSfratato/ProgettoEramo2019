@@ -14,13 +14,14 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String ultime_pubblicazioni = "CALL ultime_pubblicazioni";
 	private static String update_recente = "CALL update_recente";
 	private static String pubblicazione_utente = "CALL pubblicazioni_utente(?)";
-	private static String catalogo = "CALL catalogo";
+	private static String catalogo = "CALL catalogo()";
 	private static String estrazione_dati = "CALL estrazione_dati(?)";
 	private static String cerca = "CALL cerca_pubblicazione(?)";
 	private static String catalogo_ristampa="CALL catalogo_ristampa";
-	private static String inserimento_like="CALL inserimento_like"; // forse va nel utenteDAOImpl
+	private static String inserimento_like="CALL inserimento_like(?,?,?)"; // forse va nel utenteDAOImpl
 	private static String estrazione_modifiche_pubblicazione = "CALL estrazione_modifiche_pubblicazione(?)";
-	private static String likes_totali="CALL likes_totali";
+	private static String like_utente_pubblicazione = "SELECT * FROM likes WHERE ID_utente = ? AND ID_pubblicazione = ?";
+	private static String likes_totali="CALL likes_totali(?)";
 	private static String elenco_download="CALL elenco_download";
 	private static String storico_modifiche="SELECT * FROM storico WHERE descrizione = 'modifica' ";
 	private static String inserimento_pubblicazione = "CALL inserimento_pubblicazione(?,?,?,?,?,?,?,?,?,?)";
@@ -413,11 +414,11 @@ return pubblicazioni;}
 			ps.setInt(1,pubblicazione.getId());
 			ps.execute();
 			result = ps.getResultSet();
+			while(result.next()) {
 			pubblicazioni = new Pubblicazione.Builder()
-			   				.withid(result.getInt(1))
-			   				.withtitolo(result.getString(2))
 			   				.withlikes_totali(result.getInt(3))
 			   				.build();    
+			}
 		}
 		catch(SQLException exc) {
 		System.out.print(exc.getMessage()); }
@@ -543,6 +544,38 @@ return pubblicazioni;}
              	System.out.println("conn.close();");
              } 
              }
+	}
+
+	public boolean check_like(Pubblicazione pubblicazione) {
+		boolean esiste = false;
+		PreparedStatement ps = null;
+		ResultSet result = null;
+		Connection conn = null;
+		try {
+			conn = MySQLDAOFactory.createConnection();
+			ps = conn.prepareStatement(like_utente_pubblicazione);
+			ps.setInt(1,LibraryUser.getId());
+			ps.setInt(2, pubblicazione.getId());
+			ps.execute();
+			result = ps.getResultSet();
+			  while (result.next()) {            	
+				  esiste = true;
+	        }  
+		}
+		catch(Exception exc) {
+		System.out.print("Qualcosa � andato storto!"); }
+		finally { 
+		try {
+	         ps.close();
+	     } catch (Exception sse) {
+	      	System.out.println("preparedStatement.close();"); 
+	     }
+	     try {
+	         conn.close();
+	     } catch (Exception cse) {
+	     	System.out.println("conn.close();");
+	     }  }
+		return esiste;
 	}
 }
 
