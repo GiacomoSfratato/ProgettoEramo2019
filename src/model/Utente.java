@@ -1,7 +1,7 @@
 package model;
 public class Utente {
 public static class Builder{ /* implementazione del pattern builder */
-	private String email, password, nome, cognome, luogo_di_nascita, tipo, livello, sesso, data_di_nascita;
+	private String email, password, nome, cognome, luogo_di_nascita, tipo, livello, sesso, data_di_nascita, pic;
 	private int id, libri; // considerazione futura di toglierlo dato che db lo auto implemanta
 	public Builder () {
 		this.libri=0;
@@ -12,7 +12,12 @@ public static class Builder{ /* implementazione del pattern builder */
 		this.livello="base";
 		this.nome="indefinito";
 		this.cognome="indefinito";
+		this.pic="/view/immagini/avatars/boy.png";
 	};
+	public Builder withpic(String pic) {
+		this.pic = pic;
+		return this;
+	}
 	public Builder withsesso(String sesso) {
 		this.sesso=sesso;
 		return this;
@@ -71,14 +76,23 @@ public static class Builder{ /* implementazione del pattern builder */
 		utente.id=this.id;
 		utente.data_di_nascita=this.data_di_nascita;
 		utente.sesso=this.sesso;
+		utente.pic = this.pic;
 		return utente;
 	}
 	
 }
-private String email, password, nome, cognome,luogo_di_nascita, sesso,data_di_nascita;
+private String email, password, nome, cognome,luogo_di_nascita, sesso,data_di_nascita, pic;
 private int id, libri;
 private String tipo; //ho pensato di farlo con enum come nel db ma e' sufficente un try-catch
 private String livello;
+	
+	public String getPic() {
+		return pic;
+	}
+	
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
 	public String getEmail() {
 		return email;
 	}

@@ -149,7 +149,7 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 return pubblicazioni;}
 	
 	@Override
-	public ObservableList<Pubblicazione> get_pubblicazione_utente(Utente utente){ 
+	public ObservableList<Pubblicazione> get_pubblicazione_utente(int idUtente){ 
 		ObservableList<Pubblicazione> pubblicazioni = FXCollections.observableArrayList();
 	PreparedStatement ps = null;
 	ResultSet result = null;
@@ -157,7 +157,7 @@ return pubblicazioni;}
 	try {
 		conn = MySQLDAOFactory.createConnection();
 		ps = conn.prepareStatement(pubblicazione_utente);
-		ps.setString(1,utente.getEmail());
+		ps.setInt(1,idUtente);
 		ps.execute();
 		result = ps.getResultSet();
 		  while (result.next()) {            	

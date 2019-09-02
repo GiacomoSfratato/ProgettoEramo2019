@@ -28,8 +28,8 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     private static final String utenti_attivi = "CALL utenti_attivi()";
     private static final String	mostra_email_utente = "SELECT email from utente where id= ?";
     private static final String	check_utente = "SELECT id, email, passwd, livello, nome, cognome from utente where email = ? and passwd = ?";
-    private static final String inserimento_utente = "call inserimento_utente(?,?,?,?,?,?,?,?)";
-    private static final String rimuovere_utente = "call rimuovere_utente(?,?)";
+    private static final String inserimento_utente = "call inserimento_utente(?,?,?,?,?,?,?,?,?)";
+    private static final String rimuovere_utente = "call rimuovere_utente(?)";
     private static final String utenti = "SELECT id,email,nome,cognome,data_nascita,tipo,livello FROM utente ORDER BY nome";
     private static final String utente = "SELECT * FROM utente WHERE ID = ?";
 	
@@ -151,6 +151,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 			preparedStatement.setString(6,utente.getData_di_nascita());
 			preparedStatement.setString(7,utente.getLuogo_di_nascita());
 			preparedStatement.setString(8,utente.getLivello());
+			preparedStatement.setString(9,utente.getPic());
 			preparedStatement.execute();
 			fine = true;
 		}
@@ -177,8 +178,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 		try {
 			conn = MySQLDAOFactory.createConnection();
 			ps = conn.prepareStatement(rimuovere_utente);
-			ps.setString(1,utente.getEmail());
-			ps.setString(2, utente.getPassword());
+			ps.setInt(1,utente.getId());
 			ps.execute();
 			fine=true;
 		}
@@ -313,6 +313,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     					  .withluogo_di_nascita(result.getString(8))
     					  .withtipo(result.getString(9))
     					  .withlivello(result.getString(10))
+    					  .withpic(result.getString(11))
     					  .build();
     		  }  
         }

@@ -1,11 +1,14 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -54,13 +57,22 @@ public class RegistrationPageController{
 	private PasswordField password;
 	
 	private List<String> myList;
+	
 	String fileName = "src/view/file_di_testo/paesi.txt";
+	
+	final static String GENERIC_USER_PIC = "/view/immagini/avatars/generic-user.png";
+	
+	final static String MALE_USER_PIC = "/view/immagini/avatars/Male/boy.png";
+	
+	final static String FEMALE_USER_PIC = "/view/immagini/avatars/Female/girl.png";
+	
+	MySQLUtenteDAOImpl utentedao = new MySQLUtenteDAOImpl();
+	
 	
 	@FXML
 	public void initialize() {
 		 Main.stage.setResizable(false);
 		 sesso.setItems(sessi);
-		 
 		 try {
 				myList = Files.lines(Paths.get(fileName)).collect(Collectors.toList());
 			} catch (IOException e) {
@@ -71,9 +83,8 @@ public class RegistrationPageController{
 	
 	
 	@FXML
-	public void conferma() {
+	public void conferma() {		
 		if (check_registrazione()) {
-			
 		Utente utente = new Utente.Builder().
 				withmail(email.getText()).
 				withnome(nome.getText()).
@@ -81,8 +92,10 @@ public class RegistrationPageController{
 				withluogo_di_nascita(paese.getValue()).
 				withdata_nascita(dataDiNascita.getValue().toString()).
 				withsesso(sesso.getValue()).
-				withpassword(password.getText()).build();	
-			MySQLUtenteDAOImpl utentedao = new MySQLUtenteDAOImpl();
+				withpassword(password.getText()).
+				withpic(get_file_path()).
+				build();
+		
 			if(utentedao.set_inserimento_utente(utente)) {
 		
 			Scene scene = Main.stage.getScene();
@@ -146,5 +159,23 @@ public class RegistrationPageController{
 		
 		return all_ok;
 	}
+
+	
+	private String get_file_path() {		//metodo che sceglie un'immagine random fra le due cartelle Male e Female a seconda del sesso scelto
+		String pic = "";
+		switch (sesso.getValue()) {
+		case "M":
+			pic = MALE_USER_PIC;
+			break;
+		case "F":
+			pic = FEMALE_USER_PIC;
+			break;
+		case "indefinito":
+			pic = GENERIC_USER_PIC;
+			break;
+		}
+		return pic;
+	}
+	
 }
 

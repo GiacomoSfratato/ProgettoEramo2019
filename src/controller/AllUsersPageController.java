@@ -70,15 +70,12 @@ public class AllUsersPageController {
             b.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {
                     try {
-                    	int idUtente;
-                    	//idUtente = Integer.parseInt(b.getId());
-                        //UserPageController.setId(idUtente);
+                    	int idUtente = Integer.parseInt(b.getId());
+                        UserPageController.setId(idUtente);
                         Parent root = FXMLLoader.load(getClass().getResource("/view/UserPage.fxml"));
                         Scene scene = anchorpane.getScene();
                         BorderPane borderpane = (BorderPane) scene.lookup("#borderpane");
                         borderpane.setRight(root);
-
-                        
 
                     } catch (Exception ex) {
                         ex.getStackTrace();

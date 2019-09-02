@@ -13,7 +13,7 @@ public interface PubblicazioneDAO {
 	public ObservableList<Pubblicazione> get_update_recente();
 	
 	//Estrazione elenco delle pubblicazioni inserite da un utente
-	public ObservableList<Pubblicazione> get_pubblicazione_utente(Utente utente);
+	public ObservableList<Pubblicazione> get_pubblicazione_utente(int id);
 	
 	//Estrazione catalogo, cioè elenco di tutte le pubblicazioni con titolo, autori, editore e anno di pubblicazione, ordinato per titolo
 	public ObservableList<Pubblicazione> get_catalogo();

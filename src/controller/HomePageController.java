@@ -83,7 +83,7 @@ public class HomePageController {
 	
 	
 	@FXML
-	public void initialize() {
+	public void initialize() throws Exception{
 		// if(LibraryUser.getLivello().contentEquals("base")) verificaRece.disableProperty().set(true);
 		String nome = LibraryUser.getNome();
 		String cognome = LibraryUser.getCognome();
@@ -119,6 +119,9 @@ public class HomePageController {
                 Main.stage.setY(event.getScreenY() - yOffset);
             }
         });
+        Parent root = FXMLLoader.load(getClass().getResource("/view/LastPublicationsPage.fxml"));
+		borderpane.setCenter(root);
+        
 	}
 	
 	@FXML 
