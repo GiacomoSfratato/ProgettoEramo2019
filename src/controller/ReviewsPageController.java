@@ -67,6 +67,8 @@ public class ReviewsPageController {
             b.setDisable(true);
             b.setOpacity(1);
             lista1.getItems().add(b);
+            lista1.setDisable(true);
+            lista1.setOpacity(1);
         }
 		}
 	

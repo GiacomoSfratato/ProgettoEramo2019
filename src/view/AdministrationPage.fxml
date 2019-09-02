@@ -30,6 +30,16 @@
                      <font>
                         <Font size="15.0" />
                      </font></Button>
+                  <Button fx:id="tipoUtente1" mnemonicParsing="false" onAction="#handleTipoUtente" prefHeight="131.0" prefWidth="276.0" text="Rimuovi un utente" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="tipoUtente11" mnemonicParsing="false" onAction="#handleTipoUtente" prefHeight="131.0" prefWidth="276.0" text="Rimuovi una recensione" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
