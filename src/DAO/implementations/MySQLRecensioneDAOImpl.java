@@ -24,8 +24,8 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 	    private static String recensione_utente_pubblicazione = "SELECT * FROM recensione WHERE ID_utente = ? AND ID_pubblicazione = ?";
 	    
 	    @Override
-		public ArrayList<Recensione> get_elenco_recensioni(Pubblicazione pubblicazione) {
-	    	ArrayList<Recensione> recensioni = new ArrayList<>();
+		public ObservableList<Recensione> get_elenco_recensioni(Pubblicazione pubblicazione) {
+	    	ObservableList<Recensione> recensioni = FXCollections.observableArrayList();
 	    	Connection conn = null;
 			PreparedStatement preparedStatement = null;
 			ResultSet result = null; 
@@ -35,7 +35,8 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 	    		preparedStatement.setInt(1,pubblicazione.getId());
 	        	preparedStatement.execute();
 	            result = preparedStatement.getResultSet();
-	        	while (result.next()) {            
+	        	while (result.next()) {    
+	        		//System.out.println(result.getString("contenuto"));
 	        		recensioni.add(new Recensione(result.getString("email"), result.getString("contenuto"), result.getString("approvazione"), result.getDate("data")));
 		}
 	        }

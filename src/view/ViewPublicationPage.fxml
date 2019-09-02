@@ -78,17 +78,17 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="stessoAutore" contentDisplay="CENTER" mnemonicParsing="false" stylesheets="@css/button.css" text="Autore" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="stessoAutore" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleStessoAutoreButton" stylesheets="@css/button.css" text="Autore" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="visualizzaRecensioni" contentDisplay="CENTER" mnemonicParsing="false" stylesheets="@css/button.css" text="Visualizza recensioni" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="visualizzaRecensioni" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleVisualizzaRecensioniButton" stylesheets="@css/button.css" text="Visualizza recensioni" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="inserisciRecensione" contentDisplay="CENTER" mnemonicParsing="false" stylesheets="@css/button.css" text="Inserisci recensione" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="inserisciRecensione" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleInserisciRecensioneButton" stylesheets="@css/button.css" text="Inserisci recensione" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>

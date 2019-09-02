@@ -8,7 +8,7 @@ import model.*;
 public interface RecensioneDAO {
 	
 	//Estrazione elenco delle recensioni approvate per una pubblicazione.
-	public ArrayList<Recensione> get_elenco_recensioni(Pubblicazione pubblicazione);
+	public ObservableList<Recensione> get_elenco_recensioni(Pubblicazione pubblicazione);
 	
 	//Estrazione elenco delle recensioni in attesa di approvazione.
 	public ObservableList get_elenco_recensioni_attesa();

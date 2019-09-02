@@ -18,6 +18,7 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String estrazione_dati = "CALL estrazione_dati(?)";
 	private static String cerca = "CALL cerca_pubblicazione(?)";
 	private static String catalogo_ristampa="CALL catalogo_ristampa";
+	private static String catalogo_stessi_autori="CALL catalogo_stessi_autori(?)";
 	private static String inserimento_like="CALL inserimento_like(?,?,?)"; // forse va nel utenteDAOImpl
 	private static String estrazione_modifiche_pubblicazione = "CALL estrazione_modifiche_pubblicazione(?)";
 	private static String like_utente_pubblicazione = "SELECT * FROM likes WHERE ID_utente = ? AND ID_pubblicazione = ?";
@@ -343,7 +344,7 @@ return pubblicazioni;}
 		Connection conn = null;
 		try {
 			conn = MySQLDAOFactory.createConnection();
-			ps = conn.prepareStatement(cerca);
+			ps = conn.prepareStatement(catalogo_stessi_autori);
 			ps.setInt(1,pubblicazione.getId());
 			ps.execute();
 			result = ps.getResultSet();

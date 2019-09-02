@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorpane" prefHeight="706.0" prefWidth="1044.0" style="-fx-background-color: #ededed;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SameAuthorPublicationsPageController">
+   <children>
+      <SplitPane fx:id="pane" dividerPositions="0.5" layoutY="61.0" prefHeight="645.0" prefWidth="1044.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="61.0">
+        <items>
+            <ListView fx:id="lista1" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/list.css" />
+            <ListView fx:id="lista2" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/list.css" />
+        </items>
+      </SplitPane>
+      <Label fx:id="titolopagina" layoutX="20.0" layoutY="13.0" prefHeight="37.0" prefWidth="564.0">
+         <font>
+            <Font name="System Italic" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

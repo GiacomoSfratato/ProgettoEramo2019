@@ -6,6 +6,7 @@ import DAO.implementations.*;
 import model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
@@ -60,13 +61,22 @@ public class ViewPublicationController {
 		}
 		
 		private void settaPagina() {
+			
+			
 			//setta un limite di caratteri per la recensione
 			areaRecensione.setTextFormatter(new TextFormatter<String>(change -> 
         	change.getControlNewText().length() <= MAX_CHARS ? change : null));
 			
 			//disabilita tasto like se già presente
-			if(dao.check_like(pubbl)) {
-				like.setDisable(true);
+			boolean check_like = dao.check_like(pubbl);
+			like.setDisable(check_like);
+			
+			//disabilita inserisci recensione e area testuale se già presente
+			boolean check_recensione = daoRecensione.check_recensione(pubbl);
+			areaRecensione.setDisable(check_recensione);
+			inserisciRecensione.setDisable(check_recensione);
+			if(check_recensione) {
+			areaRecensione.setPromptText("Recensione inserita");
 			}
 			
 			//setta i campi text
@@ -89,6 +99,12 @@ public class ViewPublicationController {
 			recensione.setText(recensioneS);
 			likes.setText(likesS);
 			
+			Tooltip tipautore = new Tooltip("Visualizza le opere di " + autoriConc);
+			stessoAutore.setTooltip(tipautore);	
+			
+			Tooltip tiplike = new Tooltip("Lascia un like!");
+			like.setTooltip(tiplike);
+			
 			Image icon = new Image(getClass().getResourceAsStream(IMMAGINE_PUBBLICAZIONE));
 			immagine.setImage(icon);
 			
@@ -101,15 +117,37 @@ public class ViewPublicationController {
 	    }
 		
 		@FXML 
-		private void handleLikeButton() {
+		private void handleLikeButton(ActionEvent event) throws Exception{
 			dao.set_inserimento_like(pubbl);
 			likes.setText("Likes totali: " + dao.get_likes_totali(pubbl).getLikes_totali());
 			like.setDisable(true);
 		}
 		
 		@FXML
-		private void handleInserisciRecensioneButton() {
+		private void handleInserisciRecensioneButton(ActionEvent event) throws Exception{
 			Recensione recensione = new Recensione(areaRecensione.getText());
 			daoRecensione.set_inserimento_recensione(pubbl, recensione);
+			inserisciRecensione.setDisable(true);
+			areaRecensione.clear();
+			areaRecensione.setPromptText("Recensione inserita");
+			areaRecensione.setDisable(true);
+		}
+		
+		@FXML
+		private void handleStessoAutoreButton(ActionEvent event) throws Exception{
+            SameAuthorPublicationsPageController.setId(pubbl.getId());
+			Parent root = FXMLLoader.load(getClass().getResource("/view/SameAuthorPublicationsPage.fxml"));
+            Scene scene = anchorpane.getScene();
+            BorderPane borderpane = (BorderPane) scene.lookup("#borderpane");
+            borderpane.setCenter(root);
+		}
+		
+		@FXML
+		private void handleVisualizzaRecensioniButton(ActionEvent event) throws Exception{
+            ReviewsPageController.setId(pubbl.getId());
+			Parent root = FXMLLoader.load(getClass().getResource("/view/ReviewsPage.fxml"));
+            Scene scene = anchorpane.getScene();
+            BorderPane borderpane = (BorderPane) scene.lookup("#borderpane");
+            borderpane.setCenter(root);
 		}
 }
