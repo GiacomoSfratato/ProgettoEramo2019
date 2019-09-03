@@ -40,6 +40,8 @@ public class AdministrationPageController {
 	private Button bottone1;
 	@FXML
 	private Button bottone2;
+	
+	private final int MIN_WIDTH = 160;
 	@FXML
 	AnchorPane pannellotabella;
 	MySQLRecensioneDAOImpl recensioni = new MySQLRecensioneDAOImpl();
@@ -60,21 +62,27 @@ public class AdministrationPageController {
 		ObservableList<Recensione> listarecensioni = recensioni.get_elenco_recensioni_attesa();
 		TableColumn<Recensione, Integer> id_pubblicazione = new TableColumn<>("ID Pubblicazione");
 		id_pubblicazione.setCellValueFactory(new PropertyValueFactory<>("id_pubblicazione"));
+		id_pubblicazione.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Recensione, Integer> id_utente = new TableColumn<>("ID Utente");
 		id_utente.setCellValueFactory(new PropertyValueFactory<>("id_utente"));
+		id_utente.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Recensione, String> titolo = new TableColumn<>("Titolo");
 		titolo.setCellValueFactory(new PropertyValueFactory<>("titolo"));
+		titolo.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Recensione, String> contenuto = new TableColumn<>("Recensione");
 		contenuto.setCellValueFactory(new PropertyValueFactory<>("contenuto"));
+		contenuto.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Recensione, String> approvazione = new TableColumn<>("Approvazione");
 		approvazione.setCellValueFactory(new PropertyValueFactory<>("approvazione"));
+		approvazione.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Recensione, Date> timestamp = new TableColumn<>("Data");
 		timestamp.setCellValueFactory(new PropertyValueFactory<>("timestamp"));
+		timestamp.setMinWidth(MIN_WIDTH);
 		
 		TableView<Recensione> tabrecensioni = new TableView<Recensione>();
 		tabrecensioni.setItems(listarecensioni);
@@ -117,15 +125,19 @@ public class AdministrationPageController {
 		ObservableList<Storico> listarecensioni = storico.get_storico_modifiche();
 		TableColumn<Storico, Integer> id_utente = new TableColumn<>("ID Utente");
 		id_utente.setCellValueFactory(new PropertyValueFactory<>("id_utente"));
+		id_utente.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Storico, Integer> id_pubblicazione = new TableColumn<>("ID Pubblicazione");
 		id_pubblicazione.setCellValueFactory(new PropertyValueFactory<>("id_pubblicazione"));
+		id_pubblicazione.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Storico, String> descrizione = new TableColumn<>("Descrizione");
 		descrizione.setCellValueFactory(new PropertyValueFactory<>("descrizione"));
+		descrizione.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Storico, Date> data = new TableColumn<>("Data");
 		data.setCellValueFactory(new PropertyValueFactory<>("timestamp"));
+		data.setMinWidth(MIN_WIDTH);
 		
 		TableView<Storico> tabstorico = new TableView<Storico>();
 		tabstorico.setItems(listarecensioni);
@@ -150,21 +162,27 @@ public class AdministrationPageController {
 		ObservableList<Utente> listaUtenti = utenti.get_utenti();
 		TableColumn<Utente, Integer> id_utente = new TableColumn<>("ID Utente");
 		id_utente.setCellValueFactory(new PropertyValueFactory<>("id"));
+		id_utente.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Utente, String> email = new TableColumn<>("Email");
 		email.setCellValueFactory(new PropertyValueFactory<>("email"));
+		email.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Utente, String> nome = new TableColumn<>("Nome");
 		nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		nome.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Utente, String> cognome = new TableColumn<>("Cognome");
 		cognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
+		cognome.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Utente, Date> data = new TableColumn<>("Data");
 		data.setCellValueFactory(new PropertyValueFactory<>("data_di_nascita"));
+		data.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Utente, String> tipo = new TableColumn<>("Tipo di utenza");
 		tipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+		tipo.setMinWidth(MIN_WIDTH);
 		
 		TableView<Utente> tabUtenti = new TableView<Utente>();
 		tabUtenti.setItems(listaUtenti);
@@ -206,21 +224,27 @@ public class AdministrationPageController {
 		ObservableList<Utente> listaUtenti = utenti.get_utenti();
 		TableColumn<Utente, Integer> id_utente = new TableColumn<>("ID Utente");
 		id_utente.setCellValueFactory(new PropertyValueFactory<>("id"));
+		id_utente.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Utente, String> email = new TableColumn<>("Email");
 		email.setCellValueFactory(new PropertyValueFactory<>("email"));
+		email.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Utente, String> nome = new TableColumn<>("Nome");
 		nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		nome.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Utente, String> cognome = new TableColumn<>("Cognome");
 		cognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
+		cognome.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Utente, Date> data = new TableColumn<>("Data");
 		data.setCellValueFactory(new PropertyValueFactory<>("data_di_nascita"));
+		data.setMinWidth(MIN_WIDTH);
 		
 		TableColumn<Utente, String> livello = new TableColumn<>("Livello di autorità");
 		livello.setCellValueFactory(new PropertyValueFactory<>("livello"));
+		livello.setMinWidth(MIN_WIDTH);
 		
 		TableView<Utente> tabUtenti = new TableView<Utente>();
 		tabUtenti.setItems(listaUtenti);

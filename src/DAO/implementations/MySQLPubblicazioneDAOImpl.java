@@ -19,12 +19,12 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String cerca = "CALL cerca_pubblicazione(?)";
 	private static String catalogo_ristampa="CALL catalogo_ristampa";
 	private static String catalogo_stessi_autori="CALL catalogo_stessi_autori(?)";
-	private static String inserimento_like="CALL inserimento_like(?,?,?)"; // forse va nel utenteDAOImpl
+	private static String inserimento_like="CALL inserimento_like(?,?,?)";
 	private static String estrazione_modifiche_pubblicazione = "CALL estrazione_modifiche_pubblicazione(?)";
 	private static String like_utente_pubblicazione = "SELECT * FROM likes WHERE ID_utente = ? AND ID_pubblicazione = ?";
 	private static String likes_totali="CALL likes_totali(?)";
 	private static String elenco_download="CALL elenco_download";
-	private static String storico_modifiche="SELECT * FROM storico WHERE descrizione = 'modifica' ";
+	private static String storico_modifiche="SELECT * FROM storico WHERE descrizione <> 'inserimento' ";
 	private static String inserimento_pubblicazione = "CALL inserimento_pubblicazione(?,?,?,?,?,?,?,?,?,?)";
 	private static String inserimento_capitolo = "INSERT INTO capitolo (ID_pubblicazione,numero,titolo) VALUES (?,?,?)";
 	private static String inserimento_sorgente = "CALL inserimento_sorgente (?,?,?,?,?)";

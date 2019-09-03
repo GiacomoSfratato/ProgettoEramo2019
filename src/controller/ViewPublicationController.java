@@ -183,6 +183,10 @@ public class ViewPublicationController {
 		
 		@FXML
 		private void handleInserisciRecensioneButton(ActionEvent event) throws Exception{
+			//Check che il campo non sia vuoto
+			if(areaRecensione.getText().isBlank()) {
+				areaRecensione.setPromptText("Inserisci una recensione");
+			} else {
 			Recensione recensione = new Recensione(areaRecensione.getText());
 			daoRecensione.set_inserimento_recensione(pubbl, recensione);
 			inserisciRecensione.setDisable(true);
@@ -190,72 +194,127 @@ public class ViewPublicationController {
 			areaRecensione.setPromptText("Recensione inserita");
 			areaRecensione.setDisable(true);
 		}
-		
+	}	
 		@FXML
 		private void handleAggiungiCapitoloButton(ActionEvent event) throws Exception{
-		  Capitolo capitolo = new Capitolo(Integer.parseInt(nrcapitolo.getText()), titolocapitolo.getText());
-			if(dao.inserimento_capitolo(capitolo, pubbl)) {
-			  nrcapitolo.clear();
-			  titolocapitolo.clear();
-			  titolocapitolo.setPromptText("Success!");
-			} else {
-				nrcapitolo.clear();
-				nrcapitolo.setPromptText("Numero già presente");
-			}
+			//Check che i campi non siano vuoti
+			if(nrcapitolo.getText().isBlank() || titolocapitolo.getText().isBlank()) {
+			  if(nrcapitolo.getText().isBlank()) {
+				  nrcapitolo.setPromptText("Obbligatorio");
+			  }
+			  
+			  if(titolocapitolo.getText().isBlank()){
+				  titolocapitolo.setPromptText("Obbligatorio");
+			  }
+		  } else {
+				Capitolo capitolo = new Capitolo(Integer.parseInt(nrcapitolo.getText()), titolocapitolo.getText());
+				if(dao.inserimento_capitolo(capitolo, pubbl)) {
+				  nrcapitolo.clear();
+				  titolocapitolo.clear();
+				  titolocapitolo.setPromptText("Success!");
+				} else {
+					nrcapitolo.clear();
+					nrcapitolo.setPromptText("Numero già presente");
+				}
 			dao.modifica_pubblicazione_storico(pubbl, modifica_parametro);
-		}
-		
+		  }
+		}	
 		@FXML
 		private void handleAggiungiSorgenteButton(ActionEvent event) throws Exception{
-			Sorgente sorgente = new Sorgente(URI.getText(), tiposorgente.getText(), formatosorgente.getText(), descrizionesorgente.getText());
-			if(dao.inserimento_sorgente(sorgente, pubbl)) {
-				URI.clear();
-				URI.setPromptText("Success!");
-				tiposorgente.clear();
-				formatosorgente.clear();
-				descrizionesorgente.clear();
+			//Check che i campi non siano vuoti
+			if(URI.getText().isBlank() || tiposorgente.getText().isBlank() || formatosorgente.getText().isBlank() || descrizionesorgente.getText().isBlank()) {
+				if(URI.getText().isBlank()) {
+					URI.setPromptText("Obbligatorio");
+				}
+				
+				if(tiposorgente.getText().isBlank()) {
+					tiposorgente.setPromptText("Obbligatorio");
+				}
+				
+				if(formatosorgente.getText().isBlank()) {
+					formatosorgente.setPromptText("Obbligatorio");
+				}
+				
+				if(descrizionesorgente.getText().isBlank()) {
+					descrizionesorgente.setPromptText("Obbligatorio");
+				}
 			} else {
-				//errore
+			Sorgente sorgente = new Sorgente(URI.getText(), tiposorgente.getText(), formatosorgente.getText(), descrizionesorgente.getText());
+				if(dao.inserimento_sorgente(sorgente, pubbl)) {
+					URI.clear();
+					URI.setPromptText("Success!");
+					tiposorgente.clear();
+					formatosorgente.clear();
+					descrizionesorgente.clear();
+				} else {
+					//errore
+				}
+				dao.modifica_pubblicazione_storico(pubbl, modifica_parametro);
 			}
-			dao.modifica_pubblicazione_storico(pubbl, modifica_parametro);
 		}
 		
 		@FXML
 		private void handleAggiungiParolaChiaveButton(ActionEvent event) throws Exception{
-			Parola_chiave parola = new Parola_chiave(parolachiave.getText());
-			if(dao.inserimento_parola_chiave(parola, pubbl)) {
-				parolachiave.clear();
-				parolachiave.setPromptText("Success!");
+			//Check che il campo non sia vuoto
+			if(parolachiave.getText().isBlank()) {
+				parolachiave.setPromptText("Obbligatorio");
 			} else {
-				//errore
+				Parola_chiave parola = new Parola_chiave(parolachiave.getText());
+				if(dao.inserimento_parola_chiave(parola, pubbl)) {
+					parolachiave.clear();
+					parolachiave.setPromptText("Success!");
+				} else {
+					//errore
+				}
+				dao.modifica_pubblicazione_storico(pubbl, modifica_parametro);
 			}
-			dao.modifica_pubblicazione_storico(pubbl, modifica_parametro);
 		}
 		
 		@FXML
 		private void handleAggiungiRistampa (ActionEvent event) throws Exception{
-			Ristampa ristampa = new Ristampa(dataristampa.getValue().toString(), Integer.parseInt(quantitaristampa.getText()));
-			if(dao.inserimento_ristampa(ristampa, pubbl)){
-				dataristampa.setValue(null);
-				dataristampa.setPromptText("Success!");
-				quantitaristampa.clear();
+			//Check che i campi non siano vuoti
+			if(dataristampa.getValue() == null || quantitaristampa.getText().isBlank()) {
+				if(dataristampa.getValue() == null) {
+					dataristampa.setPromptText("Obbligatorio");
+				}
+				
+				if(quantitaristampa.getText().isBlank()) {
+					quantitaristampa.setPromptText("Obbligatorio");
+				}
 			} else {
-				//errore
-			}
+				Ristampa ristampa = new Ristampa(dataristampa.getValue().toString(), Integer.parseInt(quantitaristampa.getText()));
+				if(dao.inserimento_ristampa(ristampa, pubbl)){
+					dataristampa.setValue(null);
+					dataristampa.setPromptText("Success!");
+					quantitaristampa.clear();
+				} else {
+					//errore
+				}
 			dao.modifica_pubblicazione_storico(pubbl, modifica_parametro);
 		}
-		
+	}	
 		@FXML
 		private void handleAggiungiAutore (ActionEvent event) throws Exception{
-			Autore autore = new Autore(nomeautore.getText(), cognomeautore.getText());
-			if(dao.inserimento_autore(autore, pubbl)) {
-				nomeautore.clear();
-				cognomeautore.clear();
-				nomeautore.setPromptText("Success!");
+			//Check che i campi non siano vuoti
+			if(nomeautore.getText().isBlank()|| cognomeautore.getText().isBlank()) {
+				if(nomeautore.getText().isBlank()) {
+					nomeautore.setPromptText("Obbligatorio");
+				}
+				
+				if(cognomeautore.getText().isBlank()) {
+					cognomeautore.setPromptText("Obbligatorio");
+				}
 			} else {
-				//errore
+			
+				Autore autore = new Autore(nomeautore.getText(), cognomeautore.getText());
+				if(dao.inserimento_autore(autore, pubbl)) {
+					nomeautore.clear();
+					cognomeautore.clear();
+					nomeautore.setPromptText("Success!");
+				} else {
+					//errore
+				}
+				dao.modifica_pubblicazione_storico(pubbl, modifica_parametro);
 			}
-			dao.modifica_pubblicazione_storico(pubbl, modifica_parametro);
 		}
-
 }
