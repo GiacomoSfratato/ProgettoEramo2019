@@ -44,7 +44,6 @@ public class Main extends Application{
 	 * @param stage the stage
 	 * @throws Exception the exception
 	 */
-	//metodo per avviare la GUI al momento disattivato
 	@Override
 	public void start(Stage stage) throws Exception {
 	        this.stage = stage; // initialize value of stage.
