@@ -120,7 +120,7 @@
                <children>
                   <DatePicker fx:id="dataristampa" prefHeight="35.0" prefWidth="223.0" promptText="Data della ristampa" stylesheets="@css/datepicker.css" />
                   <TextField fx:id="quantitaristampa" prefHeight="35.0" prefWidth="209.0" promptText="Quantità" stylesheets="@css/textNoLinea.css" />
-                  <Button fx:id="inserisciRistampa" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAggiungiRistampa" prefHeight="34.0" prefWidth="219.0" stylesheets="@css/button.css" text="Aggiungi ristampa" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Button fx:id="inserisciRistampa" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAggiungiRistampaButton" prefHeight="34.0" prefWidth="219.0" stylesheets="@css/button.css" text="Aggiungi ristampa" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -131,7 +131,7 @@
                <children>
                   <TextField fx:id="nomeautore" prefHeight="35.0" prefWidth="141.0" promptText="Nome" stylesheets="@css/textNoLinea.css" />
                   <TextField fx:id="cognomeautore" prefHeight="35.0" prefWidth="158.0" promptText="Cognome" stylesheets="@css/textNoLinea.css" />
-                  <Button fx:id="inserisciAutore" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAggiungiRistampa" prefHeight="34.0" prefWidth="138.0" stylesheets="@css/button.css" text="Aggiungi autore" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Button fx:id="inserisciAutore" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAggiungiAutoreButton" prefHeight="34.0" prefWidth="138.0" stylesheets="@css/button.css" text="Aggiungi autore" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="15.0" />
                      </font>

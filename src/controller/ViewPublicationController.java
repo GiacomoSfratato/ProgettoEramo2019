@@ -70,7 +70,6 @@ public class ViewPublicationController {
 		private final String like_parametro = "like";
 		
 		public void initialize() {
-			System.out.println(pubbl.getId());
 			settaPagina();
 		}
 		
@@ -271,7 +270,7 @@ public class ViewPublicationController {
 		}
 		
 		@FXML
-		private void handleAggiungiRistampa (ActionEvent event) throws Exception{
+		private void handleAggiungiRistampaButton (ActionEvent event) throws Exception{
 			//Check che i campi non siano vuoti
 			if(dataristampa.getValue() == null || quantitaristampa.getText().isBlank()) {
 				if(dataristampa.getValue() == null) {
@@ -294,7 +293,7 @@ public class ViewPublicationController {
 		}
 	}	
 		@FXML
-		private void handleAggiungiAutore (ActionEvent event) throws Exception{
+		private void handleAggiungiAutoreButton (ActionEvent event) throws Exception{
 			//Check che i campi non siano vuoti
 			if(nomeautore.getText().isBlank()|| cognomeautore.getText().isBlank()) {
 				if(nomeautore.getText().isBlank()) {
