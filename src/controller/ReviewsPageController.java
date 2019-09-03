@@ -49,7 +49,10 @@ public class ReviewsPageController {
 	private void settalista() {
 		MySQLRecensioneDAOImpl dao = new MySQLRecensioneDAOImpl();
 		ObservableList<Recensione> list = dao.get_elenco_recensioni(pubbl);
-		
+		if(list.size() == 0) {
+			pane.setOpacity(0);
+			titolopagina.setText("Non ci sono recensioni per quest'opera");
+		} else {
 		for(Recensione r : list) {
 			Image icon = new Image(getClass().getResourceAsStream("/view/immagini/review.png"));
             ImageView immagine = new ImageView(icon);
@@ -72,6 +75,6 @@ public class ReviewsPageController {
         }
 		}
 	
-
+	}
     
 }

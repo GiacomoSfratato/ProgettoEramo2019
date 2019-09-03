@@ -26,6 +26,13 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String elenco_download="CALL elenco_download";
 	private static String storico_modifiche="SELECT * FROM storico WHERE descrizione = 'modifica' ";
 	private static String inserimento_pubblicazione = "CALL inserimento_pubblicazione(?,?,?,?,?,?,?,?,?,?)";
+	private static String inserimento_capitolo = "INSERT INTO capitolo (ID_pubblicazione,numero,titolo) VALUES (?,?,?)";
+	private static String inserimento_sorgente = "CALL inserimento_sorgente (?,?,?,?,?)";
+	private static String inserimento_ristampa = "CALL inserimento_ristampa (?,?,?)";
+	private static String inserimento_parola_chiave = "CALL inserimento_parola_chiave (?,?)";
+	private static String inserimento_autore = "CALL inserimento_autore (?,?,?)";
+	private static String get_sorgenti_pubbl = "SELECT * FROM sorgente WHERE ID_pubblicazione = ?";
+	private static String get_capitoli_pubbl = "SELECT * FROM capitolo WHERE ID_pubblicazione = ?";
 	
 	public ObservableList<Storico> get_storico_modifiche(){
 		ObservableList<Storico> storico = FXCollections.observableArrayList();
@@ -547,6 +554,163 @@ return pubblicazioni;}
              }
 	}
 
+	public boolean inserimento_capitolo (Capitolo capitolo, Pubblicazione pubblicazione) {
+		boolean tutto_ok = true;
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			conn= MySQLDAOFactory.createConnection();          
+			preparedStatement = conn.prepareStatement(inserimento_capitolo);
+			preparedStatement.setInt(1,pubblicazione.getId());
+			preparedStatement.setInt(2,capitolo.getNumero());
+			preparedStatement.setString(3,capitolo.getTitolo());
+			preparedStatement.execute();
+		}
+		 catch (SQLException e) {
+			 tutto_ok = false;
+         	System.out.println(e.getMessage()); 
+         } finally {
+             
+             try {
+                 preparedStatement.close();
+             } catch (Exception sse) {
+              	System.out.println("preparedStatement.close();"); 
+             }
+             try {
+                 conn.close();
+             } catch (Exception cse) {
+             	System.out.println("conn.close();");
+             } 
+             }
+		return tutto_ok;
+	}
+	
+	public boolean inserimento_sorgente (Sorgente sorgente, Pubblicazione pubblicazione) {
+		boolean tutto_ok = true;
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			conn= MySQLDAOFactory.createConnection();          
+			preparedStatement = conn.prepareStatement(inserimento_sorgente);
+			preparedStatement.setInt(1,pubblicazione.getId());
+			preparedStatement.setString(2,sorgente.getURI());
+			preparedStatement.setString(2,sorgente.getTipo());
+			preparedStatement.setString(2,sorgente.getFormato());
+			preparedStatement.setString(2,sorgente.getDescrizione());;
+			preparedStatement.execute();
+		}
+		 catch (SQLException e) {
+			 tutto_ok = false;
+         	System.out.println(e.getMessage()); 
+         } finally {
+             
+             try {
+                 preparedStatement.close();
+             } catch (Exception sse) {
+              	System.out.println("preparedStatement.close();"); 
+             }
+             try {
+                 conn.close();
+             } catch (Exception cse) {
+             	System.out.println("conn.close();");
+             } 
+             }
+		return tutto_ok;
+	}
+
+	
+	public boolean inserimento_ristampa (Ristampa ristampa, Pubblicazione pubblicazione) {
+		boolean tutto_ok = true;
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			conn= MySQLDAOFactory.createConnection();          
+			preparedStatement = conn.prepareStatement(inserimento_ristampa);
+			preparedStatement.setInt(1,pubblicazione.getId());
+			preparedStatement.setString(2,ristampa.getData());
+			preparedStatement.setInt(3,ristampa.getNumero());
+			preparedStatement.execute();
+		}
+		 catch (SQLException e) {
+			 tutto_ok = false;
+         	System.out.println(e.getMessage()); 
+         } finally {
+             
+             try {
+                 preparedStatement.close();
+             } catch (Exception sse) {
+              	System.out.println("preparedStatement.close();"); 
+             }
+             try {
+                 conn.close();
+             } catch (Exception cse) {
+             	System.out.println("conn.close();");
+             } 
+             }
+		return tutto_ok;
+	}
+
+	public boolean inserimento_parola_chiave (Parola_chiave parola, Pubblicazione pubblicazione) {
+		boolean tutto_ok = true;
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			conn= MySQLDAOFactory.createConnection();          
+			preparedStatement = conn.prepareStatement(inserimento_parola_chiave);
+			preparedStatement.setInt(1,pubblicazione.getId());
+			preparedStatement.setString(2,parola.getParola());
+			preparedStatement.execute();
+		}
+		 catch (SQLException e) {
+			 tutto_ok = false;
+         	System.out.println(e.getMessage()); 
+         } finally {
+             
+             try {
+                 preparedStatement.close();
+             } catch (Exception sse) {
+              	System.out.println("preparedStatement.close();"); 
+             }
+             try {
+                 conn.close();
+             } catch (Exception cse) {
+             	System.out.println("conn.close();");
+             } 
+             }
+		return tutto_ok;
+	}
+	
+	public boolean inserimento_autore (Autore autore, Pubblicazione pubblicazione) {
+		boolean tutto_ok = true;
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			conn= MySQLDAOFactory.createConnection();          
+			preparedStatement = conn.prepareStatement(inserimento_autore);
+			preparedStatement.setInt(1,pubblicazione.getId());
+			preparedStatement.setString(2,autore.getNome());
+			preparedStatement.setString(3,autore.getCognome());
+			preparedStatement.execute();
+		}
+		 catch (SQLException e) {
+			 tutto_ok = false;
+         	System.out.println(e.getMessage()); 
+         } finally {
+             
+             try {
+                 preparedStatement.close();
+             } catch (Exception sse) {
+              	System.out.println("preparedStatement.close();"); 
+             }
+             try {
+                 conn.close();
+             } catch (Exception cse) {
+             	System.out.println("conn.close();");
+             } 
+             }
+		return tutto_ok;
+	}
+	
 	public boolean check_like(Pubblicazione pubblicazione) {
 		boolean esiste = false;
 		PreparedStatement ps = null;
@@ -578,6 +742,70 @@ return pubblicazioni;}
 	     }  }
 		return esiste;
 	}
-}
+	
+	public ObservableList<Sorgente> get_sorgenti_pubbl(Pubblicazione pubblicazione){
+		ObservableList<Sorgente> sorgenti = FXCollections.observableArrayList();
+		PreparedStatement ps = null;
+		ResultSet result = null;
+		Connection conn = null;
+		try {
+			conn = MySQLDAOFactory.createConnection();
+			ps = conn.prepareStatement(get_sorgenti_pubbl);
+			ps.setInt(1,pubblicazione.getId());
+			ps.execute();
+			result = ps.getResultSet();
+			  while (result.next()) {            	
+				  sorgenti.add(new Sorgente(result.getString(3), result.getString(4), result.getString(5), result.getString(6)));
+	        }  
+		}
+		catch(Exception exc) {
+		System.out.print("Qualcosa é andato storto!"); }
+		finally { 
+		try {
+	         ps.close();
+	     } catch (Exception sse) {
+	      	System.out.println("preparedStatement.close();"); 
+	     }
+	     try {
+	         conn.close();
+	     } catch (Exception cse) {
+	     	System.out.println("conn.close();");
+	     }  }
+		return sorgenti;
+	}
+
+	public ObservableList<Capitolo> get_capitoli_pubbl(Pubblicazione pubbl) {
+		ObservableList<Capitolo> capitoli = FXCollections.observableArrayList();
+		PreparedStatement ps = null;
+		ResultSet result = null;
+		Connection conn = null;
+		try {
+			conn = MySQLDAOFactory.createConnection();
+			ps = conn.prepareStatement(get_capitoli_pubbl);
+			ps.setInt(1,pubbl.getId());
+			ps.execute();
+			result = ps.getResultSet();
+			  while (result.next()) {            	
+				  capitoli.add(new Capitolo(result.getInt(3), result.getString(4)));
+	        }  
+		}
+		catch(Exception exc) {
+		System.out.print("Qualcosa é andato storto!"); }
+		finally { 
+		try {
+	         ps.close();
+	     } catch (Exception sse) {
+	      	System.out.println("preparedStatement.close();"); 
+	     }
+	     try {
+	         conn.close();
+	     } catch (Exception cse) {
+	     	System.out.println("conn.close();");
+	     }  }
+		return capitoli;
+	}
+	}
+	
+
 
 

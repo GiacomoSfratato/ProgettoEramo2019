@@ -2,19 +2,19 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="486.0" style="-fx-background-color: #1a1a1a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewPublicationController">
+<AnchorPane fx:id="anchorpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="486.0" style="-fx-background-color: #1a1a1a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewPublicationController">
    <children>
-      <VBox layoutX="23.0" layoutY="210.0" prefHeight="395.0" prefWidth="441.0" spacing="3.0">
+      <VBox layoutX="23.0" layoutY="54.0" prefHeight="577.0" prefWidth="441.0" spacing="2.0">
          <children>
             <Text fx:id="autori" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Autori:" wrappingWidth="197.0">
                <font>
@@ -56,10 +56,10 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <HBox alignment="CENTER" prefHeight="87.0" prefWidth="441.0" spacing="10.0" style="-fx-border-color: white; -fx-border-width: 1 0 1 0;">
+            <HBox alignment="CENTER" prefHeight="76.0" prefWidth="441.0" spacing="10.0" style="-fx-border-color: white; -fx-border-width: 1 0 0 0;">
                <children>
-                  <TextArea fx:id="areaRecensione" prefHeight="3.0" prefWidth="330.0" promptText="Dicci la tua opinione sull'opera! (max 400 caratteri)" stylesheets="@css/textAreaNoLinea.css" wrapText="true" />
-                  <Button fx:id="inserisciRecensione" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleInserisciRecensioneButton" prefHeight="74.0" prefWidth="102.0" stylesheets="@css/button.css" text="Inserisci&#10;recensione" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <TextArea fx:id="areaRecensione" prefHeight="68.0" prefWidth="330.0" promptText="Dicci la tua opinione sull'opera! (max 400 caratteri)" stylesheets="@css/textAreaNoLinea.css" wrapText="true" />
+                  <Button fx:id="inserisciRecensione" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleInserisciRecensioneButton" prefHeight="68.0" prefWidth="102.0" stylesheets="@css/button.css" text="Inserisci&#10;recensione" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -69,79 +69,117 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="43.0" prefWidth="441.0" spacing="10.0" style="-fx-border-color: white; -fx-border-width: 1 0 1 0;">
+            <HBox alignment="CENTER" prefHeight="43.0" prefWidth="441.0" spacing="10.0" style="-fx-border-color: white; -fx-border-width: 1 0 0 0;">
                <children>
-                  <TextField prefHeight="55.0" prefWidth="74.0" promptText="N°" stylesheets="@css/textNoLinea.css" />
-                  <TextField prefHeight="57.0" prefWidth="209.0" promptText="Titolo" stylesheets="@css/textNoLinea.css" />
-                  <Button fx:id="inserisciRecensione1" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleInserisciRecensioneButton" prefHeight="0.0" prefWidth="171.0" stylesheets="@css/button.css" text="Aggiungi capitolo" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <TextField fx:id="nrcapitolo" prefHeight="35.0" prefWidth="142.0" promptText="N°" stylesheets="@css/textNoLinea.css" />
+                  <TextField fx:id="titolocapitolo" prefHeight="35.0" prefWidth="142.0" promptText="Titolo" stylesheets="@css/textNoLinea.css" />
+                  <Button fx:id="aggiungiCapitolo" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAggiungiCapitoloButton" prefHeight="34.0" prefWidth="160.0" stylesheets="@css/button.css" text="Aggiungi capitolo" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
                </children>
                <VBox.margin>
-                  <Insets top="5.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="66.0" prefWidth="441.0" spacing="10.0" style="-fx-border-color: white; -fx-border-width: 1 0 1 0;">
+            <HBox alignment="CENTER" prefHeight="66.0" prefWidth="441.0" spacing="10.0" style="-fx-border-color: white; -fx-border-width: 1 0 0 0;">
                <children>
                   <VBox alignment="CENTER" prefHeight="52.0" prefWidth="330.0" spacing="5.0">
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
-                              <TextField prefHeight="26.0" prefWidth="292.0" promptText="URL" stylesheets="@css/textNoLinea.css" />
-                              <TextField prefHeight="25.0" prefWidth="233.0" promptText="Tipo (immagine,...)" stylesheets="@css/textNoLinea.css" />
+                              <TextField fx:id="URI" prefHeight="26.0" prefWidth="292.0" promptText="URL" stylesheets="@css/textNoLinea.css" />
+                              <TextField fx:id="tiposorgente" prefHeight="25.0" prefWidth="233.0" promptText="Tipo (immagine,...)" stylesheets="@css/textNoLinea.css" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
-                              <TextField prefHeight="26.0" prefWidth="260.0" promptText="Formato (”image/jpeg”,...)" stylesheets="@css/textNoLinea.css" />
-                              <TextField prefHeight="25.0" prefWidth="251.0" promptText="Descrizione (”copertina”,...)" stylesheets="@css/textNoLinea.css" />
+                              <TextField fx:id="formatosorgente" prefHeight="26.0" prefWidth="260.0" promptText="Formato (”image/jpeg”,...)" stylesheets="@css/textNoLinea.css" />
+                              <TextField fx:id="descrizionesorgente" prefHeight="25.0" prefWidth="251.0" promptText="Descrizione (”copertina”,...)" stylesheets="@css/textNoLinea.css" />
                            </children>
                         </HBox>
                      </children>
                   </VBox>
-                  <Button fx:id="inserisciRecensione11" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleInserisciRecensioneButton" prefHeight="55.0" prefWidth="102.0" stylesheets="@css/button.css" text="Aggiungi sorgente" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Button fx:id="aggiungiSorgente" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAggiungiSorgenteButton" prefHeight="59.0" prefWidth="102.0" stylesheets="@css/button.css" text="Aggiungi sorgente" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
                </children>
                <VBox.margin>
-                  <Insets top="5.0" />
+                  <Insets />
                </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="43.0" prefWidth="441.0" spacing="10.0" style="-fx-border-color: white; -fx-border-width: 1 0 0 0;">
+               <children>
+                  <TextField fx:id="parolachiave" prefHeight="35.0" prefWidth="284.0" promptText="Parola chiave" stylesheets="@css/textNoLinea.css" />
+                  <Button fx:id="inserisciParolaChiave" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAggiungiParolaChiaveButton" prefHeight="34.0" prefWidth="205.0" stylesheets="@css/button.css" text="Aggiungi parola chiave" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="43.0" prefWidth="441.0" spacing="10.0" style="-fx-border-color: white; -fx-border-width: 1 0 0 0;">
+               <children>
+                  <DatePicker fx:id="dataristampa" prefHeight="35.0" prefWidth="223.0" promptText="Data della ristampa" stylesheets="@css/datepicker.css" />
+                  <TextField fx:id="quantitaristampa" prefHeight="35.0" prefWidth="209.0" promptText="Quantità" stylesheets="@css/textNoLinea.css" />
+                  <Button fx:id="inserisciRistampa" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAggiungiRistampa" prefHeight="34.0" prefWidth="219.0" stylesheets="@css/button.css" text="Aggiungi ristampa" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="43.0" prefWidth="441.0" spacing="10.0" style="-fx-border-color: white; -fx-border-width: 1 0 0 0;">
+               <children>
+                  <TextField fx:id="nomeautore" prefHeight="35.0" prefWidth="141.0" promptText="Nome" stylesheets="@css/textNoLinea.css" />
+                  <TextField fx:id="cognomeautore" prefHeight="35.0" prefWidth="158.0" promptText="Cognome" stylesheets="@css/textNoLinea.css" />
+                  <Button fx:id="inserisciAutore" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAggiungiRistampa" prefHeight="34.0" prefWidth="138.0" stylesheets="@css/button.css" text="Aggiungi autore" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="474.0" spacing="5.0" style="-fx-border-color: white; -fx-border-width: 1 0 0 0;">
+               <children>
+                  <Button fx:id="like" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleLikeButton" prefHeight="31.0" prefWidth="84.0" stylesheets="@css/button.css" text="Like" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="stessoAutore" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleStessoAutoreButton" prefHeight="31.0" prefWidth="81.0" stylesheets="@css/button.css" text="Autore" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="visualizzaRecensioni" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleVisualizzaRecensioniButton" prefHeight="31.0" prefWidth="106.5" stylesheets="@css/button.css" text="Recensioni" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="visualizzaSorgenti" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleVisualizzaSorgentiButton" prefHeight="31.0" prefWidth="106.5" stylesheets="@css/button.css" text="Sorgenti" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="visualizzaCapitoli" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleVisualizzaCapitoliButton" prefHeight="31.0" prefWidth="106.5" stylesheets="@css/button.css" text="Capitoli" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
             </HBox>
          </children>
       </VBox>
-      <ImageView fx:id="immagine" fitHeight="121.0" fitWidth="122.0" layoutX="182.0" layoutY="77.0" preserveRatio="true" />
-      <Separator layoutX="8.0" layoutY="64.0" prefHeight="4.0" prefWidth="468.0" AnchorPane.rightAnchor="10.0" />
-      <Button fx:id="chiudi" layoutX="413.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleChiudiButton" stylesheets="@css/button.css" text="Chiudi" textFill="WHITE" />
-      <Text fx:id="titolo" fill="WHITE" layoutX="16.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Il tempo delle mele" wrappingWidth="384.578125">
+      <Separator layoutX="9.0" layoutY="43.0" prefHeight="4.0" prefWidth="468.0" AnchorPane.rightAnchor="9.0" />
+      <Button fx:id="chiudi" layoutX="414.0" layoutY="7.0" mnemonicParsing="false" onAction="#handleChiudiButton" stylesheets="@css/button.css" text="Chiudi" textFill="WHITE" />
+      <Text fx:id="titolo" fill="WHITE" layoutX="14.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Il tempo delle mele" wrappingWidth="384.578125">
          <font>
             <Font name="System Bold Italic" size="25.0" />
          </font>
       </Text>
-      <HBox alignment="CENTER" layoutY="603.0" prefHeight="56.0" prefWidth="486.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="603.0">
-         <children>
-            <Button fx:id="like" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleLikeButton" prefHeight="31.0" prefWidth="120.0" stylesheets="@css/button.css" text="Like" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="stessoAutore" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleStessoAutoreButton" prefHeight="31.0" prefWidth="122.0" stylesheets="@css/button.css" text="Autore" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="visualizzaRecensioni" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleVisualizzaRecensioniButton" prefHeight="31.0" prefWidth="181.0" stylesheets="@css/button.css" text="Visualizza recensioni" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-         </children>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-      </HBox>
    </children>
 </AnchorPane>

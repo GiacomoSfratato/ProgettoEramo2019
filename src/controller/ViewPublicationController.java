@@ -16,10 +16,8 @@ import javafx.scene.text.Text;
 
 public class ViewPublicationController {
 		@FXML private AnchorPane anchorpane;
-		@FXML private ImageView immagine;
 		@FXML private Text titolo;
 		@FXML private Text autori;
-		private String autoriConc = "";
 		@FXML private Text editori;
 		@FXML private Text anno;
 		@FXML private Text isbn;
@@ -29,11 +27,30 @@ public class ViewPublicationController {
 		@FXML private Text capitoli;
 		@FXML private Text likes;
 		@FXML private TextArea areaRecensione;
-		@FXML Button  like;
-		@FXML Button chiudi;
-		@FXML Button stessoAutore;
-		@FXML Button visualizzaRecensioni;
-		@FXML Button inserisciRecensione;
+		@FXML private TextField nrcapitolo;
+		@FXML private TextField titolocapitolo;
+		@FXML private TextField URI;
+		@FXML private TextField tiposorgente;
+		@FXML private TextField formatosorgente;
+		@FXML private TextField descrizionesorgente;
+		@FXML private TextField parolachiave;
+		@FXML private TextField quantitaristampa;
+		@FXML private TextField nomeautore;
+		@FXML private TextField cognomeautore;
+		@FXML DatePicker dataristampa;
+		@FXML private Button like;
+		@FXML private Button chiudi;
+		@FXML private Button stessoAutore;
+		@FXML private Button visualizzaRecensioni;
+		@FXML private Button visualizzaSorgenti;
+		@FXML private Button inserisciRecensione;
+		@FXML private Button aggiungiCapitolo;
+		@FXML private Button aggiungiSorgente;
+		@FXML private Button inserisciParolaChiave;
+		@FXML private Button inserisciRistampa;
+		@FXML private Button inserisciAutore;
+		@FXML private Button visualizzaCapitoli;
+		private String autoriConc = "";
 		private static int idOpera;
 		final int MAX_CHARS = 400 ;		
 		
@@ -48,11 +65,10 @@ public class ViewPublicationController {
 		private final String isbnS = "ISBN: " +pubbl.getMetadati().getIsbn();
 		private final String inserita_daS = "Inserita da: " +pubbl.getUtente();
 		private final String descrizioneS = "Descrizione:\n" +pubbl.getDescrizione();
-		private final String recensioneS = "Inserisci una recensione: ";
 		private final String likesS = "Likes totali: " + dao.get_likes_totali(pubbl).getLikes_totali();
-		private final String IMMAGINE_PUBBLICAZIONE = "/view/immagini/libro-cerchio.png";
 		
-		public void initialize() throws SQLException{
+		public void initialize() {
+			System.out.println(pubbl.getId());
 			settaPagina();
 		}
 		
@@ -61,8 +77,7 @@ public class ViewPublicationController {
 		}
 		
 		private void settaPagina() {
-			
-			
+
 			//setta un limite di caratteri per la recensione
 			areaRecensione.setTextFormatter(new TextFormatter<String>(change -> 
         	change.getControlNewText().length() <= MAX_CHARS ? change : null));
@@ -96,7 +111,6 @@ public class ViewPublicationController {
 			isbn.setText(isbnS);
 			inseritada.setText(inserita_daS);
 			descrizione.setText(descrizioneS);
-			recensione.setText(recensioneS);
 			likes.setText(likesS);
 			
 			Tooltip tipautore = new Tooltip("Visualizza le opere di " + autoriConc);
@@ -104,9 +118,7 @@ public class ViewPublicationController {
 			
 			Tooltip tiplike = new Tooltip("Lascia un like!");
 			like.setTooltip(tiplike);
-			
-			Image icon = new Image(getClass().getResourceAsStream(IMMAGINE_PUBBLICAZIONE));
-			immagine.setImage(icon);
+		
 			
 		}
 		@FXML
@@ -150,4 +162,87 @@ public class ViewPublicationController {
             BorderPane borderpane = (BorderPane) scene.lookup("#borderpane");
             borderpane.setCenter(root);
 		}
+		
+		@FXML
+		private void handleVisualizzaSorgentiButton(ActionEvent event) throws Exception{
+            SourcesPageController.setId(pubbl.getId());
+			Parent root = FXMLLoader.load(getClass().getResource("/view/SourcesPage.fxml"));
+            Scene scene = anchorpane.getScene();
+            BorderPane borderpane = (BorderPane) scene.lookup("#borderpane");
+            borderpane.setCenter(root);
+		}
+		
+		@FXML
+		private void handleVisualizzaCapitoliButton(ActionEvent event) throws Exception{
+			ChaptersPageController.setId(pubbl.getId());
+			Parent root = FXMLLoader.load(getClass().getResource("/view/ChaptersPage.fxml"));
+            Scene scene = anchorpane.getScene();
+            BorderPane borderpane = (BorderPane) scene.lookup("#borderpane");
+            borderpane.setCenter(root);
+		}
+		
+		@FXML
+		private void handleAggiungiCapitoloButton(ActionEvent event) throws Exception{
+		  Capitolo capitolo = new Capitolo(Integer.parseInt(nrcapitolo.getText()), titolocapitolo.getText());
+			if(dao.inserimento_capitolo(capitolo, pubbl)) {
+			  nrcapitolo.clear();
+			  titolocapitolo.clear();
+			  titolocapitolo.setPromptText("Success!");
+			} else {
+				nrcapitolo.clear();
+				nrcapitolo.setPromptText("Numero già presente");
+			}
+		}
+		
+		@FXML
+		private void handleAggiungiSorgenteButton(ActionEvent event) throws Exception{
+			Sorgente sorgente = new Sorgente(URI.getText(), tiposorgente.getText(), formatosorgente.getText(), descrizionesorgente.getText());
+			if(dao.inserimento_sorgente(sorgente, pubbl)) {
+				URI.clear();
+				URI.setPromptText("Success!");
+				tiposorgente.clear();
+				formatosorgente.clear();
+				descrizionesorgente.clear();
+			} else {
+				//errore
+			}
+		
+		}
+		
+		@FXML
+		private void handleAggiungiParolaChiaveButton(ActionEvent event) throws Exception{
+			Parola_chiave parola = new Parola_chiave(parolachiave.getText());
+			if(dao.inserimento_parola_chiave(parola, pubbl)) {
+				parolachiave.clear();
+				parolachiave.setPromptText("Success!");
+			} else {
+				//errore
+			}
+		}
+		
+		@FXML
+		private void handleAggiungiRistampa (ActionEvent event) throws Exception{
+			Ristampa ristampa = new Ristampa(dataristampa.getValue().toString(), Integer.parseInt(quantitaristampa.getText()));
+			if(dao.inserimento_ristampa(ristampa, pubbl)){
+				dataristampa.setValue(null);
+				dataristampa.setPromptText("Success!");
+				quantitaristampa.clear();
+			} else {
+				//errore
+			}
+		}
+		
+		@FXML
+		private void handleAggiungiAutore (ActionEvent event) throws Exception{
+			Autore autore = new Autore(nomeautore.getText(), cognomeautore.getText());
+			if(dao.inserimento_autore(autore, pubbl)) {
+				nomeautore.clear();
+				cognomeautore.clear();
+				nomeautore.setPromptText("Success!");
+			} else {
+				//errore
+			}
+		}
+
+
 }
