@@ -50,11 +50,8 @@ public class Main extends Application{
 	        ViewPublicationController.setId(6);
 	    Parent root = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
 	    Scene scene = new Scene(root);
-	    //scene.setFill(Color.TRANSPARENT);
 	    stage.initStyle(StageStyle.UNDECORATED);
-	    //stage.initStyle(StageStyle.TRANSPARENT);
 	    stage.setTitle("Biblioteca Online");
-	    //stage.setMaximized(true);
 	    
 	    stage.setScene(scene);
 	    stage.show();
