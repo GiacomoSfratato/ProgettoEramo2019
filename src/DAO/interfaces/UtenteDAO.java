@@ -12,25 +12,33 @@ import model.Utente;
 public interface UtenteDAO {
 	 
 		/**
-		 * Sets the modifica tipo utente.
+		 * Modifica il tipo di un utente.
 		 *
 		 * @param utente the utente
 		 * @param tipo the tipo
 		 * @return true, if successful
 		 */
-		//Modifica del livello di un utente (da attivo a passivo e viceversa)
+		
 		public boolean set_modifica_tipo_utente(Utente utente, String tipo);
+		/**
+		 * Modifica il livello di un utente 
+		 *
+		 * @param utente the utente
+		 * @param livello the livello
+		 * @return true, if successful
+		 */
+		public boolean set_modifica_livello_utente(Utente utente, String livello);
 		
 		/**
-		 * Gets the utenti attivi.
+		 * Estrazione elenco degli utenti più “collaborativi” (cioè quelli che hanno inserito più pubblicazioni)..
 		 *
 		 * @return the utenti attivi
 		 */
-		//Estrazione elenco degli utenti più “collaborativi” (cioè quelli che hanno inserito più pubblicazioni).
+		
 		public ObservableList<Utente> get_utenti_attivi();
 		
 		/**
-		 * Sets the inserimento utente.
+		 * Inserisce un utente.
 		 *
 		 * @param utente the utente
 		 * @return true, if successful
@@ -38,29 +46,33 @@ public interface UtenteDAO {
 		public boolean set_inserimento_utente(Utente utente);
 		
 		/**
-		 * Sets the rimuovere utente.
+		 * Rimuove un utente.
 		 *
 		 * @param utente the utente
 		 * @return true, if successful
 		 */
 		public boolean set_rimuovere_utente(Utente utente);
 		
-	/*
-	 * L'interfaccia DAO per le diverse implementazioni di CustomerDAO. Definisce le operazioni CRUD.
-	 
-		Recupera tutti gli oggetti Customer dal DB. 
-		public List getAllCustomers();
-		
-		Recupera un oggetto Customer esistente a partire dall'id.
-		public Utente getCustomer(int id);
-		
-		Crea un oggetto Customer e restituisce l'id. 
-		public int createCustomer(Utente customer);
-		
-		Aggiorna un oggetto Customer esistente.
-		public boolean updateCustomer(Utente customer);
-		
-		Cancella un oggetto Customer esistente. 
-		public boolean deleteCustomery(Utente customer); */
+		/**
+		 * Controlla che l'utente esista e i dati inseriti siano giusti.
+		 *
+		 * @param email the email
+		 * @param password the password
+		 * @return true, if successful
+		 */
+		public Utente check_utente(String email, String password);
+		/**
+		 * Estrae tutti gli utenti del sistema
+		 *
+		 * @return true, if successful
+		 */
+		public ObservableList<Utente> get_utenti();
+		/**
+		 * Estrae i dati di un utente.
+		 *
+		 * @param idUtente the idUtente
+		 * @return the utente
+		 */
+		public Utente get_dati_utente(int idUtente);
 	}
 

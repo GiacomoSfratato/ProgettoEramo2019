@@ -5,57 +5,62 @@ import java.util.*;
 import javafx.collections.ObservableList;
 import model.*;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Interface RecensioneDAO.
+ * L'interfaccia RecensioneDAO
  */
 public interface RecensioneDAO {
 	
 	/**
-	 * Gets the elenco recensioni.
+	 * Estrazione elenco delle recensioni approvate per una pubblicazione.
 	 *
 	 * @param pubblicazione the pubblicazione
 	 * @return the elenco recensioni
 	 */
-	//Estrazione elenco delle recensioni approvate per una pubblicazione.
+	
 	public ObservableList<Recensione> get_elenco_recensioni(Pubblicazione pubblicazione);
 	
 	/**
-	 * Gets the elenco recensioni attesa.
+	 * Estrazione elenco delle recensioni in attesa di approvazione.
 	 *
 	 * @return the elenco recensioni attesa
 	 */
-	//Estrazione elenco delle recensioni in attesa di approvazione.
+	
 	public ObservableList get_elenco_recensioni_attesa();
 	
 	/**
-	 * Sets the inserimento recensione.
+	 * Inserimento di una recensione relativa a una pubblicazione.
 	 *
 	 * @param pubblicazione the pubblicazione
 	 * @param recensione the recensione
 	 * @return true, if successful
 	 */
-	//Inserimento di una recensione relativa a una pubblicazione.
+	
 	public boolean set_inserimento_recensione(Pubblicazione pubblicazione, Recensione recensione);
 	
 	/**
-	 * Sets the verifica recensione.
+	 * Approvazione o di una recensione (da parte del moderatore).
 	 *
 	 * @param recensione the recensione
 	 * @param giudizio the giudizio
 	 * @return true, if successful
 	 */
-	//Approvazione o di una recensione (da parte del moderatore).
+	
 	public boolean set_verifica_recensione(Recensione recensione, String giudizio);
 	
 	
 	/**
-	 * Sets the rimuovere recensione.
+	 * Rimuovere la recensione
 	 *
-	 * @param recensione the recensione
-	 * @return true, if successful
+	 * @param recensione Recensione
+	 * @return true, se va a buon fine
 	 */
 	public boolean set_rimuovere_recensione(Recensione recensione);
 	
-
+	/**
+	 * Check che l'utente abbia o non abbia inserito già la recensione
+	 *
+	 * @param pubblicazione Pubblicazione
+	 * @return true, se va a buon fine
+	 */
+	public boolean check_recensione(Pubblicazione pubblicazione);
 }

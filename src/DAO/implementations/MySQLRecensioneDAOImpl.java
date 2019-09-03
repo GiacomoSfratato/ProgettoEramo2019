@@ -38,8 +38,8 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
     	/** The recensione utente pubblicazione. */
     	private static String recensione_utente_pubblicazione = "SELECT * FROM recensione WHERE ID_utente = ? AND ID_pubblicazione = ?";
 	    
-	    /**
-    	 * Gets the elenco recensioni.
+    	/**
+    	 * Estrazione elenco delle recensioni approvate per una pubblicazione.
     	 *
     	 * @param pubblicazione the pubblicazione
     	 * @return the elenco recensioni
@@ -84,11 +84,11 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 		
 		}
 		
-		/**
-		 * Gets the elenco recensioni attesa.
-		 *
-		 * @return the elenco recensioni attesa
-		 */
+    	/**
+    	 * Estrazione elenco delle recensioni in attesa di approvazione.
+    	 *
+    	 * @return the elenco recensioni attesa
+    	 */
 		@Override
 		public ObservableList get_elenco_recensioni_attesa() {
 			ObservableList<Recensione> recensioni_attesa = FXCollections.observableArrayList();
@@ -133,7 +133,7 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 		}
 		
 		/**
-		 * Sets the inserimento recensione.
+		 * Inserimento di una recensione relativa a una pubblicazione.
 		 *
 		 * @param pubblicazione the pubblicazione
 		 * @param recensione the recensione
@@ -172,7 +172,7 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 		}
 		
 		/**
-		 * Sets the verifica recensione.
+		 * Approvazione o di una recensione (da parte del moderatore).
 		 *
 		 * @param recensione the recensione
 		 * @param giudizio the giudizio
@@ -212,10 +212,10 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 		}
 		
 		/**
-		 * Sets the rimuovere recensione.
+		 * Rimuovere la recensione
 		 *
-		 * @param recensione the recensione
-		 * @return true, if successful
+		 * @param recensione Recensione
+		 * @return true, se va a buon fine
 		 */
 		@Override
 		public boolean set_rimuovere_recensione(Recensione recensione) {
@@ -224,10 +224,10 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 		}
 		
 		/**
-		 * Check recensione.
+		 * Check che l'utente abbia o non abbia inserito già la recensione
 		 *
-		 * @param pubblicazione the pubblicazione
-		 * @return true, if successful
+		 * @param pubblicazione Pubblicazione
+		 * @return true, se va a buon fine
 		 */
 		public boolean check_recensione(Pubblicazione pubblicazione) {
 			boolean esiste = false;

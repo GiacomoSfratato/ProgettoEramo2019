@@ -52,12 +52,12 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
     private static final String utente = "SELECT * FROM utente WHERE ID = ?";
 	
     /**
-     * Sets the modifica tipo utente.
-     *
-     * @param utente the utente
-     * @param tipo the tipo
-     * @return true, if successful
-     */
+	 * Modifica il tipo di un utente.
+	 *
+	 * @param utente the utente
+	 * @param tipo the tipo
+	 * @return true, if successful
+	 */
     public boolean set_modifica_tipo_utente(Utente utente, String tipo) {
     	boolean fine = false;
 		PreparedStatement ps = null;
@@ -87,12 +87,12 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	}
     
     /**
-     * Sets the modifica livello utente.
-     *
-     * @param utente the utente
-     * @param livello the livello
-     * @return true, if successful
-     */
+	 * Modifica il livello di un utente 
+	 *
+	 * @param utente the utente
+	 * @param livello the livello
+	 * @return true, if successful
+	 */
     public boolean set_modifica_livello_utente(Utente utente, String livello) {
     	boolean fine = false;
 		PreparedStatement ps = null;
@@ -122,8 +122,8 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	}
 	
 	
-	/**
-	 * Gets the utenti attivi.
+    /**
+	 * Estrazione elenco degli utenti più “collaborativi” (cioè quelli che hanno inserito più pubblicazioni)..
 	 *
 	 * @return the utenti attivi
 	 */
@@ -174,7 +174,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 
 	
 	/**
-	 * Sets the inserimento utente.
+	 * Inserisce un utente.
 	 *
 	 * @param utente the utente
 	 * @return true, if successful
@@ -215,7 +215,7 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
              }return fine;}
 	
 	/**
-	 * Sets the rimuovere utente.
+	 * Rimuove un utente.
 	 *
 	 * @param utente the utente
 	 * @return true, if successful
@@ -248,11 +248,11 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	}
 	
 	/**
-	 * Check utente.
+	 * Controlla che l'utente esista e i dati inseriti siano giusti.
 	 *
 	 * @param email the email
 	 * @param password the password
-	 * @return the utente
+	 * @return true, if successful
 	 */
 	public Utente check_utente(String email, String password) {
 		Connection conn = null;
@@ -303,9 +303,9 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 
 
 	/**
-	 * Gets the utenti.
+	 * Estrae tutti gli utenti del sistema
 	 *
-	 * @return the utenti
+	 * @return true, if successful
 	 */
 	public ObservableList<Utente> get_utenti() {
 		Connection conn = null;
@@ -353,10 +353,10 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 
 
 	/**
-	 * Gets the dati utente.
+	 * Estrae i dati di un utente.
 	 *
-	 * @param idUtente the id utente
-	 * @return the dati utente
+	 * @param idUtente the idUtente
+	 * @return the utente
 	 */
 	public Utente get_dati_utente(int idUtente) {
 		Utente u = null;
@@ -407,46 +407,3 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 		}
 	}
 	
-/////////////////////////////////////////////////////////////////////////////////////
-//metodo che non serve nella query get_utenti_attivi
-/*public String get_mostra_nome_utente(int id) {
-Connection conn = null;
-PreparedStatement preparedStatement = null;
-ResultSet result = null;
-String utente="";
-try {
-conn = MySQLDAOFactory.createConnection();            
-preparedStatement = conn.prepareStatement(mostra_email_utente);
-preparedStatement.setInt(1,id);
-preparedStatement.execute();
-result = preparedStatement.getResultSet();
-while (result.next()) {            	
-utente = result.getString(1);
-}  
-
-}
-
-catch (SQLException e) {
-System.out.println("qualcosa"); 
-} finally {
-try {
-result.close();
-} catch (Exception rse) {
-System.out.println("result non chiude"); 
-}
-try {
-preparedStatement.close();
-} catch (Exception sse) {
-System.out.println("preparedStatement.close();"); 
-}
-try {
-conn.close();
-} catch (Exception cse) {
-System.out.println("conn.close();");
-}
-}
-return utente;
-
-}
-*/
-//////////////////////////////////////////////////////////////////////////////////////
