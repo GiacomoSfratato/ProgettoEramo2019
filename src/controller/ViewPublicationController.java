@@ -49,7 +49,7 @@ public class ViewPublicationController {
 		@FXML private Button inserisciRistampa;
 		@FXML private Button inserisciAutore;
 		@FXML private Button visualizzaCapitoli;
-		private String autoriConc = "";
+		private static String autoriConc = "";
 		private static int idOpera;
 		final int MAX_CHARS = 400 ;		
 		
@@ -58,7 +58,7 @@ public class ViewPublicationController {
 		Pubblicazione pubbl = dao.get_estrazione_dati(idOpera);
 		
 		private final String titoloS = pubbl.getTitolo();
-		private final String autoriS = "Autori: ";
+		private final String autoriS = autoriConc;
 		private final String editoriS = "Editore: " + pubbl.getEditore();
 		private final String annoS = "Data di pubblicazione: " +pubbl.getMetadati().getData();
 		private final String isbnS = "ISBN: " +pubbl.getMetadati().getIsbn();
@@ -75,6 +75,10 @@ public class ViewPublicationController {
 		
 		public static void setId (int id) {
 			idOpera = id;
+		}
+		
+		public static void setAutori(String autori) {
+			autoriConc = autori;
 		}
 		
 		private void settaPagina() {
@@ -95,17 +99,9 @@ public class ViewPublicationController {
 			}
 			
 			//Setto le info della pubblicazione
-			int size = pubbl.getAutori().size();
-			for (int j = 0; j < size; j++) {
-                if (j == pubbl.getAutori().size() - 1)
-                    autoriConc = autoriConc + pubbl.getAutori().get(j).getNome() + " " + pubbl.getAutori().get(j).getCognome();
-                else {
-                    autoriConc = autoriConc + pubbl.getAutori().get(j).getNome() + " " + pubbl.getAutori().get(j).getCognome() + ", ";
-                }
-            }
 			
 			titolo.setText(titoloS);
-			autori.setText(autoriS + autoriConc);
+			autori.setText(autoriS);
 			editori.setText(editoriS);
 			anno.setText(annoS);
 			isbn.setText(isbnS);
@@ -316,4 +312,5 @@ public class ViewPublicationController {
 				dao.modifica_pubblicazione_storico(pubbl, modifica_parametro);
 			}
 		}
+
 }

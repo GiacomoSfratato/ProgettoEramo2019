@@ -16,37 +16,37 @@
    <children>
       <VBox layoutX="23.0" layoutY="54.0" prefHeight="574.0" prefWidth="441.0" spacing="2.0">
          <children>
-            <Text fx:id="autori" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Autori:" wrappingWidth="197.0">
+            <Text fx:id="autori" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Autori:" wrappingWidth="441.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="editori" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Editore: " wrappingWidth="155.0">
+            <Text fx:id="editori" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Editore: " wrappingWidth="441.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="anno" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Anno di pubblicazione:" wrappingWidth="301.0">
+            <Text fx:id="anno" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Anno di pubblicazione:" wrappingWidth="441.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="isbn" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ISBN:" wrappingWidth="164.0">
+            <Text fx:id="isbn" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ISBN:" wrappingWidth="441.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="inseritada" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Inserita da:" wrappingWidth="322.0">
+            <Text fx:id="inseritada" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Inserita da:" wrappingWidth="441.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="likes" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Like totali: 28">
+            <Text fx:id="likes" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Like totali: 28" wrappingWidth="441.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="descrizione" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Riassunto:" wrappingWidth="440.578125">
+            <Text fx:id="descrizione" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Riassunto:" wrappingWidth="441.0">
                <font>
                   <Font size="16.0" />
                </font>

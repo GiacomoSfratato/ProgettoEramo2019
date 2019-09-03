@@ -20,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import model.Autore;
 import model.Pubblicazione;
 
 public class AllPublicationsPageController {
@@ -33,7 +34,7 @@ public class AllPublicationsPageController {
 	private SplitPane pane = new SplitPane();
 	@FXML
 	private Label titolopagina;
-	
+
 	@FXML
 	private void initialize(){
 		titolopagina.setText("Ecco tutte le opere che ci sono in catalogo:");
@@ -47,6 +48,17 @@ public class AllPublicationsPageController {
 		MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
 		ObservableList<Pubblicazione> list = dao.get_catalogo();
 		int i = 0;
+		
+		//Rimuove pubblicazioni duplicate e unisce gli autori
+		for(int j = 0; j<list.size() - 1; j++) {
+			if(list.get(j).getId() == list.get(j+1).getId()) {
+				Autore autore = list.get(j+1).getAutori().get(0);
+				list.get(j).getAutori().add(autore);
+				list.remove(j+1);
+				j = -1;
+			}
+		}
+		
 		for(Pubblicazione p : list) {
 			Image icon = new Image(getClass().getResourceAsStream("/view/immagini/librocolor.png"));
             ImageView immagine = new ImageView(icon);
@@ -66,6 +78,7 @@ public class AllPublicationsPageController {
                     autori = autori + p.getAutori().get(j).getNome() + " " + p.getAutori().get(j).getCognome() + ", ";
                 }
             }
+            final String autoriPar = autori;
             b.setText("  " + p.getTitolo() + "\n  " + autori);
             b.setId("" + p.getId());
             b.getStylesheets().add("/view/css/buttonlist.css");
@@ -75,6 +88,7 @@ public class AllPublicationsPageController {
                     	int idOpera;
                         idOpera = Integer.parseInt(b.getId());
                         ViewPublicationController.setId(idOpera);
+                        ViewPublicationController.setAutori(autoriPar);
                         Parent root = FXMLLoader.load(getClass().getResource("/view/ViewPublicationPage.fxml"));
                         Scene scene = anchorpane.getScene();
                         BorderPane borderpane = (BorderPane) scene.lookup("#borderpane");
