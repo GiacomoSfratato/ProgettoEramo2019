@@ -82,6 +82,7 @@ public class LoginPageController {
 		titolopagina.setText("Biblioteca Online");
 		Main.stage.setResizable(false);
 		
+		//Rendo la finestra trascinabile tramite la TopBar
 		topbar.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -101,31 +102,23 @@ public class LoginPageController {
 	
 	@FXML
 	private void handleRegistrationButtonAction() throws IOException {
-		
 		Parent root = FXMLLoader.load(getClass().getResource("/view/RegistrationPage.fxml"));
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root));
 		stage.initStyle(StageStyle.UNDECORATED);
 		stage.showAndWait();
-		
-		/*Stage appStage;
-	    Parent root;
-	    
-	    appStage=(Stage)registrationButton.getScene().getWindow();
-        root=FXMLLoader.load(getClass().getResource("Registration.fxml"));
-        Scene scene=new Scene(root);
-        appStage.setScene(scene);
-        appStage.show();*/
 	   }
 	
 	@FXML
 	private void handleLoginButtonAction() throws IOException {
+		//Check che i campi non siano vuoti
 		if(email.getText().isBlank() || password.getText().isBlank()) {
 			email.setStyle("-fx-prompt-text-fill: #ff3c2e;");
 			email.setPromptText("Campo obbligatorio");
 			password.setStyle("-fx-prompt-text-fill: #ff3c2e;");
 			password.setPromptText("Campo obbligatorio");
 		} else {
+		//Check che l'utente sia iscritto e i dati inseriti siano giusti
 		MySQLUtenteDAOImpl dao = new MySQLUtenteDAOImpl();
 		Utente checkedUser = dao.check_utente(email.getText(),password.getText());
 		if(checkedUser.getEmail().isBlank()) { 

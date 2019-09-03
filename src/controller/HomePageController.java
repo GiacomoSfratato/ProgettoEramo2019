@@ -37,44 +37,25 @@ import model.*;
 
 public class HomePageController {
 	
-	@FXML
-	private HBox topbar;
-	@FXML
-	private BorderPane borderpane;
-	@FXML
-	private Button novita;
-	@FXML
-	private Button modificateRecente;
-	@FXML
-	private Button catalogo;
-	@FXML
-	private Button catalogoRistampe;
-	@FXML
-	private Button inserisciPubbl;
-	@FXML
-	private Button dispDownload;
-	@FXML
-	private Button topUtenti;
-	@FXML
-	private Button utenti;
-	@FXML
-	private Button verificaRece;
-	@FXML
-	private Button visualizzaProf;
-	@FXML
-	private Button disconnetti;
-	@FXML
-	private Button cercaPubbl;
-	@FXML
-	private Button chiudi;
-	@FXML
-	private Button riduciaicona;
-	@FXML 
-	private VBox bottoni;
-	@FXML
-	private Label benvenuto;
-	@FXML
-	private TextField ricerca;
+	@FXML	private HBox topbar;
+	@FXML	private BorderPane borderpane;
+	@FXML	private Button novita;
+	@FXML	private Button modificateRecente;
+	@FXML	private Button catalogo;
+	@FXML	private Button catalogoRistampe;
+	@FXML	private Button inserisciPubbl;
+	@FXML	private Button dispDownload;
+	@FXML	private Button topUtenti;
+	@FXML	private Button utenti;
+	@FXML	private Button verificaRece;
+	@FXML	private Button visualizzaProf;
+	@FXML	private Button disconnetti;
+	@FXML	private Button cercaPubbl;
+	@FXML	private Button chiudi;
+	@FXML	private Button riduciaicona;
+	@FXML 	private VBox bottoni;
+	@FXML	private Label benvenuto;
+	@FXML	private TextField ricerca;
 	
 	public static String ricercaS = "";
 	
@@ -84,11 +65,11 @@ public class HomePageController {
 	
 	@FXML
 	public void initialize() throws Exception{
-		// if(LibraryUser.getLivello().contentEquals("base")) verificaRece.disableProperty().set(true);
+		if(LibraryUser.getLivello().contentEquals("base")) verificaRece.disableProperty().set(true);
 		String nome = LibraryUser.getNome();
 		String cognome = LibraryUser.getCognome();
-		//String titolo = nome.substring(0, 1).toUpperCase() + nome.substring(1) + " " +cognome.substring(0, 1).toUpperCase() + cognome.substring(1);
-		benvenuto.setText("Benvenuto!");
+		String titolo = nome.substring(0, 1).toUpperCase() + nome.substring(1) + " " +cognome.substring(0, 1).toUpperCase() + cognome.substring(1);
+		benvenuto.setText("Benvenuto " + titolo);
 		
 		ColorAdjust colorAdjust = new ColorAdjust();
         colorAdjust.setBrightness(-0.2);
@@ -105,6 +86,8 @@ public class HomePageController {
 		riduciaicona.setOnMouseExited(e -> riduciaicona.getGraphic().setEffect(null));
 		riduciaicona.setOnMousePressed(e -> riduciaicona.getGraphic().setEffect(colorAdjust2));
 		
+		
+		//Rendo la finestra trascinabile tramite le TopBar				
 		topbar.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -112,6 +95,7 @@ public class HomePageController {
                 yOffset = event.getSceneY();
             }
         });
+		
         topbar.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -119,6 +103,8 @@ public class HomePageController {
                 Main.stage.setY(event.getScreenY() - yOffset);
             }
         });
+        
+        //Carico la pagina delle pubblicazioni caricate di recente
         Parent root = FXMLLoader.load(getClass().getResource("/view/LastPublicationsPage.fxml"));
 		borderpane.setCenter(root);
         

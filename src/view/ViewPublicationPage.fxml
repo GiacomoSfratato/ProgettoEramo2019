@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="anchorpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="486.0" style="-fx-background-color: #1a1a1a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewPublicationController">
    <children>
-      <VBox layoutX="23.0" layoutY="54.0" prefHeight="577.0" prefWidth="441.0" spacing="2.0">
+      <VBox layoutX="23.0" layoutY="54.0" prefHeight="574.0" prefWidth="441.0" spacing="2.0">
          <children>
             <Text fx:id="autori" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Autori:" wrappingWidth="197.0">
                <font>
@@ -41,11 +41,6 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="capitoli" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Capitoli:">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
             <Text fx:id="likes" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Like totali: 28">
                <font>
                   <Font size="16.0" />
@@ -56,10 +51,10 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <HBox alignment="CENTER" prefHeight="76.0" prefWidth="441.0" spacing="10.0" style="-fx-border-color: white; -fx-border-width: 1 0 0 0;">
+            <HBox alignment="CENTER" prefHeight="85.0" prefWidth="441.0" spacing="10.0" style="-fx-border-color: white; -fx-border-width: 1 0 0 0;">
                <children>
                   <TextArea fx:id="areaRecensione" prefHeight="68.0" prefWidth="330.0" promptText="Dicci la tua opinione sull'opera! (max 400 caratteri)" stylesheets="@css/textAreaNoLinea.css" wrapText="true" />
-                  <Button fx:id="inserisciRecensione" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleInserisciRecensioneButton" prefHeight="68.0" prefWidth="102.0" stylesheets="@css/button.css" text="Inserisci&#10;recensione" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Button fx:id="inserisciRecensione" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleInserisciRecensioneButton" prefHeight="80.0" prefWidth="102.0" stylesheets="@css/button.css" text="Inserisci&#10;recensione" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="15.0" />
                      </font>

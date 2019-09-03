@@ -24,7 +24,6 @@ public class ViewPublicationController {
 		@FXML private Text inseritada;
 		@FXML private Text descrizione;
 		@FXML private Text recensione;
-		@FXML private Text capitoli;
 		@FXML private Text likes;
 		@FXML private TextArea areaRecensione;
 		@FXML private TextField nrcapitolo;
@@ -67,6 +66,9 @@ public class ViewPublicationController {
 		private final String descrizioneS = "Descrizione:\n" +pubbl.getDescrizione();
 		private final String likesS = "Likes totali: " + dao.get_likes_totali(pubbl).getLikes_totali();
 		
+		private final String modifica_parametro = "modifica";
+		private final String like_parametro = "like";
+		
 		public void initialize() {
 			System.out.println(pubbl.getId());
 			settaPagina();
@@ -77,7 +79,6 @@ public class ViewPublicationController {
 		}
 		
 		private void settaPagina() {
-
 			//setta un limite di caratteri per la recensione
 			areaRecensione.setTextFormatter(new TextFormatter<String>(change -> 
         	change.getControlNewText().length() <= MAX_CHARS ? change : null));
@@ -94,7 +95,7 @@ public class ViewPublicationController {
 			areaRecensione.setPromptText("Recensione inserita");
 			}
 			
-			//setta i campi text
+			//Setto le info della pubblicazione
 			int size = pubbl.getAutori().size();
 			for (int j = 0; j < size; j++) {
                 if (j == pubbl.getAutori().size() - 1)
@@ -118,6 +119,15 @@ public class ViewPublicationController {
 			
 			Tooltip tiplike = new Tooltip("Lascia un like!");
 			like.setTooltip(tiplike);
+			
+			Tooltip tiprecensoni = new Tooltip("Visualizza le recensioni di " + titoloS);
+			visualizzaRecensioni.setTooltip(tiprecensoni);	
+			
+			Tooltip tipsorgenti = new Tooltip("Visualizza le sorgenti di " + titoloS);
+			visualizzaSorgenti.setTooltip(tipsorgenti);	
+			
+			Tooltip tipcapitoli = new Tooltip("Visualizza i capitoli di " + titoloS);
+			visualizzaCapitoli.setTooltip(tipcapitoli);	
 		
 			
 		}
@@ -130,19 +140,9 @@ public class ViewPublicationController {
 		
 		@FXML 
 		private void handleLikeButton(ActionEvent event) throws Exception{
-			dao.set_inserimento_like(pubbl);
+			like.setDisable(dao.set_inserimento_like(pubbl));
 			likes.setText("Likes totali: " + dao.get_likes_totali(pubbl).getLikes_totali());
-			like.setDisable(true);
-		}
-		
-		@FXML
-		private void handleInserisciRecensioneButton(ActionEvent event) throws Exception{
-			Recensione recensione = new Recensione(areaRecensione.getText());
-			daoRecensione.set_inserimento_recensione(pubbl, recensione);
-			inserisciRecensione.setDisable(true);
-			areaRecensione.clear();
-			areaRecensione.setPromptText("Recensione inserita");
-			areaRecensione.setDisable(true);
+			dao.modifica_pubblicazione_storico(pubbl, like_parametro);	
 		}
 		
 		@FXML
@@ -182,6 +182,16 @@ public class ViewPublicationController {
 		}
 		
 		@FXML
+		private void handleInserisciRecensioneButton(ActionEvent event) throws Exception{
+			Recensione recensione = new Recensione(areaRecensione.getText());
+			daoRecensione.set_inserimento_recensione(pubbl, recensione);
+			inserisciRecensione.setDisable(true);
+			areaRecensione.clear();
+			areaRecensione.setPromptText("Recensione inserita");
+			areaRecensione.setDisable(true);
+		}
+		
+		@FXML
 		private void handleAggiungiCapitoloButton(ActionEvent event) throws Exception{
 		  Capitolo capitolo = new Capitolo(Integer.parseInt(nrcapitolo.getText()), titolocapitolo.getText());
 			if(dao.inserimento_capitolo(capitolo, pubbl)) {
@@ -192,6 +202,7 @@ public class ViewPublicationController {
 				nrcapitolo.clear();
 				nrcapitolo.setPromptText("Numero già presente");
 			}
+			dao.modifica_pubblicazione_storico(pubbl, modifica_parametro);
 		}
 		
 		@FXML
@@ -206,7 +217,7 @@ public class ViewPublicationController {
 			} else {
 				//errore
 			}
-		
+			dao.modifica_pubblicazione_storico(pubbl, modifica_parametro);
 		}
 		
 		@FXML
@@ -218,6 +229,7 @@ public class ViewPublicationController {
 			} else {
 				//errore
 			}
+			dao.modifica_pubblicazione_storico(pubbl, modifica_parametro);
 		}
 		
 		@FXML
@@ -230,6 +242,7 @@ public class ViewPublicationController {
 			} else {
 				//errore
 			}
+			dao.modifica_pubblicazione_storico(pubbl, modifica_parametro);
 		}
 		
 		@FXML
@@ -242,7 +255,7 @@ public class ViewPublicationController {
 			} else {
 				//errore
 			}
+			dao.modifica_pubblicazione_storico(pubbl, modifica_parametro);
 		}
-
 
 }

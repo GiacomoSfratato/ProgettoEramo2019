@@ -56,12 +56,15 @@ public class TopUsersPageController {
 		ObservableList<Utente> list = dao.get_utenti_attivi();
 		int i = 0;
 		for(Utente u : list) {
+			//Setto l'immagine
 			Image icon = new Image(getClass().getResourceAsStream("/view/immagini/user.png"));
             ImageView immagine = new ImageView(icon);
             immagine.setFitHeight(55);
             immagine.setPreserveRatio(true);
+            
+            //Setto ciascun Button
             Button b = new Button("", immagine);
-            b.setPrefWidth(504);
+            b.setPrefWidth(545);
             b.setAlignment(Pos.CENTER_LEFT);
             b.setTextFill(Color.web("#375fc6"));
             
@@ -79,16 +82,6 @@ public class TopUsersPageController {
                         Scene scene = anchorpane.getScene();
                         BorderPane borderpane = (BorderPane) scene.lookup("#borderpane");
                         borderpane.setRight(root);
-                		
-                        /*FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("/view/UserPage.fxml"));
-                        Scene scene = new Scene(fxmlLoader.load(), 525, 659);
-                        Stage stage = new Stage();
-                        stage.setTitle("Visualizza Opera");
-                        stage.setScene(scene);
-                        stage.show();*/
-
-                        
 
                     } catch (Exception ex) {
                         ex.printStackTrace();
@@ -96,6 +89,8 @@ public class TopUsersPageController {
 
                 }
             });
+            
+            //Aggiungo ciascun Button alle ListView
             if (i % 2 == 0) lista1.getItems().add(b);
             else lista2.getItems().add(b);
             i++;

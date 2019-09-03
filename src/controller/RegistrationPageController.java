@@ -56,9 +56,9 @@ public class RegistrationPageController{
 	@FXML
 	private PasswordField password;
 	
-	private List<String> myList;
+	private List<String> listaPaesi;
 	
-	String fileName = "src/view/file_di_testo/paesi.txt";
+	String paesi = "src/view/file_di_testo/paesi.txt";
 	
 	final static String GENERIC_USER_PIC = "/view/immagini/avatars/generic-user.png";
 	
@@ -72,18 +72,23 @@ public class RegistrationPageController{
 	@FXML
 	public void initialize() {
 		 Main.stage.setResizable(false);
+		 
+		 //Setto la ComboBox con i sessi
 		 sesso.setItems(sessi);
+		 
+		 //Setto la ComboBox con i paesi da un file .txt
 		 try {
-				myList = Files.lines(Paths.get(fileName)).collect(Collectors.toList());
+			 listaPaesi = Files.lines(Paths.get(paesi)).collect(Collectors.toList());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			paese.setItems(FXCollections.observableArrayList(myList));
+			paese.setItems(FXCollections.observableArrayList(listaPaesi));
 		}
 	
 	
 	@FXML
 	public void conferma() {		
+		//Check che i campi siano riempiti correttamente
 		if (check_registrazione()) {
 		Utente utente = new Utente.Builder().
 				withmail(email.getText()).
@@ -97,19 +102,18 @@ public class RegistrationPageController{
 				build();
 		
 			if(utentedao.set_inserimento_utente(utente)) {
-		
-			Scene scene = Main.stage.getScene();
-			Label label = (Label) scene.lookup("#errore");
-			label.setTextFill(Color.web("#18d100"));
-			label.setText("Registrazione avvenuta con successo!");
-			Stage stage = (Stage) confermaReg.getScene().getWindow();
-			stage.close();
+				Scene scene = Main.stage.getScene();
+				Label label = (Label) scene.lookup("#errore");
+				label.setTextFill(Color.web("#18d100"));
+				label.setText("Registrazione avvenuta con successo!");
+				Stage stage = (Stage) confermaReg.getScene().getWindow();
+				stage.close();
 			}
-	}
-		//System.out.println(dataDiNascita.getValue().toString());
+		}
 	}
 	
 	public void annulla() {
+		//L'utente ha annullato la registrazione
 		Stage stage = (Stage) annulla.getScene().getWindow();
 		stage.close();
 	}
@@ -161,7 +165,7 @@ public class RegistrationPageController{
 	}
 
 	
-	private String get_file_path() {		//metodo che sceglie un'immagine random fra le due cartelle Male e Female a seconda del sesso scelto
+	private String get_file_path() {  //Setta l'immagine profilo di default in base al sesso scelto in fase di registrazione
 		String pic = "";
 		switch (sesso.getValue()) {
 		case "M":

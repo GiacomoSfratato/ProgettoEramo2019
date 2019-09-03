@@ -54,7 +54,6 @@ public class AllPublicationsPageController {
             immagine.setPreserveRatio(true);
             Button b = new Button("", immagine);
             b.setPrefWidth(545);
-            //b.setPrefHeight(58);
             b.setAlignment(Pos.CENTER_LEFT);
             b.setTextFill(Color.web("#375fc6"));
             

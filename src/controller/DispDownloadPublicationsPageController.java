@@ -53,11 +53,13 @@ public class DispDownloadPublicationsPageController {
 			
             Tooltip tip = new Tooltip("Clicca qui per aprire il link");
             
+            //Setto l'immagine
             Image icon = new Image(getClass().getResourceAsStream("/view/immagini/librocolor.png"));
             ImageView immagine = new ImageView(icon);
             immagine.setFitHeight(55);
             immagine.setPreserveRatio(true);
             
+            //Setto ciascun button
             Button b = new Button("", immagine);
             b.setPrefWidth(504);
             b.setAlignment(Pos.CENTER_LEFT);
@@ -65,6 +67,7 @@ public class DispDownloadPublicationsPageController {
             b.setText("  " + p.getTitolo() + "\n  " + url);
             b.setId("" + p.getId());
             b.getStylesheets().add("/view/css/buttonlist.css");
+            b.setTooltip(tip);
             b.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {
                     try {
@@ -76,7 +79,8 @@ public class DispDownloadPublicationsPageController {
 
                 }
             });
-            b.setTooltip(tip);
+            
+            //Aggiungo i Button alle due listview
             if (i % 2 == 0) lista1.getItems().add(b);
             else lista2.getItems().add(b);
             i++;

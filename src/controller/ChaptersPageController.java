@@ -59,8 +59,7 @@ public class ChaptersPageController {
             immagine.setFitHeight(55);
             immagine.setPreserveRatio(true);
             Button b = new Button("", immagine);
-            b.setPrefWidth(lista1.getFixedCellSize());
-            //b.setPrefHeight(58);
+            b.setPrefWidth(500);
             b.setAlignment(Pos.CENTER_LEFT);
             b.setTextFill(Color.web("#375fc6"));
             b.setText("  Capitolo " + c.getNumero()

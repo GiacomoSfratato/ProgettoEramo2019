@@ -51,16 +51,17 @@ public class UserPublicationsPageController {
 		ObservableList<Pubblicazione> list = dao.get_pubblicazione_utente(idUtente);
 		int i = 0;
 		for(Pubblicazione p : list) {
+			//Setto l'immagine
 			Image icon = new Image(getClass().getResourceAsStream("/view/immagini/librocolor.png"));
             ImageView immagine = new ImageView(icon);
             immagine.setFitHeight(55);
             immagine.setPreserveRatio(true);
+            
+            //Setto ciascun Button
             Button b = new Button("", immagine);
-            b.setPrefWidth(504);
-            //b.setPrefHeight(58);
+            b.setPrefWidth(545);
             b.setAlignment(Pos.CENTER_LEFT);
             b.setTextFill(Color.web("#375fc6"));
-            
             b.setText("  " + p.getTitolo());
             b.setId("" + p.getId());
             b.getStylesheets().add("/view/css/buttonlist.css");
@@ -83,6 +84,7 @@ public class UserPublicationsPageController {
 
                 }
             });
+            //Aggiungo ciascun Button alle due listview
             if (i % 2 == 0) lista1.getItems().add(b);
             else lista2.getItems().add(b);
             i++;

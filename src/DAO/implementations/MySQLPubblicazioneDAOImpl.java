@@ -33,6 +33,7 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String inserimento_autore = "CALL inserimento_autore (?,?,?)";
 	private static String get_sorgenti_pubbl = "SELECT * FROM sorgente WHERE ID_pubblicazione = ?";
 	private static String get_capitoli_pubbl = "SELECT * FROM capitolo WHERE ID_pubblicazione = ?";
+	private static String modifica_pubblicazione_storico = "CALL modifica_pubblicazione_storico (?,?,?)";
 	
 	public ObservableList<Storico> get_storico_modifiche(){
 		ObservableList<Storico> storico = FXCollections.observableArrayList();
@@ -804,7 +805,35 @@ return pubblicazioni;}
 	     }  }
 		return capitoli;
 	}
+	
+	public void modifica_pubblicazione_storico(Pubblicazione pubblicazione, String parametro) {
+		PreparedStatement ps = null;
+		ResultSet result = null;
+		Connection conn = null;
+		try {
+			conn = MySQLDAOFactory.createConnection();
+			ps = conn.prepareStatement(modifica_pubblicazione_storico);
+			ps.setInt(1,LibraryUser.getId());
+			ps.setInt(2, pubblicazione.getId());
+			ps.setString(3,parametro);
+			ps.execute();
+		}
+		catch(Exception exc) {
+		System.out.print("Qualcosa � andato storto!"); }
+		finally { 
+		try {
+	         ps.close();
+	     } catch (Exception sse) {
+	      	System.out.println("preparedStatement.close();"); 
+	     }
+	     try {
+	         conn.close();
+	     } catch (Exception cse) {
+	     	System.out.println("conn.close();");
+	     }  }
 	}
+	
+}
 	
 
 

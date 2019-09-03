@@ -69,15 +69,15 @@ public class PublicationSearchPageController {
 		
 		int i = 0;
 		for(Pubblicazione p : list) {
-			//Creazione ImageView del pulsante
+			//Setto l'immagine
 			Image icon = new Image(getClass().getResourceAsStream("/view/immagini/librocolor.png"));
             ImageView immagine = new ImageView(icon);
             immagine.setFitHeight(55);
             immagine.setPreserveRatio(true);
             
-            //Creazione pulsante
+            //Setto ciascun Button
             Button b = new Button("", immagine);
-            b.setPrefWidth(504);
+            b.setPrefWidth(545);
             b.setAlignment(Pos.CENTER_LEFT);
             b.setTextFill(Color.web("#375fc6"));
             
@@ -112,7 +112,7 @@ public class PublicationSearchPageController {
                 }
             });
             
-            //Aggiunta dei pulsanti alle due liste
+            //Aggiunta dei Button alle due listview
             if (i % 2 == 0) lista1.getItems().add(b);
             else lista2.getItems().add(b);
             i++;

@@ -47,20 +47,24 @@ public class ReviewsPageController {
 	
 	@FXML
 	private void settalista() {
+		
 		MySQLRecensioneDAOImpl dao = new MySQLRecensioneDAOImpl();
 		ObservableList<Recensione> list = dao.get_elenco_recensioni(pubbl);
+		
 		if(list.size() == 0) {
 			pane.setOpacity(0);
 			titolopagina.setText("Non ci sono recensioni per quest'opera");
 		} else {
 		for(Recensione r : list) {
+			//Setto l'immagine
 			Image icon = new Image(getClass().getResourceAsStream("/view/immagini/review.png"));
             ImageView immagine = new ImageView(icon);
             immagine.setFitHeight(55);
             immagine.setPreserveRatio(true);
+            
+            //Setto ciascun Button
             Button b = new Button("", immagine);
             b.setPrefWidth(504);
-            //b.setPrefHeight(58);
             b.setAlignment(Pos.CENTER_LEFT);
             b.setTextFill(Color.web("#375fc6"));
             b.setText("  Da: " + r.getAutore() 
@@ -69,6 +73,8 @@ public class ReviewsPageController {
             b.getStylesheets().add("/view/css/buttonlist.css");
             b.setDisable(true);
             b.setOpacity(1);
+            
+            //Aggiungo ciascun Button alla lista
             lista1.getItems().add(b);
             lista1.setDisable(true);
             lista1.setOpacity(1);

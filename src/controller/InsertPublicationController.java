@@ -31,23 +31,24 @@ public class InsertPublicationController {
 	@FXML private TextArea descrizione;
 	@FXML private DatePicker datapubblicazione;
 	@FXML private ComboBox<String> lingua;
-	private List<String> myList;
+	private List<String> listaLingue;
 	final int MAX_CHARS = 500 ;
-	String fileName = "src/view/file_di_testo/lingue.txt";
+	String fileLingue = "src/view/file_di_testo/lingue.txt";
 	MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
 	
 	@FXML
 	public void initialize() {
+	//Limito i caratteri da poter inserire nella TextArea
 		descrizione.setTextFormatter(new TextFormatter<String>(change -> 
         	change.getControlNewText().length() <= MAX_CHARS ? change : null));
 		
-	//popolo la lista di lingue da un file txt
+	//Popolo la ComboBox di lingue da un file .txt
 		try {
-			myList = Files.lines(Paths.get(fileName)).collect(Collectors.toList());
+			listaLingue = Files.lines(Paths.get(fileLingue)).collect(Collectors.toList());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		lingua.setItems(FXCollections.observableArrayList(myList));
+		lingua.setItems(FXCollections.observableArrayList(listaLingue));
 	}
 	
 	@FXML

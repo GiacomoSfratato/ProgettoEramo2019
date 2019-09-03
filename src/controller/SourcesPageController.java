@@ -49,36 +49,37 @@ public class SourcesPageController {
 	private void settalista() {
 		MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
 		ObservableList<Sorgente> list = dao.get_sorgenti_pubbl(pubbl);
+		
 		if(list.size() == 0) {
 			pane.setOpacity(0);
 			titolopagina.setText("Non ci sono sorgenti per quest'opera");
 		} else {
-		for(Sorgente s : list) {
-			//Setto l'immagine
-			Image icon = new Image(getClass().getResourceAsStream("/view/immagini/link-icon-png-14.png"));
-            ImageView immagine = new ImageView(icon);
-            immagine.setFitHeight(55);
-            immagine.setPreserveRatio(true);
-            
-            //Setto i button per ogni cella
-            Button b = new Button("", immagine);
-            b.setPrefWidth(504);
-            b.setAlignment(Pos.CENTER_LEFT);
-            b.setTextFill(Color.web("#375fc6"));
-            b.setText("  URI: " + s.getURI()
-            		+ "\n  Tipo: " + s.getTipo()
-            		+ "\n  Formato: " + s.getFormato()
-            		+ "\n  Descrizione: " + s.getDescrizione());
-            
-            b.getStylesheets().add("/view/css/buttonlist.css");
-            b.setDisable(true);
-            b.setOpacity(1);
-            
-            //Aggiungo i Button alla lista
-            lista1.getItems().add(b);
-            lista1.setDisable(true);
-            lista1.setOpacity(1);
-        }
+			for(Sorgente s : list) {
+				//Setto l'immagine
+				Image icon = new Image(getClass().getResourceAsStream("/view/immagini/link-icon-png-14.png"));
+	            ImageView immagine = new ImageView(icon);
+	            immagine.setFitHeight(55);
+	            immagine.setPreserveRatio(true);
+	            
+	            //Setto ciascun Button
+	            Button b = new Button("", immagine);
+	            b.setPrefWidth(504);
+	            b.setAlignment(Pos.CENTER_LEFT);
+	            b.setTextFill(Color.web("#375fc6"));
+	            b.setText("  URI: " + s.getURI()
+	            		+ "\n  Tipo: " + s.getTipo()
+	            		+ "\n  Formato: " + s.getFormato()
+	            		+ "\n  Descrizione: " + s.getDescrizione());
+	            
+	            b.getStylesheets().add("/view/css/buttonlist.css");
+	            b.setDisable(true);
+	            b.setOpacity(1);
+	            
+	            //Aggiungo ciascun Button alla listview
+	            lista1.getItems().add(b);
+	            lista1.setDisable(true);
+	            lista1.setOpacity(1);
+	        	}
 		}
 	}
 

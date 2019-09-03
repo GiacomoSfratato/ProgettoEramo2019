@@ -35,7 +35,8 @@ public class UserPageController {
 	
 	MySQLUtenteDAOImpl dao = new MySQLUtenteDAOImpl();
 	Utente utente = dao.get_dati_utente(idUtente);
-	private final String nomeSognomeS = utente.getNome() + " " + utente.getCognome();
+	
+	private final String nomeCognomeS = utente.getNome() + " " + utente.getCognome();
 	private final String nomeS = "Nome: " + utente.getNome();
 	private final String cognomeS = "Cognome: " + utente.getCognome();
 	private final String emailS = "Email: " + utente.getEmail();
@@ -56,9 +57,12 @@ public class UserPageController {
 	}
 	
 	private void settaUserInfo() {
+		//Setto l'immagine del profilo
 		Image icon = new Image(getClass().getResourceAsStream(utente.getPic()));
 		pic.setImage(icon);
-		nomeCognome.setText(utente.getNome() + " " + utente.getCognome());
+		
+		//Setto le info dell'utente
+		nomeCognome.setText(nomeCognomeS);
 		nome.setText(nomeS);
 		cognome.setText(cognomeS);
 		email.setText(emailS);
