@@ -87,9 +87,9 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	private static String modifica_pubblicazione_storico = "CALL modifica_pubblicazione_storico (?,?,?)";
 	
 	/**
-	 * Gets the storico modifiche.
+	 * Estrazione elenco dello storico delle modifiche.
 	 *
-	 * @return the storico modifiche
+	 * @return Storico delle modifiche su tutte le pubblicazioni
 	 */
 	public ObservableList<Storico> get_storico_modifiche(){
 		ObservableList<Storico> storico = FXCollections.observableArrayList();
@@ -135,9 +135,9 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	}
 	
 	/**
-	 * Gets the ultime pubblicazioni.
+	 * Estrazione elenco delle ultime dieci pubblicazioni inserite.
 	 *
-	 * @return the ultime pubblicazioni
+	 * @return Ultime pubblicazioni
 	 */
 	@Override
 	public ObservableList<Pubblicazione> get_ultime_pubblicazioni(){
@@ -178,9 +178,9 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 	return pubblicazioni;}
 	
 	/**
-	 * Gets the update recente.
+	 * Estrazione elenco delle pubblicazioni aggiornate di recente (ultimi 30 giorni).
 	 *
-	 * @return the update recente
+	 * @return Aggiornate di recente
 	 */
 	@Override
 	public ObservableList<Pubblicazione> get_update_recente(){	
@@ -225,10 +225,10 @@ public class MySQLPubblicazioneDAOImpl implements PubblicazioneDAO {
 return pubblicazioni;}
 	
 	/**
-	 * Gets the pubblicazione utente.
+	 * Estrazione elenco delle pubblicazioni inserite da un utente.
 	 *
-	 * @param idUtente the id utente
-	 * @return the pubblicazione utente
+	 * @param idUtente idUtente
+	 * @return Pubblicazioni inserite da un utente
 	 */
 	@Override
 	public ObservableList<Pubblicazione> get_pubblicazione_utente(int idUtente){ 
@@ -263,9 +263,9 @@ return pubblicazioni;}
 }
 	
 	/**
-	 * Gets the catalogo.
+	 * Estrazione catalogo, cioè elenco di tutte le pubblicazioni con titolo, autori, editore e anno di pubblicazione, ordinato per titolo.
 	 *
-	 * @return the catalogo
+	 * @return Tutte le pubblicazioni
 	 */
 	@Override
 	public ObservableList<Pubblicazione> get_catalogo(){
@@ -302,10 +302,10 @@ return pubblicazioni;}
 	}
 
 	/**
-	 * Gets the estrazione dati.
+	 * Estrazione dati di una pubblicazione specifica dato il suo ID.
 	 *
-	 * @param id the id
-	 * @return the estrazione dati
+	 * @param id ID Pubblicazione
+	 * @return I dati della pubblicazione
 	 */
 	@Override
 	public Pubblicazione get_estrazione_dati(int id) {
@@ -351,10 +351,10 @@ return pubblicazioni;}
 	}
 
 	/**
-	 * Gets the cerca pubblicazione.
+	 * Ricerca di pubblicazioni per ISBN, titolo, autore, e parole chiave.
 	 *
-	 * @param ricerca the ricerca
-	 * @return the cerca pubblicazione
+	 * @param ricerca Parametro di ricerca
+	 * @return Pubblicazioni trovate
 	 */
 	@Override
 	public ObservableList<Pubblicazione> get_cerca_pubblicazione(String ricerca) {
@@ -396,9 +396,9 @@ return pubblicazioni;}
 	}
 
 	/**
-	 * Gets the catalogo ristampa.
+	 * Estrazione della lista delle pubblicazioni in catalogo, ognuna con la data dell’ultima ristampa.
 	 *
-	 * @return the catalogo ristampa
+	 * @return Pubblicazioni con data dell'ultima ristampa
 	 */
 	@Override
 	public ObservableList<Pubblicazione> get_catalogo_ristampa() {
@@ -439,10 +439,10 @@ return pubblicazioni;}
 	}
 	
 	/**
-	 * Gets the catalogo stessi autori.
+	 * Data una pubblicazione, restituire tutte le pubblicazioni del catalogo aventi gli stessi autori.
 	 *
-	 * @param pubblicazione the pubblicazione
-	 * @return the catalogo stessi autori
+	 * @param pubblicazione La pubblicazione
+	 * @return Pubblicazioni scritte dallo stesso autore
 	 */
 	@Override
 	public ObservableList<Pubblicazione> get_catalogo_stessi_autori(Pubblicazione pubblicazione) {
@@ -482,10 +482,10 @@ return pubblicazioni;}
 	}
 	
 	/**
-	 * Sets the inserimento like.
+	 * Inserimento di un like relativo a una pubblicazione.
 	 *
-	 * @param pubblicazione the pubblicazione
-	 * @return true, if successful
+	 * @param pubblicazione La pubblicazione
+	 * @return true, se va a buon fine
 	 */
 	@Override
 	public boolean set_inserimento_like(Pubblicazione pubblicazione) {
@@ -518,10 +518,10 @@ return pubblicazioni;}
 	}
 	
 	/**
-	 * Gets the likes totali.
+	 * Calcolo numero dei like per una pubblicazione.
 	 *
-	 * @param pubblicazione the pubblicazione
-	 * @return the likes totali
+	 * @param pubblicazione La pubblicazione
+	 * @return Quantità di like della pubblicazione
 	 */
 	@Override
 	public Pubblicazione get_likes_totali(Pubblicazione pubblicazione) {
@@ -559,10 +559,10 @@ return pubblicazioni;}
 	}
 	
 	/**
-	 * Gets the estrazione modifiche pubblicazione.
+	 * Estrazione log delle modifiche effettuare su una pubblicazione.
 	 *
-	 * @param pubblicazione the pubblicazione
-	 * @return the estrazione modifiche pubblicazione
+	 * @param pubblicazione La pubblicazione
+	 * @return Storico delle modifiche su una pubblicazione
 	 */
 	@Override
 	public ArrayList<Storico> get_estrazione_modifiche_pubblicazione(Pubblicazione pubblicazione) {
@@ -601,9 +601,9 @@ return pubblicazioni;}
 	}
 
 	/**
-	 * Gets the elenco download.
+	 *Estrazione elenco delle pubblicazioni per le quali è disponibile un download.
 	 *
-	 * @return the elenco download
+	 * @return L'elenco delle pubblicazioni con download
 	 */
 	@Override
 	public ObservableList<Pubblicazione> get_elenco_download() {
@@ -644,9 +644,9 @@ return pubblicazioni;}
 	}
 	
 	/**
-	 * Inserimento pubblicazione.
+	 * Inserimento di una pubblicazione.
 	 *
-	 * @param pubblicazione the pubblicazione
+	 * @param pubblicazione Pubblicazione
 	 */
 	public void inserimento_pubblicazione (Pubblicazione pubblicazione) {
 		Connection conn = null;
@@ -684,11 +684,11 @@ return pubblicazioni;}
 	}
 
 	/**
-	 * Inserimento capitolo.
+	 * Inserimento di un capitolo.
 	 *
-	 * @param capitolo the capitolo
-	 * @param pubblicazione the pubblicazione
-	 * @return true, if successful
+	 * @param capitolo Capitolo
+	 * @param pubblicazione Pubblicazione 
+	 * @return true, se va a buon fine
 	 */
 	public boolean inserimento_capitolo (Capitolo capitolo, Pubblicazione pubblicazione) {
 		boolean tutto_ok = true;
@@ -722,11 +722,11 @@ return pubblicazioni;}
 	}
 	
 	/**
-	 * Inserimento sorgente.
+	 * Inserimento di una sorgente.
 	 *
-	 * @param sorgente the sorgente
-	 * @param pubblicazione the pubblicazione
-	 * @return true, if successful
+	 * @param sorgente Sorgente 
+	 * @param pubblicazione Pubblicazione
+	 * @return true, se va a buon fine
 	 */
 	public boolean inserimento_sorgente (Sorgente sorgente, Pubblicazione pubblicazione) {
 		boolean tutto_ok = true;
@@ -763,11 +763,11 @@ return pubblicazioni;}
 
 	
 	/**
-	 * Inserimento ristampa.
+	 * Inserimento di una ristampa.
 	 *
-	 * @param ristampa the ristampa
-	 * @param pubblicazione the pubblicazione
-	 * @return true, if successful
+	 * @param ristampa Ristampa 
+	 * @param pubblicazione Pubblicazione
+	 * @return true, se va a buon fine
 	 */
 	public boolean inserimento_ristampa (Ristampa ristampa, Pubblicazione pubblicazione) {
 		boolean tutto_ok = true;
@@ -801,11 +801,11 @@ return pubblicazioni;}
 	}
 
 	/**
-	 * Inserimento parola chiave.
+	 * Inserimento di una parola chiave.
 	 *
-	 * @param parola the parola
-	 * @param pubblicazione the pubblicazione
-	 * @return true, if successful
+	 * @param parola Parola chiave
+	 * @param pubblicazione Pubblicazione
+	 * @return true, se va a buon fine
 	 */
 	public boolean inserimento_parola_chiave (Parola_chiave parola, Pubblicazione pubblicazione) {
 		boolean tutto_ok = true;
@@ -838,11 +838,11 @@ return pubblicazioni;}
 	}
 	
 	/**
-	 * Inserimento autore.
+	 * Inserimento di un autore.
 	 *
-	 * @param autore the autore
-	 * @param pubblicazione the pubblicazione
-	 * @return true, if successful
+	 * @param autore Autore
+	 * @param pubblicazione Pubblicazione
+	 * @return true, se va a buon fine
 	 */
 	public boolean inserimento_autore (Autore autore, Pubblicazione pubblicazione) {
 		boolean tutto_ok = true;
@@ -876,10 +876,10 @@ return pubblicazioni;}
 	}
 	
 	/**
-	 * Check like.
+	 * Controlla se l'utente ha già inserito il like.
 	 *
-	 * @param pubblicazione the pubblicazione
-	 * @return true, if successful
+	 * @param pubblicazione Pubblicazione
+	 * @return true, se va a buon fine
 	 */
 	public boolean check_like(Pubblicazione pubblicazione) {
 		boolean esiste = false;
@@ -914,10 +914,10 @@ return pubblicazioni;}
 	}
 	
 	/**
-	 * Gets the sorgenti pubbl.
+	 * Estrae le sorgenti di una pubblicazione
 	 *
-	 * @param pubblicazione the pubblicazione
-	 * @return the sorgenti pubbl
+	 * @param pubblicazione Pubblicazione
+	 * @return Le sorgenti
 	 */
 	public ObservableList<Sorgente> get_sorgenti_pubbl(Pubblicazione pubblicazione){
 		ObservableList<Sorgente> sorgenti = FXCollections.observableArrayList();
@@ -951,10 +951,10 @@ return pubblicazioni;}
 	}
 
 	/**
-	 * Gets the capitoli pubbl.
+	 * Estrae i capitoli di una pubblicazione
 	 *
-	 * @param pubbl the pubbl
-	 * @return the capitoli pubbl
+	 * @param pubbl Pubblicazione
+	 * @return I capitoli
 	 */
 	public ObservableList<Capitolo> get_capitoli_pubbl(Pubblicazione pubbl) {
 		ObservableList<Capitolo> capitoli = FXCollections.observableArrayList();
@@ -988,10 +988,10 @@ return pubblicazioni;}
 	}
 	
 	/**
-	 * Modifica pubblicazione storico.
+	 * Memorizza la modifica nello storico.
 	 *
-	 * @param pubblicazione the pubblicazione
-	 * @param parametro the parametro
+	 * @param pubblicazione Pubblicazione
+	 * @param parametro Parametro
 	 */
 	public void modifica_pubblicazione_storico(Pubblicazione pubblicazione, String parametro) {
 		PreparedStatement ps = null;

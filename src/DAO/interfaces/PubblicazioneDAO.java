@@ -11,107 +11,196 @@ import model.*;
  * The Interface PubblicazioneDAO.
  */
 public interface PubblicazioneDAO {
-	
 	/**
-	 * Gets the ultime pubblicazioni.
+	 * Estrazione elenco dello storico delle modifiche.
 	 *
-	 * @return the ultime pubblicazioni
+	 * @return Storico delle modifiche su tutte le pubblicazioni
 	 */
-	//Estrazione elenco delle ultime dieci pubblicazioni inserite
+	public ObservableList<Storico> get_storico_modifiche();
+	/**
+	 * Estrazione elenco delle ultime dieci pubblicazioni inserite.
+	 *
+	 * @return Ultime pubblicazioni
+	 */
+	
 	public ObservableList<Pubblicazione> get_ultime_pubblicazioni();
 	
 	/**
-	 * Gets the update recente.
+	 * Estrazione elenco delle pubblicazioni aggiornate di recente (ultimi 30 giorni).
 	 *
-	 * @return the update recente
+	 * @return Aggiornate di recente
 	 */
-	//Estrazione elenco delle pubblicazioni aggiornate di recente (ultimi 30 giorni)
+	
 	public ObservableList<Pubblicazione> get_update_recente();
 	
 	/**
-	 * Gets the pubblicazione utente.
+	 * Estrazione elenco delle pubblicazioni inserite da un utente.
 	 *
 	 * @param id the id
-	 * @return the pubblicazione utente
+	 * @return Pubblicazioni inserite da un utente
 	 */
-	//Estrazione elenco delle pubblicazioni inserite da un utente
+	
 	public ObservableList<Pubblicazione> get_pubblicazione_utente(int id);
 	
 	/**
-	 * Gets the catalogo.
+	 * Estrazione catalogo, cioè elenco di tutte le pubblicazioni con titolo, autori, editore e anno di pubblicazione, ordinato per titolo.
 	 *
-	 * @return the catalogo
+	 * @return Tutte le pubblicazioni
 	 */
-	//Estrazione catalogo, cioè elenco di tutte le pubblicazioni con titolo, autori, editore e anno di pubblicazione, ordinato per titolo
+
 	public ObservableList<Pubblicazione> get_catalogo();
 	
 	/**
-	 * Gets the estrazione dati.
+	 * Estrazione dati di una pubblicazione specifica dato il suo ID.
 	 *
 	 * @param id the id
-	 * @return the estrazione dati
+	 * @return I dati della pubblicazione
 	 */
-	//Estrazione dati complete di una pubblicazione specifica dato il suo ID
+	
 	public Pubblicazione get_estrazione_dati(int id);
 	
 	/**
-	 * Gets the cerca pubblicazione.
+	 * Ricerca di pubblicazioni per ISBN, titolo, autore, e parole chiave.
 	 *
 	 * @param ricerca the ricerca
-	 * @return the cerca pubblicazione
+	 * @return Pubblicazioni trovate
 	 */
-	//Ricerca di pubblicazioni per ISBN, titolo, autore, e parole chiave
+	
 	public ObservableList<Pubblicazione> get_cerca_pubblicazione(String ricerca);
 	
 	/**
-	 * Gets the catalogo ristampa.
+	 * Estrazione della lista delle pubblicazioni in catalogo, ognuna con la data dell’ultima ristampa.
 	 *
-	 * @return the catalogo ristampa
+	 * @return Pubblicazioni con data dell'ultima ristampa
 	 */
-	//Estrazione della lista delle pubblicazioni in catalogo, ognuna con la data dell’ultima ristampa
+	
 	public ObservableList<Pubblicazione> get_catalogo_ristampa();
 	
 	/**
-	 * Gets the catalogo stessi autori.
+	 * Data una pubblicazione, restituire tutte le pubblicazioni del catalogo aventi gli stessi autori.
 	 *
 	 * @param pubblicazione the pubblicazione
-	 * @return the catalogo stessi autori
+	 * @return Pubblicazioni scritte dallo stesso autore
 	 */
-	//Data una pubblicazione, restituire tutte le pubblicazioni del catalogo aventi gli stessi autori
+	
 	public ObservableList<Pubblicazione> get_catalogo_stessi_autori(Pubblicazione pubblicazione);
 	
 	/**
-	 * Sets the inserimento like.
+	 * Inserimento di un like relativo a una pubblicazione.
 	 *
 	 * @param pubblicazione the pubblicazione
-	 * @return true, if successful
+	 * @return true, se va a buon fine
 	 */
-	//Inserimento di un like relativo a una pubblicazione
+	
 	public boolean set_inserimento_like(Pubblicazione pubblicazione);
 	
 	/**
-	 * Gets the likes totali.
+	 * Calcolo numero dei like per una pubblicazione.
 	 *
 	 * @param pubblicazione the pubblicazione
-	 * @return the likes totali
+	 * @return Quantità di like della pubblicazione
 	 */
-	//Calcolo numero dei like per una pubblicazione
+	
 	public Pubblicazione get_likes_totali(Pubblicazione pubblicazione);
 	
 	/**
-	 * Gets the estrazione modifiche pubblicazione.
+	 * Estrazione log delle modifiche effettuare su una pubblicazione.
 	 *
 	 * @param pubblicazione the pubblicazione
-	 * @return the estrazione modifiche pubblicazione
+	 * @return Storico delle modifiche su una pubblicazione
 	 */
-	//Estrazione log delle modifiche effettuare su una pubblicazione
+	
 	public ArrayList<Storico> get_estrazione_modifiche_pubblicazione(Pubblicazione pubblicazione);
 	
 	/**
-	 * Gets the elenco download.
+	 *Estrazione elenco delle pubblicazioni per le quali è disponibile un download.
 	 *
-	 * @return the elenco download
+	 * @return L'elenco delle pubblicazioni con download
 	 */
-	//Estrazione elenco delle pubblicazioni per le quali è disponibile un download
+	
 	public ObservableList<Pubblicazione> get_elenco_download();
+	
+	/**
+	 * Inserimento di una pubblicazione.
+	 *
+	 * @param pubblicazione Pubblicazione
+	 */
+	public void inserimento_pubblicazione (Pubblicazione pubblicazione);
+	
+	/**
+	 * Inserimento di un capitolo.
+	 *
+	 * @param capitolo Capitolo
+	 * @param pubblicazione Pubblicazione 
+	 * @return true, se va a buon fine
+	 */
+	public boolean inserimento_capitolo (Capitolo capitolo, Pubblicazione pubblicazione);
+	
+	/**
+	 * Inserimento di una sorgente.
+	 *
+	 * @param sorgente Sorgente 
+	 * @param pubblicazione Pubblicazione
+	 * @return true, se va a buon fine
+	 */
+	public boolean inserimento_sorgente (Sorgente sorgente, Pubblicazione pubblicazione);
+	
+	/**
+	 * Inserimento di una ristampa.
+	 *
+	 * @param ristampa Ristampa 
+	 * @param pubblicazione Pubblicazione 
+	 * @return true, se va a buon fine
+	 */
+	public boolean inserimento_ristampa (Ristampa ristampa, Pubblicazione pubblicazione);
+	
+	/**
+	 * Inserimento di una parola chiave.
+	 *
+	 * @param parola Parola chiave
+	 * @param pubblicazione Pubblicazione
+	 * @return true, se va a buon fine
+	 */
+	public boolean inserimento_parola_chiave (Parola_chiave parola, Pubblicazione pubblicazione);
+	
+	/**
+	 * Inserimento di un autore.
+	 *
+	 * @param autore Autore
+	 * @param pubblicazione Pubblicazione
+	 * @return true, se va a buon fine
+	 */
+	public boolean inserimento_autore (Autore autore, Pubblicazione pubblicazione);
+	
+	/**
+	 * Controlla se l'utente ha già inserito il like.
+	 *
+	 * @param pubblicazione Pubblicazione
+	 * @return true, se va a buon fine
+	 */
+	public boolean check_like(Pubblicazione pubblicazione);
+	
+	/**
+	 * Estrae le sorgenti di una pubblicazione
+	 *
+	 * @param pubblicazione Pubblicazione
+	 * @return Le sorgenti
+	 */
+	public ObservableList<Sorgente> get_sorgenti_pubbl(Pubblicazione pubblicazione);
+	
+	/**
+	 * Estrae i capitoli di una pubblicazione
+	 *
+	 * @param pubbl Pubblicazione
+	 * @return I capitoli
+	 */
+	public ObservableList<Capitolo> get_capitoli_pubbl(Pubblicazione pubbl);
+	
+	/**
+	 * Memorizza la modifica nello storico.
+	 *
+	 * @param pubblicazione Pubblicazione
+	 * @param parametro Parametro
+	 */
+	public void modifica_pubblicazione_storico(Pubblicazione pubblicazione, String parametro);
 }
