@@ -22,18 +22,35 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Pubblicazione;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ReprintedPublicationsPageController.
+ */
 public class ReprintedPublicationsPageController {
+	
+	/** The anchorpane. */
 	@FXML
 	private AnchorPane anchorpane = new AnchorPane();
+	
+	/** The lista 1. */
 	@FXML
 	private ListView<Button> lista1 = new ListView<Button>();
+	
+	/** The lista 2. */
 	@FXML
 	private ListView<Button> lista2 = new ListView<Button>();
+	
+	/** The pane. */
 	@FXML
 	private SplitPane pane = new SplitPane();
+	
+	/** The titolopagina. */
 	@FXML
 	private Label titolopagina;
 	
+	/**
+	 * Initialize.
+	 */
 	@FXML
 	private void initialize(){
 		titolopagina.setText("Cercavi delle opere ristampate? Serviti pure:");
@@ -42,6 +59,9 @@ public class ReprintedPublicationsPageController {
 	}
 	
 	
+	/**
+	 * Settalista.
+	 */
 	@FXML
 	private void settalista() {
 		MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();

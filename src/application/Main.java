@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package application;
 
 import DAO.interfaces.UtenteDAO;
@@ -26,10 +29,21 @@ import DAO.implementations.*;
 import model.*;
 import controller.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Main.
+ */
 public class Main extends Application{
 	
+	/** The stage. */
 	public static Stage stage;
 	
+	/**
+	 * Start.
+	 *
+	 * @param stage the stage
+	 * @throws Exception the exception
+	 */
 	//metodo per avviare la GUI al momento disattivato
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -48,6 +62,11 @@ public class Main extends Application{
 	    
 	}
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 	launch(args);
 	

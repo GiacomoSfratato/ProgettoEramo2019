@@ -28,26 +28,47 @@ import javafx.stage.Stage;
 import model.Autore;
 import model.Pubblicazione;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PublicationSearchPageController.
+ */
 public class PublicationSearchPageController {
+	
+	/** The risultati. */
 	@FXML
 	private Label risultati;
+	
+	/** The anchorpane. */
 	@FXML
 	private AnchorPane anchorpane = new AnchorPane();
+	
+	/** The lista 1. */
 	@FXML
 	private ListView<Button> lista1 = new ListView<Button>();
+	
+	/** The lista 2. */
 	@FXML
 	private ListView<Button> lista2 = new ListView<Button>();
+	
+	/** The pane. */
 	@FXML
 	private SplitPane pane = new SplitPane();
 	
+	/** The ricerca. */
 	private String ricerca;
 	
+	/**
+	 * Initialize.
+	 */
 	@FXML
 	private void initialize(){
 		settalista();
 	}
 	
 	
+	/**
+	 * Settalista.
+	 */
 	@FXML
 	 void settalista() {
 		

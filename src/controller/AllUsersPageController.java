@@ -27,18 +27,35 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AllUsersPageController.
+ */
 public class AllUsersPageController {
+	
+	/** The anchorpane. */
 	@FXML
 	private AnchorPane anchorpane = new AnchorPane();
+	
+	/** The titolopagina. */
 	@FXML
 	private Label titolopagina;
+	
+	/** The lista 1. */
 	@FXML
 	private ListView<Button> lista1 = new ListView<Button>();
+	
+	/** The lista 2. */
 	@FXML
 	private ListView<Button> lista2 = new ListView<Button>();
+	
+	/** The pane. */
 	@FXML
 	private SplitPane pane = new SplitPane();
 	
+	/**
+	 * Initialize.
+	 */
 	@FXML
 	private void initialize(){
 		titolopagina.setText("Ecco tutti gli utenti attualmente registrati:");
@@ -47,6 +64,9 @@ public class AllUsersPageController {
 		
 	}
 	
+	/**
+	 * Settalista.
+	 */
 	@FXML
 	private void settalista() {
 		MySQLUtenteDAOImpl dao = new MySQLUtenteDAOImpl();

@@ -19,23 +19,60 @@ import javafx.scene.control.*;
 import javafx.scene.text.*;
 import model.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class InsertPublicationController.
+ */
 public class InsertPublicationController {
+	
+	/** The testo pagina. */
 	@FXML private Text testoPagina;
+	
+	/** The conferma. */
 	@FXML private Button conferma;
+	
+	/** The titolo. */
 	@FXML private TextField titolo;
+	
+	/** The editore. */
 	@FXML private TextField editore;
+	
+	/** The isbn. */
 	@FXML private TextField isbn;
+	
+	/** The nrpagine. */
 	@FXML private TextField nrpagine;
+	
+	/** The cognome autore. */
 	@FXML private TextField cognomeAutore;
+	
+	/** The nome autore. */
 	@FXML private TextField nomeAutore;
+	
+	/** The descrizione. */
 	@FXML private TextArea descrizione;
+	
+	/** The datapubblicazione. */
 	@FXML private DatePicker datapubblicazione;
+	
+	/** The lingua. */
 	@FXML private ComboBox<String> lingua;
+	
+	/** The lista lingue. */
 	private List<String> listaLingue;
+	
+	/** The max chars. */
 	final int MAX_CHARS = 500 ;
+	
+	/** The file lingue. */
 	String fileLingue = "src/view/file_di_testo/lingue.txt";
+	
+	/** The dao. */
 	MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
 	
+	/**
+	 * Initialize.
+	 */
 	@FXML
 	public void initialize() {
 	//Limito i caratteri da poter inserire nella TextArea
@@ -51,6 +88,9 @@ public class InsertPublicationController {
 		lingua.setItems(FXCollections.observableArrayList(listaLingue));
 	}
 	
+	/**
+	 * Handle conferma button.
+	 */
 	@FXML
 	private void handleConfermaButton() {
 		if(check_inserimento()) {
@@ -83,6 +123,11 @@ public class InsertPublicationController {
 		}
 	}
 	
+	/**
+	 * Check inserimento.
+	 *
+	 * @return true, if successful
+	 */
 	private boolean check_inserimento() { //metodo che controlla tutti i dati inseriti nel form
 		boolean all_ok = true;
 		

@@ -32,43 +32,76 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Utente;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RegistrationPageController.
+ */
 public class RegistrationPageController{
 	
+	/** The sessi. */
 	ObservableList<String> sessi = FXCollections.observableArrayList("M","F","indefinito");
 	
+	/** The lunghezza min password. */
 	private final int LUNGHEZZA_MIN_PASSWORD = 8;
+	
+	/** The conferma reg. */
 	@FXML
 	private Button confermaReg;
+	
+	/** The annulla. */
 	@FXML
 	private Button annulla;
+	
+	/** The email. */
 	@FXML
 	private TextField email;
+	
+	/** The nome. */
 	@FXML
 	private TextField nome;
+	
+	/** The cognome. */
 	@FXML
 	private TextField cognome;
+	
+	/** The paese. */
 	@FXML
 	private ComboBox<String> paese;
+	
+	/** The data di nascita. */
 	@FXML
 	private DatePicker dataDiNascita;
+	
+	/** The sesso. */
 	@FXML
 	private ComboBox<String> sesso;
+	
+	/** The password. */
 	@FXML
 	private PasswordField password;
 	
+	/** The lista paesi. */
 	private List<String> listaPaesi;
 	
+	/** The paesi. */
 	String paesi = "src/view/file_di_testo/paesi.txt";
 	
+	/** The Constant GENERIC_USER_PIC. */
 	final static String GENERIC_USER_PIC = "/view/immagini/avatars/generic-user.png";
 	
+	/** The Constant MALE_USER_PIC. */
 	final static String MALE_USER_PIC = "/view/immagini/avatars/Male/boy.png";
 	
+	/** The Constant FEMALE_USER_PIC. */
 	final static String FEMALE_USER_PIC = "/view/immagini/avatars/Female/girl.png";
 	
+	/** The utentedao. */
 	MySQLUtenteDAOImpl utentedao = new MySQLUtenteDAOImpl();
 	
 	
+	/**
+	 * Initialize.
+	 */
 	@FXML
 	public void initialize() {
 		 Main.stage.setResizable(false);
@@ -86,6 +119,9 @@ public class RegistrationPageController{
 		}
 	
 	
+	/**
+	 * Conferma.
+	 */
 	@FXML
 	public void conferma() {		
 		//Check che i campi siano riempiti correttamente
@@ -112,12 +148,20 @@ public class RegistrationPageController{
 		}
 	}
 	
+	/**
+	 * Annulla.
+	 */
 	public void annulla() {
 		//L'utente ha annullato la registrazione
 		Stage stage = (Stage) annulla.getScene().getWindow();
 		stage.close();
 	}
 	
+	/**
+	 * Check registrazione.
+	 *
+	 * @return true, if successful
+	 */
 	private boolean check_registrazione() {		//controlla che i campi siano validi
 		boolean all_ok = true;
 		if(nome.getText().isBlank()) {
@@ -165,6 +209,11 @@ public class RegistrationPageController{
 	}
 
 	
+	/**
+	 * Gets the file path.
+	 *
+	 * @return the file path
+	 */
 	private String get_file_path() {  //Setta l'immagine profilo di default in base al sesso scelto in fase di registrazione
 		String pic = "";
 		switch (sesso.getValue()) {

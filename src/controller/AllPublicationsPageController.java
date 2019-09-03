@@ -23,18 +23,35 @@ import javafx.stage.Stage;
 import model.Autore;
 import model.Pubblicazione;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AllPublicationsPageController.
+ */
 public class AllPublicationsPageController {
+	
+	/** The anchorpane. */
 	@FXML
 	private AnchorPane anchorpane = new AnchorPane();
+	
+	/** The lista 1. */
 	@FXML
 	private ListView<Button> lista1 = new ListView<Button>();
+	
+	/** The lista 2. */
 	@FXML
 	private ListView<Button> lista2 = new ListView<Button>();
+	
+	/** The pane. */
 	@FXML
 	private SplitPane pane = new SplitPane();
+	
+	/** The titolopagina. */
 	@FXML
 	private Label titolopagina;
 
+	/**
+	 * Initialize.
+	 */
 	@FXML
 	private void initialize(){
 		titolopagina.setText("Ecco tutte le opere che ci sono in catalogo:");
@@ -43,6 +60,9 @@ public class AllPublicationsPageController {
 	}
 	
 	
+	/**
+	 * Settalista.
+	 */
 	@FXML
 	private void settalista() {
 		MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();

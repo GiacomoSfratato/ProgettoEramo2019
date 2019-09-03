@@ -17,22 +17,47 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
  
+// TODO: Auto-generated Javadoc
 /**
  * Implementazione dell'interfaccia CustomerDAO per il database MySQL.
  */
 public class MySQLUtenteDAOImpl implements UtenteDAO {
 	
+	/** The Constant modifica_tipo_utente. */
 	/*basic query declaration */
     private static final String modifica_tipo_utente = "CALL modifica_tipo_utente(?,?)";
+    
+    /** The Constant modifica_livello_utente. */
     private static final String modifica_livello_utente = "CALL modifica_livello_utente(?,?)";
+    
+    /** The Constant utenti_attivi. */
     private static final String utenti_attivi = "CALL utenti_attivi()";
+    
+    /** The Constant mostra_email_utente. */
     private static final String	mostra_email_utente = "SELECT email from utente where id= ?";
+    
+    /** The Constant check_utente. */
     private static final String	check_utente = "SELECT id, email, passwd, livello, nome, cognome from utente where email = ? and passwd = ?";
+    
+    /** The Constant inserimento_utente. */
     private static final String inserimento_utente = "call inserimento_utente(?,?,?,?,?,?,?,?,?)";
+    
+    /** The Constant rimuovere_utente. */
     private static final String rimuovere_utente = "call rimuovere_utente(?)";
+    
+    /** The Constant utenti. */
     private static final String utenti = "SELECT id,email,nome,cognome,data_nascita,tipo,livello FROM utente ORDER BY nome";
+    
+    /** The Constant utente. */
     private static final String utente = "SELECT * FROM utente WHERE ID = ?";
 	
+    /**
+     * Sets the modifica tipo utente.
+     *
+     * @param utente the utente
+     * @param tipo the tipo
+     * @return true, if successful
+     */
     public boolean set_modifica_tipo_utente(Utente utente, String tipo) {
     	boolean fine = false;
 		PreparedStatement ps = null;
@@ -61,6 +86,13 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 		return fine;
 	}
     
+    /**
+     * Sets the modifica livello utente.
+     *
+     * @param utente the utente
+     * @param livello the livello
+     * @return true, if successful
+     */
     public boolean set_modifica_livello_utente(Utente utente, String livello) {
     	boolean fine = false;
 		PreparedStatement ps = null;
@@ -90,6 +122,11 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	}
 	
 	
+	/**
+	 * Gets the utenti attivi.
+	 *
+	 * @return the utenti attivi
+	 */
 	public ObservableList<Utente> get_utenti_attivi() {
 		ObservableList<Utente> utenti = FXCollections.observableArrayList();
 		Connection conn = null;
@@ -136,6 +173,12 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 	}
 
 	
+	/**
+	 * Sets the inserimento utente.
+	 *
+	 * @param utente the utente
+	 * @return true, if successful
+	 */
 	public boolean set_inserimento_utente(Utente utente) {
 		boolean fine = false;
 		Connection conn = null;
@@ -171,6 +214,12 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
              } 
              }return fine;}
 	
+	/**
+	 * Sets the rimuovere utente.
+	 *
+	 * @param utente the utente
+	 * @return true, if successful
+	 */
 	public boolean set_rimuovere_utente(Utente utente) {
 		boolean fine = false;
 		PreparedStatement ps = null;
@@ -198,6 +247,13 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 		return fine;
 	}
 	
+	/**
+	 * Check utente.
+	 *
+	 * @param email the email
+	 * @param password the password
+	 * @return the utente
+	 */
 	public Utente check_utente(String email, String password) {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
@@ -246,6 +302,11 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 		}
 
 
+	/**
+	 * Gets the utenti.
+	 *
+	 * @return the utenti
+	 */
 	public ObservableList<Utente> get_utenti() {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
@@ -291,6 +352,12 @@ public class MySQLUtenteDAOImpl implements UtenteDAO {
 		}
 
 
+	/**
+	 * Gets the dati utente.
+	 *
+	 * @param idUtente the id utente
+	 * @return the dati utente
+	 */
 	public Utente get_dati_utente(int idUtente) {
 		Utente u = null;
 		Connection conn = null;

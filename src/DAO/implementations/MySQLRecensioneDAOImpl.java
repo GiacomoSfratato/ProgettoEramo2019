@@ -14,16 +14,37 @@ import DAO.interfaces.RecensioneDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MySQLRecensioneDAOImpl.
+ */
 public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 
+	 	/** The Constant elenco_recensioni. */
 	 	private static final String elenco_recensioni = "CALL elenco_recensioni(?)";
-	    private static final String elenco_recensioni_attesa = "CALL elenco_recensioni_attesa()";
-	    private static final String	inserimento_recensione = "CALL inserimento_recensione(?,?,?,?)";
-	    private static final String rimuovere_recensione = "call inserimento_utente(?,?,?,?,?,?,?,?)";
-	    private static final String verifica_recensione = "call verifica_recensione(?,?,?,?,?)";
-	    private static String recensione_utente_pubblicazione = "SELECT * FROM recensione WHERE ID_utente = ? AND ID_pubblicazione = ?";
 	    
-	    @Override
+    	/** The Constant elenco_recensioni_attesa. */
+    	private static final String elenco_recensioni_attesa = "CALL elenco_recensioni_attesa()";
+	    
+    	/** The Constant inserimento_recensione. */
+    	private static final String	inserimento_recensione = "CALL inserimento_recensione(?,?,?,?)";
+	    
+    	/** The Constant rimuovere_recensione. */
+    	private static final String rimuovere_recensione = "call inserimento_utente(?,?,?,?,?,?,?,?)";
+	    
+    	/** The Constant verifica_recensione. */
+    	private static final String verifica_recensione = "call verifica_recensione(?,?,?,?,?)";
+	    
+    	/** The recensione utente pubblicazione. */
+    	private static String recensione_utente_pubblicazione = "SELECT * FROM recensione WHERE ID_utente = ? AND ID_pubblicazione = ?";
+	    
+	    /**
+    	 * Gets the elenco recensioni.
+    	 *
+    	 * @param pubblicazione the pubblicazione
+    	 * @return the elenco recensioni
+    	 */
+    	@Override
 		public ObservableList<Recensione> get_elenco_recensioni(Pubblicazione pubblicazione) {
 	    	ObservableList<Recensione> recensioni = FXCollections.observableArrayList();
 	    	Connection conn = null;
@@ -63,6 +84,11 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 		
 		}
 		
+		/**
+		 * Gets the elenco recensioni attesa.
+		 *
+		 * @return the elenco recensioni attesa
+		 */
 		@Override
 		public ObservableList get_elenco_recensioni_attesa() {
 			ObservableList<Recensione> recensioni_attesa = FXCollections.observableArrayList();
@@ -105,6 +131,14 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 		return recensioni_attesa;
 		
 		}
+		
+		/**
+		 * Sets the inserimento recensione.
+		 *
+		 * @param pubblicazione the pubblicazione
+		 * @param recensione the recensione
+		 * @return true, if successful
+		 */
 		@Override
 		public boolean set_inserimento_recensione(Pubblicazione pubblicazione, Recensione recensione) {
 			boolean fatto = false;
@@ -137,6 +171,13 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 		
 		}
 		
+		/**
+		 * Sets the verifica recensione.
+		 *
+		 * @param recensione the recensione
+		 * @param giudizio the giudizio
+		 * @return true, if successful
+		 */
 		@Override
 		public boolean set_verifica_recensione(Recensione recensione, String giudizio) {
 			boolean fatto = false;
@@ -170,12 +211,24 @@ public class MySQLRecensioneDAOImpl implements RecensioneDAO {
 		
 		}
 		
+		/**
+		 * Sets the rimuovere recensione.
+		 *
+		 * @param recensione the recensione
+		 * @return true, if successful
+		 */
 		@Override
 		public boolean set_rimuovere_recensione(Recensione recensione) {
 			// TODO Auto-generated method stub
 			return false;
 		}
 		
+		/**
+		 * Check recensione.
+		 *
+		 * @param pubblicazione the pubblicazione
+		 * @return true, if successful
+		 */
 		public boolean check_recensione(Pubblicazione pubblicazione) {
 			boolean esiste = false;
 			PreparedStatement ps = null;

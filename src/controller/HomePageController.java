@@ -35,34 +35,84 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class HomePageController.
+ */
 public class HomePageController {
 	
+	/** The topbar. */
 	@FXML	private HBox topbar;
+	
+	/** The borderpane. */
 	@FXML	private BorderPane borderpane;
+	
+	/** The novita. */
 	@FXML	private Button novita;
+	
+	/** The modificate recente. */
 	@FXML	private Button modificateRecente;
+	
+	/** The catalogo. */
 	@FXML	private Button catalogo;
+	
+	/** The catalogo ristampe. */
 	@FXML	private Button catalogoRistampe;
+	
+	/** The inserisci pubbl. */
 	@FXML	private Button inserisciPubbl;
+	
+	/** The disp download. */
 	@FXML	private Button dispDownload;
+	
+	/** The top utenti. */
 	@FXML	private Button topUtenti;
+	
+	/** The utenti. */
 	@FXML	private Button utenti;
+	
+	/** The verifica rece. */
 	@FXML	private Button verificaRece;
+	
+	/** The visualizza prof. */
 	@FXML	private Button visualizzaProf;
+	
+	/** The disconnetti. */
 	@FXML	private Button disconnetti;
+	
+	/** The cerca pubbl. */
 	@FXML	private Button cercaPubbl;
+	
+	/** The chiudi. */
 	@FXML	private Button chiudi;
+	
+	/** The riduciaicona. */
 	@FXML	private Button riduciaicona;
+	
+	/** The bottoni. */
 	@FXML 	private VBox bottoni;
+	
+	/** The benvenuto. */
 	@FXML	private Label benvenuto;
+	
+	/** The ricerca. */
 	@FXML	private TextField ricerca;
 	
+	/** The ricerca S. */
 	public static String ricercaS = "";
 	
+	/** The x offset. */
 	private double xOffset = 0;
+	
+	/** The y offset. */
 	private double yOffset = 0;
 	
 	
+	/**
+	 * Initialize.
+	 *
+	 * @throws Exception the exception
+	 */
 	@FXML
 	public void initialize() throws Exception{
 		if(LibraryUser.getLivello().contentEquals("base")) verificaRece.disableProperty().set(true);
@@ -110,6 +160,11 @@ public class HomePageController {
         
 	}
 	
+	/**
+	 * Handle cerca button.
+	 *
+	 * @throws Exception the exception
+	 */
 	@FXML 
 	private void handleCercaButton() throws Exception{
 		ricercaS = ricerca.getText();
@@ -125,18 +180,34 @@ public class HomePageController {
 	}
 	}
 	
+	/**
+	 * Handle catalogo button.
+	 *
+	 * @throws Exception the exception
+	 */
 	@FXML
 	private void handleCatalogoButton() throws Exception{
 		Parent root = FXMLLoader.load(getClass().getResource("/view/AllPublicationsPage.fxml"));
 		borderpane.setCenter(root);
 	}
 	
+	/**
+	 * Handle novita button.
+	 *
+	 * @throws Exception the exception
+	 */
 	@FXML
 	private void handleNovitaButton() throws Exception{
 		Parent root = FXMLLoader.load(getClass().getResource("/view/LastPublicationsPage.fxml"));
 		borderpane.setCenter(root);
 	}
 	
+	/**
+	 * Handle disconnetti button.
+	 *
+	 * @param event the event
+	 * @throws Exception the exception
+	 */
 	@FXML
 	private void handleDisconnettiButton(ActionEvent event) throws Exception{
 		
@@ -165,51 +236,104 @@ public class HomePageController {
         }
     }
 	
+	/**
+	 * Handle disp download button.
+	 *
+	 * @param event the event
+	 * @throws Exception the exception
+	 */
 	@FXML
 	private void handleDispDownloadButton(ActionEvent event) throws Exception{
 		Parent root = FXMLLoader.load(getClass().getResource("/view/DispDownloadPublicationsPage.fxml"));
 		borderpane.setCenter(root);
 	}
 	
+	/**
+	 * Handle utenti button.
+	 *
+	 * @param event the event
+	 * @throws Exception the exception
+	 */
 	@FXML
 	private void handleUtentiButton(ActionEvent event) throws Exception{
 		Parent root = FXMLLoader.load(getClass().getResource("/view/AllUsers.fxml"));
 		borderpane.setCenter(root);
 	}
 	
+	/**
+	 * Handle top utenti button.
+	 *
+	 * @param event the event
+	 * @throws Exception the exception
+	 */
 	@FXML
 	private void handleTopUtentiButton(ActionEvent event) throws Exception{
 		Parent root = FXMLLoader.load(getClass().getResource("/view/TopUsers.fxml"));
 		borderpane.setCenter(root);
 	}
 	
+	/**
+	 * Handle user click.
+	 *
+	 * @throws Exception the exception
+	 */
 	public void handleUserClick () throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/TopUsers.fxml"));
 		borderpane.setCenter(root);
 	}
 	
+	/**
+	 * Handle profilo button.
+	 *
+	 * @param event the event
+	 * @throws Exception the exception
+	 */
 	public void handleProfiloButton(ActionEvent event) throws Exception{
 		UserPageController.setId(LibraryUser.getId());
 		Parent root = FXMLLoader.load(getClass().getResource("/view/UserPage.fxml"));
 		borderpane.setRight(root);
 	}
 	
+	/**
+	 * Handle ristampe button.
+	 *
+	 * @param event the event
+	 * @throws Exception the exception
+	 */
 	public void handleRistampeButton(ActionEvent event) throws Exception{
 		Parent root = FXMLLoader.load(getClass().getResource("/view/ReprintedPublicationsPage.fxml"));
 		borderpane.setCenter(root);
 	}
 	
+	/**
+	 * Handle modifiche button.
+	 *
+	 * @param event the event
+	 * @throws Exception the exception
+	 */
 	public void handleModificheButton(ActionEvent event) throws Exception{
 		Parent root = FXMLLoader.load(getClass().getResource("/view/UpdatedPublicationsPage.fxml"));
 		borderpane.setCenter(root);
 	}
 	
+	/**
+	 * Handle amministrazione button.
+	 *
+	 * @param event the event
+	 * @throws Exception the exception
+	 */
 	public void handleAmministrazioneButton(ActionEvent event) throws Exception{
 		borderpane.setRight(null);
 		Parent root = FXMLLoader.load(getClass().getResource("/view/AdministrationPage.fxml"));
 		borderpane.setCenter(root);
 	}
 	
+	/**
+	 * Handle inserisci pubblicazione button.
+	 *
+	 * @param event the event
+	 * @throws Exception the exception
+	 */
 	@FXML
 	public void handleInserisciPubblicazioneButton(ActionEvent event) throws Exception{
 		Parent root = FXMLLoader.load(getClass().getResource("/view/InsertPublication.fxml"));

@@ -7,15 +7,33 @@ package DAO;
 import DAO.implementations.MySQLUtenteDAOImpl;
 import DAO.interfaces.UtenteDAO;
 
+	// TODO: Auto-generated Javadoc
+/**
+	 * A factory for creating MySQLDAO objects.
+	 */
 	public class MySQLDAOFactory extends DAOFactory {
 		
 		
+		/** The public dns. */
 		private static String PUBLIC_DNS = "dbunivaq2019.cgrpp6xc53dw.eu-west-3.rds.amazonaws.com";
+		
+		/** The port. */
 		private static String PORT = "3306";
+		
+		/** The database. */
 		private static String DATABASE = "dbunivaq2019";
+		
+		/** The remote database username. */
 		private static String REMOTE_DATABASE_USERNAME = "dbunivaq2019";
+		
+		/** The database user password. */
 		private static String DATABASE_USER_PASSWORD = "dbunivaq2019";
 		
+		/**
+		 * Creates a new MySQLDAO object.
+		 *
+		 * @return the connection
+		 */
 		public static Connection createConnection() {
 		    
 		    try {
@@ -44,6 +62,11 @@ import DAO.interfaces.UtenteDAO;
 		}
 	
 	    
+		/**
+		 * Gets the customer DAO.
+		 *
+		 * @return the customer DAO
+		 */
 		@Override
 		public UtenteDAO getCustomerDAO() {
 			return new MySQLUtenteDAOImpl();

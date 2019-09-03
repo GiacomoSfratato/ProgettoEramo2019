@@ -27,27 +27,55 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import model.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AdministrationPageController.
+ */
 public class AdministrationPageController {
+	
+	/** The verifica recensioni. */
 	@FXML
 	private Button verificaRecensioni;
+	
+	/** The storico modifiche. */
 	@FXML
 	private Button storicoModifiche;
+	
+	/** The livello utente. */
 	@FXML
 	private Button livelloUtente;
+	
+	/** The tipo utente. */
 	@FXML
 	private Button tipoUtente;
+	
+	/** The bottone 1. */
 	@FXML
 	private Button bottone1;
+	
+	/** The bottone 2. */
 	@FXML
 	private Button bottone2;
 	
+	/** The min width. */
 	private final int MIN_WIDTH = 160;
+	
+	/** The pannellotabella. */
 	@FXML
 	AnchorPane pannellotabella;
+	
+	/** The recensioni. */
 	MySQLRecensioneDAOImpl recensioni = new MySQLRecensioneDAOImpl();
+	
+	/** The storico. */
 	MySQLPubblicazioneDAOImpl storico = new MySQLPubblicazioneDAOImpl();
+	
+	/** The utenti. */
 	MySQLUtenteDAOImpl utenti = new MySQLUtenteDAOImpl();
 	
+	/**
+	 * Initialize.
+	 */
 	@FXML
 	public void initialize() {
 		bottone1.setVisible(false);
@@ -57,6 +85,11 @@ public class AdministrationPageController {
 		bottone2.setDisable(true);
 	}
 	
+	/**
+	 * Handle verifica recensione.
+	 *
+	 * @throws Exception the exception
+	 */
 	@FXML
 	private void handleVerificaRecensione() throws Exception{
 		ObservableList<Recensione> listarecensioni = recensioni.get_elenco_recensioni_attesa();
@@ -120,6 +153,12 @@ public class AdministrationPageController {
 	
 	}
 	
+	/**
+	 * Handle storico modifiche.
+	 *
+	 * @param event the event
+	 * @throws Exception the exception
+	 */
 	@FXML
 	private void handleStoricoModifiche(ActionEvent event) throws Exception{
 		ObservableList<Storico> listarecensioni = storico.get_storico_modifiche();
@@ -157,6 +196,12 @@ public class AdministrationPageController {
 		AnchorPane.setLeftAnchor(tabstorico, 0.0);
 	}
 
+	/**
+	 * Handle tipo utente.
+	 *
+	 * @param event the event
+	 * @throws Exception the exception
+	 */
 	@FXML
 	private void handleTipoUtente(ActionEvent event) throws Exception{
 		ObservableList<Utente> listaUtenti = utenti.get_utenti();
@@ -219,6 +264,12 @@ public class AdministrationPageController {
 		});
 	}
 	
+	/**
+	 * Handle livello utente.
+	 *
+	 * @param event the event
+	 * @throws Exception the exception
+	 */
 	@FXML
 	private void handleLivelloUtente(ActionEvent event) throws Exception{
 		ObservableList<Utente> listaUtenti = utenti.get_utenti();

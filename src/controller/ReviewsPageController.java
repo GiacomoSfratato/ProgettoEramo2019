@@ -22,17 +22,37 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ReviewsPageController.
+ */
 public class ReviewsPageController {
+	
+	/** The anchorpane. */
 	@FXML
 	private AnchorPane anchorpane = new AnchorPane();
+	
+	/** The lista 1. */
 	@FXML
 	private ListView<Button> lista1 = new ListView<Button>();
+	
+	/** The pane. */
 	@FXML
 	private SplitPane pane = new SplitPane();
+	
+	/** The titolopagina. */
 	@FXML
 	private Label titolopagina;
+	
+	/** The id opera. */
 	private static int idOpera;
+	
+	/** The pubbl. */
 	Pubblicazione pubbl = new Pubblicazione.Builder().withid(idOpera).build();
+	
+	/**
+	 * Initialize.
+	 */
 	@FXML
 	private void initialize(){
 		titolopagina.setText("Ecco tutte le recensioni per quest'opera");
@@ -41,10 +61,18 @@ public class ReviewsPageController {
 	}
 	
 	
+	/**
+	 * Sets the id.
+	 *
+	 * @param id the new id
+	 */
 	public static void setId (int id) {
 		idOpera = id;
 	}
 	
+	/**
+	 * Settalista.
+	 */
 	@FXML
 	private void settalista() {
 		

@@ -14,73 +14,190 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ViewPublicationController.
+ */
 public class ViewPublicationController {
+		
+		/** The anchorpane. */
 		@FXML private AnchorPane anchorpane;
+		
+		/** The titolo. */
 		@FXML private Text titolo;
+		
+		/** The autori. */
 		@FXML private Text autori;
+		
+		/** The editori. */
 		@FXML private Text editori;
+		
+		/** The anno. */
 		@FXML private Text anno;
+		
+		/** The isbn. */
 		@FXML private Text isbn;
+		
+		/** The inseritada. */
 		@FXML private Text inseritada;
+		
+		/** The descrizione. */
 		@FXML private Text descrizione;
+		
+		/** The recensione. */
 		@FXML private Text recensione;
+		
+		/** The likes. */
 		@FXML private Text likes;
+		
+		/** The area recensione. */
 		@FXML private TextArea areaRecensione;
+		
+		/** The nrcapitolo. */
 		@FXML private TextField nrcapitolo;
+		
+		/** The titolocapitolo. */
 		@FXML private TextField titolocapitolo;
+		
+		/** The uri. */
 		@FXML private TextField URI;
+		
+		/** The tiposorgente. */
 		@FXML private TextField tiposorgente;
+		
+		/** The formatosorgente. */
 		@FXML private TextField formatosorgente;
+		
+		/** The descrizionesorgente. */
 		@FXML private TextField descrizionesorgente;
+		
+		/** The parolachiave. */
 		@FXML private TextField parolachiave;
+		
+		/** The quantitaristampa. */
 		@FXML private TextField quantitaristampa;
+		
+		/** The nomeautore. */
 		@FXML private TextField nomeautore;
+		
+		/** The cognomeautore. */
 		@FXML private TextField cognomeautore;
+		
+		/** The dataristampa. */
 		@FXML DatePicker dataristampa;
+		
+		/** The like. */
 		@FXML private Button like;
+		
+		/** The chiudi. */
 		@FXML private Button chiudi;
+		
+		/** The stesso autore. */
 		@FXML private Button stessoAutore;
+		
+		/** The visualizza recensioni. */
 		@FXML private Button visualizzaRecensioni;
+		
+		/** The visualizza sorgenti. */
 		@FXML private Button visualizzaSorgenti;
+		
+		/** The inserisci recensione. */
 		@FXML private Button inserisciRecensione;
+		
+		/** The aggiungi capitolo. */
 		@FXML private Button aggiungiCapitolo;
+		
+		/** The aggiungi sorgente. */
 		@FXML private Button aggiungiSorgente;
+		
+		/** The inserisci parola chiave. */
 		@FXML private Button inserisciParolaChiave;
+		
+		/** The inserisci ristampa. */
 		@FXML private Button inserisciRistampa;
+		
+		/** The inserisci autore. */
 		@FXML private Button inserisciAutore;
+		
+		/** The visualizza capitoli. */
 		@FXML private Button visualizzaCapitoli;
+		
+		/** The autori conc. */
 		private static String autoriConc = "";
+		
+		/** The id opera. */
 		private static int idOpera;
+		
+		/** The max chars. */
 		final int MAX_CHARS = 400 ;		
 		
+		/** The dao. */
 		MySQLPubblicazioneDAOImpl dao = new MySQLPubblicazioneDAOImpl();
+		
+		/** The dao recensione. */
 		MySQLRecensioneDAOImpl daoRecensione = new MySQLRecensioneDAOImpl();
+		
+		/** The pubbl. */
 		Pubblicazione pubbl = dao.get_estrazione_dati(idOpera);
 		
+		/** The titolo S. */
 		private final String titoloS = pubbl.getTitolo();
+		
+		/** The autori S. */
 		private final String autoriS = autoriConc;
+		
+		/** The editori S. */
 		private final String editoriS = "Editore: " + pubbl.getEditore();
+		
+		/** The anno S. */
 		private final String annoS = "Data di pubblicazione: " +pubbl.getMetadati().getData();
+		
+		/** The isbn S. */
 		private final String isbnS = "ISBN: " +pubbl.getMetadati().getIsbn();
+		
+		/** The inserita da S. */
 		private final String inserita_daS = "Inserita da: " +pubbl.getUtente();
+		
+		/** The descrizione S. */
 		private final String descrizioneS = "Descrizione:\n" +pubbl.getDescrizione();
+		
+		/** The likes S. */
 		private final String likesS = "Likes totali: " + dao.get_likes_totali(pubbl).getLikes_totali();
 		
+		/** The modifica parametro. */
 		private final String modifica_parametro = "modifica";
+		
+		/** The like parametro. */
 		private final String like_parametro = "like";
 		
+		/**
+		 * Initialize.
+		 */
 		public void initialize() {
 			settaPagina();
 		}
 		
+		/**
+		 * Sets the id.
+		 *
+		 * @param id the new id
+		 */
 		public static void setId (int id) {
 			idOpera = id;
 		}
 		
+		/**
+		 * Sets the autori.
+		 *
+		 * @param autori the new autori
+		 */
 		public static void setAutori(String autori) {
 			autoriConc = autori;
 		}
 		
+		/**
+		 * Setta pagina.
+		 */
 		private void settaPagina() {
 			//setta un limite di caratteri per la recensione
 			areaRecensione.setTextFormatter(new TextFormatter<String>(change -> 
@@ -126,6 +243,13 @@ public class ViewPublicationController {
 		
 			
 		}
+		
+		/**
+		 * Handle chiudi button.
+		 *
+		 * @param event the event
+		 * @throws Exception the exception
+		 */
 		@FXML
 	    private void handleChiudiButton(ActionEvent event) throws Exception{
 	    	Scene scene = anchorpane.getScene();
@@ -133,6 +257,12 @@ public class ViewPublicationController {
 	        borderpane.setRight(null);
 	    }
 		
+		/**
+		 * Handle like button.
+		 *
+		 * @param event the event
+		 * @throws Exception the exception
+		 */
 		@FXML 
 		private void handleLikeButton(ActionEvent event) throws Exception{
 			like.setDisable(dao.set_inserimento_like(pubbl));
@@ -140,6 +270,12 @@ public class ViewPublicationController {
 			dao.modifica_pubblicazione_storico(pubbl, like_parametro);	
 		}
 		
+		/**
+		 * Handle stesso autore button.
+		 *
+		 * @param event the event
+		 * @throws Exception the exception
+		 */
 		@FXML
 		private void handleStessoAutoreButton(ActionEvent event) throws Exception{
             SameAuthorPublicationsPageController.setId(pubbl.getId());
@@ -149,6 +285,12 @@ public class ViewPublicationController {
             borderpane.setCenter(root);
 		}
 		
+		/**
+		 * Handle visualizza recensioni button.
+		 *
+		 * @param event the event
+		 * @throws Exception the exception
+		 */
 		@FXML
 		private void handleVisualizzaRecensioniButton(ActionEvent event) throws Exception{
             ReviewsPageController.setId(pubbl.getId());
@@ -158,6 +300,12 @@ public class ViewPublicationController {
             borderpane.setCenter(root);
 		}
 		
+		/**
+		 * Handle visualizza sorgenti button.
+		 *
+		 * @param event the event
+		 * @throws Exception the exception
+		 */
 		@FXML
 		private void handleVisualizzaSorgentiButton(ActionEvent event) throws Exception{
             SourcesPageController.setId(pubbl.getId());
@@ -167,6 +315,12 @@ public class ViewPublicationController {
             borderpane.setCenter(root);
 		}
 		
+		/**
+		 * Handle visualizza capitoli button.
+		 *
+		 * @param event the event
+		 * @throws Exception the exception
+		 */
 		@FXML
 		private void handleVisualizzaCapitoliButton(ActionEvent event) throws Exception{
 			ChaptersPageController.setId(pubbl.getId());
@@ -176,6 +330,12 @@ public class ViewPublicationController {
             borderpane.setCenter(root);
 		}
 		
+		/**
+		 * Handle inserisci recensione button.
+		 *
+		 * @param event the event
+		 * @throws Exception the exception
+		 */
 		@FXML
 		private void handleInserisciRecensioneButton(ActionEvent event) throws Exception{
 			//Check che il campo non sia vuoto
@@ -190,6 +350,13 @@ public class ViewPublicationController {
 			areaRecensione.setDisable(true);
 		}
 	}	
+		
+		/**
+		 * Handle aggiungi capitolo button.
+		 *
+		 * @param event the event
+		 * @throws Exception the exception
+		 */
 		@FXML
 		private void handleAggiungiCapitoloButton(ActionEvent event) throws Exception{
 			//Check che i campi non siano vuoti
@@ -214,6 +381,13 @@ public class ViewPublicationController {
 			dao.modifica_pubblicazione_storico(pubbl, modifica_parametro);
 		  }
 		}	
+		
+		/**
+		 * Handle aggiungi sorgente button.
+		 *
+		 * @param event the event
+		 * @throws Exception the exception
+		 */
 		@FXML
 		private void handleAggiungiSorgenteButton(ActionEvent event) throws Exception{
 			//Check che i campi non siano vuoti
@@ -248,6 +422,12 @@ public class ViewPublicationController {
 			}
 		}
 		
+		/**
+		 * Handle aggiungi parola chiave button.
+		 *
+		 * @param event the event
+		 * @throws Exception the exception
+		 */
 		@FXML
 		private void handleAggiungiParolaChiaveButton(ActionEvent event) throws Exception{
 			//Check che il campo non sia vuoto
@@ -265,6 +445,12 @@ public class ViewPublicationController {
 			}
 		}
 		
+		/**
+		 * Handle aggiungi ristampa button.
+		 *
+		 * @param event the event
+		 * @throws Exception the exception
+		 */
 		@FXML
 		private void handleAggiungiRistampaButton (ActionEvent event) throws Exception{
 			//Check che i campi non siano vuoti
@@ -288,6 +474,13 @@ public class ViewPublicationController {
 			dao.modifica_pubblicazione_storico(pubbl, modifica_parametro);
 		}
 	}	
+		
+		/**
+		 * Handle aggiungi autore button.
+		 *
+		 * @param event the event
+		 * @throws Exception the exception
+		 */
 		@FXML
 		private void handleAggiungiAutoreButton (ActionEvent event) throws Exception{
 			//Check che i campi non siano vuoti

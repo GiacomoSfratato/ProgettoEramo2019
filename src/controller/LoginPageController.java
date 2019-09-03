@@ -27,31 +27,63 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LoginPageController.
+ */
 public class LoginPageController {
+	
+	/** The topbar. */
 	@FXML
 	private HBox topbar;
+	
+	/** The errore. */
 	@FXML
 	private Label errore;
+	
+	/** The titolopagina. */
 	@FXML
 	private Label titolopagina;
+	
+	/** The email. */
 	@FXML
 	private TextField email;
+	
+	/** The password. */
 	@FXML
 	private PasswordField password;
+	
+	/** The chiudi. */
 	@FXML
 	private Button chiudi;
+	
+	/** The riduciaicona. */
 	@FXML
 	private Button riduciaicona;
+	
+	/** The login button. */
 	@FXML
 	private Button loginButton;
+	
+	/** The registration button. */
 	@FXML
 	private Button registrationButton;
+	
+	/** The x offset. */
 	private double xOffset = 0;
+    
+    /** The y offset. */
     private double yOffset = 0;
 	
+	/** The stage. */
 	public static Stage stage;
+	
+	/** The conferma. */
 	public static String conferma;
 	
+	/**
+	 * Initialize.
+	 */
 	@FXML
 	public void initialize() {
 		Main.stage.setResizable(false);
@@ -100,6 +132,11 @@ public class LoginPageController {
 		
 	}
 	
+	/**
+	 * Handle registration button action.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	private void handleRegistrationButtonAction() throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/RegistrationPage.fxml"));
@@ -109,6 +146,11 @@ public class LoginPageController {
 		stage.showAndWait();
 	   }
 	
+	/**
+	 * Handle login button action.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	private void handleLoginButtonAction() throws IOException {
 		//Check che i campi non siano vuoti
